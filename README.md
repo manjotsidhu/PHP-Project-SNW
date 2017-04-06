@@ -1,8 +1,8 @@
 # Social Networking Based PHP Website
 
-Based On PHP 5.6.30
+Based On PHP 5.6.30 (Not Working On PHP 7)
 
-Tested Working Perfectly On XAMPP Win32 5.6.30 VC11
+Tested Working Perfectly On XAMPP Win32 5.6.30 VC11 , Download From [Here](https://www.apachefriends.org/xampp-files/5.6.30/xampp-win32-5.6.30-0-VC11-installer.exe)
 
 Designed For Google Chrome
 
