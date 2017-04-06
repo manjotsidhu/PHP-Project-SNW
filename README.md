@@ -38,3 +38,7 @@ Password : administrator
 ## Admin Panel
 
 Go To localhost/facebook/admin
+
+Username : 98d34c1758b15b5a359b69c2b08c5767
+
+Password : 98d34c1758b15b5a359b69c2b08c5767
