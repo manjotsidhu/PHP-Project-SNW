@@ -17,7 +17,7 @@ For WAMP - C://WAMP/www/
 Go To Phpmyadmin , create a new database named 
 
 ```
-FACEBACK
+faceback
 ``` 
 
 Import the database from database folder present inside Facebook(repo)
