@@ -15,7 +15,7 @@
     <link href="landing/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="landing/css/landing-pagej.css" rel="stylesheet">
+    <link href="landing/css/landing.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="landing/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
 	
 	<!-- Login Css --> 
 	<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:600'>
-	<link rel="stylesheet" href="login/style.css">
+	<link rel="stylesheet" href="login/login.css">
 
 	
 </head>
@@ -84,7 +84,7 @@
                         <h3>Connect With Your Friends With One Click</h3>
                         <div class="login-wrap">
 	<!-- Login/Signup Form -->
-	<div class="login-html">
+	<div class="login-html" height="100%">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-form">
@@ -138,7 +138,7 @@
 	</div>
 </div>
 						
-                        
+                        <h4> Made With <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> By Manjot Sidhu and Harneet Shah</h4>
                     </div>
                 </div>
             </div>
@@ -159,8 +159,9 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                    <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                    <h2 class="section-heading">Based On PHP 5.8.0 and MYSQL</h2>
+                    <p class="lead"> PHP 5.8.0 for better stability in older Operating Systems like Windows 7 . Databases made on MYSQL for securely storing Usernames and Passwords
+                    </p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="landing/img/ipad.png" alt="">
@@ -181,8 +182,8 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                    <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                    <h2 class="section-heading">Freshly BootStrap 3.3.7 and HTML 5</h2>
+                    <p class="lead"> Used BootStrap to get Official look of website including Login Forms and Pop'ups<br>Animatons done with HTML5</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="landing/img/dog.png" alt="">
