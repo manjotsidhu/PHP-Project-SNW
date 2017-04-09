@@ -1,8 +1,16 @@
 <!DOCTYPE html>
+<?php
+	include("Login.php");
+	include("fb_files/fb_index_file/fb_SignUp_file/SignUp.php");
+?>
 <html lang="en">
 
 <head>
-
+<LINK REL="SHORTCUT ICON" HREF="fb_files/fb_title_icon/Faceback.ico" />
+	<link href="fb_files/fb_index_file/fb_css_file/index_css.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+    <link href="fb_files/fb_font/font.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="fb_files/fb_index_file/fb_js_file/Registration_validation.js?<?php echo time(); ?>"> </script>
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,13 +20,13 @@
     <title>Social Networking Website</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="landing/css/bootstrap.min.css" rel="stylesheet">
+    <link href="landing/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="landing/css/landing.css" rel="stylesheet">
+    <link href="landing/css/landing.css?<?php echo time(); ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="landing/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="landing/font-awesome/css/font-awesome.min.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,11 +38,21 @@
 	
 	<!-- Login Css --> 
 	<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:600'>
-	<link rel="stylesheet" href="login/login.css">
+	<link rel="stylesheet" href="login/style.css?<?php echo time(); ?>">
 
 	
 </head>
-
+<script>
+	function time_get()
+	{
+		d = new Date();
+		mon = d.getMonth()+1;
+		time = d.getDate()+"-"+mon+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes();
+		Reg.fb_join_time.value=time;
+	}
+</script>
+<style>
+</style>
 <body>
 
     <!-- Navigation -->
@@ -83,7 +101,11 @@
                     <div class="intro-message">
                         <h3>Connect With Your Friends With One Click</h3>
                         <div class="login-wrap">
+						<form  method="post">
+		
+	</form>
 	<!-- Login/Signup Form -->
+	<form method="post">
 	<div class="login-html" height="100%">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
@@ -91,54 +113,122 @@
 			<div class="sign-in-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<input id="user" type="text" class="input" name="username">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input id="pass" type="password" class="input" type="password" name="password">
 				</div>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>
 					<label for="check"><span class="icon"></span> Keep me Signed in</label>
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="Sign In">
+					<input type="submit" class="button" value="Sign In" name="Login">
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
-					<a href="#forgot">Forgot Password?</a>
+					<a href="Forgot_Password.php">Forgot Password?</a>
 				</div>
-			</div>
-			<div class="sign-up-htm">
+			</div></form>
+			<div class="sign-up-htm" id="enl">
+			<!-- Registration -->
+				<form  method="post" onSubmit="return check();" name="Reg">
+				<div class="group"><div class="sdf">
+					<label for="user" class="label" >First Name</label>
+					<input id="user" type="text" class="input" name="first_name">
+				</div></div><div class="sdf">
 				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<label for="user" class="label" >Last Name</label>
+					<input id="user" type="text" class="input" name="last_name">
+				</div></div><div class="sdf">
+				<div class="group">
+					<label for="user" class="label">Your Email</label>
+					<input id="user" type="text" class="input" name="email">
+				</div></div><div class="sdf">
+				<div class="group">
+					<label for="user" class="label">Re-enter Email</label>
+					<input id="user" type="text" class="input" name="remail">
+				</div></div>
+				<div class="sdff"><div class="group">
+				<label for="user" class="label">Password</label>
+					<input id="pass" type="password" class="input" data-type="password" name="password">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+				
+					<select class="form-control" name="sex" >
+					
+			<option value="Select Sex:"> Select Sex: </option>
+			<option value="Female"> Female </option>
+			<option value="Male"> Male </option>
+		</select>
+				</div>
+				<div class="group" >
+				<div class="form-inline" style="display: block;margin: 0 auto;float:middle">
+					<label for="user" class="label">Your Birthday</label>
+					<div>
+	<select class="form-control" name="month" style="float:left; width:20%">
+	<option value="Month:"> Month : </option>
+	
+	<script type="text/javascript">
+	
+		var m=new Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+		for(i=1;i<=m.length-1;i++)
+		{
+			document.write("<option value='"+i+"'>" + m[i] + "</option>");
+		}	
+	</script>
+	
+	</select>
+	</div>
+
+
+
+	<div style="">
+	<select name="day" class="form-control" style="float:left;  width:20%">
+	<option value="Day:"> Day : </option>
+	
+	<script type="text/javascript">
+	
+		for(i=1;i<=31;i++)
+		{
+			document.write("<option value='"+i+"'>" + i + "</option>");
+		}
+		
+	</script>
+	
+	</select>
+	</div>	
+
+	<div style=''>
+	<select name="year" class="form-control" style="float:left;  width:20%">
+	<option value="Year:"> Year : </option>
+	
+	<script type="text/javascript">
+	
+		for(i=2017;i>=1960;i--)
+		{
+			document.write("<option value='"+i+"'>" + i + "</option>");
+		}
+	
+	</script>
+	
+	</select>
+	</div>	</div></div>
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input type="submit" class="button" name="signup" value="Sign Up" onClick="time_get()">
 				</div>
-				<div class="group">
-					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input">
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="Sign Up">
-				</div>
-				<div class="hr"></div>
+				
 				<div class="foot-lnk">
-					<label for="tab-1">Already Member?</a>
+					<label for="tab-1"><a>Already A Member?</a>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</div></form>
 						
-                        <h4> Made With <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> By Manjot Sidhu and Harneet Shah</h4>
+                        <p> Made With <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> By Manjot Sidhu and Harneet Shah</p>
                     </div>
                 </div>
             </div>
@@ -225,18 +315,13 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Connect to Start Bootstrap:</h2>
+                    <h2>We Are OpenSource! Contribute To this project</h2>
                 </div>
                 <div class="col-lg-6">
                     <ul class="list-inline banner-social-buttons">
+                        
                         <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                            <a href="https://manjotsidhu.github.io/PHP-Project-SNW/" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Check Our Repository Here Github</span></a>
                         </li>
                     </ul>
                 </div>
@@ -281,7 +366,9 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="landing/js/bootstrap.min.js"></script>
-
+<?php
+	include("fb_files/fb_index_file/fb_erorr_file/fb_erorr.php");
+?>
 </body>
 
 </html>

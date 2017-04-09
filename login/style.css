@@ -12,7 +12,7 @@ a{color:inherit;text-decoration:none}
 .login-wrap{
 	width:100%;
 	margin:auto;
-	max-width:525px;
+	max-width:725px;
 	min-height:460px;
 	position:relative;
 	background:no-repeat center;
@@ -38,6 +38,18 @@ a{color:inherit;text-decoration:none}
 	        backface-visibility:hidden;
 	-webkit-transition:all .4s linear;
 	transition:all .4s linear;
+}
+.sdf{
+width: 50%;
+float: left;
+}
+.sdg{
+width:50%;
+float : right;	
+}
+.sdff{
+width: 100%;
+float: left;
 }
 .login-html .sign-in,
 .login-html .sign-up,
