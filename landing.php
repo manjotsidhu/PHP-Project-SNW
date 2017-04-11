@@ -167,7 +167,8 @@
 				<div class="form-inline" style="display: block;margin: 0 auto;float:middle">
 					<label for="user" class="label">Your Birthday</label>
 					<div>
-	<select class="form-control" name="month" style="float:left; width:20%">
+	
+	<select class="form-control" name="month" style="width:20%;float:left;">
 	<option value="Month:"> Month : </option>
 	
 	<script type="text/javascript">
@@ -184,8 +185,8 @@
 
 
 
-	<div style="">
-	<select name="day" class="form-control" style="float:left;  width:20%">
+	<div>
+	<select name="day" class="form-control" style="width:20%;float:right;">
 	<option value="Day:"> Day : </option>
 	
 	<script type="text/javascript">
@@ -200,8 +201,8 @@
 	</select>
 	</div>	
 
-	<div style=''>
-	<select name="year" class="form-control" style="float:left;  width:20%">
+	<div style="">
+	<select name="year" class="form-control" style="width:20%">
 	<option value="Year:"> Year : </option>
 	
 	<script type="text/javascript">
@@ -216,11 +217,11 @@
 	</select>
 	</div>	</div></div>
 				</div>
-				<div class="group">
+				<div class="group" style="">
 					<input type="submit" class="button" name="signup" value="Sign Up" onClick="time_get()">
 				</div>
 				
-				<div class="foot-lnk">
+				<div class="foot-lnk" style="">
 					<label for="tab-1"><a>Already A Member?</a>
 				</div>
 			</div>
@@ -254,7 +255,7 @@
                     </p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="landing/img/ipad.png" alt="">
+                    <img class="img-responsive" src="landing/img/ipad.png?<?php echo time(); ?>" alt="">
                 </div>
             </div>
 
@@ -276,7 +277,7 @@
                     <p class="lead"> Used BootStrap to get Official look of website including Login Forms and Pop'ups<br>Animatons done with HTML5</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="landing/img/dog.png" alt="">
+                    <img class="img-responsive" src="landing/img/dog.png?<?php echo time(); ?>" alt="">
                 </div>
             </div>
 
@@ -294,8 +295,8 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                    <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                    <h2 class="section-heading">About Us</h2>
+                    <p class="lead">We are nothing but a team of true friends : <br> Manjot Sidhu and Harneet Shah who made this project a big one <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="landing/img/phones.png" alt="">
@@ -340,22 +341,26 @@
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="#sign">Home</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="#sign">SignIn/SignUp</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="#services">Project Information</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="#open">OpenSource</a>
+                        </li>
+						<li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About Us</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; GOD 2017. All Rights Reserved</p>
                 </div>
             </div>
         </div>
