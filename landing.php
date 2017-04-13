@@ -229,7 +229,7 @@
 	</div>
 </div></form>
 						
-                        <p> Made With <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> By Manjot Sidhu and Harneet Shah</p>
+                        <p>By Manjot Sidhu and Harneet Shah</p>
                     </div>
                 </div>
             </div>
