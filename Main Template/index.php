@@ -3,8 +3,15 @@
 <!--Main CSS-->
 <link href="css/main.css?<?php echo time(); ?>" rel="stylesheet">
 <!--BootStrap 4 Alpha config -->
+<!-- BootStrap 4 alpha jquery config -->
+<script src="../Bootstrap_4/js/bootstrap.js?<?php echo time(); ?>"></script>
+<script src="../Bootstrap_4/js/bootstrap.min.js?<?php echo time(); ?>"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
 <link href="../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
 </head>
 <body>
@@ -13,8 +20,14 @@
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-			<a class="navbar-brand" href="#">
-			<img src="img/brand.png" width="30" height="30" class="d-inline-block align-top" alt=""> CandyGram</a>
+		<script>
+		$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+			})
+	</script>
+			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By Manjot Sidhu And Harneet Shah">
+			<img src="img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
+			
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
             <form class="form-inline my-2 my-lg-0">
@@ -57,7 +70,8 @@
 <!--NavBar Ends Here-->
 <!--Here Starts The Main Body -->
  <div class="modal-body row">
-  <div class="col-sm-3">
+<!--Jugad--> <div class="col-sm-3"></div>
+  <div class="fixed-top col-sm-3 " style="margin-top:5%">
    	<div class="container">
     <!-- SidePanel Starts Here -->
    		<!-- Profile Sidebar Starts Here-->
@@ -76,13 +90,13 @@
                     <div class="desc">Birthday</div>
                 </div>
                 <div class="bottom">
-               <ul class="list-group">
-  <a href="#" class="list-group-item list-group-item list-group-item list-group-item-action justify-content-center">News Feed</a>
-  <a href="#" class="list-group-item list-group-item-success list-group-item list-group-item-action justify-content-center">Timeline</a>
-  <a href="#" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
-  <a href="#" class="list-group-item list-group-item-warning list-group-item list-group-item-action justify-content-center">Photos</a>
-  <a href="#" class="list-group-item list-group-item-danger list-group-item list-group-item-action justify-content-center">Account Settings</a>
-</ul>
+					<ul class="list-group">
+					<a href="#" class="list-group-item list-group-item list-group-item list-group-item-action justify-content-center">News Feed</a>
+					<a href="#" class="list-group-item list-group-item-success list-group-item list-group-item-action justify-content-center">Timeline</a>
+					<a href="#" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
+					<a href="#" class="list-group-item list-group-item-warning list-group-item list-group-item-action justify-content-center">Photos</a>
+					<a href="#" class="list-group-item list-group-item-danger list-group-item list-group-item-action justify-content-center">Account Settings</a>
+					</ul>
                 </div>
             </div>
             <!-- Profile Sidebar Starts Here-->
@@ -104,11 +118,6 @@
   </div>
 	</div>
   <!--Testing -->
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
-<!-- BootStrap 4 alpha jquery config -->
-<script src="../Bootstrap_4/js/bootstrap.js?<?php echo time(); ?>"></script>
-<script src="../Bootstrap_4/js/bootstrap.min.js?<?php echo time(); ?>"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </html>
