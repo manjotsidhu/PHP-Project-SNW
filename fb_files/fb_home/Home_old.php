@@ -88,9 +88,10 @@
 		mysql_query("delete from user_post_comment where comment_id=$comm_id;");
 	}
 ?>
-<html lang="en"><head>
-<!--PHP Functioning -->
-<link href="Home_css/Home.css" rel="stylesheet" type="text/css">
+<html>
+<head>
+<title>Home</title>
+	<link href="Home_css/Home.css" rel="stylesheet" type="text/css">
 	<script src="Home_js/home.js" language="javascript"></script>
     <script>
 		function time_get()
@@ -107,148 +108,9 @@
 			time = d.getDate()+"-"+mon+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes();
 			posting_pic.pic_post_time.value=time;
 		}
-		function toggler(divId) {
-		$("#" + divId).toggle();
-		}
 	</script>
-<!--Main CSS-->
-<link href="../../Main_Template/css/main.css?<?php echo time(); ?>" rel="stylesheet">
-<!--BootStrap 4 Alpha config -->
-<!-- BootStrap 4 alpha jquery config -->
-<script src="../../Bootstrap_4/js/bootstrap.js?<?php echo time(); ?>"></script>
-<script src="../../Bootstrap_4/js/bootstrap.min.js?<?php echo time(); ?>"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../../Main_Template/js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
-<link href="../../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
 </head>
 <body id="body">
-
-<!-- NavBar  Starts Here-->
-<nav class="navbar container sticky-top navbar-light navbar-toggleable-md bg-faded justify-content-center">
-	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-		<script>
-		$(function () {
-		$('[data-toggle="tooltip"]').tooltip()
-			})
-	</script>
-			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By Manjot Sidhu And Harneet Shah">
-			<img src="../../Main_Template/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
-			
-    <div class="navbar-collapse collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mx-auto w-100 justify-content-center">
-            <form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-			</form>
-			<!--<li class="nav-item active">
-                <a class="nav-link" href="#">Link</a>
-            </li>-->
-        </ul>
-        <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
-			<li class="nav-item">
-                <a class="nav-link " href="#">Home</a>	
-            </li>
-			<li class="nav-item">
-                <a class="nav-link " href="#">Timeline</a>	
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Photos</a>
-            </li>
-			<li class="nav-item dropdown">
-			<div class="btn-group">
-  <button type="button" class="btn btn-success">Welcome, <?php echo $name; ?></button>
-  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">NewsFeed</a>
-    <a class="dropdown-item" href="#">Profile Info</a>
-    <a class="dropdown-item" href="#">FeedBack</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Account Settings</a>
-    <a class="dropdown-item" href="#">LogOut</a>
-  </div>
-</div>
-      </li>
-        </ul>
-    </div>
-</nav>
-<!--NavBar Ends Here-->
-<!--Here Starts The Main Body -->
- <div class="modal-body row">
-<!--Jugad--> <div class="col-sm-3"></div>
-  <div class="fixed-top col-sm-3 " style="margin-top:5%">
-   	<div class="container">
-    <!-- SidePanel Starts Here -->
-   		<!-- Profile Sidebar Starts Here-->
-    		<div class="card card_abs hovercard">
-                <div class="cardheader">
-
-                </div>
-                <div class="avatar">
-                    <img alt="" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>">
-                </div>
-                <div class="info">
-                    <div class="title">
-                        <a target="_blank" href="#"><?php echo $name; ?></a>
-                    </div>
-                    <div class="desc"><?php echo $gender; ?> | Job</div>
-                    <div class="desc">Birthday</div>
-                </div>
-                <div class="bottom">
-					<ul class="list-group">
-					<a href="#" class="list-group-item list-group-item list-group-item list-group-item-action justify-content-center">News Feed</a>
-					<a href="#" class="list-group-item list-group-item-success list-group-item list-group-item-action justify-content-center">Timeline</a>
-					<a href="#" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
-					<a href="#" class="list-group-item list-group-item-warning list-group-item list-group-item-action justify-content-center">Photos</a>
-					<a href="#" class="list-group-item list-group-item-danger list-group-item list-group-item-action justify-content-center">Account Settings</a>
-					</ul>
-                </div>
-            </div>
-            <!-- Profile Sidebar Starts Here-->
-    <!-- SidePanel Ends Here -->
-  	</div>
-  </div>
-  <div class="col-sm-8">
-   <div class="container">
-    <!-- MainPanel Starts Here -->
-    		<div class="jumbotron-fluid container">
-  <h3 class="display-4">Hello, Welcome To CandyGram</h3>
-  <br>
-</div>
-<div class="card">
-  <h5 class="card-header">Update Status &nbsp&nbsp<button type="button" class="btn btn-secondary" onclick="toggler('ad_ph');"> Add Photos</button></h5>
-  <div class="card-block">
-    <form  method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
-	<div class="form-group">
-		<textarea class="form-control" rows="3" placeholder="What's on your mind?"></textarea>
-		<input class="form-control" type="hidden" name="txt_post_time">
-	</div>	
-	<div class="form-group">
-		<select class="form-control" >
-		<option>Public</option>
-		<option>Only Me</option>
-		</select> 
-  </div>
-  <div class="row">
-  <div class="col-lg-6"><button type="button" class="btn btn-success">Post !!!</button></div>
-  <div class="col-lg-6"><div class="form-group hidden" id="ad_ph">
-  <label class="custom-file">
-  <input type="file" id="file" class="custom-file-input">
-  <span class="custom-file-control"></span>
-</label></div>
-	</form>
-  </div></div></div>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php
 	$que_warning=mysql_query("select * from user_warning where user_id=$userid");
 	$warning_count=mysql_num_rows($que_warning);
@@ -943,12 +805,6 @@
 	<?php
 		include("Home_error/Home_error.php");
 	?>
-  	<!-- MainPanel Ends Here -->
-	  </div>
-  </div>
-	</div>
-  <!--Testing -->
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 <?php

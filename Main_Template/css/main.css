@@ -1,3 +1,7 @@
+.hidden {
+     display:none;
+}
+
 .fixed {
     position: fixed;
 }
@@ -9,7 +13,7 @@
     max-width: 100%;
 }
 
-.card {
+.card_abs {
     padding-top: 20px;
     margin: 10px 0 20px 0;
     background-color: rgba(214, 224, 226, 0.2);
@@ -286,15 +290,6 @@
 .scroll-top-wrapper i.fa {
 	line-height: inherit;
 }
-
-/*
-Free App template for Bootstrap 3
-Code snippet by maridlcrmn for Bootsnipp.com
-Follow me on Twitter @maridlcrmn
-Image credits: unsplash.com
-Image placeholders: placemi.com
-*/
-
 
 .mt-100 {
     margin-top: 100px; 
