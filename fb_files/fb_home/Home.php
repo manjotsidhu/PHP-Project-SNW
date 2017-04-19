@@ -223,32 +223,33 @@
   <br>
 </div>
 <div class="card">
-  <h5 class="card-header">Update Status &nbsp&nbsp<button type="button" class="btn btn-secondary" onclick="toggler('ad_ph');"> Add Photos</button></h5>
+  <h5 class="card-header">Update Status &nbsp&nbsp<!--<button type="button" class="btn btn-secondary" onclick="toggler('ad_ph');"> Add Photos</button>--></h5>
   <div class="card-block">
     <form  method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
 	<div class="form-group">
-		<textarea class="form-control" rows="3" placeholder="What's on your mind?"></textarea>
-		<input class="form-control" type="hidden" name="txt_post_time">
+		<textarea class="form-control" rows="3" placeholder="What's on your mind?" name="post_txt"></textarea>
+		<input type="hidden" name="txt_post_time">
 	</div>	
 	<div class="form-group">
-		<select class="form-control" >
-		<option>Public</option>
-		<option>Only Me</option>
+		<select class="form-control" name="priority">
+		<option value="Public">Public</option>
+		<option value="Private">Only Me</option>
 		</select> 
   </div>
   <div class="row">
-  <div class="col-lg-6"><button type="button" class="btn btn-success">Post !!!</button></div>
-  <div class="col-lg-6"><div class="form-group hidden" id="ad_ph">
+  <div class="col-lg-2">
+  <input class="btn btn-success" type="submit" value="Post !!!" name="txt" onClick="time_get()"></div>
+  <div class="col-lg-10"><div class="form-group hidden" id="ad_ph">
+  <!--
   <label class="custom-file">
-  <input type="file" id="file" class="custom-file-input">
+  <input type="submit" value="post" name="file" id="post_button" onClick="time_get1()" class="custom-file-input">
   <span class="custom-file-control"></span>
-</label></div>
+</label>
+-->
+</div>
 	</form>
   </div></div></div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php
 	$que_warning=mysql_query("select * from user_warning where user_id=$userid");
 	$warning_count=mysql_num_rows($que_warning);
@@ -318,46 +319,8 @@
 
 	
 	<!--Status-->
-	<div style=" background:#FFFFFF; position:absolute; left:21%; top:8%; height:22%; width:41.4%; z-index:-1; box-shadow:0px 2px 5px 1px rgb(0,0,0);"> </div>
-	<div style="position:absolute; left:21%; top:8%;"> <img src="img/Status.PNG"><input type="button" onClick="upload_close();"  value="Update Status" style="background:#FFFFFF; border:#FFFFFF;"> <img src="img/photo&video.PNG"><input type="button"  value="Add Photos" onClick="upload_open();" name="file" style="background:#FFFFFF; border:#FFFFFF;"></div>
-<div style=" background:#F2F2F2; position:absolute; left:21%; top:26.5%; height:6.5%; width:41.4%; z-index:-1;"> </div>
-
- 
-
-	<form method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
-	
-	<div style="position:absolute; left:21.3%; top:11.5%;">
-		<textarea style="height:100; width:550;" name="post_txt" maxlength="511" placeholder="What's on your mind?"></textarea>
-        <input type="hidden" name="txt_post_time">
-	</div>	
-	<div style="position:absolute; left:50%; top:28.5%;">
-	<select style="background: transparent; border-bottom:5px;" name="priority"> 
-<option value="Public"> Public </option> 
-<option value="Private"> Only me </option> 
-	</select> 
-	</div>
-	<div style="position:absolute; left:57%; top:28%;"> <input type="submit" value="post" name="txt" id="post_button" onClick="time_get()"> </div>
-	</form>
-	
-	<form method="post" enctype="multipart/form-data" name="posting_pic" style="display:none;" id="post_pic" onSubmit="return Img_check();">
-	
-	<div style="position:absolute; left:21.3%; top:11.5%;">
-		<textarea style="height:100; width:550;" name="post_txt" maxlength="511" placeholder="What's on your mind?"></textarea>
-	</div>
-    <input type="hidden" name="pic_post_time">
-	<div style="position:absolute; left:50%; top:28.5%;">
-	<select style="background: transparent; border-bottom:5px;" name="priority"> 
-<option value="Public"> Public </option> 
-<option value="Private"> Only me </option> 
-</select> </div>
-	<div style="position:absolute; left:22%; top:28.5%;"> <input type="file" name="file" id="img"> </div>
-	<div style="position:absolute; left:57%; top:28%;"> <input type="submit" value="post" name="file" id="post_button" onClick="time_get1()"> </div>
-	</form>
-	
-	
-	
-	<div style="position:absolute;left:19%; top:39%;">
-	<table cellspacing="0">
+	<div style="">
+	<table cellspacing="0" class="table">
 <?php
 	$que_post=mysql_query("select * from user_post where priority='Public' order by post_id desc");
 	while($post_data=mysql_fetch_array($que_post))
