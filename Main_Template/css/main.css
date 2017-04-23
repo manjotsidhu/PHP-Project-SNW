@@ -1,5 +1,9 @@
-table, th, td {
-    border: 0px solid black;
+.fixed-top-cus {
+    position: fixed;
+    top: 7%;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
 .hidden {
      display:none;

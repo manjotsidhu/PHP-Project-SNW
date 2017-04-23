@@ -1,76 +1,387 @@
+<!DOCTYPE html>
 <?php
 	include("Login.php");
+	include("fb_files/fb_index_file/fb_SignUp_file/SignUp.php");
 ?>
-<html>
-<head>
-<title> Facebook </title>
-<LINK REL="SHORTCUT ICON" HREF="fb_files/fb_title_icon/Faceback.ico" />
-	<style>
-		#singup_button
-		{
-			background:#69A74E;
-			color:#FFFFFF;
-			border-top-color:#3B6E22;
-			border-right-color:#2C5115;
-			border-left-color:#3B6E22;
-			font-size:15px;
-			height:30;
-			width:75;
-			font-weight:bold;
-			box-shadow:-5px 0px 10px 1px rgb(0,0,0);
+<html lang="en">
 
-		}
-		
-		#login_button
-		{
-			font-size:10px;
-			height:25;
-			width:49;
-			padding:2;
-			background-color:#5B74A8; color:#FFFFFF;
-			border-top:#29447E;
-			border-right-color:#29447E;
-			border-bottom-color:#1A356E;
-			border-left-color:#29447E;
-			font-weight:bold;
-		}
-	</style>
-    <link href="fb_files/fb_font/font.css" rel="stylesheet" type="text/css">
+<head>
+<LINK REL="SHORTCUT ICON" HREF="fb_files/fb_title_icon/Faceback.ico" />
+	<link href="fb_files/fb_index_file/fb_css_file/index_css.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+    <link href="fb_files/fb_font/font.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="fb_files/fb_index_file/fb_js_file/Registration_validation.js?<?php echo time(); ?>"> </script>
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CandyGram</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="landing/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="landing/css/landing.css?<?php echo time(); ?>" rel="stylesheet">
+	<link href="Main_Template/css/main.css?<?php echo time(); ?>" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="landing/font-awesome/css/font-awesome.min.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- Login Css --> 
+	<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:600'>
+	<link rel="stylesheet" href="login/style.css?<?php echo time(); ?>">
+
+	
 </head>
+<script>
+	function time_get()
+	{
+		d = new Date();
+		mon = d.getMonth()+1;
+		time = d.getDate()+"-"+mon+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes();
+		Reg.fb_join_time.value=time;
+	}
+</script>
+<style>
+</style>
 <body>
 
-<div style="position:absolute;left:0;top:0; height:13%; width:100%; z-index:-1; background:#3B5998">   </div>
-<div style="position:absolute;left:13.5%; top:3.3%; font-size:45; font-weight:900; color:#FFFFFF; font-weight:bold;"> <font face="myFbFont">  3D Facebook </font> </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+         	<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" src="Main_Template/img/brand.png" width="30" height="30" style="margin-top: -4px;">
+				</a>
+                <a class="navbar-brand" href="#">CandyGram</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#sign">SignIn / SignUp</a>
+                    </li>
+                    <li>
+                        <a href="#services">Project Information</a>
+                    </li>
+                    <li>
+                        <a href="#open">OpenSource</a>
+                    </li>
+					<li>
+                        <a href="#about">About Us</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-<div style="position:absolute;left:13.6%; top:14.8%;"> <a href="index.php" style="text-decoration:none;"> <input type="button" value="Sign Up" id="singup_button">    </a> </div>
 
-<div style="position:absolute;left:26%; top:25%; height:1; width:46.85%; background-color:#CCCCCC; "> </div>
-<div style="position:absolute;left:26%; top:25%; height:60%; width:0.10%; background-color:#CCCCCC; "> </div>
-<div style="position:absolute;left:26%; top:84.9%; height:1; width:46.85%; background-color:#CCCCCC; "> </div>
-<div style="position:absolute;left:72.75%; top:25%; height:60%; width:0.10%; background-color:#CCCCCC; "> </div>
+    <!-- Header -->
+    <a name="sign"></a>
+    <div class="intro-header">
+        <div class="container">
 
-<div style="position:absolute; left:27.4%; top:28.2%;">  <font size="4"> Faceback Login </font>  </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h3>Connect With Your Friends With One Click</h3>
+                        <div class="login-wrap">
+						<form  method="post">
+		<div class="alert alert-warning alert-dismissible fixed-top-cus" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h4>Please Re-enter Password</h4><p>The password you entered is incorrect. Please try again (make sure your caps lock is off).</p>
+  <p><a href="Forgot_Password.php">Forget Password? </a></p>
+</div>
+	</form>
+	<!-- Login/Signup Form -->
+	<form method="post">
+	<div class="login-html" height="100%">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Username</label>
+					<input id="user" type="text" class="input" name="username">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="pass" type="password" class="input" type="password" name="password">
+				</div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign In" name="Login">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="Forgot_Password.php">Forgot Password?</a>
+				</div>
+			</div></form>
+			<div class="sign-up-htm" id="enl">
+			<!-- Registration -->
+				<form  method="post" onSubmit="return check();" name="Reg">
+				<div class="group"><div class="sdf">
+					<label for="user" class="label" >First Name</label>
+					<input id="user" type="text" class="input" name="first_name">
+				</div></div><div class="sdf">
+				<div class="group">
+					<label for="user" class="label" >Last Name</label>
+					<input id="user" type="text" class="input" name="last_name">
+				</div></div><div class="sdf">
+				<div class="group">
+					<label for="user" class="label">Your Email</label>
+					<input id="user" type="text" class="input" name="email">
+				</div></div><div class="sdf">
+				<div class="group">
+					<label for="user" class="label">Re-enter Email</label>
+					<input id="user" type="text" class="input" name="remail">
+				</div></div>
+				<div class="sdff"><div class="group">
+				<label for="user" class="label">Password</label>
+					<input id="pass" type="password" class="input" data-type="password" name="password">
+				</div>
+				<div class="group">
+				
+					<select class="form-control" name="sex" >
+					
+			<option value="Select Sex:"> Select Sex: </option>
+			<option value="Female"> Female </option>
+			<option value="Male"> Male </option>
+		</select>
+				</div>
+				<div class="group" >
+				<div class="form-inline" style="display: block;margin: 0 auto;float:middle">
+					<label for="user" class="label">Your Birthday</label>
+					<div>
+	
+	<select class="form-control" name="month" style="width:20%;float:left;">
+	<option value="Month:"> Month : </option>
+	
+	<script type="text/javascript">
+	
+		var m=new Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+		for(i=1;i<=m.length-1;i++)
+		{
+			document.write("<option value='"+i+"'>" + m[i] + "</option>");
+		}	
+	</script>
+	
+	</select>
+	</div>
 
-<div style="position:absolute;left:27.4%; top:32.8%; height:1; width:44.05%; background-color:#CCCCCC; "> </div>
 
-<div style="position:absolute;left:27.4%;top:36.3%; height:15.5%; width:44.05%; z-index:-1; background:#FFEBE8; ">   </div>
 
-<div style="position:absolute;left:27.4%; top:36.2%; height:1; width:44.05%; background-color:#DD3C10; "> </div>
-<div style="position:absolute;left:27.3%; top:36.2%; height:15.8%; width:0.08%; background-color:#DD3C10; "> </div>
-<div style="position:absolute;left:27.4%; top:51.8%; height:1; width:44.05%; background-color:#DD3C10; "> </div>
-<div style="position:absolute;left:71.35%; top:36.2%; height:15.8%; width:0.10%; background-color:#DD3C10; "> </div>
+	<div>
+	<select name="day" class="form-control" style="width:20%;float:right;">
+	<option value="Day:"> Day : </option>
+	
+	<script type="text/javascript">
+	
+		for(i=1;i<=31;i++)
+		{
+			document.write("<option value='"+i+"'>" + i + "</option>");
+		}
+		
+	</script>
+	
+	</select>
+	</div>	
 
-<div style="position:absolute; left:28%; top:37.2%;"> <font size="4"> Please re-enter your password </font>  </div>
-<div style="position:absolute; left:28%; top:42.2%; font-size:12;">  The password you entered is incorrect. Please try again (make sure your caps lock is off).  </div>
-<div style="position:absolute; left:28%; top:46.2%; font-size:12;">  YForgot your password? Request a new one. Make sure that it is   </div>
+	<div style="">
+	<select name="year" class="form-control" style="width:20%">
+	<option value="Year:"> Year : </option>
+	
+	<script type="text/javascript">
+	
+		for(i=2017;i>=1960;i--)
+		{
+			document.write("<option value='"+i+"'>" + i + "</option>");
+		}
+	
+	</script>
+	
+	</select>
+	</div>	</div></div>
+				</div>
+				<div class="group" style="">
+					<input type="submit" class="button" name="signup" value="Sign Up" onClick="time_get()">
+				</div>
+				
+				<div class="foot-lnk" style="">
+					<label for="tab-1"><a>Already A Member?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div></form>
+						
+                        <p>By Manjot Sidhu and Harneet Shah</p>
+                    </div>
+                </div>
+            </div>
 
-<form  method="post">
-	<div style="position:absolute; left:35.5%; top:57.2%; font-size:15; color:#333333;"> Email  </div>
-	<div style="position:absolute; left:43.5%; top:57%; font-size:11px; "> <input type="text" name="username" style="width:174;"/> </div>
-	<div style="position:absolute; left:35.5%; top:62.2%; font-size:15; color:#333333;"> Password: </div>
-	<div style="position:absolute;left:43.5%; top:62%; font-size:11px; "> <input type="password" name="password" style="width:174;"> </div>
-	<div style="position:absolute; left:43.3%; top:66.7%; font-size:12; ">  <input type="checkbox" checked="checked">   Keep me logged in </div>
-	<div style="position:absolute;left:43.5%;top:71.7%; ">  <input type="submit" name="Login" value="Log In" id="login_button" />  </div>
-	<div style="position:absolute;left:47.5%;top:71.7%; "> or </div>
-	<div style="position:absolute;left:49%;top:71.7%; "> <a href="index.php" style="color:#3B5998;text-decoration:none;"> Sign up for Facebook </a> </div>
-	<div style="position:absolute;left:43.5%; top:77.2%; font-size:12px;"> <a href='Forgot_Password.php' style="text-decoration:none; color:#3B5998;" > Forgot your password? </a> </div>
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+	<a  name="services"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Based On PHP 5.8.0 and MYSQL</h2>
+                    <p class="lead"> PHP 5.8.0 for better stability in older Operating Systems like Windows 7 . Databases made on MYSQL for securely storing Usernames and Passwords
+                    </p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="landing/img/ipad.png?<?php echo time(); ?>" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Freshly BootStrap 3.3.7 and HTML 5</h2>
+                    <p class="lead"> Used BootStrap to get Official look of website including Login Forms and Pop'ups<br>Animatons done with HTML5</p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="landing/img/dog.png?<?php echo time(); ?>" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+<a  name="about"></a>
+    <div class="content-section-a">
+	
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">About Us</h2>
+                    <p class="lead">We are nothing but a team of true friends : <br> Manjot Sidhu and Harneet Shah who made this project a big one <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="landing/img/phones.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+	<a  name="open"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>We Are OpenSource! Contribute To this project</h2>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                        
+                        <li>
+                            <a href="https://manjotsidhu.github.io/PHP-Project-SNW/" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Check Our Repository Here Github</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#sign">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#sign">SignIn/SignUp</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Project Information</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#open">OpenSource</a>
+                        </li>
+						<li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About Us</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; GOD 2017. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="landing/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="landing/js/bootstrap.min.js"></script>
+<?php
+	include("fb_files/fb_index_file/fb_erorr_file/fb_erorr.php");
+?>
+</body>
+
+</html>
