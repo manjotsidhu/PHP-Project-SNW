@@ -1,3 +1,6 @@
+table, th, td {
+    border: 0px solid black;
+}
 .hidden {
      display:none;
 }
@@ -207,7 +210,6 @@
 }
 
 .card.hovercard .cardheader {
-    background: url("http://lorempixel.com/850/280/nature/4/");
     background-size: cover;
     height: 135px;
 }

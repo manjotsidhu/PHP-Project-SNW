@@ -187,9 +187,17 @@
    	<div class="container">
     <!-- SidePanel Starts Here -->
    		<!-- Profile Sidebar Starts Here-->
-    		<div class="card card_abs hovercard">
+    		<div class="card card_abs hovercard" background-image="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>">
                 <div class="cardheader">
-
+					<?php 
+					$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+					$rec3=mysql_fetch_array($query3);
+					$cover_img=$rec3[2];
+	
+					$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+					$count_bg=mysql_num_rows($que_post_bg);
+					$count_bg=$count_bg+1;
+				?>
                 </div>
                 <div class="avatar">
                     <img alt="" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>">
@@ -316,11 +324,11 @@
 <?php	
 	}
 ?>
-
-	
-	<!--Status-->
+<!-- POSTS PANEL -->
+	<div class="card">
+  <div class="card-block">
 	<div style="">
-	<table cellspacing="0" class="table">
+	<table cellspacing="0" class="table table-responsive">
 <?php
 	$que_post=mysql_query("select * from user_post where priority='Public' order by post_id desc");
 	while($post_data=mysql_fetch_array($que_post))
@@ -345,7 +353,7 @@
 			<?php
 			if($post_txt=="Join Faceback")
 			{?>
-				<td colspan="4"align="right" style="border-top:outset; border-top-width:thin;">&nbsp;  </td>
+				<td colspan="4"align="right" style="border-top:outset; border-top-width:medium;">&nbsp;  </td>
 			<td>  </td>
 			<td> </td>
 			<?php
@@ -353,11 +361,11 @@
 			else
 			{
 			?>
-			<td colspan="4"align="right" style="border-top:outset; border-top-width:thin;"> 
-			<form method="post">  
+			<td colspan="4"align="right" style="border-top:outset; border-top-width:medium;"> 
+			<!--<form method="post">  
 				<input type="hidden" name="post_id" value="<?php echo $postid; ?>" >
 				<input type="submit" name="delete_post" value=" " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_post.gif); width:2.3%;"> 
-			</form></a> </td>
+			</form>--></a> </td>
 			<td>  </td>
 			<td> </td>
 		</tr>
@@ -367,7 +375,7 @@
 		else
 		{ ?>
 		<tr>
-			<td colspan="4"align="right" style="border-top:outset; border-top-width:thin;">&nbsp;  </td>
+			<td colspan="4"align="right" style="border-top:outset; border-top-width:medium;">&nbsp;  </td>
 			<td>  </td>
 			<td> </td>
 		</tr>
@@ -376,13 +384,13 @@
 	?>
  	
  	<tr>
-		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="60" width="55">  </td>
+		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="60" width="55" class="img">  </td>
 		<td > </td>
 		<td> </td>
 		<td> </td>
 	</tr>
 	<tr>
-		<td colspan="3" style="padding:7;"> <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"> <?php echo $user_name; ?> </a>  </td>
+		<td colspan="3" style="padding:7;"> <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4><?php echo $user_name; ?></h4> </a>  </td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
@@ -395,7 +403,7 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>
 	</tr>
 	<?php
 	}
@@ -406,11 +414,11 @@
 	?>
 	<tr >
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr >
 		<td> </td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>
 	</tr>
 	<?php
 	}
@@ -422,15 +430,15 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
 	<?php
 	}
@@ -443,19 +451,19 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
 	
 	
@@ -471,24 +479,24 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
 	
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line5; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line5; ?> </p></td>	
 	</tr>
 	
 	
@@ -505,29 +513,29 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line5; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
 	
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line6; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line5; ?> </p></td>	
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line6; ?> </p></td>	
 	</tr>
 	
 	<?php
@@ -544,34 +552,35 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line5; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
 	
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line6; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line5; ?> </p></td>	
 	</tr>
 	
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line7; ?> </td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line6; ?> </p></td>	
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line7; ?> </p></td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line7; ?> </p></td>	
 	</tr>
 	
 	<?php
@@ -603,18 +612,18 @@
 			
 			<td style="padding-top:15;">
 		<form method="post">
-		<input type="hidden" name="postid" value="<?php echo $postid; ?>">
-		<input type="hidden" name="userid" value="<?php echo $userid; ?>">
-		<input type="submit" value="Unlike" name="Unlike" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="unlike_underLine(<?php echo $postid; ?>)" onMouseOut="unlike_NounderLine(<?php echo $postid; ?>)" id="unlike<?php echo $postid; ?>"></form></td>
+		<input class="form-control" type="hidden" name="postid" value="<?php echo $postid; ?>">
+		<input class="form-control" type="hidden" name="userid" value="<?php echo $userid; ?>">
+		<input class="form-control" type="submit" value="Unlike" name="Unlike" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="unlike_underLine(<?php echo $postid; ?>)" onMouseOut="unlike_NounderLine(<?php echo $postid; ?>)" id="unlike<?php echo $postid; ?>"></form></td>
 			<?php
 			}
 			else
 			{?>
 			<td style="padding-top:15;">
 		<form method="post">
-		<input type="hidden" name="postid" value="<?php echo $postid; ?>">
-		<input type="hidden" name="userid" value="<?php echo $userid; ?>">
-		<input type="submit" value="Like" name="Like" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="like_underLine(<?php echo $postid; ?>)" onMouseOut="like_NounderLine(<?php echo $postid; ?>)" id="like<?php echo $postid; ?>"></form></td>
+		<input class="form-control" type="hidden" name="postid" value="<?php echo $postid; ?>">
+		<input class="form-control" type="hidden" name="userid" value="<?php echo $userid; ?>">
+		<input class="form-control" type="submit" value="Like" name="Like" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="like_underLine(<?php echo $postid; ?>)" onMouseOut="like_NounderLine(<?php echo $postid; ?>)" id="like<?php echo $postid; ?>"></form></td>
 			<?php
 			}
 		 ?>
@@ -662,8 +671,8 @@
 		{ ?>
 			<td align="right" rowspan="2" bgcolor="#EDEFF4"> 
 			<form method="post">  
-				<input type="hidden" name="comm_id" value="<?php echo $comment_id; ?>" >
-				<input type="submit" name="delete_comment" value="  " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_comment.gif); width:13; height:13;"> &nbsp;
+				<input class="form-control" type="hidden" name="comm_id" value="<?php echo $comment_id; ?>" >
+				<input class="form-control" type="submit" name="delete_comment" value="  " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_comment.gif); width:13; height:13;"> &nbsp;
 			</form> </td>
 		<?php
 		}
@@ -671,8 +680,8 @@
 		{ ?>
 		<td align="right" rowspan="2" bgcolor="#EDEFF4">
 			<form method="post">  
-				<input type="hidden" name="comm_id" value="<?php echo $comment_id; ?>" >
-				<input type="submit" name="delete_comment" value="  " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_comment.gif); width:13; height:13;"> &nbsp;
+				<input class="form-control" type="hidden" name="comm_id" value="<?php echo $comment_id; ?>" >
+				<input class="form-control" type="submit" name="delete_comment" value="  " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_comment.gif); width:13; height:13;"> &nbsp;
 			</form> </td>
 		<?php
 		}
@@ -891,18 +900,18 @@
 	<td width="4%" style="padding-left:17;" bgcolor="#EDEFF4" rowspan="2">  <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:33; width:33;">    </td>
 		<td bgcolor="#EDEFF4" colspan="2" style="padding-top:15;"> 
 		<form method="post" name="commenting" onSubmit="return blank_comment_check()"> 
-		<input type="text" name="comment_txt" placeholder="Write a comment..." maxlength="420" style="width:440;" id="<?php echo $postid;?>"> 
-		<input type="hidden" name="postid" value="<?php echo $postid; ?>"> 
-		<input type="hidden" name="userid" value="<?php echo $userid; ?>"> 
-		<input type="submit" name="comment" style="display:none;"> 
+		<input class="form-control" type="text" name="comment_txt" placeholder="Write a comment..." maxlength="420" style="width:440;" id="<?php echo $postid;?>"> 
+		<input class="form-control" type="hidden" name="postid" value="<?php echo $postid; ?>"> 
+		<input class="form-control" type="hidden" name="userid" value="<?php echo $userid; ?>"> 
+		<input class="form-control" type="submit" name="comment" style="display:none;"> 
 		</form> </td>
 	</tr>
-<tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr>	
+<tr><td></td><td></td><td></td><td></td></tr>	
 	
 <?php } ?>
 	</table>
 	</div>
-	
+	  </div></div>
 	<?php
 		include("Home_error/Home_error.php");
 	?>
