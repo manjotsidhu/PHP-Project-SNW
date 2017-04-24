@@ -1,70 +1,136 @@
 <?php
 	include("Login.php");
 ?>
-<?php
-	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
-
-	$Email=$_POST['Email'];
-	$que0=mysql_query("select * from users where Email='$Email'");
-	$rec0=mysql_fetch_row($que0);
-	$userid=$rec0[0];
-	$count1=mysql_num_rows($que0);
-	if($count1>0)
-	{
-		$que1=mysql_query("select * from user_secret_quotes where user_id=$userid");
-		$count2=mysql_num_rows($que1);
-		if($count2>0)
-		{
-		$rec1=mysql_fetch_row($que1);
-		echo "<div style='position:absolute; left:30%; top:43%;'> <h4> Secret Question 1: </h4> </div>";
-		echo "<div style='position:absolute; left:40%; top:43%;'><h4>".$rec1[1]."</h4></div>";
-?>
-<?php
-	include("Forgot_Password_background.php");
-?>
-<html>
-<head>
-<title> Forgot Password </title>
-	<style>	
-		#next
-		{
-			font-size:18px;
-			height:35;
-			width:80;
-			padding:2;
-			background-color:#5B74A8; color:#FFFFFF;
-			border-top:#29447E;
-			border-right-color:#29447E;
-			border-bottom-color:#1A356E;
-			border-left-color:#29447E;
-			font-size:15px;
-			font-weight:bold;
-			box-shadow:5px 0px 10px 1px rgb(0,0,0);
-		}
-	</style>
+<html lang="en"><head>
+<!--Main CSS-->
+<link href="Main_Template/css/main.css?<?php echo time(); ?>" rel="stylesheet">
+<!--BootStrap 4 Alpha config -->
+<!-- BootStrap 4 alpha jquery config -->
+<script src="Bootstrap_4/js/bootstrap.js?<?php echo time(); ?>"></script>
+<script src="Bootstrap_4/js/bootstrap.min.js?<?php echo time(); ?>"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="Main_Template/js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
+<link href="Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
 </head>
 <body>
+<!-- NavBar  Starts Here-->
+<nav class="navbar container sticky-top navbar-light navbar-toggleable-md bg-faded justify-content-center">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+		<script>
+		$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+			})
+	</script>
+			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By Manjot Sidhu And Harneet Shah">
+			<img src="Main_Template/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
+			
+    <div class="navbar-collapse collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto w-100 justify-content-center">
+            <form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			<!--<li class="nav-item active">
+                <a class="nav-link" href="#">Link</a>
+            </li>-->
+        </ul>
+        <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
+			<li class="nav-item">
+                <a class="nav-link disabled" href="#">Home</a>	
+            </li>
+			<li class="nav-item">
+                <a class="nav-link disabled" href="#">Timeline</a>	
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link disabled" href="#">Photos</a>
+            </li>
+			<li class="nav-item dropdown">
+			<div class="btn-group">
+  <button type="button" class="btn btn-success">Welcome</button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item disabled" href="#">NewsFeed</a>
+    <a class="dropdown-item disabled" href="#">Profile Info</a>
+    <a class="dropdown-item disabled" href="#">FeedBack</a>
+    <div class="dropdown-divider disabled"></div>
+    <a class="dropdown-item disabled" href="#">Account Settings</a>
+    <a class="dropdown-item disabled" href="#">LogOut</a>
+  </div>
+</div>
+      </li>
+        </ul>
+    </div>
+</nav>
+<!--NavBar Ends Here-->
+<!--Here Starts The Main Body -->
+    <div class="container" align="center">
+    <!-- MainPanel Starts Here -->
+    		<div class="jumbotron-fluid container">
+  <h3 class="display-4">Hello, Welcome To CandyGram</h3>
+  <p class="lead">We Are Almost Ready To ROCK !!!</p>
+</div>
+<div class="col-sm-8">
+<div class="card mb-3 text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link">Step 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active">Step 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Step 3</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-block">
+    <form action="Forgot_Password3.php"  method="post">
+		<label for="text-input" class="col-8 col-form-label"><h5>
+					<?php
+			mysql_connect("localhost","root","");
+			mysql_select_db("faceback");
 
-<div style="position:absolute;left:35%;top:25%; height:10%; width:7%; z-index:-1; background:#999999; box-shadow:0px 0px 10px 1px rgb(0,0,0);">   </div>
-<div style="position:absolute;left:45%;top:25%; height:10%; width:7%; z-index:-1; background:#339900; box-shadow:0px 0px 10px 1px rgb(0,0,0);">   </div>
-<div style="position:absolute;left:55%;top:25%; height:10%; width:7%; z-index:-1; background:#999999; box-shadow:0px 0px 10px 1px rgb(0,0,0);">   </div>
-<div style="position:absolute; left:36%; top:25%;"> <h2> Step 1 </h2> </div>
-<div style="position:absolute; left:46%; top:25%;"> <h2> Step 2 </h2> </div>
-<div style="position:absolute; left:56%; top:25%;"> <h2> Step 3 </h2> </div>
-
-<div style="position:absolute;left:26%; top:30.8%; height:1; width:46.85%; background-color:#CCCCCC; z-index:-2 "> </div>
-<div style="position:absolute;left:26%; top:30.8%; height:44.3%; width:0.08%; background-color:#CCCCCC; "> </div>
-<div style="position:absolute;left:26%; top:75%; height:1; width:46.85%; background-color:#CCCCCC; "> </div>
-<div style="position:absolute;left:72.75%; top:30.8%; height:44.3%; width:0.10%; background-color:#CCCCCC; "> </div>
-
-<form action="Forgot_Password3.php"  method="post"> 
-	<div style="position:absolute; left:32%; top:51%;"> <h4> Your Answer: </h4> </div>
-	<div style="position:absolute; left:40%; top:54%;">  <input type="text" name="ans1" style="height:28; font-size:16px; height:35; width:300;">  </div>
-	<input type="hidden" value="<?php echo $userid; ?>" name="userid">
-	<div style="position:absolute; left:45%; top:63%;">  <input type="submit" name="Next" value="Next" id="next"> </div>
-</form>
-
+			$Email=$_POST['Email'];
+			$que0=mysql_query("select * from users where Email='$Email'");
+			$rec0=mysql_fetch_row($que0);
+			$userid=$rec0[0];
+			$count1=mysql_num_rows($que0);
+			if($count1>0)
+			{
+				$que1=mysql_query("select * from user_secret_quotes where user_id=$userid");
+				$count2=mysql_num_rows($que1);
+				if($count2>0)
+			{
+				$rec1=mysql_fetch_row($que1);
+				echo "<h5> Secret Question 1: </h5>";
+				echo "<h5>".$rec1[1]."</h5>";
+?>
+		</h5></label>
+		<div class="form-group row">
+			<label for="text-input" class="col-3 col-form-label">Your Answer :</label>
+			<div class="col-9">
+			<input type="text" name="ans1" class="form-control">
+			<input type="hidden" value="<?php echo $userid; ?>" name="userid">
+		</div>
+			<label for="submit" class="col-3 col-form-label">
+			<button type="submit" name="Next" value="Next" id="next" class="btn btn-primary">Next</button>
+			</label>
+	</form>
+  </div>
+</div></div>
+  	<!-- MainPanel Ends Here -->
+	</div>
+  <!--Testing -->
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 <?php
