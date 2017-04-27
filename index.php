@@ -232,7 +232,7 @@
 	</div>
 </div></form>
 						
-                        <p>By Manjot Sidhu and Harneet Shah</p>
+                        <p>Made With <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> By You and Manjot Sidhu</p>
                     </div>
                 </div>
             </div>
@@ -299,10 +299,10 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">About Us</h2>
-                    <p class="lead">We are nothing but a team of true friends : <br> Manjot Sidhu and Harneet Shah who made this project a big one <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></p>
+                    <p class="lead">Hi , I m Manjot Sidhu , a 16 Year Old Kid , I love Doing Creative Things . My Hobbies are Android Developing , Application and Web Development .<span class="glyphicon glyphicon-flash" aria-hidden="true"></span><br><br><small><div align="right">My another website :-  <a href="https://unite2roms.blogspot.in/" class="btn btn-primary"> Unite 2 Roms</a></small></p></div>
                 </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="landing/img/phones.png" alt="">
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6 img">
+                    <img class="img-thumbnail" src="landing/img/me.gif" alt="" align="right" width="50%">
                 </div>
             </div>
 
