@@ -121,7 +121,7 @@ body {
 		$('[data-toggle="tooltip"]').tooltip()
 			})
 	</script>
-			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By Manjot Sidhu And Harneet Shah">
+			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By You & Manjot Sidhu">
 			<img src="../../../Main_Template/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
 			
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
