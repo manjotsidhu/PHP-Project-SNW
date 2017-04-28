@@ -8,7 +8,7 @@ Designed For Google Chrome
 
 ## How To Use
 
-Clone this Repoitory and rename its folder as facebook and copy it to your root directory
+Clone this Repoitory and rename its folder as candygram and copy it to your root directory
 
 ```
 For XAMPP - C://Xampp/htdocs/ 
@@ -20,9 +20,9 @@ Go To Phpmyadmin , create a new database named
 faceback
 ``` 
 
-Import the database from database folder present inside Facebook(repo)
+Import the database from database folder present inside the folder(repo)
 
-After Importing , U can check the website by typing localhost/facebook in your web browser .
+After Importing , U can check the website by typing localhost/candygram in your web browser .
 
 Dont Forget to start your XAMPP/WAMP Servers
 
