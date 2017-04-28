@@ -152,13 +152,10 @@
         </ul>
         <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
 			<li class="nav-item">
-                <a class="nav-link " href="#">Home</a>	
+                <a class="nav-link " href="Home.php">Home</a>	
             </li>
-			<li class="nav-item">
-                <a class="nav-link " href="#">Timeline</a>	
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Photos</a>
+			<li class="nav-item active">
+                <a class="nav-link" href="../fb_profile/photos.php">Photos</a>
             </li>
 			<li class="nav-item dropdown">
 			<div class="btn-group">
@@ -167,12 +164,12 @@
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">NewsFeed</a>
-    <a class="dropdown-item" href="#">Profile Info</a>
-    <a class="dropdown-item" href="#">FeedBack</a>
+    <a class="dropdown-item" href="Home.php">NewsFeed</a>
+    <a class="dropdown-item" href="../fb_profile/profile.php">Profile Info</a>
+    <a class="dropdown-item" href="feedback.php">FeedBack</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Account Settings</a>
-    <a class="dropdown-item" href="#">LogOut</a>
+    <a class="dropdown-item" href="Settings.php">Account Settings</a>
+    <a class="dropdown-item" href="../fb_logout/logout.php">LogOut</a>
   </div>
 </div>
       </li>
@@ -211,11 +208,11 @@
                 </div>
                 <div class="bottom">
 					<ul class="list-group">
-					<a href="#" class="list-group-item list-group-item list-group-item list-group-item-action justify-content-center">News Feed</a>
-					<a href="#" class="list-group-item list-group-item-success list-group-item list-group-item-action justify-content-center">Timeline</a>
-					<a href="#" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
-					<a href="#" class="list-group-item list-group-item-warning list-group-item list-group-item-action justify-content-center">Photos</a>
-					<a href="#" class="list-group-item list-group-item-danger list-group-item list-group-item-action justify-content-center">Account Settings</a>
+					<a href="Home.php" class="list-group-item list-group-item list-group-item list-group-item-action justify-content-center">News Feed</a>
+					<a href="../fb_profile/profile.php" class="list-group-item list-group-item-success list-group-item list-group-item-action justify-content-center">Timeline</a>
+					<a href="../fb_profile/profile.php" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
+					<a href="../fb_profile/photos.php" class="list-group-item list-group-item-warning list-group-item list-group-item-action justify-content-center">Photos</a>
+					<a href="Settings.php" class="list-group-item list-group-item-danger list-group-item list-group-item-action justify-content-center">Account Settings</a>
 					</ul>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 	error_reporting(1);
 	if(isset($_SESSION['fbuser']))
 	{
-		include("background.php");
+		include("background2.php");
 ?>
 <?php
 	if(isset($_POST['delete_warning']))
