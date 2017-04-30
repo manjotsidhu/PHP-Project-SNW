@@ -124,6 +124,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../../Main_Template/js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
 <link href="../../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
+<?php 
+	$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+	$rec3=mysql_fetch_array($query3);
+	$cover_img=$rec3[2];
+	
+	$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+	$count_bg=mysql_num_rows($que_post_bg);
+	$count_bg=$count_bg+1;
+?>
+<style type="text/css">
+	.card.hovercard .cardheader {
+    background-image:url(../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>)
+}
+	</style>
 </head>
 <body id="body">
 
@@ -185,7 +199,7 @@
     <!-- SidePanel Starts Here -->
    		<!-- Profile Sidebar Starts Here-->
     		<div class="card card_abs hovercard">
-                <div class="cardheader" style="background-image:url(../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>);">
+                <div class="cardheader" >
 					<?php 
 					$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
 					$rec3=mysql_fetch_array($query3);
@@ -255,6 +269,7 @@
 	</form>
   </div></div></div>
 </div>
+<br>
 <?php
 	$que_warning=mysql_query("select * from user_warning where user_id=$userid");
 	$warning_count=mysql_num_rows($que_warning);
@@ -325,7 +340,7 @@
 	<div class="card">
   <div class="card-block">
 	<div style="">
-	<table cellspacing="0" class="table table-responsive">
+	<table cellspacing="0" class="" style="border-bottom: none">
 <?php
 	$que_post=mysql_query("select * from user_post where priority='Public' order by post_id desc");
 	while($post_data=mysql_fetch_array($que_post))
@@ -350,7 +365,7 @@
 			<?php
 			if($post_txt=="Join Faceback")
 			{?>
-				<td colspan="4"align="right" style="border-top:outset; border-top-width:medium;">&nbsp;  </td>
+				<td colspan="4"align="right">&nbsp;  </td>
 			<td>  </td>
 			<td> </td>
 			<?php
@@ -358,7 +373,7 @@
 			else
 			{
 			?>
-			<td colspan="4"align="right" style="border-top:outset; border-top-width:medium;"> 
+			<td colspan="4"align="right"> 
 			<!--<form method="post">  
 				<input type="hidden" name="post_id" value="<?php echo $postid; ?>" >
 				<input type="submit" name="delete_post" value=" " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_post.gif); width:2.3%;"> 
@@ -371,23 +386,18 @@
 		}
 		else
 		{ ?>
-		<tr>
-			<td colspan="4"align="right" style="border-top:outset; border-top-width:medium;">&nbsp;  </td>
-			<td>  </td>
-			<td> </td>
-		</tr>
 		<?php	
 		}
 	?>
  	
- 	<tr>
-		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="60" width="55" class="img">  </td>
+ 	<tr style="background-color:#F7F7F9;border-top:outset; border-top-width:medium;border-top-color: darkgreen" >
+		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="70" width="65" class="img rounded">  </td>
 		<td > </td>
 		<td> </td>
 		<td> </td>
 	</tr>
-	<tr>
-		<td colspan="3" style="padding:7;"> <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4><?php echo $user_name; ?></h4> </a>  </td>
+	<tr style="background-color:#F7F7F9">
+		<td colspan="3" style="padding:0;"> <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4 class="card-title">&nbsp;&nbsp;<?php echo $user_name; ?></h4></a>  </td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
@@ -597,7 +607,7 @@
 		}
 	?>
 	
-	<tr style="color:#6D84C4;">
+	<tr style="color:#6D84C4;background-color:"><!-- color of comment,like -->
 		<td >   </td>
 		<?php
 		 	$que_status=mysql_query("select * from user_post_status where post_id=$postid and user_id=$userid;");
@@ -611,7 +621,7 @@
 		<form method="post">
 		<input class="form-control" type="hidden" name="postid" value="<?php echo $postid; ?>">
 		<input class="form-control" type="hidden" name="userid" value="<?php echo $userid; ?>">
-		<input class="form-control" type="submit" value="Unlike" name="Unlike" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="unlike_underLine(<?php echo $postid; ?>)" onMouseOut="unlike_NounderLine(<?php echo $postid; ?>)" id="unlike<?php echo $postid; ?>"></form></td>
+		<input class="form-control btn btn-warning" type="submit" value="Unlike" name="Unlike" onMouseOver="unlike_underLine(<?php echo $postid; ?>)" onMouseOut="unlike_NounderLine(<?php echo $postid; ?>)" id="unlike<?php echo $postid; ?>"></form></td>
 			<?php
 			}
 			else
@@ -620,7 +630,7 @@
 		<form method="post">
 		<input class="form-control" type="hidden" name="postid" value="<?php echo $postid; ?>">
 		<input class="form-control" type="hidden" name="userid" value="<?php echo $userid; ?>">
-		<input class="form-control" type="submit" value="Like" name="Like" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="like_underLine(<?php echo $postid; ?>)" onMouseOut="like_NounderLine(<?php echo $postid; ?>)" id="like<?php echo $postid; ?>"></form></td>
+		<input class="form-control btn btn-success" type="submit" value="Like" name="Like" onMouseOver="like_underLine(<?php echo $postid; ?>)" onMouseOut="like_NounderLine(<?php echo $postid; ?>)" id="like<?php echo $postid; ?>"></form></td>
 			<?php
 			}
 		 ?>
@@ -630,12 +640,12 @@
 	$count_comment=mysql_num_rows($que_comment);
 		 ?>
 		
-		<td colspan="3"> &nbsp; <input type="button" value="Comment(<?php echo $count_comment; ?>)" style="background:#FFFFFF; border:#FFFFFF;font-size:15px; color:#6D84C4;" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="color:#999999;">   <?php echo $post_data[4]; ?> </span> </td>
+		<td colspan="3"> &nbsp; <input class="form-control btn btn-info col-lg-3" type="button" value="Comment(<?php echo $count_comment; ?>)" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="color:#999999;">   <?php echo $post_data[4]; ?> </span> </td>
 		<td>   </td>
 	</tr>
 	<tr>
 		<td>   </td>
-		<td  bgcolor="#EDEFF4" style="width:9;" colspan="3"><img src="img/like.PNG"><span style="color:#6D84C4;"><?php echo $count_like; ?></span> like this. </td>
+		<td  bgcolor="#EDEFF4" style="width:9;" colspan="3"><img src="img/like-ico.PNG" width="35px" height="35px"><span style="color:#6D84C4;">&nbsp;<?php echo $count_like; ?></span> like this. </td>
 		<td> </td>
 		<td> </td>
 	</tr>
@@ -661,7 +671,7 @@
 ?>
 	<tr>
 		<td> </td>
-		<td width="4%" bgcolor="#EDEFF4" style="padding-left:12;" rowspan="2">  <img src="../../fb_users/<?php echo $user_gender1; ?>/<?php echo $user_Email1; ?>/Profile/<?php echo $user_pic1; ?>" height="40" width="47">    </td>
+		<td width="4%" bgcolor="#EDEFF4" style="padding-left:12;" rowspan="2">  <img class="img rounded" src="../../fb_users/<?php echo $user_gender1; ?>/<?php echo $user_Email1; ?>/Profile/<?php echo $user_pic1; ?>" height="47" width="47">    </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" > <a href="../fb_view_profile/view_profile.php?id=<?php echo $comment_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#3B5998;" onMouseOver="Comment_name_underLine(<?php echo $comment_id; ?>)" onMouseOut="Comment_name_NounderLine(<?php echo $comment_id; ?>)" id="cuname<?php echo $comment_id; ?>"> <?php echo $user_name1; ?></a> </td>
 	<?php
 		if($userid==$post_user_id)
@@ -894,7 +904,7 @@
 	?>
 	<tr>
 	<td> </td>
-	<td width="4%" style="padding-left:17;" bgcolor="#EDEFF4" rowspan="2">  <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:33; width:33;">    </td>
+	<td width="4%" style="padding-left:17;" bgcolor="#EDEFF4" rowspan="2">  <img class="img rounded" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:35; width:35;">    </td>
 		<td bgcolor="#EDEFF4" colspan="2" style="padding-top:15;"> 
 		<form method="post" name="commenting" onSubmit="return blank_comment_check()"> 
 		<input class="form-control" type="text" name="comment_txt" placeholder="Write a comment..." maxlength="420" style="width:440;" id="<?php echo $postid;?>"> 
@@ -903,7 +913,8 @@
 		<input class="form-control" type="submit" name="comment" style="display:none;"> 
 		</form> </td>
 	</tr>
-<tr><td></td><td></td><td></td><td></td></tr>	
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>		
 	
 <?php } ?>
 	</table>
