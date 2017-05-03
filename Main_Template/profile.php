@@ -73,22 +73,21 @@
     <div class="container" align="center">
     <!-- MainPanel Starts Here -->
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+				<div class="wrapper">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+								<header id="header">
 
-<div class="wrapper">
-        <div class="container">
-        	<div class="row">
-                <div class="col-md-12">
-                <header id="header">
-
-  <div class="slider">
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="http://placehold.it/1200x400/F34336/F34336&text=WORDPRESS THEME DEVELOPER">
-    </div>
-  </div>
-</div>
+				  <div class="slider">
+				  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+					<div class="item active">
+					  <img src="http://placehold.it/1200x400/F34336/F34336&text=WORDPRESS THEME DEVELOPER">
+					</div>
+				  </div>
+				</div>
                 	</div><!--slider-->
                 	<nav class="navbar navbar-default">
                         <!-- Brand and toggle get grouped for better mobile display -->
@@ -99,13 +98,13 @@
                         </div>
                     <ul class="nav nav-pills" style="margin-left:190px;margin-top:-25px">
 							<li class="nav-item">
-							<a class="nav-link active" href="#">Timeline</a>
+							<a class="nav-link active" href="#">About</a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link" href="#">About</a>
+							<a class="nav-link" href="#">Photos</a>
 						  </li>
 						  <li class="nav-item">
-							<a class="nav-link" href="#">Photos</a>
+							<a class="nav-link" href="#">Account Settings</a>
 						  </li>
 						</ul>
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -115,6 +114,201 @@
 					</nav>
                     
                 </header><!--/#HEADER-->
+			</div>
+  <div class="card-columns">
+  <div class="card">
+    <div class="card-block" >
+      <h4 class="card-title">Work And Education<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#one_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <img class="img rounded" src="img/brand.png" height="30px" width="30px">
+	  Add Your Job<br>
+	  <img class="img rounded" src="img/brand.png" height="30px" width="30px">
+	  Add Your School/College
+	  </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Living Location<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#two_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <img class="img rounded" src="img/brand.png" height="30px" width="30px">
+	  Your Currect City<br>
+	  <img class="img rounded" src="img/brand.png" height="30px" width="30px">
+	  Your Hometown
+	  </p>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Basic Information<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#three_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <b>Birthday</b> : xx/xx/xxxx <br>
+	  <b>Gender</b> : XXXX <br>
+	  <b>Relationship</b> : XXXX <br>
+	  </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Contact Information<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#four_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <b>Mobile Number</b> :  <br>
+	  <b>Email</b> : <br>
+	  <b>Website</b> : <br>
+	  <b>Candygram Id</b> : <br>
+	  </p>
+    </div>
+  </div>  
+  <div class="card card-inverse card-info p-3 text-center">
+    <blockquote class="card-blockquote">
+      <h4><center>NOTE</center></h4>
+	  <p>All These information are visible to your friends and who manage this website ...<br>So Plzz Be Careful</p>
+      <p>I don't take any responsibility if your personal information gets leaked out ...</p>
+	  <footer>
+        <small>
+          By <cite title="Source Title">You And Manjot Sidhu</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+  <!-- Modals -->
+<div class="modal fade" id="one_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Work And Education</h4>
+		<hr class="hr">
+		<form>
+		<div class="form-group">
+			<label>Job</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>School/College</label>
+			<input type="text" class="form-control">
+		</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="two_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Your Living Location</h4>
+		<hr class="hr">
+		<form>
+		<div class="form-group">
+			<label>Current City</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Hometown</label>
+			<input type="text" class="form-control">
+		</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="three_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Basic Information</h4>
+		<hr class="hr">
+		<form>
+		<div class="form-group">
+			<label>Birthday</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Gender</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Relationship</label>
+			<input type="text" class="form-control">
+		</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="four_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Contact Information</h4>
+		<hr class="hr">
+		<form>
+		<div class="form-group">
+			<label>Mobile Number</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Website</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Facebook Id</label>
+			<input type="text" class="form-control">
+		</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
   	<!-- MainPanel Ends Here -->
 	</div>
