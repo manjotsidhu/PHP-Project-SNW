@@ -66,376 +66,474 @@
 		$user_info_query=mysql_query("select * from user_info where user_id=$userid");
 		$user_info_data=mysql_fetch_array($user_info_query);
 ?>
-<html>
-<head>
-<title><?php echo $name; ?></title>
-	<link href="about_css/about.css" rel="stylesheet" type="text/css">
-	<script src="about_js/about.js"></script>
+<!DOCTYPE html>
+<html lang="en"><head>
+<!--Main CSS-->
+<link href="../../Main_Template/css/profile.css?<?php echo time(); ?>" rel="stylesheet">
+<link href="../../Main_Template/css/main.css?<?php echo time(); ?>" rel="stylesheet">
+<!--BootStrap 4 Alpha config -->
+<!-- BootStrap 4 alpha jquery config -->
+<script src="../../Bootstrap_4/js/bootstrap.js?<?php echo time(); ?>"></script>
+<script src="../../Bootstrap_4/js/bootstrap.min.js?<?php echo time(); ?>"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../../Main_Template/js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
+<link href="../../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
 </head>
-<body bgcolor="#E9EAED">
-
-<?php
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
-	$photos_count=mysql_num_rows($que_post_img);
-	$photos_count=$photos_count+$count1+1;
-?>
-
-
-<div style="position:absolute;left:30%; display:none;  top:51%; height:9.8%; width:6.9%; background-color:#F6F7F8; z-index:1;" id="timeline_txt_background"> </div>
-<div style="position:absolute;left:31.5%; top:54%; font-weight:bold; z-index:1;"> <a href="Profile.php" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_timeline_txt();" onMouseOut="out_timeline_txt();">  Timeline </a> </div>
-<div style="position:absolute;left:38.3%; top:54%; font-weight:bold; z-index:1;">  About   </div>
-<div style="position:absolute;left:43.1%; display:none; top:51%; height:9.8%; width:8.4%; background-color:#F6F7F8; z-index:1;" id="photos_txt_background"> </div>
-<div style="position:absolute;left:44.7%; top:54%; font-weight:bold; z-index:1; color:#3B59B0;"> <a href="photos.php" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_photos_txt();" onMouseOut="out_photos_txt();">  Photos </a> <samp style="color:#717171;"> <?php echo $photos_count; ?> </samp> </div>
-
-
-<div style="position:absolute;left:15%;top:68%;height:12%;width:70%; background-color:#F6F7F8; box-shadow:0px -1px 5px 1px rgb(0,0,0);"> </div>
-
-<div style="position:absolute;left:16%;top:69%;"> <img src="img/about1.PNG"> </div>
-<div style="position:absolute;left:19%;top:66.3%;"> <h2> About </h2> </div>
-
-<div style="position:absolute;left:15%; top:80%; height:125%; width:70%; background:#FFF; box-shadow:0px -1px 5px 1px rgb(0,0,0); z-index:-1;">
-</div>
-	
-       
- <!--Work and education--> 
- <div style="position:absolute;left:17%;top:85%;"> <h3> Work and education </h3> </div>
-
-<div id="work_static" onClick="work_static_hide()">   
-<div style="position:absolute;left:19%;top:97%;"> <img src="img/job.PNG"> </div>
-<?php
-	$job=$user_info_data[1];
-	$school_or_collage=$user_info_data[2];
-	if($job!="")
-	{
-?>
-		<div style="position:absolute;left:26%;top:101%; color:#000; font-weight:bold;"> <?php echo $job; ?> </div>
-<?php
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:26%;top:101%; color:#3B59A4; font-weight:bold; "> Add a job </div>
-<?php	
-    }
-?>
-<div style="position:absolute;left:19%;top:115%;"> <img src="img/school.PNG"> </div>
-<?php
-	if($school_or_collage!="")
-	{
-?>
-		<div style="position:absolute;left:26%;top:119%; color:#000; font-weight:bold;"> <?php echo $school_or_collage; ?> </div>
-<?php
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:26%;top:119%; color:#3B59A4; font-weight:bold;"> Add a school or college </div>
-<?php
-	}
-?>
-
-
-<div style="position:absolute;left:43.5%;top:87.5%;"> <input type="button" style="background-image:url(img/edit_button.PNG); border:none; height:24;" value="             " onClick="work_static_hide()"> </div> 
-</div>
-
-<form method="post" style="display:none"  id="Work_form">
-<div style="position:absolute;left:19%;top:94%;color:#3B59A4;"> Job </div>
-<div style="position:absolute;left:19%;top:98.5%;"> <input type="text" value="<?php echo $job; ?>" name="job" style="height:33;width:350;font-size:16px;" maxlength="35"> </div>
-<div style="position:absolute;left:19%;top:108%;color:#3B59A4;"> School or College </div>
-<div style="position:absolute;left:19%;top:112.5%;"> <input type="text" value="<?php echo $school_or_collage; ?>" name="edu" maxlength="35" style="height:33;width:350;font-size:16px;"> </div>
-
-<div style="position:absolute;left:24%;top:122%;"> <input type="submit" value="Save" name="work_sub" class="save_button" > </div>
-<div style="position:absolute;left:32%;top:122%;"> <input type="button" value="Cancel"  class="cancel_button" onClick="work_form_hide()"> </div>
-
-</form>
-
-
-<div style="position:absolute;left:48.2%; top:82%; height:120%; width:0.05%; background:#CCC;">
-</div>
-
-<!--Living-->
-<div style="position:absolute;left:51%;top:85%;"> <h3> Living </h3> </div>
-<div id="Living_static" onClick="Living_static_hide()"> 
-<div style="position:absolute;left:53%;top:97%;"> <img src="img/city.PNG"> </div>
-
-<?php
-	$city=$user_info_data[3];
-	if($city!="")
-	{
-?>
-		<div style="position:absolute;left:60%;top:101%; color:#000; font-weight:bold;text-transform:capitalize;"> <?php echo $city; ?> </div>
-
-<?php
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:60%;top:101%; color:#3B59A4; font-weight:bold;"> Add Your Current City </div>
-<?php
-	}	
-?>
-<div style="position:absolute;left:53%;top:115%;"> <img src="img/hometown.PNG"> </div>
-<?php
-	$hometown=$user_info_data[4];
-	if($hometown!="")
-	{
-?>
-		<div style="position:absolute;left:60%;top:119%; color:#000; font-weight:bold; text-transform:capitalize;"> <?php echo $hometown; ?> </div>
-<?php
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:60%;top:119%; color:#3B59A4; font-weight:bold;"> Add your hometown </div>
-<?php
-	}
-?>
-
-
-<div style="position:absolute;left:80%;top:87.5%;"> <input type="button" style="background-image:url(img/edit_button.PNG); border:none; height:24;" value="             " onClick="Living_static_hide()"> </div> 
-</div>
-
-<form method="post" style="display:none" id="Living_form">
-<div style="position:absolute;left:53%;top:94%;color:#3B59A4;"> Current City </div>
-<div style="position:absolute;left:53%;top:98.5%;"> <input type="text" value="<?php echo $city; ?>" name="city" style="height:33;width:350;font-size:16px;" onKeyPress="return isStringKey(event)" maxlength="15"> </div>
-<div style="position:absolute;left:53%;top:108%;color:#3B59A4;"> hometown </div>
-<div style="position:absolute;left:53%;top:112.5%;"> <input type="text" value="<?php echo $hometown; ?>" name="hometown" onKeyPress="return isStringKey(event)" maxlength="15" style="height:33;width:350;font-size:16px;"> </div>
-
-<div style="position:absolute;left:59%;top:122%;"> <input type="submit" value="Save" name="leving_sub" class="save_button"> </div>
-<div style="position:absolute;left:67%;top:122%;"> <input type="button" value="Cancel"  class="cancel_button" onClick="living_form_hide()"> </div>
-
-</form>
-
-<div style="position:absolute;left:17%; top:139%; height:0.09%; width:66%; background:#CCC; z-index:1">
-</div>
-
- <!--Basic Information--> 
- <?php
-	$user_data_query=mysql_query("select * from users where Email='$user'");
-	$user_data=mysql_fetch_array($user_data_query);
-	$bday=$user_data[5];
-	$gender=$user_data[4];
-	$Emial_id=$user_data[2];
-?>
-
- <div style="position:absolute;left:17%;top:145%;"> <h3> Basic Information </h3> </div>
- 
-<div id="basic_static" onClick="basic_static_hide()"> 
-
- <div style="position:absolute;left:19%;top:156%; font-size:18px; color:#89919C;"> Birthday </div>
- <div style="position:absolute;left:25%;top:156%; font-size:18px;"> <?php echo $bday; ?> </div>
-
-<div style="position:absolute;left:19%; top:163%; font-size:18px; color:#89919C;">Gender</div>
-<div style="position:absolute;left:25%;top:163%; font-size:18px;"> <?php echo $gender; ?> </div>
-
-
-<div style="position:absolute;left:19%; top:169%; font-size:18px; color:#89919C;">Relationship </div>
-<?php
-	$relationship=$user_info_data[5];
-	if($relationship!="")
-	{	
-?>
-		<div style="position:absolute;left:27%;top:169.5%;"> <?php echo $relationship; ?> </div>
-<?php
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:27%;top:169.5%; color:#3B59A4; font-weight:bold;"> Add Relationship </div>
-<?php
-	}
-?>
-<div style="position:absolute;left:43.5%;top:147.5%;"> <input type="button" style="background-image:url(img/edit_button.PNG); border:none; height:24;" value="             " onClick="basic_static_hide()"> </div> 
-</div>
-
-<form method="post" style="display:none" id="basic_form">
-<div style="position:absolute;left:19%;top:156%; font-size:18px; color:#89919C;"> Birthday </div>
-
-
-<div style="position:absolute; left:25%; top:155.7%;">
-	<select name="day" style="width:61;font-size:15px;height:29;padding:3;">
-	<option value="Day:"> Day: </option>
-	
-	<script type="text/javascript">
-	
-		for(i=1;i<=31;i++)
-		{
-			document.write("<option value='"+i+"'>" + i + "</option>");
-		}
-		
+<body id="body">
+<!-- NavBar  Starts Here-->
+<nav class="navbar container sticky-top navbar-light navbar-toggleable-md bg-faded justify-content-center">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+		<script>
+		$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+			})
 	</script>
-	
-	</select>
-	</div>	
-    
-    <div style="position:absolute;left:30%; top:155.7%;">
-	<select name="month" style="width:78;font-size:15px;height:29;padding:3;">
-	<option value="Month:"> Month: </option>
-	
-	<script type="text/javascript">
-	
-		var m=new Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-		for(i=1;i<=m.length-1;i++)
-		{
-			document.write("<option value='"+i+"'>" + m[i] + "</option>");
-		}	
-	</script>
-	
-	</select>
-	</div>
-    
-    
-    <div style='position:absolute;left:36.3%;top:155.7%;'>
-	<select name="year" style="width:66; font-size:15px; height:29; padding:3;">
-	<option value="Year:"> Year: </option>
-	
-	<script type="text/javascript">
-	
-		for(i=1996;i>=1960;i--)
-		{
-			document.write("<option value='"+i+"'>" + i + "</option>");
-		}
-	
-	</script>
-	
-	</select>
-	</div>		
-    
-    <div style="position:absolute;left:19%; top:163%; font-size:18px; color:#89919C;">Gender</div>
-<div style="position:absolute;left:25%;top:163%; font-size:18px;"> <?php echo $gender; ?> </div>
+			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By You & Manjot Sidhu">
+			<img src="../../Main_Template/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
+			
+    <div class="navbar-collapse collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto w-100 justify-content-center">
+            <form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			<!--<li class="nav-item active">
+                <a class="nav-link" href="#">Link</a>
+            </li>-->
+        </ul>
+        <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
+			<li class="nav-item">
+                <a class="nav-link" href="#">Home</a>	
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="#">Timeline</a>	
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Photos</a>
+            </li>
+			<li class="nav-item dropdown">
+			<div class="btn-group">
+  <button type="button" class="btn btn-success">Welcome</button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">NewsFeed</a>
+    <a class="dropdown-item" href="#">Profile Info</a>
+    <a class="dropdown-item" href="#">FeedBack</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Account Settings</a>
+    <a class="dropdown-item" href="#">LogOut</a>
+  </div>
+</div>
+      </li>
+        </ul>
+    </div>
+</nav>
+<!--NavBar Ends Here-->
+<!--Here Starts The Main Body -->
+    <div class="container" align="center">
+    <!-- MainPanel Starts Here -->
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+				<div class="wrapper">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+								<header id="header">
 
-<div style="position:absolute;left:19%; top:169%; font-size:18px; color:#89919C;">Relationship </div>
+				  <div class="slider">
+				  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<?php 
+							$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+							$rec3=mysql_fetch_array($query3);
+							$cover_img=$rec3[2];
+							
+							$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+							$count_bg=mysql_num_rows($que_post_bg);
+							$count_bg=$count_bg+1;
+						?>
+					  <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>" height="100%" width="100%">
+					</div>
+				  </div>
+				</div>
+                	</div><!--slider-->
+                	<nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header inline-block">
+                          <a class="navbar-brands" href="#"><img class="img-responsive" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:100%; width:100%;"></a>
+                          <span class="site-name"><b>Roland</b> Maruntelu</span>
+                          <span class="site-description">worpress theme developer</span>
+                        </div>
+                    <ul class="nav nav-pills" style="margin-left:190px;margin-top:-25px">
+							<li class="nav-item">
+							<a class="nav-link active" href="#">About</a>
+							</li>
+							<li class="nav-item">
+							<a class="nav-link" href="#">Photos</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" href="#">Account Settings</a>
+						  </li>
+						</ul>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="mainNav" >
+                          
+                        </div><!-- /.navbar-collapse -->
+					</nav>
+                    
+                </header><!--/#HEADER-->
+			</div>
+  <div class="card-columns">
+  <div class="card">
+    <div class="card-block" >
+      <h4 class="card-title">Work And Education<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#one_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+		<?php
+			$job=$user_info_data[1];
+			$school_or_collage=$user_info_data[2];
+			if($job!="")
+			{
+		?>
+			<?php echo $job; ?>
+		<?php
+			}
+			else
+			{
+		?>
+		Add Your Job
+		<?php	
+			}
+		?>
+	  <br>
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+		<?php
+			if($school_or_collage!="")
+			{
+		?>
+			<?php echo $school_or_collage; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add Your School/College
+		<?php
+			}
+		?>
+	  </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Living Location<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#two_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+	  
+		<?php
+			$city=$user_info_data[3];
+			if($city!="")
+			{
+		?>
+			<?php echo $city; ?>
 
-
-<div style="position:absolute;left:27%; top:169%;">
-	<select name="relationship" style="font-size:15px;height:29;padding:3;">
-	<option value=""> ------------ </option>
-	
-	<script type="text/javascript">
-	
-		var rel=new Array("Single","In a relationship","Engaged","Married","Its complicated","In an open relationship","Windowed","Separated","Divoced");
-		for(i=0;i<=rel.length-1;i++)
-		{
-			document.write("<option value='"+rel[i]+"'>" + rel[i] + "</option>");
-		}	
-	</script>
-	
-	</select>
-	</div>
-    
-    <div style="position:absolute;left:24%;top:180%;"> <input type="submit" value="Save" name="basic_sub" class="save_button"> </div>
-<div style="position:absolute;left:32%;top:180%;"> <input type="button" value="Cancel"  class="cancel_button" onClick="basic_form_hide()"> </div>
-
-</form>
-
-
-
-
-<!--Contact Information--> 
-
-<div style="position:absolute;left:51%;top:145%;"> <h3> Contact Information </h3> </div>
-
-<div id="contact_static" onClick="contact_static_hide()">
-<div style="position:absolute;left:53%;top:156%; font-size:18px; color:#89919C;"> Mobile Phones </div>
-<?php
-	$m_no=$user_info_data[6];
-	if($m_no!=0)
-	{
-?>
-		<div style="position:absolute;left:62%;top:156%; font-size:18px;"> <?php echo $m_no; ?> </div>
-<?php
-		$m_no_priority=$user_info_data[7];
-		if($m_no_priority=="Private")
-		{
-?>	
-			<div style="position:absolute;left:70%;top:156%;"> <img src="img/only_me.PNG"> </div>
-	
-<?php			
-		}
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:62%;top:156.4%; color:#3B59A4; font-weight:bold;"> Add Mobile Number </div>
-		
-<?php
-	}
-?>
-
-<div style="position:absolute;left:53%; top:162%; font-size:18px; color:#89919C;">Email</div>
-
-<div style="position:absolute;left:58%;top:162%; font-size:18px;"> <?php echo $Emial_id; ?> </div>
-   <div style="position:absolute;left:53%; top:169%; font-size:18px; color:#89919C;">Website</div>
+		<?php
+			}
+			else
+			{
+		?>
+			Add Your Current City
+		<?php
+			}	
+		?>
+	  <br>
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+		<?php
+			$hometown=$user_info_data[4];
+			if($hometown!="")
+			{
+		?>
+			<?php echo $hometown; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add your hometown
+		<?php
+			}
+		?>
+	  </p>
+    </div>
+  </div>
   
-<?php
-	$web=$user_info_data[8];
-	if($web!="")
-	{
-?>
-		<div style="position:absolute;left:59%;top:169%; color:#3B59A4; font-weight:bold;"> <?php echo $web; ?> </div>
-<?php
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:59%;top:169%; color:#3B59A4; font-weight:bold;"> Add Website </div>
-<?php
-	}
-?> 
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Basic Information<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#three_md">Edit</button></h4>
+	  <?php
+		$user_data_query=mysql_query("select * from users where Email='$user'");
+		$user_data=mysql_fetch_array($user_data_query);
+		$bday=$user_data[5];
+		$gender=$user_data[4];
+		$Emial_id=$user_data[2];
+		?>
 
-<div style="position:absolute;left:53%; top:175%; font-size:18px; color:#89919C;">Facebook ID </div>
-
-<?php
-	$fb_id=$user_info_data[9];
-	if($fb_id!="")
-	{
-?>
-		<div style="position:absolute;left:61%;top:175%; color:#3B59A4; font-weight:bold;"> <?php echo $fb_id; ?> </div>
+      <hr class="hr">
+	  <p class="lead">
+	  <b>Birthday</b> : <?php echo $bday; ?> <br>
+	  <b>Gender</b> : <?php echo $gender; ?> <br>
+	  <b>Relationship</b> : 
+	  <?php
+			$relationship=$user_info_data[5];
+			if($relationship!="")
+			{	
+		?>
+			<?php echo $relationship; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add Relationship
+		<?php
+			}
+		?>
+	  <br>
+	  </p>
+    </div>
+  </div>
+  <div class="card p-3">
+    <div class="card-block">
+      <h4 class="card-title">Contact Information<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#four_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <b>Mobile Number</b> :  
+	  <?php
+			$m_no=$user_info_data[6];
+			if($m_no!=0)
+			{
+		?>
+			<?php echo $m_no; ?>
+		<?php
+				$m_no_priority=$user_info_data[7];
+				if($m_no_priority=="Private")
+				{
+		?>	
+			<div style="position:absolute;left:70%;top:156%;"> <img src="img/only_me.PNG"> </div>
+			
+		<?php			
+				}
+			}
+			else
+			{
+		?>
+			Add Mobile Number
+				
+		<?php
+			}
+		?>
+	  <br>
+	  <b>Email</b> : <?php echo $Emial_id; ?> <br>
+	  <b>Website</b> : 
+	    
+		<?php
+			$web=$user_info_data[8];
+			if($web!="")
+			{
+		?>
+			<?php echo $web; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add Website
+		<?php
+			}
+		?> 
+	  <br>
+	  <b>Candygram Id</b> : 
+			  
+		<?php
+			$fb_id=$user_info_data[9];
+			if($fb_id!="")
+			{
+		?>
+			<?php echo $fb_id; ?>
+				
+		<?php
+			}
+			else
+			{
+		?>
+			Add CandyGram ID
+		<?php
+			}
+		?> 
+	  <br>
+	  </p>
+    </div>
+  </div>  
+  <div class="card card-inverse card-info p-3 text-center">
+    <blockquote class="card-blockquote">
+      <h4><center>NOTE</center></h4>
+	  <p>All These information are visible to your friends and who manage this website ...<br>So Plzz Be Careful</p>
+      <p>I don't take any responsibility if your personal information gets leaked out ...</p>
+	  <footer>
+        <small>
+          By <cite title="Source Title">You And Manjot Sidhu</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+  <!-- Modals -->
+<div class="modal fade" id="one_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Work And Education</h4>
+		<hr class="hr">
+		<form method="post" id="Work_form">
+		<div class="form-group">
+			<label>Job</label>
+			<input type="text" value="<?php echo $job; ?>" name="job" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>School/College</label>
+			<input type="text" value="<?php echo $school_or_collage; ?>" name="edu" class="form-control">
+		</div>
 		
-<?php
-	}
-	else
-	{
-?>
-		<div style="position:absolute;left:61%;top:175%; color:#3B59A4; font-weight:bold;"> Add Facebook ID </div>
-<?php
-	}
-?> 
-
-<div style="position:absolute;left:80%;top:147.5%;"> <input type="button" style="background-image:url(img/edit_button.PNG); border:none; height:24;" value="             " onClick="contact_static_hide()"> </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save Changes" name="work_sub" class="btn btn-primary" ></form>
+      </div>
+    </div>
+  </div>
 </div>
-
-<form method="post" style="display:none" name="contact" id="contact_form" onSubmit="return contact_check()">
-<div style="position:absolute;left:53%;top:156%; font-size:18px; color:#89919C;"> Mobile Phones </div>
-<div style="position:absolute;left:62%;top:155.4%;"> <input type="text" value="<?php echo $m_no; ?>" name="mno" onKeyPress="return isNumberKey(event)" style="height:33;width:150;font-size:16px;" maxlength="10"> </div>
-
-<div style="position:absolute;left:74%;top:155.4%;">
-	<select style="height:33;font-size:19px;" name="priority">
-    	<option value="Private"> Only me </option>  
-		<option value="Public"> Public </option> 
-	</select>
+<div class="modal fade" id="two_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Your Living Location</h4>
+		<hr class="hr">
+		<form method="post" id="Living_form">
+		<div class="form-group">
+			<label>Current City</label>
+			<input type="text" value="<?php echo $city; ?>" name="city" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Hometown</label>
+			<input type="text" value="<?php echo $hometown; ?>" name="hometown" class="form-control">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save Changes" name="leving_sub" class="btn btn-primary"></form>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div style="position:absolute;left:53%; top:162%; font-size:18px; color:#89919C;">Email</div>
-
-<div style="position:absolute;left:61%;top:161.6%; font-size:18px;"> <input type="text" value="<?php echo $Emial_id; ?>" style="height:33; width:300; color:#000; font-size:16px; "  disabled></div>
-    
-  <div style="position:absolute;left:53%; top:169%; font-size:18px; color:#89919C;">Website</div>
-<div style="position:absolute;left:61%;top:168%;"> <input type="text" value="<?php echo $web; ?>" name="web" maxlength="40" style="height:33;width:300;font-size:16px;"> </div>
-<div style="position:absolute;left:53%; top:175%; font-size:18px; color:#89919C;">Facebook ID </div>
-<div style="position:absolute;left:61%;top:174.4%;"> <input type="text" value="<?php echo $fb_id; ?>" name="fbid" maxlength="40" style="height:33;width:300;font-size:16px;"> </div>
-
-<div style="position:absolute;left:59%;top:185%;"> <input type="submit" value="Save" name="contact_sub" class="save_button"> </div>
-<div style="position:absolute;left:67%;top:185%;"> <input type="button" value="Cancel"  class="cancel_button" onClick="contact_form_hide()"> </div>
-
-</form>
-
-
-
-<div style="position:absolute;left:58%;top:193%; display:none;" id="mobile_no_erorr"><img src="img/wrong.png"> The phone number is invalid.</div>
-
-<div style="position:absolute;left:24%;top:220%; color:#E9EAED;">.</div>
-
+<div class="modal fade" id="three_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Basic Information</h4>
+		<hr class="hr">
+		<form>
+		<div class="form-group">
+			<label>Birthday</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Gender</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Relationship</label>
+			<input type="text" class="form-control">
+		</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="four_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Contact Information</h4>
+		<hr class="hr">
+		<form>
+		<div class="form-group">
+			<label>Mobile Number</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Website</label>
+			<input type="text" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Facebook Id</label>
+			<input type="text" class="form-control">
+		</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  	<!-- MainPanel Ends Here -->
+	</div>
+  <!--Testing -->
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 <?php
