@@ -3,826 +3,595 @@
 	error_reporting(1);
 	if(isset($_SESSION['fbuser']))
 	{
-		include("background.php");
+		$user=$_SESSION['fbuser'];
+		mysql_connect("localhost","root","");
+		mysql_select_db("faceback");
+		$query1=mysql_query("select * from users where Email='$user'");
+		$rec1=mysql_fetch_array($query1);
+		$userid=$rec1[0];
 ?>
 <?php
-	if(isset($_POST['txt']))
+	if(isset($_POST['work_sub']))
 	{
-		$txt=$_POST['post_txt'];
-		$priority=$_POST['priority'];
-		$post_time=$_POST['txt_post_time'];
-		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values('$userid','$txt','$post_time','$priority');");
+		$u_job=$_POST['job'];
+		$u_edu=$_POST['edu'];
+		mysql_query("update user_info set job='$u_job',school_or_collage='$u_edu' where user_id=$userid;");
 	}
 	
-	if(isset($_POST['file']) && ($_POST['file']=='post'))
+	if(isset($_POST['leving_sub']))
 	{
-		$txt=$_POST['post_txt'];
-		$priority=$_POST['priority'];
-		$post_time=$_POST['pic_post_time'];
-		if($txt=="")
+		$u_city=$_POST['city'];
+		$u_hometown=$_POST['hometown'];
+		mysql_query("update user_info set  	current_city='$u_city',hometown='$u_hometown' where user_id=$userid;");
+	}
+	
+	if(isset($_POST['basic_sub']))
+	{
+		if($_POST['day']=='Day:' && $_POST['month']=='Month:' && $_POST['year']=='Year:')
 		{
-			$txt="added a new photo.";
-		}
-		if($gender=="Male")
-		{
-			$path = "../../fb_users/Male/".$user."/Post/";
+			$u_relationship=$_POST['relationship'];
+			mysql_query("update user_info set relationship_status='$u_relationship' where user_id=$userid;");
 		}
 		else
 		{
-			$path = "../../fb_users/Female/".$user."/Post/";
-		}
-		
-		$img_name=$_FILES['file']['name'];
-    	$img_tmp_name=$_FILES['file']['tmp_name'];
-    	$prod_img_path=$img_name;
-		if($gender=="Male")
-		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Male/".$user."/Post/".$prod_img_path);
-		}
-		else
-		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Female/".$user."/Post/".$prod_img_path);
-		}
-    	mysql_query("insert into user_post(user_id,post_txt,post_pic,post_time,priority) values('$userid','$txt','$img_name','$post_time','$priority');");
-	}
-	if(isset($_POST['delete_post']))
-	{
-		$post_id=intval($_POST['post_id']);
-		mysql_query("delete from user_post where post_id=$post_id;");
-	}
-	if(isset($_POST['Like']))
-	{
-		$post_id=intval($_POST['postid']);
-		$user_id=intval($_POST['userid']);
-		mysql_query("insert into user_post_status(post_id,user_id,status) values($post_id,$user_id,'Like');");
-	}
-	if(isset($_POST['Unlike']))
-	{
-		$post_id=intval($_POST['postid']);
-		$user_id=intval($_POST['userid']);
-		mysql_query("delete from user_post_status where post_id=$post_id and  	user_id=$user_id;");
-	}
-	if(isset($_POST['comment']))
-	{
-		$post_id=intval($_POST['postid']);
-		$user_id=intval($_POST['userid']);
-		$txt=$_POST['comment_txt'];
-		if($txt!="")
-		{
-		mysql_query("insert into user_post_comment(post_id,user_id,comment) values($post_id,$user_id,'$txt');");
-		}
-	}
-	if(isset($_POST['delete_comment']))
-	{
-		$comm_id=intval($_POST['comm_id']);
-		mysql_query("delete from user_post_comment where comment_id=$comm_id;");
-	}
-?>
-<html>
-<head>
-<title><?php echo $name; ?></title>
-<link href="Profile_css/Profile.css" rel="stylesheet" type="text/css">
-<script src="Profile_js/Profile.js"> </script>
-<script>
-	function time_get()
-	{
-			d = new Date();
-			mon = d.getMonth()+1;
-			time = d.getDate()+"-"+mon+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes();
-			posting_txt.txt_post_time.value=time;
-	}
-	function time_get1()
-	{
-		d = new Date();
-		mon = d.getMonth()+1;
-		time = d.getDate()+"-"+mon+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes();
-		posting_pic1.pic_post_time.value=time;
-	}
-</script>
-</head>
-<body bgcolor="#E9EAED">
-
-<?php
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
-	$photos_count=mysql_num_rows($que_post_img);
-	$photos_count=$photos_count+$count1+1;
-?>
-
-<div style="position:absolute;left:31.5%; top:54%; font-weight:bold; z-index:1;">  Timeline  </div>
-<div style="position:absolute;left:37.1%; display:none; top:51%; height:9.8%; width:5.9%; background-color:#F6F7F8; z-index:1;" id="about_txt_background"> </div>
-<div style="position:absolute;left:38.3%; top:54%; font-weight:bold; z-index:1;"> <a href="about.php" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_about_txt();" onMouseOut="out_about_txt();"> About </a>  </div>
-<div style="position:absolute;left:43.1%; display:none; top:51%; height:9.8%; width:8.4%; background-color:#F6F7F8; z-index:1;" id="photos_txt_background"> </div>
-<div style="position:absolute;left:44.7%; top:54%; font-weight:bold; z-index:1; color:#3B59B0;"> <a href="photos.php" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_photos_txt();" onMouseOut="out_photos_txt();">  Photos </a> <samp style="color:#717171;"> <?php echo $photos_count; ?> </samp> </div>
-
-<!--Status-->
-<div style=" background:#FFFFFF; position:absolute; left:37.2%; top:65%; height:22%; width:41.4%; z-index:-1; box-shadow:0px 2px 5px 1px rgb(0,0,0);"> </div>
-<div style="position:absolute; left:37.2%; top:65%;"> <img src="img/Status.PNG"><input type="button" onClick="upload_close();"  value="Update Status" style="background:#FFFFFF; border:#FFFFFF;"> <img src="img/photo&video.PNG"><input type="button"  value="Add Photos" onClick="upload_open();" name="file" style="background:#FFFFFF; border:#FFFFFF;"></div>
-<div style=" background:#F2F2F2; position:absolute; left:37.2%; top:85%; height:6.5%; width:41.4%; z-index:-1; "> </div>
-
-
-<form method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
-	
-	<div style="position:absolute; left:37.5%; top:69.5%;">
-		<textarea style="height:100; width:550;" name="post_txt" maxlength="511" placeholder="What's on your mind?"></textarea>
-	</div>	
-    <input type="hidden" name="txt_post_time">
-	<div style="position:absolute; left:66%; top:86.9%;">
-	<select style="background: transparent; border-bottom:5px;" name="priority"> 
-<option value="Public"> Public </option> 
-<option value="Private"> Only me </option> 
-	</select>
-	</div>
-	<div style="position:absolute; left:73%; top:86.5%;"> <input type="submit" value="post" name="txt" id="post_button" onClick="time_get()"> </div>
-	</form>
-	
-	
-	<form method="post" enctype="multipart/form-data" name="posting_pic1" style="display:none;" id="post_pic" onSubmit="return post_Img_check();">
-	
-	<div style="position:absolute; left:37.5%; top:69.5%;">
-		<textarea style="height:100; width:550;" name="post_txt" maxlength="511" placeholder="What's on your mind?" id="pic_post_txt1" ></textarea>
-	</div>
-    <input type="hidden" name="pic_post_time"> 
-	<div style="position:absolute; left:38%; top:86.5%;"> <input type="file" name="file" id="post_img"> </div>
-	<div style="position:absolute; left:66%; top:86.9%;">
-	<select style="background: transparent; border-bottom:5px;" name="priority"> 
-<option value="Public"> Public </option> 
-<option value="Private"> Only me </option> 
-	</select>
-	</div>
-	<div style="position:absolute; left:73%; top:86.5%;"> <input type="submit" value="post" name="file" id="post_button" onClick="time_get1()"> </div>
-	</form>
-
-
-<?php
-	$que_post_bg1=mysql_query("select * from user_post where user_id=$userid");
-	$count_bg1=mysql_num_rows($que_post_bg1);
-?>
-
-
-	<!-- post bg-->
-	<div style="position:absolute; left:37.2%; top:96%; background:#FFFFFF; height:<?php echo $count_bg1+3; ?>80%; width:50%; z-index:-1; box-shadow:0px 2px 5px 1px rgb(0,0,0);" > </div>
-	
-
-
-<div style="position:absolute;left:37.3%; top:96%;">
-<table cellspacing="0">
-<?php
-	$que_post=mysql_query("select * from user_post where user_id=$userid order by post_id desc");
-	while($post_data=mysql_fetch_array($que_post))
-	{
-		$postid=$post_data[0];
-		$post_user_id=$post_data[1];
-		$post_txt=$post_data[2];
-		$post_img=$post_data[3];
-		$que_user_info=mysql_query("select * from users where user_id=$post_user_id");
-		$que_user_pic=mysql_query("select * from user_profile_pic where user_id=$post_user_id");
-		$fetch_user_info=mysql_fetch_array($que_user_info);
-		$fetch_user_pic=mysql_fetch_array($que_user_pic);
-		$user_name=$fetch_user_info[1];
-		$user_Email=$fetch_user_info[2];
-		$user_gender=$fetch_user_info[4];
-		$user_pic=$fetch_user_pic[2];
-?>
-	<tr>
-			<?php
-			if($post_txt=="Join Faceback")
-			{?>
-				<td colspan="5"align="right" style="border-top:outset; border-top-width:thin;">&nbsp;  </td>
-			<td>  </td>
-			<td> </td>
-			<?php
+			$day=intval($_POST['day']);
+			$month=intval($_POST['month']);
+			$year=intval($_POST['year']);
+			if(checkdate($month,$day,$year))
+			{
+				$u_relationship=$_POST['relationship'];
+				$u_birthday_date=$_POST['day'].'-'.$_POST['month'].'-'.$_POST['year'];
+				mysql_query("update user_info set relationship_status='$u_relationship' where user_id=$userid;");
+				mysql_query("update users set Birthday_Date='$u_birthday_date' where user_id=$userid;");
 			}
 			else
 			{
-			?>
-			<td colspan="5" align="right" style="border-top:outset; border-top-width:thin;"> 
-			<form method="post">  
-				<input type="hidden" name="post_id" value="<?php echo $postid; ?>" >
-				<input type="submit" name="delete_post" value=" " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_post.gif); width:2.4%;"> 
-			</form> </td>
-			<td>  </td>
-			<td> </td>
-			<?php } ?>
-		</tr>
-		<tr>
-		<td width="5%" style="padding-left:10;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="60" width="55">  </td>
-		<td > </td>
-		<td> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td colspan="3" style="padding:7;"> <a href="#" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"> <?php echo $user_name; ?> </a>  </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-	</tr>
-<?php
-	$len=strlen($post_data[2]);
-	if($len>0 && $len<=73)
-	{
-		$line1=substr($post_data[2],0,73);
-	?>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>
-	</tr>
-	<?php
-	}
-	else if($len>73 && $len<=146)
-	{
-		$line1=substr($post_data[2],0,73);
-		$line2=substr($post_data[2],73,73);
-	?>
-	<tr >
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
-	</tr>
-	<tr >
-		<td> </td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>
-	</tr>
-	<?php
-	}
-	else if($len>146 && $len<=219)
-	{
-		$line1=substr($post_data[2],0,73);
-		$line2=substr($post_data[2],73,73);
-		$line3=substr($post_data[2],146,73);
-	?>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
-	</tr>
-	<?php
-	}
-	else if($len>219 && $len<=292)
-	{
-		$line1=substr($post_data[2],0,73);
-		$line2=substr($post_data[2],73,73);
-		$line3=substr($post_data[2],146,73);
-		$line4=substr($post_data[2],219,73);
-	?>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
-	</tr>
-	
-	
-	<?php
-	}
-	else if($len>292 && $len<=365)
-	{
-		$line1=substr($post_data[2],0,73);
-		$line2=substr($post_data[2],73,73);
-		$line3=substr($post_data[2],146,73);
-		$line4=substr($post_data[2],219,73);
-		$line5=substr($post_data[2],292,73);
-	?>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line5; ?> </td>	
-	</tr>
-	
-	
-	<?php
-	}
-	else if($len>365 && $len<=438)
-	{
-		$line1=substr($post_data[2],0,73);
-		$line2=substr($post_data[2],73,73);
-		$line3=substr($post_data[2],146,73);
-		$line4=substr($post_data[2],219,73);
-		$line5=substr($post_data[2],292,73);
-		$line6=substr($post_data[2],365,73);
-	?>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line5; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line6; ?> </td>	
-	</tr>
-	
-	<?php
-	}
-	else if($len>438 && $len<=511)
-	{
-		$line1=substr($post_data[2],0,73);
-		$line2=substr($post_data[2],73,73);
-		$line3=substr($post_data[2],146,73);
-		$line4=substr($post_data[2],219,73);
-		$line5=substr($post_data[2],292,73);
-		$line6=substr($post_data[2],365,73);
-		$line7=substr($post_data[2],438,73);
-	?>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line1; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line2; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line3; ?> </td>	
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line4; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line5; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line6; ?> </td>	
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td colspan="3" style="padding-left:7;"><?php echo $line7; ?> </td>	
-	</tr>
-	
-<?php
-}
-?>
-
-<?php 
-		if($post_data[3]!="")
-		{
-	?>
-	<tr>
-		<td>   </td>
-		<td colspan="3"><img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Post/<?php echo $post_img; ?>" width="400" height="400"> </td>
-		<td> </td>
-		<td> </td>
-	</tr>
-	<?php
+				echo "<script>
+				alert('The selected date is not valid.');
+					</script>";
+			}
 		}
-	?>
+	}
+	if(isset($_POST['contact_sub']))
+	{
+		$u_m_no=$_POST['mno'];
+		$u_priority=$_POST['priority'];
+		$u_web=$_POST['web'];
+		$u_fb_id=$_POST['fbid'];
+		mysql_query("update user_info set mobile_no='$u_m_no',mobile_no_priority='$u_priority',website='$u_web',Facebook_ID='$u_fb_id' where user_id=$userid;");
+	}
 	
-	<tr style="color:#6D84C4;">
-		<td >   </td>
-		<?php
-		 	$que_status=mysql_query("select * from user_post_status where post_id=$postid and user_id=$userid;");
-			$que_like=mysql_query("select * from user_post_status where post_id=$postid");
-			$count_like=mysql_num_rows($que_like);
-			$status_data=mysql_fetch_array($que_status);
-			if($status_data[3]=="Like")
-			{?>
+		include("background.php");
+		
+		$user_info_query=mysql_query("select * from user_info where user_id=$userid");
+		$user_info_data=mysql_fetch_array($user_info_query);
+?>
+<?php
+		$user_data_query=mysql_query("select * from users where Email='$user'");
+		$user_data=mysql_fetch_array($user_data_query);
+		$bday=$user_data[5];
+		$gender=$user_data[4];
+		$Emial_id=$user_data[2];
+		?>
+<!DOCTYPE html>
+<html lang="en"><head>
+<!--Main CSS-->
+<link href="../../Main_Template/css/profile.css?<?php echo time(); ?>" rel="stylesheet">
+<link href="../../Main_Template/css/main.css?<?php echo time(); ?>" rel="stylesheet">
+<!--BootStrap 4 Alpha config -->
+<!-- BootStrap 4 alpha jquery config -->
+<script src="../../Bootstrap_4/js/bootstrap.js?<?php echo time(); ?>"></script>
+<script src="../../Bootstrap_4/js/bootstrap.min.js?<?php echo time(); ?>"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../../Main_Template/js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
+<link href="../../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
+</head>
+<body id="body">
+<!-- NavBar  Starts Here-->
+<nav class="navbar container sticky-top navbar-light navbar-toggleable-md bg-faded justify-content-center">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+		<script>
+		$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+			})
+	</script>
+			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By You & Manjot Sidhu">
+			<img src="../../Main_Template/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
 			
-			<td style="padding-top:15;">
-		<form method="post">
-		<input type="hidden" name="postid" value="<?php echo $postid; ?>">
-		<input type="hidden" name="userid" value="<?php echo $userid; ?>">
-		<input type="submit" value="Unlike" name="Unlike" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="unlike_underLine(<?php echo $postid; ?>)" onMouseOut="unlike_NounderLine(<?php echo $postid; ?>)" id="unlike<?php echo $postid; ?>"></form></td>
-			<?php
+    <div class="navbar-collapse collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto w-100 justify-content-center">
+            <form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			<!--<li class="nav-item active">
+                <a class="nav-link" href="#">Link</a>
+            </li>-->
+        </ul>
+        <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
+			<li class="nav-item">
+                <a class="nav-link" href="../fb_home/Home.php">Home</a>	
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="photos.php">Photos</a>
+            </li>
+			<li class="nav-item dropdown">
+			<div class="btn-group">
+  <button type="button" class="btn btn-success">Welcome, <?php echo $name; ?></button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="../fb_home/Home.php">NewsFeed</a>
+    <a class="dropdown-item" href="about.php">Profile Info</a>
+    <a class="dropdown-item" href="../fb_home/feedback.php">FeedBack</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="../fb_home/Settings.php">Account Settings</a>
+    <a class="dropdown-item" href="../fb_logout/logout.php">LogOut</a>
+  </div>
+</div>
+      </li>
+        </ul>
+    </div>
+</nav>
+<!--NavBar Ends Here-->
+<!--Here Starts The Main Body -->
+    <div class="container" align="center">
+    <!-- MainPanel Starts Here -->
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+				<div class="wrapper">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+								<header id="header">
+
+				  <div class="slider">
+				  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<?php 
+							$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+							$rec3=mysql_fetch_array($query3);
+							$cover_img=$rec3[2];
+							
+							$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+							$count_bg=mysql_num_rows($que_post_bg);
+							$count_bg=$count_bg+1;
+						?>
+					  <img src="<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;
+							if (getimagesize($filename)) {
+								echo "$filename";
+							} else {
+								echo "img/cover.jpg";
+							}
+							?>" height="100%" width="100%">
+					</div>
+				  </div>
+				</div>
+                	</div><!--slider-->
+                	<nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header inline-block">
+                          <a class="navbar-brands" href="#"><img class="img-responsive" src="
+						  ../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:100%; width:100%;"></a>
+                          <span class="site-name"><b><?php echo $name; ?></b></span>                         
+						  <span class="site-description"><?php echo $Emial_id; ?></span>
+                        </div>
+                    <ul class="nav nav-pills" style="margin-left:190px;margin-top:-25px">
+							<li class="nav-item">
+							<a class="nav-link active" href="about.php">About</a>
+							</li>
+							<li class="nav-item">
+							<a class="nav-link" href="photos.php">Photos</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" href="../fb_home/Settings.php">Account Settings</a>
+						  </li>
+						</ul>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="mainNav" >
+                          
+                        </div><!-- /.navbar-collapse -->
+					</nav>
+                    
+                </header><!--/#HEADER-->
+			</div>
+  <div class="card-columns">
+  <div class="card">
+    <div class="card-block" >
+      <h4 class="card-title">Work And Education<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#one_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+		<?php
+			$job=$user_info_data[1];
+			$school_or_collage=$user_info_data[2];
+			if($job!="")
+			{
+		?>
+			<?php echo $job; ?>
+		<?php
 			}
 			else
-			{?>
-			<td style="padding-top:15;">
-		<form method="post">
-		<input type="hidden" name="postid" value="<?php echo $postid; ?>">
-		<input type="hidden" name="userid" value="<?php echo $userid; ?>">
-		<input type="submit" value="Like" name="Like" style="border:#FFFFFF; background:#FFFFFF; font-size:15px; color:#6D84C4;" onMouseOver="like_underLine(<?php echo $postid; ?>)" onMouseOut="like_NounderLine(<?php echo $postid; ?>)" id="like<?php echo $postid; ?>"></form></td>
-			<?php
+			{
+		?>
+		Add Your Job
+		<?php	
 			}
-		 ?>
-		 <?php
-		 
-		 	$que_comment=mysql_query("select * from user_post_comment where post_id =$postid order by comment_id");
-	$count_comment=mysql_num_rows($que_comment);
-		 ?>
-		
-		<td colspan="3"> &nbsp; <input type="button" value="Comment(<?php echo $count_comment; ?>)" style="background:#FFFFFF; border:#FFFFFF;font-size:15px; color:#6D84C4;" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="color:#999999;">   <?php echo $post_data[4]; ?> </span> </td>
-		<td>   </td>
-	</tr>
-	<tr>
-		<td>   </td>
-		<td  bgcolor="#EDEFF4" style="width:9;" colspan="3"><img src="img/like.PNG"><span style="color:#6D84C4;"><?php echo $count_like; ?></span> like this. </td>
-		<td> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td>   </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-	</tr>
-<?php
-	while($comment_data=mysql_fetch_array($que_comment))
-	{
-		$comment_id=$comment_data[0];
-		$comment_user_id=$comment_data[2];
-		$que_user_info1=mysql_query("select * from users where user_id=$comment_user_id");
-		$que_user_pic1=mysql_query("select * from user_profile_pic where user_id=$comment_user_id");
-		$fetch_user_info1=mysql_fetch_array($que_user_info1);
-		$fetch_user_pic1=mysql_fetch_array($que_user_pic1);
-		$user_name1=$fetch_user_info1[1];
-		$user_Email1=$fetch_user_info1[2];
-		$user_gender1=$fetch_user_info1[4];
-		$user_pic1=$fetch_user_pic1[2];
-?>
+		?>
+	  <br>
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+		<?php
+			if($school_or_collage!="")
+			{
+		?>
+			<?php echo $school_or_collage; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add Your School/College
+		<?php
+			}
+		?>
+	  </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Living Location<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#two_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+	  
+		<?php
+			$city=$user_info_data[3];
+			if($city!="")
+			{
+		?>
+			<?php echo $city; ?>
 
+		<?php
+			}
+			else
+			{
+		?>
+			Add Your Current City
+		<?php
+			}	
+		?>
+	  <br>
+	  <img class="img rounded" src="../../Main_Template/img/brand.png" height="30px" width="30px">
+		<?php
+			$hometown=$user_info_data[4];
+			if($hometown!="")
+			{
+		?>
+			<?php echo $hometown; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add your hometown
+		<?php
+			}
+		?>
+	  </p>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Basic Information<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#three_md">Edit</button></h4>
+	  
 
-	<tr>
-		<td> </td>
-		<td width="4%" bgcolor="#EDEFF4" style="padding-left:12;" rowspan="2">  <img src="../../fb_users/<?php echo $user_gender1; ?>/<?php echo $user_Email1; ?>/Profile/<?php echo $user_pic1; ?>" height="40" width="47">    </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" > <a href="#" style="text-transform:capitalize; text-decoration:none; color:#3B5998;" onMouseOver="Comment_name_underLine(<?php echo $comment_id; ?>)" onMouseOut="Comment_name_NounderLine(<?php echo $comment_id; ?>)" id="cuname<?php echo $comment_id; ?>"> <?php echo $user_name1; ?></a> </td>
-		<td align="right" rowspan="2" bgcolor="#EDEFF4"> 
-			<form method="post">  
-				<input type="hidden" name="comm_id" value="<?php echo $comment_id; ?>" >
-				<input type="submit" name="delete_comment" value="  " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_comment.gif); width:13; height:13;"> &nbsp;
-			</form> </td>
-</tr>
-<?php
-	$clen=strlen($comment_data[3]);
-	if($clen>0 && $clen<=60)
-	{
-		$cline1=substr($comment_data[3],0,60);
-	?>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
-	</tr>
-	<?php
-	}
-	else if($clen>60 && $clen<=120)
-	{
-		$cline1=substr($comment_data[3],0,60);
-		$cline2=substr($comment_data[3],60,60);
-	?>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
-	</tr>
-	<?php
-	}
-	else if($clen>120 && $clen<=180)
-	{
-		$cline1=substr($comment_data[3],0,60);
-		$cline2=substr($comment_data[3],60,60);
-		$cline3=substr($comment_data[3],120,60);
-	?>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
-	</tr>
-	<?php
-	}
-	else if($clen>180 && $clen<=240)
-	{
-		$cline1=substr($comment_data[3],0,60);
-		$cline2=substr($comment_data[3],60,60);
-		$cline3=substr($comment_data[3],120,60);
-		$cline4=substr($comment_data[3],180,60);
-	?>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
-	</tr>
-	<?php
-	}
-	else if($clen>240 && $clen<=300)
-	{
-		$cline1=substr($comment_data[3],0,60);
-		$cline2=substr($comment_data[3],60,60);
-		$cline3=substr($comment_data[3],120,60);
-		$cline4=substr($comment_data[3],180,60);
-		$cline5=substr($comment_data[3],240,60);
-	?>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?></td>
-	</tr>
-	<?php
-	}
-	else if($clen>300 && $clen<=360)
-	{
-		$cline1=substr($comment_data[3],0,60);
-		$cline2=substr($comment_data[3],60,60);
-		$cline3=substr($comment_data[3],120,60);
-		$cline4=substr($comment_data[3],180,60);
-		$cline5=substr($comment_data[3],240,60);
-		$cline6=substr($comment_data[3],300,60);
-	?>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline6; ?></td>
-	</tr>
-	<?php
-	}
-	else if($clen>360 && $clen<=420)
-	{
-		$cline1=substr($comment_data[3],0,60);
-		$cline2=substr($comment_data[3],60,60);
-		$cline3=substr($comment_data[3],120,60);
-		$cline4=substr($comment_data[3],180,60);
-		$cline5=substr($comment_data[3],240,60);
-		$cline6=substr($comment_data[3],300,60);
-		$cline7=substr($comment_data[3],360,60);
-	?>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline6; ?></td>
-	</tr>
-	<tr>
-		<td> </td>
-		<td bgcolor="#EDEFF4"> </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline7; ?></td>
-	</tr>
-	<?php
-	}
-	?>
-
-<?php
-}
-?>
-
-<tr>
-	<td> </td>
-	<td width="4%" style="padding-left:17;" bgcolor="#EDEFF4" rowspan="2">  <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:33; width:33;">    </td>
-		<td bgcolor="#EDEFF4" colspan="2" style="padding-top:15;"> 
-		<form method="post" name="commenting" onSubmit="return blank_comment_check()"> 
-		<input type="text" name="comment_txt" placeholder="Write a comment..." maxlength="420" style="width:440;" id="<?php echo $postid;?>"> 
-		<input type="hidden" name="postid" value="<?php echo $postid; ?>"> 
-		<input type="hidden" name="userid" value="<?php echo $userid; ?>"> 
-		<input type="submit" name="comment" style="display:none;"> 
-		</form> </td>
-	</tr>
-<tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr>
-<?php
-	}
-?>
-</table>
+      <hr class="hr">
+	  <p class="lead">
+	  <b>Birthday</b> : <?php echo $bday; ?> <br>
+	  <b>Gender</b> : <?php echo $gender; ?> <br>
+	  <b>Relationship</b> : 
+	  <?php
+			$relationship=$user_info_data[5];
+			if($relationship!="")
+			{	
+		?>
+			<?php echo $relationship; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add Relationship
+		<?php
+			}
+		?>
+	  <br>
+	  </p>
+    </div>
+  </div>
+  <div class="card p-3">
+    <div class="card-block">
+      <h4 class="card-title">Contact Information<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#four_md">Edit</button></h4>
+      <hr class="hr">
+	  <p class="lead">
+	  <b>Mobile Number</b> :  
+	  <?php
+			$m_no=$user_info_data[6];
+			if($m_no!=0)
+			{
+		?>
+			<?php echo $m_no; ?>
+		<?php
+				$m_no_priority=$user_info_data[7];
+				if($m_no_priority=="Private")
+				{
+		?>	
+			<div style="position:absolute;left:70%;top:156%;"> <img src="img/only_me.PNG"> </div>
+			
+		<?php			
+				}
+			}
+			else
+			{
+		?>
+			Add Mobile Number
+				
+		<?php
+			}
+		?>
+	  <br>
+	  <b>Email</b> : <?php echo $Emial_id; ?> <br>
+	  <b>Website</b> : 
+	    
+		<?php
+			$web=$user_info_data[8];
+			if($web!="")
+			{
+		?>
+			<?php echo $web; ?>
+		<?php
+			}
+			else
+			{
+		?>
+			Add Website
+		<?php
+			}
+		?> 
+	  <br>
+	  <b>Candygram Id</b> : 
+			  
+		<?php
+			$fb_id=$user_info_data[9];
+			if($fb_id!="")
+			{
+		?>
+			<?php echo $fb_id; ?>
+				
+		<?php
+			}
+			else
+			{
+		?>
+			Add CandyGram ID
+		<?php
+			}
+		?> 
+	  <br>
+	  </p>
+    </div>
+  </div>  
+  <div class="card card-inverse card-info p-3 text-center">
+    <blockquote class="card-blockquote">
+      <h4><center>NOTE</center></h4>
+	  <p>All These information are visible to your friends and who manage this website ...<br>So Plzz Be Careful</p>
+      <p>I don't take any responsibility if your personal information gets leaked out ...</p>
+	  <footer>
+        <small>
+          By <cite title="Source Title">You And Manjot Sidhu</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
 </div>
-
-<script>
-	function on_about_bg()
-	{
-		document.getElementById("about_on_bg").style.display='block';
-	}
-	function out_about_bg()
-	{
-		document.getElementById("about_on_bg").style.display='none';	
-	}
-	function on_photos_bg()
-	{
-		document.getElementById("photos_on_bg").style.display='block';
-	}
-	function out_photos_bg()
-	{
-		document.getElementById("photos_on_bg").style.display='none';	
-	}
-</script>
-
-
-<!-- About bg-->
-	<a href="about.php"> <div style="position:absolute; left:15%; top:65%; background:#F6F7F8; height:6%; width:20%; z-index:-1; box-shadow:0px 0px 5px 0px rgb(0,0,0);" onMouseOver="on_about_bg()"> </div>
-	<div style="display:none;" id="about_on_bg">	
-	<div style="position:absolute; left:15%; top:65%; background:#F9FAFB; height:6%; width:20%; z-index:-1;" onMouseOut="out_about_bg()">  </div>
-	<div style="position:absolute; left:32%; top:66%;"> <img src="img/edit.PNG"> </div>
+  <!-- Modals -->
+<div class="modal fade" id="one_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Work And Education</h4>
+		<hr class="hr">
+		<form method="post" id="Work_form">
+		<div class="form-group">
+			<label>Job</label>
+			<input type="text" value="<?php echo $job; ?>" name="job" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>School/College</label>
+			<input type="text" value="<?php echo $school_or_collage; ?>" name="edu" class="form-control">
+		</div>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save Changes" name="work_sub" class="btn btn-primary" ></form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="two_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Your Living Location</h4>
+		<hr class="hr">
+		<form method="post" id="Living_form">
+		<div class="form-group">
+			<label>Current City</label>
+			<input type="text" value="<?php echo $city; ?>" name="city" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Hometown</label>
+			<input type="text" value="<?php echo $hometown; ?>" name="hometown" class="form-control">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save Changes" name="leving_sub" class="btn btn-primary"></form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="three_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Basic Information</h4>
+		<hr class="hr">
+		<form method="post" id="basic_form">
+		<div class="form-group">
+			<label>Birthday</label>
+			<select class="form-control" name="day">
+			<option class="form-control form-inline" value="Day:"> Day: </option>
+	
+			<script type="text/javascript">
+			
+				for(i=1;i<=31;i++)
+				{
+					document.write("<option value='"+i+"'>" + i + "</option>");
+				}
+				
+			</script>
+	
+			</select>
+			<select class="form-control" name="month" >
+			<option class="form-control form-inline" value="Month:"> Month: </option>
+			
+			<script type="text/javascript">
+			
+				var m=new Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+				for(i=1;i<=m.length-1;i++)
+				{
+					document.write("<option value='"+i+"'>" + m[i] + "</option>");
+				}	
+			</script>
+			
+			</select>
+			<select name="year" class="form-control">
+			<option value="Year:" class="form-control form-inline"> Year: </option>
+			
+			<script type="text/javascript">
+			
+				for(i=2017;i>=1960;i--)
+				{
+					document.write("<option value='"+i+"'>" + i + "</option>");
+				}
+			
+			</script>
+			
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Gender : <?php echo $gender; ?> <small><br>Sorry, u cannot edit it</small></label>
+		</div>
+		<div class="form-group">
+			<label>Relationship</label>
+			<select name="relationship" class="form-control">
+			<option value="" class="form-control form-inline"> ------------ </option>
+			
+			<script type="text/javascript">
+			
+				var rel=new Array("Single","In a relationship","Engaged","Married","Its complicated","In an open relationship","Windowed","Separated","Divoced");
+				for(i=0;i<=rel.length-1;i++)
+				{
+					document.write("<option value='"+rel[i]+"'>" + rel[i] + "</option>");
+				}	
+			</script>
+			
+			</select>
+		</div>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save Changes" name="basic_sub" class="btn btn-primary"></form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="four_md" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Edit Contact Information</h4>
+		<hr class="hr">
+		<form method="post" name="contact" id="contact_form">
+		<div class="form-group">
+			<label>Mobile Number</label>
+			<div class="row container">
+			<div class="col-lg-6"><input class="form-control" type="text" value="<?php echo $m_no; ?>" name="mno" maxlength="10"></div>
+			<div class="col-lg-6"><select class="form-control" name="priority">
+			<option value="Private"> Only me </option>  
+			<option value="Public"> Public </option> 
+		</select></div></div>
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input class="form-control" type="text" value="<?php echo $Emial_id; ?>" disabled>
+		</div>
+		<div class="form-group">
+			<label>Website</label>
+			<input class="form-control" type="text" value="<?php echo $web; ?>" name="web" maxlength="40">
+		</div>
+		<div class="form-group">
+			<label>Facebook Id</label>
+			<input class="form-control" type="text" value="<?php echo $fb_id; ?>" name="fbid" maxlength="40">
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value="Save Changes" name="contact_sub" class="btn btn-primary"></form>
+      </div>
+    </div>
+  </div>
+</div>					
+  	<!-- MainPanel Ends Here -->
 	</div>
-	</a>	
-	<div style="position:absolute; left:16%; top:66%;"> <a href="about.php" style="color:#6A7480;text-decoration:none;font-size:17px; font-weight:bold;"> About </a> </div>
-	
-	<div style="position:absolute; left:15%; top:71.2%; background:#FFFFFF; height:25%; width:20%; z-index:-1; box-shadow:0px 2px 5px 0px rgb(0,0,0);"> </div>	
-	<div style="position:absolute;left:17%; top:74%; font-weight:bold;"> Basic Information </div>
-	<div style="position:absolute;left:17%; top:79%; font-size:15px; color:#89919C;">Birthday</div>
-	<div style="position:absolute;left:22%; top:79%; font-size:15px;"> <?php echo $user_bday; ?></div>
-	<div style="position:absolute;left:17%; top:83%; font-size:15px; color:#89919C;">Gender</div>
-	<div style="position:absolute;left:22%; top:83%; font-size:15px;"> <?php echo $gender; ?></div>
-	<div style="position:absolute;left:17%; top:87%; font-size:15px; color:#89919C;">Current location</div>
-	<div style="position:absolute;left:17%; top:91%; font-size:15px; color:#89919C;">Hometown</div>
-<?php
-	$user_info_query=mysql_query("select * from user_info where user_id=$userid");
-	$user_info_data=mysql_fetch_array($user_info_query);
-	$city=$user_info_data[3];
-	$hometown=$user_info_data[4];
-	if($city!="")
-	{
-?>
-		<div style="position:absolute;left:25%; top:87%; font-size:15px; text-transform:capitalize;">  <?php echo $city; ?>  </div>
-<?php
-	}
-	else
-	{
-    ?>
-	<div style="position:absolute;left:25%; top:87%; font-size:15px;"> <a href="about.php" style="text-decoration:none; color:#3B59B0;"> Add Your City </a> </div>
-	<?php
-	}
-?>
-<?php
-	if($hometown!="")
-	{
-?>
-		<div style="position:absolute;left:23%; top:91%; font-size:15px; text-transform:capitalize;">  <?php echo $hometown; ?>  </div>
-<?php
-	}
-	else
-	{
-    ?>
-		<div style="position:absolute;left:23%; top:91%; font-size:15px;"> <a href="about.php" style="text-decoration:none;color:#3B59B0;"> Add your hometown </a> </div>
-	<?php
-	}
-?>
-
-
-
-
-<!-- Photos bg-->
-	<a href="photos.php"> <div style="position:absolute; left:15%; top:100%; background:#F6F7F8; height:6.1%; width:20%; z-index:-1; box-shadow:0px 0px 5px 0px rgb(0,0,0);" onMouseOver="on_photos_bg()"> </div>
-	<div style="display:none;" id="photos_on_bg">	
-	<div style="position:absolute; left:15%; top:100%; background:#F9FAFB; height:6%; width:20%; z-index:-1;" onMouseOut="out_photos_bg()">  </div>
-	<div style="position:absolute; left:32%; top:101%;"> <img src="img/edit.PNG"> </div>
-	</div>
-	</a>	
-	<div style="position:absolute; left:16%; top:101%;"> <a href="photos.php" style="color:#6A7480;text-decoration:none;font-size:17px; font-weight:bold;"> Photos </a> </div>
-	
-	<div style="position:absolute; left:15%; top:106.2%; background:#FFFFFF; height:51.7%; width:20%; z-index:-1; box-shadow:0px 2px 5px 0px rgb(0,0,0);"> </div>	
-	
-<?php	
-	$img_array = array();
-	array_push($img_array,$img);
-	while($post_img_data=mysql_fetch_array($que_post_img))
-	{
-		array_push($img_array,$post_img_data[3]);
-	}
-?>
-	<div style="position:absolute; left:15.5%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img_array[0] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[1] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[2] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:15.5%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[3] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[4] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[5] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:15.5%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[6] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[7] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[8] ?>" height="90" width="78">  </div>
-
-<?php
-		include("Profile_error/Profile_error.php");
-?>
-
+  <!--Testing -->
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 <?php

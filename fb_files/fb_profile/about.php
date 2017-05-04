@@ -66,6 +66,13 @@
 		$user_info_query=mysql_query("select * from user_info where user_id=$userid");
 		$user_info_data=mysql_fetch_array($user_info_query);
 ?>
+<?php
+		$user_data_query=mysql_query("select * from users where Email='$user'");
+		$user_data=mysql_fetch_array($user_data_query);
+		$bday=$user_data[5];
+		$gender=$user_data[4];
+		$Emial_id=$user_data[2];
+		?>
 <!DOCTYPE html>
 <html lang="en"><head>
 <!--Main CSS-->
@@ -109,27 +116,24 @@
         </ul>
         <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
 			<li class="nav-item">
-                <a class="nav-link" href="#">Home</a>	
-            </li>
-			<li class="nav-item">
-                <a class="nav-link" href="#">Timeline</a>	
+                <a class="nav-link" href="../fb_home/Home.php">Home</a>	
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Photos</a>
+                <a class="nav-link" href="photos.php">Photos</a>
             </li>
 			<li class="nav-item dropdown">
 			<div class="btn-group">
-  <button type="button" class="btn btn-success">Welcome</button>
+  <button type="button" class="btn btn-success">Welcome, <?php echo $name; ?></button>
   <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">NewsFeed</a>
-    <a class="dropdown-item" href="#">Profile Info</a>
-    <a class="dropdown-item" href="#">FeedBack</a>
+    <a class="dropdown-item" href="../fb_home/Home.php">NewsFeed</a>
+    <a class="dropdown-item" href="about.php">Profile Info</a>
+    <a class="dropdown-item" href="../fb_home/feedback.php">FeedBack</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Account Settings</a>
-    <a class="dropdown-item" href="#">LogOut</a>
+    <a class="dropdown-item" href="../fb_home/Settings.php">Account Settings</a>
+    <a class="dropdown-item" href="../fb_logout/logout.php">LogOut</a>
   </div>
 </div>
       </li>
@@ -161,7 +165,13 @@
 							$count_bg=mysql_num_rows($que_post_bg);
 							$count_bg=$count_bg+1;
 						?>
-					  <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>" height="100%" width="100%">
+					  <img src="<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;
+							if (getimagesize($filename)) {
+								echo "$filename";
+							} else {
+								echo "img/cover.jpg";
+							}
+							?>" height="100%" width="100%">
 					</div>
 				  </div>
 				</div>
@@ -169,19 +179,20 @@
                 	<nav class="navbar navbar-default">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header inline-block">
-                          <a class="navbar-brands" href="#"><img class="img-responsive" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:100%; width:100%;"></a>
-                          <span class="site-name"><b>Roland</b> Maruntelu</span>
-                          <span class="site-description">worpress theme developer</span>
+                          <a class="navbar-brands" href="#"><img class="img-responsive" src="
+						  ../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:100%; width:100%;"></a>
+                          <span class="site-name"><b><?php echo $name; ?></b></span>                         
+						  <span class="site-description"><?php echo $Emial_id; ?></span>
                         </div>
                     <ul class="nav nav-pills" style="margin-left:190px;margin-top:-25px">
 							<li class="nav-item">
-							<a class="nav-link active" href="#">About</a>
+							<a class="nav-link active" href="about.php">About</a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link" href="#">Photos</a>
+							<a class="nav-link" href="photos.php">Photos</a>
 						  </li>
 						  <li class="nav-item">
-							<a class="nav-link" href="#">Account Settings</a>
+							<a class="nav-link" href="../fb_home/Settings.php">Account Settings</a>
 						  </li>
 						</ul>
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -281,13 +292,7 @@
   <div class="card">
     <div class="card-block">
       <h4 class="card-title">Basic Information<button style="float:right;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#three_md">Edit</button></h4>
-	  <?php
-		$user_data_query=mysql_query("select * from users where Email='$user'");
-		$user_data=mysql_fetch_array($user_data_query);
-		$bday=$user_data[5];
-		$gender=$user_data[4];
-		$Emial_id=$user_data[2];
-		?>
+	  
 
       <hr class="hr">
 	  <p class="lead">
@@ -470,24 +475,73 @@
       <div class="modal-body">
         <h4>Edit Basic Information</h4>
 		<hr class="hr">
-		<form>
+		<form method="post" id="basic_form">
 		<div class="form-group">
 			<label>Birthday</label>
-			<input type="text" class="form-control">
+			<select class="form-control" name="day">
+			<option class="form-control form-inline" value="Day:"> Day: </option>
+	
+			<script type="text/javascript">
+			
+				for(i=1;i<=31;i++)
+				{
+					document.write("<option value='"+i+"'>" + i + "</option>");
+				}
+				
+			</script>
+	
+			</select>
+			<select class="form-control" name="month" >
+			<option class="form-control form-inline" value="Month:"> Month: </option>
+			
+			<script type="text/javascript">
+			
+				var m=new Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+				for(i=1;i<=m.length-1;i++)
+				{
+					document.write("<option value='"+i+"'>" + m[i] + "</option>");
+				}	
+			</script>
+			
+			</select>
+			<select name="year" class="form-control">
+			<option value="Year:" class="form-control form-inline"> Year: </option>
+			
+			<script type="text/javascript">
+			
+				for(i=2017;i>=1960;i--)
+				{
+					document.write("<option value='"+i+"'>" + i + "</option>");
+				}
+			
+			</script>
+			
+			</select>
 		</div>
 		<div class="form-group">
-			<label>Gender</label>
-			<input type="text" class="form-control">
+			<label>Gender : <?php echo $gender; ?> <small><br>Sorry, u cannot edit it</small></label>
 		</div>
 		<div class="form-group">
 			<label>Relationship</label>
-			<input type="text" class="form-control">
+			<select name="relationship" class="form-control">
+			<option value="" class="form-control form-inline"> ------------ </option>
+			
+			<script type="text/javascript">
+			
+				var rel=new Array("Single","In a relationship","Engaged","Married","Its complicated","In an open relationship","Windowed","Separated","Divoced");
+				for(i=0;i<=rel.length-1;i++)
+				{
+					document.write("<option value='"+rel[i]+"'>" + rel[i] + "</option>");
+				}	
+			</script>
+			
+			</select>
 		</div>
-		</form>
+		
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <input type="submit" value="Save Changes" name="basic_sub" class="btn btn-primary"></form>
       </div>
     </div>
   </div>
@@ -504,32 +558,36 @@
       <div class="modal-body">
         <h4>Edit Contact Information</h4>
 		<hr class="hr">
-		<form>
+		<form method="post" name="contact" id="contact_form">
 		<div class="form-group">
 			<label>Mobile Number</label>
-			<input type="text" class="form-control">
+			<div class="row container">
+			<div class="col-lg-6"><input class="form-control" type="text" value="<?php echo $m_no; ?>" name="mno" maxlength="10"></div>
+			<div class="col-lg-6"><select class="form-control" name="priority">
+			<option value="Private"> Only me </option>  
+			<option value="Public"> Public </option> 
+		</select></div></div>
 		</div>
 		<div class="form-group">
 			<label>Email</label>
-			<input type="text" class="form-control">
+			<input class="form-control" type="text" value="<?php echo $Emial_id; ?>" disabled>
 		</div>
 		<div class="form-group">
 			<label>Website</label>
-			<input type="text" class="form-control">
+			<input class="form-control" type="text" value="<?php echo $web; ?>" name="web" maxlength="40">
 		</div>
 		<div class="form-group">
 			<label>Facebook Id</label>
-			<input type="text" class="form-control">
+			<input class="form-control" type="text" value="<?php echo $fb_id; ?>" name="fbid" maxlength="40">
 		</div>
-		</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <input type="submit" value="Save Changes" name="contact_sub" class="btn btn-primary"></form>
       </div>
     </div>
   </div>
-</div>
+</div>					
   	<!-- MainPanel Ends Here -->
 	</div>
   <!--Testing -->
