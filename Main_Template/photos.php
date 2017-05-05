@@ -114,8 +114,85 @@
 					</nav>
                     
                 </header><!--/#HEADER-->
+			<div class="card-group">
+		  <div class="card">
+			<img class="card-img-top" src="..." alt="Profile Photo">
+			<div class="card-block">
+			  <h4 class="card-title">Profile Photos</h4>
+			 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#one">View Enlarged</button>
+			 </div>
+		  </div>
+		  <div class="card">
+			<img class="card-img-top" src="..." alt="Card image cap">
+			<div class="card-block">
+			  <h4 class="card-title">Cover Photos</h4>
+			<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#two">View Enlarged</button>
 			</div>
-  
+		  </div>
+		  <div class="card">
+			<img class="card-img-top" src="..." alt="Card image cap">
+			<div class="card-block">
+			  <h4 class="card-title">Timeline</h4>
+			  <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#three">View Enlarged</button>
+			</div>
+		  </div>
+		</div>
+			</div>
+			<div class="modal fade bd-example-modal-lg" id="one" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Profile Photo</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="modal fade bd-example-modal-lg" id="two" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Cover Photo</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="modal fade bd-example-modal-lg" id="three" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Timeline</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				...
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
   	<!-- MainPanel Ends Here -->
 	</div>
   <!--Testing -->
