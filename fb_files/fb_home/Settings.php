@@ -16,7 +16,7 @@
 		$last_name_pos=$last_name_pos+1;
 		$first_name=strstr($user_name,' ',1);
 		$last_name=substr($user_name,$last_name_pos,strlen($user_name));
-	
+		include("../fb_profile/background.php");
 ?>
 <?php
 	if(isset($_POST['change_name']))
@@ -47,129 +47,213 @@
 	
 ?>
 <?php
-	include("background.php");
+	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
+	$photos_count=mysql_num_rows($que_post_img);
+	$photos_count=$photos_count+$count1+1;
 ?>
-<html>
-<head>
-	<title>Settings</title>
-    <link href="Settings_css/Settings.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="Settings_js/Settings.js"> </script>
-</head>
-<body>
-	
-	<div style="position:absolute; left:25%; top:18%; color:#3B59A4; font-size:24px;"> Name </div>
-    <div style="position:absolute; left:32%; top:18%; color:#909DB2; font-size:24px; text-transform:capitalize;"> <?php echo $user_name; ?>  </div>
-    <div style="position:absolute; left:70%; top:14%"> <img src="img/edit-icon.png" height="70" width="70" onClick="Change_name()"> </div>
-    <hr style="position:absolute;left:25%;top:25%;height:0.5%;width:50%; border-color:#CCCCCC; box-shadow:0px 5px 5px 0px rgb(0,0,0); ">
-    
-    
-    <div style="position:absolute; left:25%; top:35%; color:#3B59A4; font-size:24px;"> Paasword </div>
-    <div style="position:absolute; left:34%; top:35%; color:#909DB2; font-size:24px;"> ******** </div>
-    <div style="position:absolute; left:70%; top:31%"> <img src="img/edit-icon.png" height="70" width="70" onClick="Change_password()"> </div>
-    <hr style="position:absolute;left:25%;top:42%;height:0.5%;width:50%; border-color:#CCCCCC; box-shadow:0px 5px 5px 0px rgb(0,0,0); ">
-    
-    <div style="position:absolute; left:25%; top:47%; "> <input type="button" value="Deactivate your account." style="background:#FFF; color:#3B59A4; font-size:15px; border:none;" onClick="delete_account()"> </div>
-    
-    
-    
-    
-    <!--Name change dailog box-->
-<div style="display:none;" id="change_Name_dailogbox"> 
-<div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3" onClick="hide_name_change_box()"></div>
-<div style="position:fixed; background:#3B5998; left:30%; top:20%; height:10%; width:35%; z-index:3"></div>
-<div style="position:fixed;  left:36%; top:21.5%; z-index:3"> <img src="img/settings.png" height="50" width="50"> </div>
-<div style="position:fixed;  left:41%; top:19%; z-index:3">
-<h1 style="color:#FFFFFF;"> Change Name </h1> </div>
-<div style="position:fixed;  left:63.7%; top:19%; z-index:4">  <input type="button" style="height:22; width:22; background:url(img/exit.png); no-repeat; border:none;" onClick="hide_name_change_box()"> </div>
-
-<form method="post"  name="name_change"  onSubmit="return name_check();">
-	<div style="position:fixed; left:35%; top:33%; z-index:4; font-size:18px;"> First Name </div>
-    <div style="position:fixed; left:41.5%; top:32.5%; z-index:4;"> <input type="text" name="fnm" value="<?php echo $first_name; ?>" style="height:35; width:200; font-size:18px;" maxlength="15"> </div>
-    <div style="position:fixed; left:35%; top:40%; z-index:4; font-size:18px;"> Last Name </div>
-    <div style="position:fixed; left:41.5%; top:39.5%; z-index:4;"> <input type="text" name="lnm" value="<?php echo $last_name; ?>" style="height:35; width:200; font-size:18px;" maxlength="15"> </div>
-	<div style="position:fixed; left:45%; top:48%; z-index:4;"> <input type="submit" value="Save" name="change_name" class="save_button"> </div>
-</form>
-
-
-<div style="position:fixed; background:#FFFFFF; left:30%; top:30%; height:30%; width:35%; z-index:3"></div>
-<div style="position:fixed;left:30.1%;top:54%; height:6%; width:34.9%;  background:#E9EAED; z-index:3; ">   </div>
-<!--name change dailog box boder-->
-<div style="position:fixed;left:29.9%; top:20%; height:0.7%; width:35.1%; background-color:#666666; z-index:3; box-shadow:0px -6px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:29.9%; top:20%; height:40.1%; width:0.3%; background-color:#666666; z-index:3; box-shadow:-5px 0px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:29.9%; top:60.1%; height:0.7%; width:35.1%; background-color:#666666; z-index:3; box-shadow:0px 6px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:64.7%; top:20%; height:40.1%; width:0.3%; background-color:#666666; z-index:3;box-shadow:5px 0px 10px 1px rgb(0,0,0);  "> </div>
-</div>
-
-
- <!--password change dailog box-->
-<div style="display:none;" id="change_password_dailogbox"> 
-<div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3" onClick="hide_password_change_box()"></div>
-<div style="position:fixed; background:#3B5998; left:30%; top:20%; height:10%; width:35%; z-index:3"></div>
-<div style="position:fixed;  left:35%; top:21.5%; z-index:3"> <img src="img/settings.png" height="50" width="50"> </div>
-<div style="position:fixed;  left:40%; top:19%; z-index:3">
-<h1 style="color:#FFFFFF;"> Change Password </h1> </div>
-<div style="position:fixed;  left:63.7%; top:19%; z-index:4">  <input type="button" style="height:22; width:22; background:url(img/exit.png); no-repeat; border:none;" onClick="hide_password_change_box()"> </div>
-
-<form method="post"  name="password_change"  onSubmit="return password_check()">
-	<div style="position:fixed; left:33%; top:34%; z-index:4; font-size:18px;"> Old Password </div>
-    <div style="position:fixed; left:44%; top:33.5%; z-index:4;"> <input type="password" name="old_password" style="height:30; width:240; font-size:18px;" maxlength="30" > </div>
-    <div style="position:fixed; left:33%; top:41%; z-index:4; font-size:18px;"> New Password </div>
-    <div style="position:fixed; left:44%; top:40.5%; z-index:4;"> <input type="password" name="new_password" style="height:30; width:240; font-size:18px;" maxlength="30"> </div>
-    <div style="position:fixed; left:33%; top:48%; z-index:4; font-size:18px;"> Conform Password </div>
-    <div style="position:fixed; left:44%; top:47.5%; z-index:4;"> <input type="password" name="c_password" style="height:30; width:240; font-size:18px;" maxlength="30"> </div>
-	<div style="position:fixed; left:44%; top:55.3%; z-index:4;"> <input type="submit" value="Change" name="change_password" class="save_button"> </div>
-</form>
-
-
-<div style="position:fixed; background:#FFFFFF; left:30%; top:30%; height:37%; width:35%; z-index:3"></div>
-<div style="position:fixed;left:30.1%;top:62%; height:6%; width:34.9%;  background:#E9EAED; z-index:3; ">   </div>
-<!--password change dailog box boder-->
-<div style="position:fixed;left:29.9%; top:20%; height:0.7%; width:35.1%; background-color:#666666; z-index:3; box-shadow:0px -6px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:29.9%; top:20%; height:48.1%; width:0.3%; background-color:#666666; z-index:3; box-shadow:-5px 0px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:29.9%; top:68.1%; height:0.7%; width:35.1%; background-color:#666666; z-index:3; box-shadow:0px 6px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:64.7%; top:20%; height:48.1%; width:0.3%; background-color:#666666; z-index:3;box-shadow:5px 0px 10px 1px rgb(0,0,0);  "> </div>
-</div>
-
-
-
-<!--delete_account  dailog box-->
-<div style="display:none;" id="delete_account_dailogbox"> 
-<div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3" onClick="hide_delete_account_box()"></div>
-<div style="position:fixed; background:#3B5998; left:30%; top:20%; height:10%; width:35%; z-index:3"></div>
-<div style="position:fixed;  left:32%; top:21.5%; z-index:3"> <img src="img/QuestionMark.png" height="50" width="50"> </div>
-<div style="position:fixed;  left:37%; top:19.4%; z-index:3">
-<h2 style="color:#FFFFFF;"> You want Delete your Account? </h2> </div>
-<div style="position:fixed;  left:63.7%; top:19%; z-index:4">  <input type="button" style="height:22; width:22; background:url(img/exit.png); no-repeat; border:none;" onClick="hide_delete_account_box()"> </div>
-
-<div style="position:fixed;  left:31%; top:33%; z-index:4"> <img src="img/sad.gif"> </div>
-<div style="position:fixed;  left:41%; top:40%; z-index:4"> 
-<form method="post">
-<input type="hidden" value="<?php echo $userid; ?>" name="uid">
-<input type="submit" value="Yes" name="detete_id" id="yes_button"> 
-</form>
-</div>
-
-<div style="position:fixed;  left:50%; top:40%; z-index:4"> 
-<input type="button" value="No" id="no_button" onClick="hide_delete_account_box()"> 
-</div>
-<div style="position:fixed;  left:57%; top:31%; z-index:4"> <img src="img/smile.gif" height="110" width="90"> </div>
-
-
-<div style="position:fixed; background:#FFFFFF; left:30%; top:30%; height:30%; width:35%; z-index:3"></div>
-<div style="position:fixed;left:30.1%;top:54%; height:6%; width:34.9%;  background:#E9EAED; z-index:3; ">   </div>
-<!--delete account  dailog box boder-->
-<div style="position:fixed;left:29.9%; top:20%; height:0.7%; width:35.1%; background-color:#666666; z-index:3; box-shadow:0px -6px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:29.9%; top:20%; height:40.1%; width:0.3%; background-color:#666666; z-index:3; box-shadow:-5px 0px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:29.9%; top:60.1%; height:0.7%; width:35.1%; background-color:#666666; z-index:3; box-shadow:0px 6px 10px 1px rgb(0,0,0); "> </div>
-<div style="position:fixed;left:64.7%; top:20%; height:40.1%; width:0.3%; background-color:#666666; z-index:3;box-shadow:5px 0px 10px 1px rgb(0,0,0);  "> </div>
-
-</div>
-
 <?php
-	include("Settings_error/Settings_error.php");
-?>
+		$user_data_query=mysql_query("select * from users where Email='$user'");
+		$user_data=mysql_fetch_array($user_data_query);
+		$bday=$user_data[5];
+		$gender=$user_data[4];
+		$Emial_id=$user_data[2];
+		
+		?>
+<!DOCTYPE html>
+<html lang="en"><head>
+<!--Main CSS-->
+<link href="../../Main_Template/css/profile.css?<?php echo time(); ?>" rel="stylesheet">
+<link href="../../Main_Template/css/main.css?<?php echo time(); ?>" rel="stylesheet">
+<!--BootStrap 4 Alpha config -->
+<!-- BootStrap 4 alpha jquery config -->
+<script src="../../Bootstrap_4/js/bootstrap.js?<?php echo time(); ?>"></script>
+<script src="../../Bootstrap_4/js/bootstrap.min.js?<?php echo time(); ?>"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../../Main_Template/js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
+<link href="../../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
+</head>
+<body id="body">
+<!-- NavBar  Starts Here-->
+<nav class="navbar container sticky-top navbar-light navbar-toggleable-md bg-faded justify-content-center">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+		<script>
+		$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+			})
+	</script>
+			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By You & Manjot Sidhu">
+			<img src="../../Main_Template/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
+			
+    <div class="navbar-collapse collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto w-100 justify-content-center">
+            <form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			<!--<li class="nav-item active">
+                <a class="nav-link" href="#">Link</a>
+            </li>-->
+        </ul>
+        <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
+			<li class="nav-item">
+                <a class="nav-link" href="Home.php">Home</a>	
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="../fb_profile/photos.php">Photos</a>
+            </li>
+			<li class="nav-item dropdown">
+			<div class="btn-group">
+  <button type="button" class="btn btn-success">Welcome, <?php echo $name; ?></button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="Home.php">NewsFeed</a>
+    <a class="dropdown-item" href="../fb_profile/about.php">Profile Info</a>
+    <a class="dropdown-item" href="feedback.php">FeedBack</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="Settings.php">Account Settings</a>
+    <a class="dropdown-item" href="../fb_logout/logout.php">LogOut</a>
+  </div>
+</div>
+      </li>
+        </ul>
+    </div>
+</nav>
+<!--NavBar Ends Here-->
+<!--Here Starts The Main Body -->
+    <div class="container" align="center">
+    <!-- MainPanel Starts Here -->
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+				<div class="wrapper">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+								<header id="header">
 
-<div style="position:absolute; left:90%; top:100%;" > &nbsp; </div>
+				  <div class="slider">
+				  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<?php 
+							$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+							$rec3=mysql_fetch_array($query3);
+							$cover_img=$rec3[2];
+							
+							$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+							$count_bg=mysql_num_rows($que_post_bg);
+							$count_bg=$count_bg+1;
+						?>
+					  <img src="<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;
+							if (getimagesize($filename)) {
+								echo "$filename";
+							} else {
+								echo "img/cover.jpg";
+							}
+							?>" height="100%" width="100%">
+					</div>
+				  </div>
+				</div>
+                	</div><!--slider-->
+                	<nav class="navbar navbar-default ">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header inline-block">
+                          <a class="navbar-brands" href="#"><img class="img-responsive" src="
+						  ../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:100%; width:100%;"></a>
+                          <span class="site-name"><b><?php echo $name; ?></b></span>                         
+						  <span class="site-description"><?php echo $Emial_id; ?></span>
+                        </div>
+                    <ul class="nav nav-pills" style="margin-left:190px;margin-top:-25px">
+							<li class="nav-item">
+							<a class="nav-link" href="../fb_profile/about.php">About</a>
+							</li>
+							<li class="nav-item">
+							<a class="nav-link active" href="../fb_profile/photos.php">Photos</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" href="Settings.php">Account Settings</a>
+						  </li>
+						</ul>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="mainNav" >
+                          
+                        </div><!-- /.navbar-collapse -->
+					</nav>
+                    
+                </header><!--/#HEADER-->
+		<ul class="nav nav-tabs justify-content-center" role="tablist">
+				
+			<li class="nav-item">
+			<a class="nav-link active" href="#usr" role="tab" data-toggle="tab" aria-controls="usr" aria-expanded="true">Change Username</a>
+			</li>
+
+			<li class="nav-item">
+			<a class="nav-link" href="#pass" role="tab" data-toggle="tab" aria-controls="pass">Change Password</a>
+			</li>
+			
+			<li class="nav-item">
+			<a class="nav-link" href="#del" role="tab" data-toggle="tab" aria-controls="del">Change Password</a>
+			</li>
+			</ul>
+
+			<!-- Content Panel -->
+			<div class="tab-content">
+
+			<div role="tabpanel" class="tab-pane fade show active" id="usr">
+			<br><div class="display-4"> Change Username</div>
+			<br>
+			<form method="post"  name="name_change">
+			<div class="form-group row justify-content-center">
+			<label class="col-sm-2 col-form-label">First Name : </label>
+				<div class="">
+				<input class="form-control" type="text" name="fnm" value="<?php echo $first_name; ?>" maxlength="15">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+			<label class="col-sm-2 col-form-label">Last Name : </label>
+				<div><input class="form-control" type="text" name="lnm" value="<?php echo $last_name; ?>" maxlength="15"></div>
+			</div>
+			<hr>
+			<input class="btn btn-warning" type="submit" value="Save" name="change_name">
+			</form>
+			</div>
+
+			<div role="tabpanel" class="tab-pane fade" id="pass">
+			<form method="post"  name="password_change">
+			<div class="form-group row justify-content-center">
+			<label class="col-sm-2 col-form-label">Old Password</label>
+			<input class="form-control" type="password" name="old_password" maxlength="30" >
+			</div><div class="form-group row justify-content-center">
+			<div class="form-group row justify-content-center">
+			<label class="col-sm-2 col-form-label">New Password</label>
+			<input class="form-control" type="password" name="new_password" maxlength="30">
+			</div><div class="form-group row justify-content-center">
+			<label class="col-sm-2 col-form-label">Confirm Password</label>
+			<input class="form-control" type="password" name="c_password" maxlength="30">
+			</div><hr>
+			<input class="btn btn-warning" type="submit" value="Change" name="change_password">
+			</form>
+			</div>
+
+			<div role="tabpanel" class="tab-pane fade" id="del">
+			
+			</div>
+			</div>
+		</div>				
+		<?php
+	include("Settings_error/Settings_error.php");
+		?>
+  	<!-- MainPanel Ends Here -->
+	</div>
+  <!--Testing -->
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 <?php

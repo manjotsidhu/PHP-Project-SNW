@@ -10,6 +10,13 @@
 	$photos_count=mysql_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 ?>
+<?php
+		$user_data_query=mysql_query("select * from users where Email='$user'");
+		$user_data=mysql_fetch_array($user_data_query);
+		$bday=$user_data[5];
+		$gender=$user_data[4];
+		$Emial_id=$user_data[2];
+		?>
 <!DOCTYPE html>
 <html lang="en"><head>
 <!--Main CSS-->
