@@ -175,10 +175,10 @@
 							<a class="nav-link" href="../fb_profile/about.php">About</a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link active" href="../fb_profile/photos.php">Photos</a>
+							<a class="nav-link" href="../fb_profile/photos.php">Photos</a>
 						  </li>
 						  <li class="nav-item">
-							<a class="nav-link" href="Settings.php">Account Settings</a>
+							<a class="nav-link active" href="Settings.php">Account Settings</a>
 						  </li>
 						</ul>
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -199,7 +199,7 @@
 			</li>
 			
 			<li class="nav-item">
-			<a class="nav-link" href="#del" role="tab" data-toggle="tab" aria-controls="del">Change Password</a>
+			<a class="nav-link" href="#del" role="tab" data-toggle="tab" aria-controls="del">Delete Account</a>
 			</li>
 			</ul>
 
@@ -211,7 +211,7 @@
 			<br>
 			<form method="post"  name="name_change">
 			<div class="form-group row justify-content-center">
-			<label class="col-sm-2 col-form-label">First Name : </label>
+				<label class="col-sm-2 col-form-label">First Name : </label>
 				<div class="">
 				<input class="form-control" type="text" name="fnm" value="<?php echo $first_name; ?>" maxlength="15">
 				</div>
@@ -227,23 +227,42 @@
 
 			<div role="tabpanel" class="tab-pane fade" id="pass">
 			<form method="post"  name="password_change">
-			<div class="form-group row justify-content-center">
-			<label class="col-sm-2 col-form-label">Old Password</label>
-			<input class="form-control" type="password" name="old_password" maxlength="30" >
-			</div><div class="form-group row justify-content-center">
-			<div class="form-group row justify-content-center">
-			<label class="col-sm-2 col-form-label">New Password</label>
-			<input class="form-control" type="password" name="new_password" maxlength="30">
-			</div><div class="form-group row justify-content-center">
-			<label class="col-sm-2 col-form-label">Confirm Password</label>
-			<input class="form-control" type="password" name="c_password" maxlength="30">
-			</div><hr>
-			<input class="btn btn-warning" type="submit" value="Change" name="change_password">
+			<br><div class="display-4"> Change Password</div>
+			<br>
+				<div class="form-group row justify-content-center">
+					<label class="col-sm-2 col-form-label">Old Password</label>
+					<div><input class="form-control" type="password" name="old_password" maxlength="30" ></div>
+				</div>
+				<div class="form-group row justify-content-center">
+					<label class="col-sm-2 col-form-label">New Password</label>
+					<div><input class="form-control" type="password" name="new_password" maxlength="30"></div>
+				</div>
+				<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Confirm Password</label>
+				<div><input class="form-control" type="password" name="c_password" maxlength="30"></div>
+				</div>
+				<hr>
+				<input class="btn btn-warning" type="submit" value="Change" name="change_password">
 			</form>
 			</div>
 
 			<div role="tabpanel" class="tab-pane fade" id="del">
-			
+			<br><div class="display-4"> Delete Your Account Permanently</div>
+			<br>
+			<div class="card card-inverse card-danger text-center">
+				<div class="card-block">
+					<blockquote class="card-blockquote">
+					<p>OK ... You want to delete your account . There should be a reason behind . Want to share it with me ? . Mail to me @manjot.gni@gmail.com .</p>
+					<footer><small>By You & Manjot Sidhu</small></footer>
+					</blockquote>
+				</div>
+			</div>
+			<form method="post">
+			<br><br>
+			<input type="hidden" value="<?php echo $userid; ?>" name="uid">
+			<input class="btn btn-danger" type="submit" value="Fck me & Delete My Account" name="detete_id" id="yes_button"> 
+			<input class="btn btn-success" type="button" value="Wait I want to Fck U" id="no_button" onclick="location.href='Settings.php';"> 
+			</form>
 			</div>
 			</div>
 		</div>				
