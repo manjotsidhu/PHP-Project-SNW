@@ -135,7 +135,9 @@
 ?>
 <style type="text/css">
 	.card.hovercard .cardheader {
-    background-image:url(../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>)
+    background-image:url(<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;if (getimagesize($filename)) {echo "$filename";} else {echo "../fb_profile/img/cover.jpg";}?>);
+	background-size: 100%;
+	
 }
 	</style>
 </head>
@@ -390,17 +392,17 @@
 		}
 	?>
  	
- 	<tr style="background-color:#F7F7F9;border-top:outset; border-top-width:medium;border-top-color: darkgreen" >
-		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="70" width="65" class="img rounded">  </td>
+ 	<tr style="background-color:#F7F7F9;border-top:outset; border-top-width:medium;border-top-color: darkgreen">
+		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="40" width="45" class="img rounded">  </td>
 		<td > </td>
 		<td> </td>
 		<td> </td>
 	</tr>
 	<tr style="background-color:#F7F7F9">
-		<td colspan="3" style="padding:0;"> <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4 class="card-title">&nbsp;&nbsp;<?php echo $user_name; ?></h4></a>  </td>
+		<td colspan="3" style="padding:0;"><div style="float:right;padding-top:5px";"<span style="color:#999999;"><?php echo $post_data[4]; ?></span>  </div>  <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4 class="card-title" style="padding-left:5px"><?php echo $user_name; ?></h4></a></td>
 		<td> </td>
 		<td> </td>
-		<td> </td>
+		<td></td>
 	</tr>
 <?php
 	$len=strlen($post_data[2]);
@@ -410,7 +412,7 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>
+		<td colspan="3" style="padding-left:7;min-height:30%"><br><blockquote class="blockquote"><p class="lead"><?php echo $line1; ?> </p></td>
 	</tr>
 	<?php
 	}
@@ -421,11 +423,11 @@
 	?>
 	<tr >
 		<td></td>
-		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr >
 		<td> </td>
-		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>
+		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line2; ?> </p></td>
 	</tr>
 	<?php
 	}
@@ -437,15 +439,15 @@
 	?>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
+		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
 	<?php
 	}
@@ -606,7 +608,6 @@
 	<?php
 		}
 	?>
-	
 	<tr style="color:#6D84C4;background-color:"><!-- color of comment,like -->
 		<td >   </td>
 		<?php
@@ -640,18 +641,12 @@
 	$count_comment=mysql_num_rows($que_comment);
 		 ?>
 		
-		<td colspan="3"> &nbsp; <input class="form-control btn btn-info col-lg-3" type="button" value="Comment(<?php echo $count_comment; ?>)" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="color:#999999;">   <?php echo $post_data[4]; ?> </span> </td>
+		<td colspan="3"> &nbsp; <input class="form-control btn btn-info col-lg-3" type="button" value="Comment(<?php echo $count_comment; ?>)" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
 		<td>   </td>
 	</tr>
-	<tr>
+	<tr style="margin-top:-5px">
 		<td>   </td>
 		<td  bgcolor="#EDEFF4" style="width:9;" colspan="3"><img src="img/like-ico.PNG" width="35px" height="35px"><span style="color:#6D84C4;">&nbsp;<?php echo $count_like; ?></span> like this. </td>
-		<td> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td>   </td>
-		<td> </td>
 		<td> </td>
 		<td> </td>
 	</tr>
