@@ -130,7 +130,6 @@
   <div class="dropdown-menu">
     <a class="dropdown-item" href="../fb_home/Home.php">NewsFeed</a>
     <a class="dropdown-item" href="about.php">Profile Info</a>
-    <a class="dropdown-item" href="../fb_home/feedback.php">FeedBack</a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="../fb_home/Settings.php">Account Settings</a>
     <a class="dropdown-item" href="../fb_logout/logout.php">LogOut</a>

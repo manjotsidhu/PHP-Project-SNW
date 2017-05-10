@@ -58,7 +58,6 @@
   <div class="dropdown-menu">
     <a class="dropdown-item disabled" href="#">NewsFeed</a>
     <a class="dropdown-item disabled" href="#">Profile Info</a>
-    <a class="dropdown-item disabled" href="#">FeedBack</a>
     <div class="dropdown-divider disabled"></div>
     <a class="dropdown-item disabled" href="#">Account Settings</a>
     <a class="dropdown-item disabled" href="#">LogOut</a>
