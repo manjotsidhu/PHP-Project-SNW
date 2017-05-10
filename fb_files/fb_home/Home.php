@@ -212,15 +212,24 @@
 					$count_bg=$count_bg+1;
 				?>
                 </div>
-                <div class="avatar">
-                    <img alt="" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>">
+                <div class="avatar"><a href="../fb_profile/profile.php">
+                    <img alt="" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>"></a>
                 </div>
                 <div class="info">
                     <div class="title">
-                        <a target="_blank" href="#"><?php echo $name; ?></a>
+                        <a href="../fb_profile/profile.php"><?php echo $name; ?></a>
                     </div>
-                    <div class="desc"><?php echo $gender; ?> | Job</div>
-                    <div class="desc">Birthday</div>
+                    <?php
+					$user_data_query=mysql_query("select * from users where Email='$user'");
+					$user_data=mysql_fetch_array($user_data_query);
+					$bday=$user_data[5];
+					$gender=$user_data[4];
+					$Emial_id=$user_data[2];
+					?>
+					<div class="desc"><?php echo $gender; ?> |	
+					<?php echo $bday; ?>
+					</div>
+                    <div class="desc"><?php echo $Emial_id; ?></div>
                 </div>
                 <div class="bottom">
 					<ul class="list-group">
@@ -277,7 +286,7 @@
 <div class="card">
       <div class="card-block">
         <h4 class="card-title">Whats New <span class="badge badge-success">New</span></h4>
-        <p class="card-text">Posts Feeds are Themed a bit<br>Improvements in navigation<br>Made Account Settings<br>Made Photos & About Page</p>
+        <p class="card-text">Added PHP to Profile Panel<br>Posts Feeds are Themed a bit<br>Improvements in navigation<br>Made Account Settings<br>Made Photos & About Page</p>
         <a href="https://github.com/manjotsidhu/PHP-Project-SNW" class="btn btn-primary">More Info</a>
       </div>
     </div>
