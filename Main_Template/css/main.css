@@ -1,3 +1,10 @@
+.tr_l {
+	border-left:outset;
+	border-left-width:thin;
+	border-left-color:#999999;
+}
+.tr_r {
+}
 .fixed-top-cus {
     position: fixed;
     top: 7%;

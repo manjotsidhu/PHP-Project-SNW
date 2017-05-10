@@ -243,6 +243,8 @@
   <h3 class="display-4">Hello, Welcome To CandyGram</h3>
   <br>
 </div>
+<div class="row">
+<div class="col-sm-8">
 <div class="card">
   <h5 class="card-header">Update Status &nbsp&nbsp<!--<button type="button" class="btn btn-secondary" onclick="toggler('ad_ph');"> Add Photos</button>--></h5>
   <div class="card-block">
@@ -270,6 +272,17 @@
 </div>
 	</form>
   </div></div></div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="card">
+      <div class="card-block">
+        <h4 class="card-title">Whats New <span class="badge badge-success">New</span></h4>
+        <p class="card-text">Posts Feeds are Themed a bit<br>Improvements in navigation<br>Made Account Settings<br>Made Photos & About Page</p>
+        <a href="https://github.com/manjotsidhu/PHP-Project-SNW" class="btn btn-primary">More Info</a>
+      </div>
+    </div>
+</div>
 </div>
 <br>
 <?php
@@ -342,7 +355,7 @@
 	<div class="card">
   <div class="card-block">
 	<div style="">
-	<table cellspacing="0" class="" style="border-bottom: none">
+	<table cellspacing="0" class="" style="border-bottom: none;">
 <?php
 	$que_post=mysql_query("select * from user_post where priority='Public' order by post_id desc");
 	while($post_data=mysql_fetch_array($que_post))
@@ -392,17 +405,14 @@
 		}
 	?>
  	
- 	<tr style="background-color:#F7F7F9;border-top:outset; border-top-width:medium;border-top-color: darkgreen">
+ 	<tr class="tr_l tr_r" style="background-color:#F7F7F9;border-top:outset; border-top-width:thin;border-top-color:#999999">
 		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="40" width="45" class="img rounded">  </td>
 		<td > </td>
 		<td> </td>
 		<td> </td>
 	</tr>
-	<tr style="background-color:#F7F7F9">
-		<td colspan="3" style="padding:0;"><div style="float:right;padding-top:5px";"<span style="color:#999999;"><?php echo $post_data[4]; ?></span>  </div>  <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4 class="card-title" style="padding-left:5px"><?php echo $user_name; ?></h4></a></td>
-		<td> </td>
-		<td> </td>
-		<td></td>
+	<tr class="tr_l tr_r" style="background-color:#F7F7F9;border-left:outset; border-left-width:thin;border-left-color:#999999">
+		<td colspan="3" style="padding:0;"><div style="float:right;padding-top:5px"><span style="color:#999999;"><?php echo $post_data[4]; ?></span>  </div>  <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4 class="card-title" style="padding-left:5px"><?php echo $user_name; ?></h4></a></td>
 	</tr>
 <?php
 	$len=strlen($post_data[2]);
@@ -410,7 +420,7 @@
 	{
 		$line1=substr($post_data[2],0,73);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><br><blockquote class="blockquote"><p class="lead"><?php echo $line1; ?> </p></td>
 	</tr>
@@ -421,11 +431,11 @@
 		$line1=substr($post_data[2],0,73);
 		$line2=substr($post_data[2],73,73);
 	?>
-	<tr >
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
-	<tr >
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line2; ?> </p></td>
 	</tr>
@@ -437,15 +447,15 @@
 		$line2=substr($post_data[2],73,73);
 		$line3=substr($post_data[2],146,73);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><blockquote class="blockquote"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
@@ -458,19 +468,19 @@
 		$line3=substr($post_data[2],146,73);
 		$line4=substr($post_data[2],219,73);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
@@ -486,24 +496,24 @@
 		$line4=substr($post_data[2],219,73);
 		$line5=substr($post_data[2],292,73);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
 	
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line5; ?> </p></td>	
 	</tr>
@@ -520,29 +530,29 @@
 		$line5=substr($post_data[2],292,73);
 		$line6=substr($post_data[2],365,73);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
 	
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line5; ?> </p></td>	
 	</tr>
 	
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line6; ?> </p></td>	
 	</tr>
@@ -559,34 +569,34 @@
 		$line6=substr($post_data[2],365,73);
 		$line7=substr($post_data[2],438,73);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line1; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line2; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line3; ?> </p></td>	
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line4; ?> </p></td>	
 	</tr>
 	
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line5; ?> </p></td>	
 	</tr>
 	
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line6; ?> </p></td>	
 	</tr>
 	
-	<tr>
+	<tr class="tr_l tr_r">
 		<td></td>
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line7; ?> </p></td>	
 		<td colspan="3" style="padding-left:7;min-height:30%"><p class="lead"><?php echo $line7; ?> </p></td>	
@@ -599,16 +609,16 @@
 		if($post_data[3]!="")
 		{
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td>   </td>
-		<td colspan="3"><img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Post/<?php echo $post_img; ?>" width="400" height="400"> </td>
+		<td colspan="3"><img class="img rounded img-thumbnail" src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Post/<?php echo $post_img; ?>" width="500" height="400"> </td>
 		<td> </td>
 		<td> </td>
 	</tr>
 	<?php
 		}
 	?>
-	<tr style="color:#6D84C4;background-color:"><!-- color of comment,like -->
+	<tr class="tr_l tr_r" style="color:#6D84C4;vertical-align:bottom"><!-- color of comment,like -->
 		<td >   </td>
 		<?php
 		 	$que_status=mysql_query("select * from user_post_status where post_id=$postid and user_id=$userid;");
@@ -618,7 +628,7 @@
 			if($status_data[3]=="Like")
 			{?>
 			
-			<td style="padding-top:15;">
+			<td style="position:relative;top:15px">
 		<form method="post">
 		<input class="form-control" type="hidden" name="postid" value="<?php echo $postid; ?>">
 		<input class="form-control" type="hidden" name="userid" value="<?php echo $userid; ?>">
@@ -627,11 +637,11 @@
 			}
 			else
 			{?>
-			<td style="padding-top:15;">
+			<td style="position:relative;top:15px">
 		<form method="post">
 		<input class="form-control" type="hidden" name="postid" value="<?php echo $postid; ?>">
 		<input class="form-control" type="hidden" name="userid" value="<?php echo $userid; ?>">
-		<input class="form-control btn btn-success" type="submit" value="Like" name="Like" onMouseOver="like_underLine(<?php echo $postid; ?>)" onMouseOut="like_NounderLine(<?php echo $postid; ?>)" id="like<?php echo $postid; ?>"></form></td>
+		<input class="form-control btn btn-success align-bottom " type="submit" value="Like" name="Like" onMouseOver="like_underLine(<?php echo $postid; ?>)" onMouseOut="like_NounderLine(<?php echo $postid; ?>)" id="like<?php echo $postid; ?>"></form></td>
 			<?php
 			}
 		 ?>
@@ -641,10 +651,10 @@
 	$count_comment=mysql_num_rows($que_comment);
 		 ?>
 		
-		<td colspan="3"> &nbsp; <input class="form-control btn btn-info col-lg-3" type="button" value="Comment(<?php echo $count_comment; ?>)" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+		<td colspan="3"> &nbsp; <input class="form-control btn btn-info col-lg-3" type="button" value="Comment(<?php echo $count_comment; ?>)" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> </td>
 		<td>   </td>
 	</tr>
-	<tr style="margin-top:-5px">
+	<tr class="tr_l tr_r">
 		<td>   </td>
 		<td  bgcolor="#EDEFF4" style="width:9;" colspan="3"><img src="img/like-ico.PNG" width="35px" height="35px"><span style="color:#6D84C4;">&nbsp;<?php echo $count_like; ?></span> like this. </td>
 		<td> </td>
@@ -664,7 +674,7 @@
 		$user_gender1=$fetch_user_info1[4];
 		$user_pic1=$fetch_user_pic1[2];
 ?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td width="4%" bgcolor="#EDEFF4" style="padding-left:12;" rowspan="2">  <img class="img rounded" src="../../fb_users/<?php echo $user_gender1; ?>/<?php echo $user_Email1; ?>/Profile/<?php echo $user_pic1; ?>" height="47" width="47">    </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" > <a href="../fb_view_profile/view_profile.php?id=<?php echo $comment_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#3B5998;" onMouseOver="Comment_name_underLine(<?php echo $comment_id; ?>)" onMouseOut="Comment_name_NounderLine(<?php echo $comment_id; ?>)" id="cuname<?php echo $comment_id; ?>"> <?php echo $user_name1; ?></a> </td>
@@ -701,7 +711,7 @@
 	{
 		$cline1=substr($comment_data[3],0,60);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
 	</tr>
@@ -712,11 +722,11 @@
 		$cline1=substr($comment_data[3],0,60);
 		$cline2=substr($comment_data[3],60,60);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
@@ -729,16 +739,16 @@
 		$cline2=substr($comment_data[3],60,60);
 		$cline3=substr($comment_data[3],120,60);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
@@ -752,21 +762,21 @@
 		$cline3=substr($comment_data[3],120,60);
 		$cline4=substr($comment_data[3],180,60);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
@@ -781,26 +791,26 @@
 		$cline4=substr($comment_data[3],180,60);
 		$cline5=substr($comment_data[3],240,60);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?></td>
@@ -816,31 +826,31 @@
 		$cline5=substr($comment_data[3],240,60);
 		$cline6=substr($comment_data[3],300,60);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline6; ?></td>
@@ -857,36 +867,36 @@
 		$cline6=substr($comment_data[3],300,60);
 		$cline7=substr($comment_data[3],360,60);
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline6; ?></td>
 	</tr>
-	<tr>
+	<tr class="tr_l tr_r">
 		<td> </td>
 		<td bgcolor="#EDEFF4"> </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline7; ?></td>
@@ -897,7 +907,7 @@
 	<?php
 	}
 	?>
-	<tr>
+	<tr class="tr_l tr_r">
 	<td> </td>
 	<td width="4%" style="padding-left:17;" bgcolor="#EDEFF4" rowspan="2">  <img class="img rounded" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:35; width:35;">    </td>
 		<td bgcolor="#EDEFF4" colspan="2" style="padding-top:15;"> 
@@ -908,8 +918,8 @@
 		<input class="form-control" type="submit" name="comment" style="display:none;"> 
 		</form> </td>
 	</tr>
-<tr><td></td><td></td><td></td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td></tr>		
+<tr class="tr_l tr_r"><td></td><td></td><td></td><td></td></tr>
+<tr class="tr_l tr_r"><td></td><td></td><td></td><td></td></tr>		
 	
 <?php } ?>
 	</table>
