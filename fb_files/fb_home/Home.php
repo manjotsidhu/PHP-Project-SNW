@@ -224,8 +224,7 @@
                 </div>
                 <div class="bottom">
 					<ul class="list-group">
-					<a href="Home.php" class="list-group-item list-group-item list-group-item list-group-item-action justify-content-center">News Feed</a>
-					<a href="../fb_profile/profile.php" class="list-group-item list-group-item-success list-group-item list-group-item-action justify-content-center">Timeline</a>
+					<a href="Home.php" class="list-group-item list-group-item list-group-item-success list-group-item-action justify-content-center">News Feed</a>
 					<a href="../fb_profile/profile.php" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
 					<a href="../fb_profile/photos.php" class="list-group-item list-group-item-warning list-group-item list-group-item-action justify-content-center">Photos</a>
 					<a href="Settings.php" class="list-group-item list-group-item-danger list-group-item list-group-item-action justify-content-center">Account Settings</a>
