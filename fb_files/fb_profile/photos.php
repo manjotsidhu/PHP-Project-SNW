@@ -147,14 +147,14 @@
                 </header><!--/#HEADER-->
 			<div class="card-group">
 		  <div class="card">
-			<img class="card-img-top" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" alt="Profile Photo" style="max-height: 300px">
+			<img class="card-img-top" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" alt="Profile Photo" style="max-height:300px;max-width: 300px">
 			<div class="card-block">
 			  <h4 class="card-title">Profile Photo</h4>
 			 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#one">View Enlarged</button>
 			 </div>
 		  </div>
 		  <div class="card">
-			<img class="card-img-top" src="<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;if (getimagesize($filename)){echo "$filename";} else {echo "img/cover.jpg";}?>" alt="Cover Image">
+			<img class="card-img-top" src="<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;if (getimagesize($filename)){echo "$filename";} else {echo "img/cover.jpg";}?>" alt="Cover Image" style="max-height:200px;max-width:600px">
 			<div class="card-block">
 			  <h4 class="card-title">Cover Photo</h4>
 			<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#two">View Enlarged</button>
@@ -169,7 +169,7 @@
 				}
 			?>
 		  <div class="card">
-			<img class="card-img-top" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[0] ?>" alt="Timeline Photo" style="max-height: 400px">
+			<img class="card-img-top" src="<?php $filename="../../fb_users/".$gender."/".$user."/Post/".$img_array[0];if (getimagesize($filename)){echo "$filename";} else {echo "img/not.png";}?>" alt="Timeline Photo" style="max-height:300px">
 			<div class="card-block">
 			  <h4 class="card-title">Timeline</h4>
 			  <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#three">View Enlarged</button>
@@ -205,7 +205,7 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				<img class="card-img-top" src="<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;if (getimagesize($filename)){echo "$filename";} else {echo "img/cover.jpg";}?>" alt="Cover Image">
+				<img class="card-img-top" src="<?php $filename="../../fb_users/".$gender."/".$user."/Cover/".$cover_img;if (getimagesize($filename)){echo "$filename";} else {echo "img/cover.jpg";}?>" alt="Cover Image" width="100%">
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -223,7 +223,7 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				<img class="card-img-top" src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[0] ?>" alt="Timeline photo">
+				<img class="card-img-top" src="<?php $filename="../../fb_users/".$gender."/".$user."/Post/".$img_array[0];if (getimagesize($filename)){echo "$filename";} else {echo "img/not.png";}?>" alt="Timeline photo" width="100%">
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
