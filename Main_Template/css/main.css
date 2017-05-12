@@ -1,10 +1,11 @@
-.tr_l {
-	border-left:outset;
+.hds {
+	border-left:outset; 
 	border-left-width:thin;
 	border-left-color:#999999;
-}
-.tr_r {
-}
+	border-right:outset; 
+	border-right-width:thin;
+	border-right-color:#999999;
+	}
 .fixed-top-cus {
     position: fixed;
     top: 7%;

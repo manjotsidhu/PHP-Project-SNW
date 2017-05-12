@@ -196,7 +196,7 @@
 <!--Here Starts The Main Body -->
  <div class="modal-body row">
 <!--Jugad--> <div class="col-sm-3"></div>
-  <div class="fixed-top col-sm-3 " style="margin-top:5%">
+  <div class="fixed-top col-sm-3 " style="margin-top:7%">
    	<div class="container">
     <!-- SidePanel Starts Here -->
    		<!-- Profile Sidebar Starts Here-->
@@ -413,13 +413,13 @@
 		}
 	?>
  	
- 	<tr class="tr_l tr_r" style="background-color:#F7F7F9;border-top:outset; border-top-width:thin;border-top-color:#999999">
+ 	<tr class="tr_l tr_r hds" style="background-color:#F7F7F9;border-top:outset; border-top-width:thin;border-top-color:#999999;">
 		<td width="5%" style="padding-left:25;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="40" width="45" class="img rounded">  </td>
 		<td > </td>
 		<td> </td>
 		<td> </td>
 	</tr>
-	<tr class="tr_l tr_r" style="background-color:#F7F7F9;border-left:outset; border-left-width:thin;border-left-color:#999999">
+	<tr class="tr_l tr_r hds" style="background-color:#F7F7F9;border-left:outset; border-left-width:thin;border-left-color:#999999;border-bottom:outset; border-bottom-width:thin;border-bottom-color:#999999">
 		<td colspan="3" style="padding:0;"><div style="float:right;padding-top:5px"><span style="color:#999999;"><?php echo $post_data[4]; ?></span>  </div>  <a href="../fb_view_profile/view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"><h4 class="card-title" style="padding-left:5px"><?php echo $user_name; ?></h4></a></td>
 	</tr>
 <?php
