@@ -234,13 +234,13 @@
                 <div class="bottom">
 					<ul class="list-group">
 					<a href="Home.php" class="list-group-item list-group-item list-group-item-success list-group-item-action justify-content-center">News Feed</a>
-					<a href="../fb_profile/profile.php" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
+					<a href="../fb_profile/Profile.php" class="list-group-item list-group-item-info list-group-item list-group-item-action justify-content-center">About Yourself</a>
 					<a href="../fb_profile/photos.php" class="list-group-item list-group-item-warning list-group-item list-group-item-action justify-content-center">Photos</a>
 					<a href="Settings.php" class="list-group-item list-group-item-danger list-group-item list-group-item-action justify-content-center">Account Settings</a>
 					</ul>
                 </div>
             </div>
-            <!-- Profile Sidebar Starts Here-->
+            <!-- Profile Sidebar ends Here-->
     <!-- SidePanel Ends Here -->
   	</div>
   </div>
@@ -664,7 +664,7 @@
 	</tr>
 	<tr class="tr_l tr_r">
 		<td>   </td>
-		<td  bgcolor="#EDEFF4" style="width:9;" colspan="3"><img src="img/like-ico.PNG" width="35px" height="35px"><span style="color:#6D84C4;">&nbsp;<?php echo $count_like; ?></span> like this. </td>
+		<td  bgcolor="#EDEFF4" style="width:9;" colspan="3"><img src="img/like-ico.png" width="35px" height="35px"><span style="color:#6D84C4;">&nbsp;<?php echo $count_like; ?></span> like this. </td>
 		<td> </td>
 		<td> </td>
 	</tr>

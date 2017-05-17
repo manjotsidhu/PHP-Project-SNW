@@ -2,54 +2,21 @@
 	session_start();
 	error_reporting(1);
 	if(isset($_SESSION['fbuser']))
-	{
-		include("background.php");
-?>
-<?php
-	if(isset($_POST['txt']))
-	{
-		$txt=$_POST['post_txt'];
-		$priority=$_POST['priority'];
-		$post_time=$_POST['txt_post_time'];
-		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values('$userid','$txt','$post_time','$priority');");
-	}
-	
-	if(isset($_POST['file']) && ($_POST['file']=='post'))
-	{
-		$txt=$_POST['post_txt'];
-		$priority=$_POST['priority'];
-		$post_time=$_POST['pic_post_time'];
-		if($txt=="")
-		{
-			$txt="added a new photo.";
-		}
-		if($gender=="Male")
-		{
-			$path = "../../fb_users/Male/".$user."/Post/";
-		}
-		else
-		{
-			$path = "../../fb_users/Female/".$user."/Post/";
-		}
+	{	
+		$v_user_id=$_GET['id'];
+		$user=$_SESSION['fbuser'];
+		mysql_connect("localhost","root","");
+		mysql_select_db("faceback");
+		$query1=mysql_query("select * from users where Email='$user'");
+		$rec1=mysql_fetch_array($query1);
+		$userid=$rec1[0];
 		
-		$img_name=$_FILES['file']['name'];
-    	$img_tmp_name=$_FILES['file']['tmp_name'];
-    	$prod_img_path=$img_name;
-		if($gender=="Male")
+		if($userid!=$v_user_id)
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Male/".$user."/Post/".$prod_img_path);
-		}
-		else
-		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Female/".$user."/Post/".$prod_img_path);
-		}
-    	mysql_query("insert into user_post(user_id,post_txt,post_pic,post_time,priority) values('$userid','$txt','$img_name','$post_time','$priority');");
-	}
-	if(isset($_POST['delete_post']))
-	{
-		$post_id=intval($_POST['post_id']);
-		mysql_query("delete from user_post where post_id=$post_id;");
-	}
+			include("background.php");
+?>
+
+<?php
 	if(isset($_POST['Like']))
 	{
 		$post_id=intval($_POST['postid']);
@@ -78,96 +45,33 @@
 		mysql_query("delete from user_post_comment where comment_id=$comm_id;");
 	}
 ?>
+
 <html>
 <head>
-<title><?php echo $name; ?></title>
-<link href="Profile_css/Profile.css" rel="stylesheet" type="text/css">
 <script src="Profile_js/Profile.js"> </script>
-<script>
-	function time_get()
-	{
-			d = new Date();
-			mon = d.getMonth()+1;
-			time = d.getDate()+"-"+mon+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes();
-			posting_txt.txt_post_time.value=time;
-	}
-	function time_get1()
-	{
-		d = new Date();
-		mon = d.getMonth()+1;
-		time = d.getDate()+"-"+mon+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes();
-		posting_pic1.pic_post_time.value=time;
-	}
-</script>
 </head>
 <body bgcolor="#E9EAED">
 
-<?php
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
-	$photos_count=mysql_num_rows($que_post_img);
-	$photos_count=$photos_count+$count1+1;
-?>
-
 <div style="position:absolute;left:31.5%; top:54%; font-weight:bold; z-index:1;">  Timeline  </div>
 <div style="position:absolute;left:37.1%; display:none; top:51%; height:9.8%; width:5.9%; background-color:#F6F7F8; z-index:1;" id="about_txt_background"> </div>
-<div style="position:absolute;left:38.3%; top:54%; font-weight:bold; z-index:1;"> <a href="about.php" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_about_txt();" onMouseOut="out_about_txt();"> About </a>  </div>
+<div style="position:absolute;left:38.3%; top:54%; font-weight:bold; z-index:1;"> <a href="about.php?id=<?php echo $v_user_id; ?>" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_about_txt();" onMouseOut="out_about_txt();"> About </a>  </div>
 <div style="position:absolute;left:43.1%; display:none; top:51%; height:9.8%; width:8.4%; background-color:#F6F7F8; z-index:1;" id="photos_txt_background"> </div>
-<div style="position:absolute;left:44.7%; top:54%; font-weight:bold; z-index:1; color:#3B59B0;"> <a href="photos.php" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_photos_txt();" onMouseOut="out_photos_txt();">  Photos </a> <samp style="color:#717171;"> <?php echo $photos_count; ?> </samp> </div>
-
-<!--Status-->
-<div style=" background:#FFFFFF; position:absolute; left:37.2%; top:65%; height:22%; width:41.4%; z-index:-1; box-shadow:0px 2px 5px 1px rgb(0,0,0);"> </div>
-<div style="position:absolute; left:37.2%; top:65%;"> <img src="img/Status.PNG"><input type="button" onClick="upload_close();"  value="Update Status" style="background:#FFFFFF; border:#FFFFFF;"> <img src="img/photo&video.PNG"><input type="button"  value="Add Photos" onClick="upload_open();" name="file" style="background:#FFFFFF; border:#FFFFFF;"></div>
-<div style=" background:#F2F2F2; position:absolute; left:37.2%; top:85%; height:6.5%; width:41.4%; z-index:-1; "> </div>
-
-
-<form method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
-	
-	<div style="position:absolute; left:37.5%; top:69.5%;">
-		<textarea style="height:100; width:550;" name="post_txt" maxlength="511" placeholder="What's on your mind?"></textarea>
-	</div>	
-    <input type="hidden" name="txt_post_time">
-	<div style="position:absolute; left:66%; top:86.9%;">
-	<select style="background: transparent; border-bottom:5px;" name="priority"> 
-<option value="Public"> Public </option> 
-<option value="Private"> Only me </option> 
-	</select>
-	</div>
-	<div style="position:absolute; left:73%; top:86.5%;"> <input type="submit" value="post" name="txt" id="post_button" onClick="time_get()"> </div>
-	</form>
-	
-	
-	<form method="post" enctype="multipart/form-data" name="posting_pic1" style="display:none;" id="post_pic" onSubmit="return post_Img_check();">
-	
-	<div style="position:absolute; left:37.5%; top:69.5%;">
-		<textarea style="height:100; width:550;" name="post_txt" maxlength="511" placeholder="What's on your mind?" id="pic_post_txt1" ></textarea>
-	</div>
-    <input type="hidden" name="pic_post_time"> 
-	<div style="position:absolute; left:38%; top:86.5%;"> <input type="file" name="file" id="post_img"> </div>
-	<div style="position:absolute; left:66%; top:86.9%;">
-	<select style="background: transparent; border-bottom:5px;" name="priority"> 
-<option value="Public"> Public </option> 
-<option value="Private"> Only me </option> 
-	</select>
-	</div>
-	<div style="position:absolute; left:73%; top:86.5%;"> <input type="submit" value="post" name="file" id="post_button" onClick="time_get1()"> </div>
-	</form>
+<div style="position:absolute;left:44.7%; top:54%; font-weight:bold; z-index:1; color:#3B59B0;"> <a href="photos.php?id=<?php echo $v_user_id; ?>" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_photos_txt();" onMouseOut="out_photos_txt();">  Photos </a> <samp style="color:#717171;"> <?php echo $photos_count; ?> </samp> </div>
 
 
 <?php
-	$que_post_bg1=mysql_query("select * from user_post where user_id=$userid");
+	$que_post_bg1=mysql_query("select * from user_post where user_id=$v_user_id");
 	$count_bg1=mysql_num_rows($que_post_bg1);
 ?>
 
-
-	<!-- post bg-->
-	<div style="position:absolute; left:37.2%; top:96%; background:#FFFFFF; height:<?php echo $count_bg1+3; ?>80%; width:50%; z-index:-1; box-shadow:0px 2px 5px 1px rgb(0,0,0);" > </div>
-	
-
-
-<div style="position:absolute;left:37.3%; top:96%;">
+<!-- post bg-->
+	<div style="position:absolute; left:37.2%; top:65%; background:#FFFFFF; height:<?php echo $count_bg1+3; ?>80%; width:50%; z-index:-1; box-shadow:0px 2px 5px 1px rgb(0,0,0);" > </div>
+    
+    
+<div style="position:absolute;left:37.3%; top:65%;">
 <table cellspacing="0">
 <?php
-	$que_post=mysql_query("select * from user_post where user_id=$userid order by post_id desc");
+	$que_post=mysql_query("select * from user_post where user_id=$v_user_id and priority='Public' order by post_id desc");
 	while($post_data=mysql_fetch_array($que_post))
 	{
 		$postid=$post_data[0];
@@ -184,34 +88,20 @@
 		$user_pic=$fetch_user_pic[2];
 ?>
 	<tr>
-			<?php
-			if($post_txt=="Join Faceback")
-			{?>
-				<td colspan="5"align="right" style="border-top:outset; border-top-width:thin;">&nbsp;  </td>
+			
+		<td colspan="5" align="right" style="border-top:outset; border-top-width:thin;">&nbsp;  </td>
 			<td>  </td>
 			<td> </td>
-			<?php
-			}
-			else
-			{
-			?>
-			<td colspan="5" align="right" style="border-top:outset; border-top-width:thin;"> 
-			<form method="post">  
-				<input type="hidden" name="post_id" value="<?php echo $postid; ?>" >
-				<input type="submit" name="delete_post" value=" " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_post.gif); width:2.4%;"> 
-			</form> </td>
-			<td>  </td>
-			<td> </td>
-			<?php } ?>
-		</tr>
-		<tr>
+			
+	</tr>
+	<tr>
 		<td width="5%" style="padding-left:10;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="60" width="55">  </td>
 		<td > </td>
 		<td> </td>
 		<td> </td>
 	</tr>
 	<tr>
-		<td colspan="3" style="padding:7;"> <a href="#" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"> <?php echo $user_name; ?> </a>  </td>
+		<td colspan="3" style="padding:7;"> <a href="view_profile.php?id=<?php echo $post_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#003399;" onMouseOver="post_name_underLine(<?php echo $postid; ?>)" onMouseOut="post_name_NounderLine(<?php echo $postid; ?>)" id="uname<?php echo $postid; ?>"> <?php echo $user_name; ?> </a>  </td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
@@ -488,13 +378,25 @@
 	<tr>
 		<td> </td>
 		<td width="4%" bgcolor="#EDEFF4" style="padding-left:12;" rowspan="2">  <img src="../../fb_users/<?php echo $user_gender1; ?>/<?php echo $user_Email1; ?>/Profile/<?php echo $user_pic1; ?>" height="40" width="47">    </td>
-		<td bgcolor="#EDEFF4" style="padding-left:7;" > <a href="#" style="text-transform:capitalize; text-decoration:none; color:#3B5998;" onMouseOver="Comment_name_underLine(<?php echo $comment_id; ?>)" onMouseOut="Comment_name_NounderLine(<?php echo $comment_id; ?>)" id="cuname<?php echo $comment_id; ?>"> <?php echo $user_name1; ?></a> </td>
-		<td align="right" rowspan="2" bgcolor="#EDEFF4"> 
+		<td bgcolor="#EDEFF4" style="padding-left:7;" > <a href="view_profile.php?id=<?php echo $comment_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#3B5998;" onMouseOver="Comment_name_underLine(<?php echo $comment_id; ?>)" onMouseOut="Comment_name_NounderLine(<?php echo $comment_id; ?>)" id="cuname<?php echo $comment_id; ?>"> <?php echo $user_name1; ?></a> </td>
+<?php	
+        if($userid==$comment_user_id)
+		{ ?>
+		<td align="right" rowspan="2" bgcolor="#EDEFF4">
 			<form method="post">  
 				<input type="hidden" name="comm_id" value="<?php echo $comment_id; ?>" >
 				<input type="submit" name="delete_comment" value="  " style="background-color:#FFFFFF; border:#FFFFFF; background-image:url(img/delete_comment.gif); width:13; height:13;"> &nbsp;
-			</form> </td>
-</tr>
+			</form> 
+        </td>
+		<?php
+		}
+		else
+		{?>
+			<td align="right" rowspan="2" bgcolor="#EDEFF4">  </td>
+		<?php
+		}
+	?>
+    </tr>
 <?php
 	$clen=strlen($comment_data[3]);
 	if($clen>0 && $clen<=60)
@@ -736,12 +638,10 @@
 	}
 </script>
 
-
 <!-- About bg-->
-	<a href="about.php"> <div style="position:absolute; left:15%; top:65%; background:#F6F7F8; height:6%; width:20%; z-index:-1; box-shadow:0px 0px 5px 0px rgb(0,0,0);" onMouseOver="on_about_bg()"> </div>
+	<a href="about.php?id=<?php echo $v_user_id; ?>"> <div style="position:absolute; left:15%; top:65%; background:#F6F7F8; height:6%; width:20%; z-index:-1; box-shadow:0px 0px 5px 0px rgb(0,0,0);" onMouseOver="on_about_bg()"> </div>
 	<div style="display:none;" id="about_on_bg">	
 	<div style="position:absolute; left:15%; top:65%; background:#F9FAFB; height:6%; width:20%; z-index:-1;" onMouseOut="out_about_bg()">  </div>
-	<div style="position:absolute; left:32%; top:66%;"> <img src="img/edit.PNG"> </div>
 	</div>
 	</a>	
 	<div style="position:absolute; left:16%; top:66%;"> <a href="about.php" style="color:#6A7480;text-decoration:none;font-size:17px; font-weight:bold;"> About </a> </div>
@@ -749,82 +649,70 @@
 	<div style="position:absolute; left:15%; top:71.2%; background:#FFFFFF; height:25%; width:20%; z-index:-1; box-shadow:0px 2px 5px 0px rgb(0,0,0);"> </div>	
 	<div style="position:absolute;left:17%; top:74%; font-weight:bold;"> Basic Information </div>
 	<div style="position:absolute;left:17%; top:79%; font-size:15px; color:#89919C;">Birthday</div>
-	<div style="position:absolute;left:22%; top:79%; font-size:15px;"> <?php echo $user_bday; ?></div>
+	<div style="position:absolute;left:22%; top:79%; font-size:15px;"> <?php echo $v_bday; ?></div>
 	<div style="position:absolute;left:17%; top:83%; font-size:15px; color:#89919C;">Gender</div>
-	<div style="position:absolute;left:22%; top:83%; font-size:15px;"> <?php echo $gender; ?></div>
+	<div style="position:absolute;left:22%; top:83%; font-size:15px;"> <?php echo $v_gender; ?></div>
 	<div style="position:absolute;left:17%; top:87%; font-size:15px; color:#89919C;">Current location</div>
 	<div style="position:absolute;left:17%; top:91%; font-size:15px; color:#89919C;">Hometown</div>
 <?php
-	$user_info_query=mysql_query("select * from user_info where user_id=$userid");
+	$user_info_query=mysql_query("select * from user_info where user_id=$v_user_id");
 	$user_info_data=mysql_fetch_array($user_info_query);
 	$city=$user_info_data[3];
 	$hometown=$user_info_data[4];
-	if($city!="")
-	{
+	
 ?>
 		<div style="position:absolute;left:25%; top:87%; font-size:15px; text-transform:capitalize;">  <?php echo $city; ?>  </div>
-<?php
-	}
-	else
-	{
-    ?>
-	<div style="position:absolute;left:25%; top:87%; font-size:15px;"> <a href="about.php" style="text-decoration:none; color:#3B59B0;"> Add Your City </a> </div>
-	<?php
-	}
-?>
-<?php
-	if($hometown!="")
-	{
-?>
+
+
 		<div style="position:absolute;left:23%; top:91%; font-size:15px; text-transform:capitalize;">  <?php echo $hometown; ?>  </div>
-<?php
-	}
-	else
-	{
-    ?>
-		<div style="position:absolute;left:23%; top:91%; font-size:15px;"> <a href="about.php" style="text-decoration:none;color:#3B59B0;"> Add your hometown </a> </div>
-	<?php
-	}
-?>
+
 
 
 
 
 <!-- Photos bg-->
-	<a href="photos.php"> <div style="position:absolute; left:15%; top:100%; background:#F6F7F8; height:6.1%; width:20%; z-index:-1; box-shadow:0px 0px 5px 0px rgb(0,0,0);" onMouseOver="on_photos_bg()"> </div>
+	<a href="photos.php?id=<?php echo $v_user_id; ?>"> <div style="position:absolute; left:15%; top:100%; background:#F6F7F8; height:6.1%; width:20%; z-index:-1; box-shadow:0px 0px 5px 0px rgb(0,0,0);" onMouseOver="on_photos_bg()"> </div>
 	<div style="display:none;" id="photos_on_bg">	
 	<div style="position:absolute; left:15%; top:100%; background:#F9FAFB; height:6%; width:20%; z-index:-1;" onMouseOut="out_photos_bg()">  </div>
-	<div style="position:absolute; left:32%; top:101%;"> <img src="img/edit.PNG"> </div>
 	</div>
 	</a>	
 	<div style="position:absolute; left:16%; top:101%;"> <a href="photos.php" style="color:#6A7480;text-decoration:none;font-size:17px; font-weight:bold;"> Photos </a> </div>
 	
 	<div style="position:absolute; left:15%; top:106.2%; background:#FFFFFF; height:51.7%; width:20%; z-index:-1; box-shadow:0px 2px 5px 0px rgb(0,0,0);"> </div>	
-	
+
+<?php
+	$que_post_img=mysql_query("select * from user_post where user_id=$v_user_id and post_pic!='' and priority='Public' order by post_id desc");
+	$photos_count=mysql_num_rows($que_post_img);
+	$photos_count=$photos_count+2;
+?>
 <?php	
-	$img_array = array();
-	array_push($img_array,$img);
+	$img_array = array("");
 	while($post_img_data=mysql_fetch_array($que_post_img))
 	{
 		array_push($img_array,$post_img_data[3]);
 	}
 ?>
-	<div style="position:absolute; left:15.5%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img_array[0] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[1] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[2] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:15.5%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[3] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[4] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[5] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:15.5%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[6] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[7] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[8] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:15.5%; top:108%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Profile/<?php echo $profile_img; ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:22%; top:108%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[1] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:28.5%; top:108%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[2] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:15.5%; top:125%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[3] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:22%; top:125%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[4] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:28.5%; top:125%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[5] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:15.5%; top:142%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[6] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:22%; top:142%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[7] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:28.5%; top:142%;"> <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Post/<?php echo $img_array[8] ?>" height="90" width="78">  </div>
 
-<?php
-		include("Profile_error/Profile_error.php");
-?>
 
 </body>
 </html>
+<?php
+}
+else
+{
+	header("location:../fb_profile/Profile.php");
+}
+?>
+
 <?php
 	}
 	else
