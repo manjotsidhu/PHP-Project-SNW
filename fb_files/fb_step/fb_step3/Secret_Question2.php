@@ -33,7 +33,7 @@
 		$user_data=mysql_fetch_array($que_user_data);
 		$userid=$user_data[0];
 		$user_join_time=$user_data[6];
-		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values($userid,'Join Faceback','$user_join_time','Public');");
+		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values($userid,'Joined Candygram','$user_join_time','Public');");
 		mysql_query("insert into user_status values($userid,'Online')");
 		mysql_query("insert into user_info(user_id) values($userid)");
 		

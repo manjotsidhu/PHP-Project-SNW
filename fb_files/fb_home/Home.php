@@ -386,7 +386,7 @@
 		{ ?>
 		<tr>
 			<?php
-			if($post_txt=="Join Faceback")
+			if($post_txt=="Join")
 			{?>
 				<td colspan="4"align="right">&nbsp;  </td>
 			<td>  </td>
