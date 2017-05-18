@@ -60,10 +60,10 @@
         </ul>
         <ul class="nav mt-lg-0 justify-content-end nav nav-pills ">
 			<li class="nav-item">
-                <a class="nav-link disabled" href="#">Home</a>	
+                <a class="nav-link" href="../fb_home/Home.php">Home</a>	
             </li>
             <li class="nav-item active">
-                <a class="nav-link disabled" href="#">Photos</a>
+                <a class="nav-link" href="photos.php">Photos</a>
             </li>
 			<li class="nav-item dropdown">
 			<div class="btn-group">
@@ -72,11 +72,11 @@
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item disabled" href="#">NewsFeed</a>
-    <a class="dropdown-item disabled" href="#">Profile Info</a>
-    <div class="dropdown-divider disabled"></div>
-    <a class="dropdown-item disabled" href="#">Account Settings</a>
-    <a class="dropdown-item disabled" href="#">LogOut</a>
+    <a class="dropdown-item" href="../fb_home/Home.php">NewsFeed</a>
+    <a class="dropdown-item" href="../fb_profile/about.php">Profile Info</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="../fb_home/Settings.php">Account Settings</a>
+    <a class="dropdown-item" href="../fb_logout/logout.php">LogOut</a>
   </div>
 </div>
       </li>
@@ -123,10 +123,7 @@
 							<a class="nav-link active" href="#">About</a>
 							</li>
 							<li class="nav-item">
-							<a class="nav-link" href="#">Photos</a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link" href="#">Account Settings</a>
+							<a class="nav-link" href="photos.php?id=<?php echo $v_user_id; ?>">Photos</a>
 						  </li>
 						</ul>
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -268,7 +265,7 @@
 	  <b>Mobile Number</b> :  <?php if($m_no!=0) { echo $m_no;  } else{ echo "No Mobile Number";} } ?><br>
 	  <b>Email</b> : <?php echo $Emial_id; ?><br>
 	  <b>Website</b> : <?php echo $web; ?><br>
-	  <b>Candygram Id</b> : <?php echo $fb_id; ?><br>
+	  <b>Candygram Id</b> : <?php if($fb_id!="") { ?> <?php echo $fb_id; ?><?php } else { ?> Add CandyGram ID <?php } ?> <br>
 	  </p>
     </div>
   </div>  
