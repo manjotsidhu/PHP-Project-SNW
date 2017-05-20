@@ -3,7 +3,7 @@
 ?>
 <html>
 <head>
-<LINK REL="SHORTCUT ICON" HREF="fb_files/fb_title_icon/Faceback.ico" />
+<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/Faceback.ico" />
 	<style>
 		#singup_button
 		{
@@ -19,7 +19,7 @@
 			box-shadow:-5px 0px 10px 1px rgb(0,0,0);
 		}
 	</style>
-     <link href="fb_files/fb_font/font.css" rel="stylesheet" type="text/css">
+     <link href="cg_files/fb_font/font.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 

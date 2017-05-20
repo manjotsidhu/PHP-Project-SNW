@@ -17,7 +17,7 @@ if(isset($_POST['Login']))
 	{
 		session_start();
 		$_SESSION['fbadmin']=$user;
-		header("location:fb_home/Home.php");
+		header("location:cg_home/Home.php");
 	}
 	else
 	{

@@ -61,7 +61,7 @@ function serched_name_out1(uid)
 <!--Head background-->
 <div style="position:fixed;left:0;top:0; height:6%; width:100%; z-index:1; background:#3B5998">   </div>
 <!--Head fb text-->
-<div style="position:fixed;left:4.5%;top:0.8%;font-size:25;font-weight:900; z-index:2;"> <a href="../fb_home/Home.php" style="color:#FFFFFF; text-decoration:none;" onMouseOver="on_head_fb_text()" onMouseOut="out_head_fb_text()"> faceback </a> </div>
+<div style="position:fixed;left:4.5%;top:0.8%;font-size:25;font-weight:900; z-index:2;"> <a href="../cg_home/Home.php" style="color:#FFFFFF; text-decoration:none;" onMouseOver="on_head_fb_text()" onMouseOut="out_head_fb_text()"> faceback </a> </div>
 <!--Head fb text background-->
 <div style="position:fixed;left:4%;top:1%; height:5%; width:8%; z-index:1; background:#4A63A5; display:none;" id="head_fb_text_backgraound">   </div>
 
@@ -95,13 +95,13 @@ function serched_name_out1(uid)
 	<table cellspacing="0">
 	<tr id="hedarname2">
 	
-		<td style="padding-left:7;" id="head_img" onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../fb_home/Home.php">  <img src="img/admin.png" style="height:27; width:25;"> </a>  </td>
+		<td style="padding-left:7;" id="head_img" onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../cg_home/Home.php">  <img src="img/admin.png" style="height:27; width:25;"> </a>  </td>
 		
-		<td id="head_name_bg"  onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../fb_home/Home.php" id="head_name_font" style="color:#DEDEEF; font-size:12; font-weight:900;font-family:lucida Bright; text-transform:capitalize; text-decoration:none;"> &nbsp;  Admin &nbsp;</a> </td>
+		<td id="head_name_bg"  onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../cg_home/Home.php" id="head_name_font" style="color:#DEDEEF; font-size:12; font-weight:900;font-family:lucida Bright; text-transform:capitalize; text-decoration:none;"> &nbsp;  Admin &nbsp;</a> </td>
 		<td style="color:#DEDEEF;"> | </td>
 		
 		
-		<td style="padding-top:7"> &nbsp; <a href="../fb_logout/logout.php"> <img src="background_file/background_icons/logout3.png" height="20" width="20"> </a> </td>
+		<td style="padding-top:7"> &nbsp; <a href="../cg_logout/logout.php"> <img src="background_file/background_icons/logout3.png" height="20" width="20"> </a> </td>
 	</tr>
 	</table>
 </div>
@@ -110,8 +110,8 @@ function serched_name_out1(uid)
 <div style="position:fixed; left:1.2%; top:16.5%; z-index:1;">
 	<table border="0">
 	<tr>
-		<td> <a href="../fb_home/Home.php"> <img src="../fb_home/img/admin.png" style="height:70; width:70;"> </a> </td>
-		<td> &nbsp; <a href="../fb_home/Home.php" onMouseOver="left_name_over()" onMouseOut="left_name_out()" style="color:#000000; font-size:12; font-weight:900;font-family:lucida Bright; text-transform:capitalize; text-decoration:none;" id="left_name">   Admin </a> </td>
+		<td> <a href="../cg_home/Home.php"> <img src="../cg_home/img/admin.png" style="height:70; width:70;"> </a> </td>
+		<td> &nbsp; <a href="../cg_home/Home.php" onMouseOver="left_name_over()" onMouseOut="left_name_out()" style="color:#000000; font-size:12; font-weight:900;font-family:lucida Bright; text-transform:capitalize; text-decoration:none;" id="left_name">   Admin </a> </td>
 	</tr>
 	</table>
 </div>
@@ -145,9 +145,9 @@ function serched_name_out1(uid)
 		
 			<tr>
 
-		<td bgcolor="#FFFFFF" style="padding-right:7;" id="Photo1<?php echo $uid ?>"> <a href="../fb_view_profile/view_profile.php?id=<?php echo $uid; ?>"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $email; ?>/Profile/<?php echo $img; ?>" style="height:70; width:70;"> </a>  </td>
+		<td bgcolor="#FFFFFF" style="padding-right:7;" id="Photo1<?php echo $uid ?>"> <a href="../cg_view_profile/view_profile.php?id=<?php echo $uid; ?>"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $email; ?>/Profile/<?php echo $img; ?>" style="height:70; width:70;"> </a>  </td>
 		
-		<td onMouseOver="serched_name_over1(<?php echo $uid;?>)" onMouseOut="serched_name_out1(<?php echo $uid;?>)" width="500" bgcolor="#FFFFFF" id="Name_bg1<?php echo $uid; ?>"> <a href="../fb_view_profile/view_profile.php?id=<?php echo $uid; ?>" style=" text-decoration:none; text-transform:capitalize; color:#3B5998;" id="Name_font1<?php echo $uid;?>">  <?php echo $name; ?> </a></td>
+		<td onMouseOver="serched_name_over1(<?php echo $uid;?>)" onMouseOut="serched_name_out1(<?php echo $uid;?>)" width="500" bgcolor="#FFFFFF" id="Name_bg1<?php echo $uid; ?>"> <a href="../cg_view_profile/view_profile.php?id=<?php echo $uid; ?>" style=" text-decoration:none; text-transform:capitalize; color:#3B5998;" id="Name_font1<?php echo $uid;?>">  <?php echo $name; ?> </a></td>
 		
 		</tr>
 		<tr>
@@ -193,11 +193,11 @@ function serched_name_out1(uid)
 	}
 </script>
 
-<div style="position:fixed; left:7%; top:35.7%;"> <a href="../fb_home/Home.php"> <img src="img/News_Feed.PNG" onMouseOver="left_news_feed_over()" onMouseOut="left_news_feed_out()"> </a> </div>
-<div style="position:fixed; left:9%; top:33%;"> <a href="../fb_home/Home.php" style="text-decoration:none; color:#000;" id="news_feed" onMouseOver="left_news_feed_over()" onMouseOut="left_news_feed_out()"> <h4>News Feed</h4> </a></div>
+<div style="position:fixed; left:7%; top:35.7%;"> <a href="../cg_home/Home.php"> <img src="img/News_Feed.PNG" onMouseOver="left_news_feed_over()" onMouseOut="left_news_feed_out()"> </a> </div>
+<div style="position:fixed; left:9%; top:33%;"> <a href="../cg_home/Home.php" style="text-decoration:none; color:#000;" id="news_feed" onMouseOver="left_news_feed_over()" onMouseOut="left_news_feed_out()"> <h4>News Feed</h4> </a></div>
 
-<div style="position:fixed; left:7%; top:40.2%;"> <a href="../fb_home/Settings.php"> <img src="img/settings2.png" height="25" width="23" onMouseOver="left_settings_over()" onMouseOut="left_settings_out()"> </a> </div>
-<div style="position:fixed; left:9%; top:37%;"><a href="../fb_home/Settings.php" style="text-decoration:none; color:#000;" id="settings" onMouseOver="left_settings_over()" onMouseOut="left_settings_out()"><h4>Settings</h4></a></div>
+<div style="position:fixed; left:7%; top:40.2%;"> <a href="../cg_home/Settings.php"> <img src="img/settings2.png" height="25" width="23" onMouseOver="left_settings_over()" onMouseOut="left_settings_out()"> </a> </div>
+<div style="position:fixed; left:9%; top:37%;"><a href="../cg_home/Settings.php" style="text-decoration:none; color:#000;" id="settings" onMouseOver="left_settings_over()" onMouseOut="left_settings_out()"><h4>Settings</h4></a></div>
 
 
 <!--Online-->
@@ -248,7 +248,7 @@ function serched_name_out1(uid)
 		$online_user_pic=$fetch_online_user_pic[2];
 ?>
 			 <tr>
-			   	   <td> <a href="view_profile.php?id=<?php echo $online_user_id; ?>"> <img src="../../fb_users/<?php echo $online_user_gender; ?>/<?php echo $online_user_Email; ?>/Profile/<?php echo $online_user_pic; ?>" height="30" width="30"> </a> </td>
+			   	   <td> <a href="view_profile.php?id=<?php echo $online_user_id; ?>"> <img src="../../cg_users/<?php echo $online_user_gender; ?>/<?php echo $online_user_Email; ?>/Profile/<?php echo $online_user_pic; ?>" height="30" width="30"> </a> </td>
 				   <td style="color:#ffffff;"> <a href="view_profile.php?id=<?php echo $online_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#ffffff;"> <?php echo $online_user_name; ?> </a> &nbsp; </td>	
 				   <td><img src="background_file/background_icons/online_symbol.png"  /></td>   
 			 </tr>	

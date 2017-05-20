@@ -65,7 +65,7 @@
 ?>
     	<tr>
         	<td> <?php echo $male_info[0]; ?> </td>
-        	<td> <a href="../fb_view_profile/view_profile.php?id=<?php echo $male_info[0]; ?>" style="text-transform:capitalize; color:#3B59A4; text-decoration:none;" onMouseOver="user_name_underLine(<?php echo $male_info[0]; ?>)" onMouseOut="user_name_NounderLine(<?php echo $male_info[0]; ?>)" id="uname<?php echo $male_info[0]; ?>"> <?php echo $male_info[1]; ?> </a> </td>
+        	<td> <a href="../cg_view_profile/view_profile.php?id=<?php echo $male_info[0]; ?>" style="text-transform:capitalize; color:#3B59A4; text-decoration:none;" onMouseOver="user_name_underLine(<?php echo $male_info[0]; ?>)" onMouseOut="user_name_NounderLine(<?php echo $male_info[0]; ?>)" id="uname<?php echo $male_info[0]; ?>"> <?php echo $male_info[1]; ?> </a> </td>
             <td> <?php echo $male_info[6]; ?> </td>
             <td style="padding-left:13; padding-top:8;"> <form method="post"> 
             	<input type="hidden" name="user_male_id" value="<?php echo $male_info[0]; ?>"> 
@@ -103,7 +103,7 @@
 ?>
     	<tr>
         	<td> <?php echo $female_info[0]; ?> </td>
-        	<td> <a href="../fb_view_profile/view_profile.php?id=<?php echo $female_info[0]; ?>" style="text-transform:capitalize; color:#3B59A4; text-decoration:none;" onMouseOver="user_name_underLine(<?php echo $female_info[0]; ?>)" onMouseOut="user_name_NounderLine(<?php echo $female_info[0]; ?>)" id="uname<?php echo $female_info[0]; ?>"> <?php echo $female_info[1]; ?> </a> </td>
+        	<td> <a href="../cg_view_profile/view_profile.php?id=<?php echo $female_info[0]; ?>" style="text-transform:capitalize; color:#3B59A4; text-decoration:none;" onMouseOver="user_name_underLine(<?php echo $female_info[0]; ?>)" onMouseOut="user_name_NounderLine(<?php echo $female_info[0]; ?>)" id="uname<?php echo $female_info[0]; ?>"> <?php echo $female_info[1]; ?> </a> </td>
             <td> <?php echo $female_info[6]; ?> </td>
             <td style="padding-left:13; padding-top:8;"> <form method="post"> 
             	 <input type="hidden" name="user_female_id" value="<?php echo $female_info[0]; ?>">

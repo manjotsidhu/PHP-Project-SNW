@@ -39,7 +39,7 @@
 		
 		session_start();
 		$_SESSION['fbuser']=$user;
-		header("location:../../fb_home/Home.php");
+		header("location:../../cg_home/Home.php");
 	}
 ?>
 <html>
@@ -50,7 +50,7 @@
 ?>
 	<link href="step3_css/step3.css" rel="stylesheet" type="text/css">
     <link href="../../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../../fb_title_icon/Faceback.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/Faceback.ico" />
 	<script src="step3_js/que_check.js" language="javascript">
 	</script>
 </head>
@@ -94,12 +94,12 @@
 			}
 			else
 			{
-				header("location:../fb_step2/Secret_Question1.php");
+				header("location:../cg_step2/Secret_Question1.php");
 			}
 		}
 		else
 		{
-			header("location:../../fb_home/Home.php");
+			header("location:../../cg_home/Home.php");
 		}
 	}
 	else

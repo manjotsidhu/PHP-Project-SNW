@@ -21,9 +21,9 @@
 
 	if(isset($_POST['file']) && ($_POST['file']=='Upload'))
 	{
-		$path = "../../../fb_users/Male/".$user."/Profile/";
-		$path2 = "../../../fb_users/Male/".$user."/Post/";
-		$path3 = "../../../fb_users/Male/".$user."/Cover/";
+		$path = "../../../cg_users/Male/".$user."/Profile/";
+		$path2 = "../../../cg_users/Male/".$user."/Post/";
+		$path3 = "../../../cg_users/Male/".$user."/Cover/";
 		mkdir($path, 0, true);
 		mkdir($path2, 0, true);
 		mkdir($path3, 0, true);
@@ -31,10 +31,10 @@
 		$img_name=$_FILES['file']['name'];
     	$img_tmp_name=$_FILES['file']['tmp_name'];
     	$prod_img_path=$img_name;
-    	move_uploaded_file($img_tmp_name,"../../../fb_users/Male/".$user."/Profile/".$prod_img_path);
+    	move_uploaded_file($img_tmp_name,"../../../cg_users/Male/".$user."/Profile/".$prod_img_path);
 		
 		mysql_query("insert into user_profile_pic(user_id,image) values('$userid','$img_name')");
-		header("location:../fb_step2/Secret_Question1.php");
+		header("location:../cg_step2/Secret_Question1.php");
 	} 
 ?>
 <html>
@@ -42,7 +42,7 @@
 	<title> Step1 </title>
 	<link href="step1_css/step1.css" rel="stylesheet" type="text/css">
     <link href="../../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../../fb_title_icon/Faceback.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/Faceback.ico" />
 	<script src="step1_js/Image_check.js" language="javascript">
 	</script>
 </head>
@@ -80,13 +80,13 @@
 			}
 			else
 			{
-				header("location:../fb_step2/Secret_Question1.php");
+				header("location:../cg_step2/Secret_Question1.php");
 			}
 		
 		}
 		else
 		{
-			header("location:../fb_step1/Step1_Female.php");
+			header("location:../cg_step1/Step1_Female.php");
 		}
 	}
 	else

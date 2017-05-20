@@ -36,7 +36,7 @@ if(isset($_POST['Login']))
 				}
 				if($que2=="" && $ans2=="")
 				{
-					header("location:fb_files/fb_step/fb_step3/Secret_Question2.php");
+					header("location:cg_files/cg_step/cg_step3/Secret_Question2.php");
 				}
 				else
 				{
@@ -47,13 +47,13 @@ if(isset($_POST['Login']))
 					$rec1=mysql_fetch_array($query1);
 					$userid=$rec1[0];
 					mysql_query("update user_status set status='Online' where user_id='$userid'");
-					header("location:fb_files/fb_home/Home.php");
+					header("location:cg_files/cg_home/Home.php");
 				}
 				
 			}
 			else
 			{
-				header("location:fb_files/fb_step/fb_step2/Secret_Question1.php");
+				header("location:cg_files/cg_step/cg_step2/Secret_Question1.php");
 			}
 		}
 		else
@@ -64,11 +64,11 @@ if(isset($_POST['Login']))
 			}
 			if($Gender=="Male")
 			{
-				header("location:fb_files/fb_step/fb_step1/Step1_Male.php");
+				header("location:cg_files/cg_step/cg_step1/Step1_Male.php");
 			}
 			else
 			{
-				header("location:fb_files/fb_step/fb_step1/Step1_Female.php");
+				header("location:cg_files/cg_step/cg_step1/Step1_Female.php");
 			}
 		}
 	}

@@ -25,11 +25,11 @@
 		}
 		if($gender=="Male")
 		{
-			$path = "../../fb_users/Male/".$user."/Post/";
+			$path = "../../cg_users/Male/".$user."/Post/";
 		}
 		else
 		{
-			$path = "../../fb_users/Female/".$user."/Post/";
+			$path = "../../cg_users/Female/".$user."/Post/";
 		}
 		
 		$img_name=$_FILES['file']['name'];
@@ -37,11 +37,11 @@
     	$prod_img_path=$img_name;
 		if($gender=="Male")
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Male/".$user."/Post/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Male/".$user."/Post/".$prod_img_path);
 		}
 		else
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Female/".$user."/Post/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$user."/Post/".$prod_img_path);
 		}
     	mysql_query("insert into user_post(user_id,post_txt,post_pic,post_time,priority) values('$userid','$txt','$img_name','$post_time','$priority');");
 	}
@@ -205,7 +205,7 @@
 			<?php } ?>
 		</tr>
 		<tr>
-		<td width="5%" style="padding-left:10;" rowspan="2"> <img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="60" width="55">  </td>
+		<td width="5%" style="padding-left:10;" rowspan="2"> <img src="../../cg_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Profile/<?php echo $user_pic; ?>" height="60" width="55">  </td>
 		<td > </td>
 		<td> </td>
 		<td> </td>
@@ -413,7 +413,7 @@
 	?>
 	<tr>
 		<td>   </td>
-		<td colspan="3"><img src="../../fb_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Post/<?php echo $post_img; ?>" width="400" height="400"> </td>
+		<td colspan="3"><img src="../../cg_users/<?php echo $user_gender; ?>/<?php echo $user_Email; ?>/Post/<?php echo $post_img; ?>" width="400" height="400"> </td>
 		<td> </td>
 		<td> </td>
 	</tr>
@@ -487,7 +487,7 @@
 
 	<tr>
 		<td> </td>
-		<td width="4%" bgcolor="#EDEFF4" style="padding-left:12;" rowspan="2">  <img src="../../fb_users/<?php echo $user_gender1; ?>/<?php echo $user_Email1; ?>/Profile/<?php echo $user_pic1; ?>" height="40" width="47">    </td>
+		<td width="4%" bgcolor="#EDEFF4" style="padding-left:12;" rowspan="2">  <img src="../../cg_users/<?php echo $user_gender1; ?>/<?php echo $user_Email1; ?>/Profile/<?php echo $user_pic1; ?>" height="40" width="47">    </td>
 		<td bgcolor="#EDEFF4" style="padding-left:7;" > <a href="#" style="text-transform:capitalize; text-decoration:none; color:#3B5998;" onMouseOver="Comment_name_underLine(<?php echo $comment_id; ?>)" onMouseOut="Comment_name_NounderLine(<?php echo $comment_id; ?>)" id="cuname<?php echo $comment_id; ?>"> <?php echo $user_name1; ?></a> </td>
 		<td align="right" rowspan="2" bgcolor="#EDEFF4"> 
 			<form method="post">  
@@ -701,7 +701,7 @@
 
 <tr>
 	<td> </td>
-	<td width="4%" style="padding-left:17;" bgcolor="#EDEFF4" rowspan="2">  <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:33; width:33;">    </td>
+	<td width="4%" style="padding-left:17;" bgcolor="#EDEFF4" rowspan="2">  <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:33; width:33;">    </td>
 		<td bgcolor="#EDEFF4" colspan="2" style="padding-top:15;"> 
 		<form method="post" name="commenting" onSubmit="return blank_comment_check()"> 
 		<input type="text" name="comment_txt" placeholder="Write a comment..." maxlength="420" style="width:440;" id="<?php echo $postid;?>"> 
@@ -809,15 +809,15 @@
 		array_push($img_array,$post_img_data[3]);
 	}
 ?>
-	<div style="position:absolute; left:15.5%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img_array[0] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[1] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:108%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[2] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:15.5%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[3] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[4] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:125%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[5] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:15.5%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[6] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:22%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[7] ?>" height="90" width="78">  </div>
-	<div style="position:absolute; left:28.5%; top:142%;"> <img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[8] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:15.5%; top:108%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img_array[0] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:22%; top:108%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[1] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:28.5%; top:108%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[2] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:15.5%; top:125%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[3] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:22%; top:125%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[4] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:28.5%; top:125%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[5] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:15.5%; top:142%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[6] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:22%; top:142%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[7] ?>" height="90" width="78">  </div>
+	<div style="position:absolute; left:28.5%; top:142%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[8] ?>" height="90" width="78">  </div>
 
 <?php
 		include("Profile_error/Profile_error.php");

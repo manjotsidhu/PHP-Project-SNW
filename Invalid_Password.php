@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <?php
 	include("Login.php");
-	include("fb_files/fb_index_file/fb_SignUp_file/SignUp.php");
+	include("cg_files/cg_index_file/fb_SignUp_file/SignUp.php");
 ?>
 <html lang="en">
 
 <head>
-<LINK REL="SHORTCUT ICON" HREF="fb_files/fb_title_icon/Faceback.ico" />
-	<link href="fb_files/fb_index_file/fb_css_file/index_css.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
-    <link href="fb_files/fb_font/font.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="fb_files/fb_index_file/fb_js_file/Registration_validation.js?<?php echo time(); ?>"> </script>
+<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/Faceback.ico" />
+	<link href="cg_files/cg_index_file/fb_css_file/index_css.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+    <link href="cg_files/fb_font/font.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="cg_files/cg_index_file/fb_js_file/Registration_validation.js?<?php echo time(); ?>"> </script>
 	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -381,7 +381,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="landing/js/bootstrap.min.js"></script>
 <?php
-	include("fb_files/fb_index_file/fb_erorr_file/fb_erorr.php");
+	include("cg_files/cg_index_file/fb_erorr_file/fb_erorr.php");
 ?>
 </body>
 

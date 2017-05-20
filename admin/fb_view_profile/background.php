@@ -36,7 +36,7 @@ if(isset($_POST['delete_user']))
 {
 		$delete_id=intval($_POST['delete_id']);
 		mysql_query("delete from users where user_id=$delete_id;");
-		header("location:../fb_home/Home.php");
+		header("location:../cg_home/Home.php");
 }
 
 if(isset($_POST['warning_user']))
@@ -50,11 +50,11 @@ if(isset($_POST['file']) && ($_POST['file']=='Upload'))
 {
 		if($v_gender=="Male")
 		{
-			$path = "../../fb_users/Male/".$v_email."/Profile/";
+			$path = "../../cg_users/Male/".$v_email."/Profile/";
 		}
 		else
 		{
-			$path = "../../fb_users/Female/".$v_email."/Profile/";
+			$path = "../../cg_users/Female/".$v_email."/Profile/";
 		}
 		
 		$img_name=$_FILES['file']['name'];
@@ -62,11 +62,11 @@ if(isset($_POST['file']) && ($_POST['file']=='Upload'))
     	$prod_img_path=$img_name;
 		if($v_gender=="Male")
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Male/".$v_email."/Profile/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Male/".$v_email."/Profile/".$prod_img_path);
 		}
 		else
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Female/".$v_email."/Profile/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$v_email."/Profile/".$prod_img_path);
 		}
     	mysql_query("update user_profile_pic set image='$img_name' where user_id=$v_user_id;");
 		header("location:view_profile.php?id=".$v_user_id."");
@@ -76,11 +76,11 @@ if(isset($_POST['file1']) && ($_POST['file1']=='Upload'))
 {
 		if($v_gender=="Male")
 		{
-			$path = "../../fb_users/Male/".$v_email."/Cover/";
+			$path = "../../cg_users/Male/".$v_email."/Cover/";
 		}
 		else
 		{
-			$path = "../../fb_users/Female/".$v_email."/Cover/";
+			$path = "../../cg_users/Female/".$v_email."/Cover/";
 		}
 		
 		$img_name=$_FILES['file1']['name'];
@@ -88,11 +88,11 @@ if(isset($_POST['file1']) && ($_POST['file1']=='Upload'))
     	$prod_img_path=$img_name;
 		if($v_gender=="Male")
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Male/".$v_email."/Cover/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Male/".$v_email."/Cover/".$prod_img_path);
 		}
 		else
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Female/".$v_email."/Cover/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$v_email."/Cover/".$prod_img_path);
 		}
     	mysql_query("insert into user_cover_pic(user_id,image) values('$v_user_id','$img_name');");
 		header("location:view_profile.php?id=".$v_user_id."");
@@ -102,11 +102,11 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 {
 		if($v_gender=="Male")
 		{
-			$path = "../../fb_users/Male/".$v_email."/Cover/";
+			$path = "../../cg_users/Male/".$v_email."/Cover/";
 		}
 		else
 		{
-			$path = "../../fb_users/Female/".$v_email."/Cover/";
+			$path = "../../cg_users/Female/".$v_email."/Cover/";
 		}
 		
 		$img_name=$_FILES['file2']['name'];
@@ -114,11 +114,11 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
     	$prod_img_path=$img_name;
 		if($v_gender=="Male")
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Male/".$v_email."/Cover/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Male/".$v_email."/Cover/".$prod_img_path);
 		}
 		else
 		{
-			move_uploaded_file($img_tmp_name,"../../fb_users/Female/".$v_email."/Cover/".$prod_img_path);
+			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$v_email."/Cover/".$prod_img_path);
 		}
 		mysql_query("update user_cover_pic set image='$img_name' where user_id=$v_user_id;");
 		header("location:view_profile.php?id=".$v_user_id."");
@@ -140,12 +140,12 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <!--Head background-->
 <div style="position:fixed;left:0;top:0; height:6%; width:100%; z-index:2; background:#3B5998">   </div>
 <!--Head fb text-->
-<div style="position:fixed;left:4.05%;top:0.8%;font-size:25;font-weight:900; z-index:3;"> <a href="../fb_home/Home.php" style="color:#FFFFFF; text-decoration:none;" onMouseOver="on_head_fb_text()" onMouseOut="out_head_fb_text()"> <font face="myFbFont"> facebook </font> </a> </div>
+<div style="position:fixed;left:4.05%;top:0.8%;font-size:25;font-weight:900; z-index:3;"> <a href="../cg_home/Home.php" style="color:#FFFFFF; text-decoration:none;" onMouseOver="on_head_fb_text()" onMouseOut="out_head_fb_text()"> <font face="myFbFont"> facebook </font> </a> </div>
 <!--Head fb text background-->
 <div style="position:fixed;left:4%;top:1%; height:5%; width:8%; z-index:2; background:#4A63A5; display:none;" id="head_fb_text_backgraound">   </div>
 
 <div style="position:fixed; left:12.7%; top:1.6%; z-index:2;">  <img src="background_file/background_icons/request.jpg">  </div>
-<div style="position:fixed; left:14.7%; top:1.6%; z-index:2;"> <a href="../fb_home/Group_Message.php"> <img src="background_file/background_icons/messages.jpg"> </a> </div>
+<div style="position:fixed; left:14.7%; top:1.6%; z-index:2;"> <a href="../cg_home/Group_Message.php"> <img src="background_file/background_icons/messages.jpg"> </a> </div>
 <div style="position:fixed; left:16.7%; top:1.6%; z-index:2;">  <img src="background_file/background_icons/notifications.jpg">  </div>
 
 <script>
@@ -160,7 +160,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 		return true;
 	}
 </script>
-<form name="fb_search" action="../fb_home/Search_Display_submit.php" method="get" onSubmit="return bcheck()">
+<form name="fb_search" action="../cg_home/Search_Display_submit.php" method="get" onSubmit="return bcheck()">
 	<div style="position:fixed; left:19%; top:1.2%; z-index:2;"> <input type="text" name="search1" placeholder="Search for people" style="height:25; width:500;" onKeyUp="searching();" id="search_text1"> </div>
 	
 	<div id="searching_ID"></div> 
@@ -174,9 +174,9 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 	<table cellspacing="0">
 	<tr id="hedarname2">
 	
-		<td style="padding-left:7;" id="head_img" onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../fb_home/Home.php">  <img src="img/admin.png" style="height:27; width:25;"> </a>  </td>
+		<td style="padding-left:7;" id="head_img" onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../cg_home/Home.php">  <img src="img/admin.png" style="height:27; width:25;"> </a>  </td>
 		
-		<td id="head_name_bg"  onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../fb_home/Home.php" id="head_name_font" style="color:#DEDEEF; font-size:12; font-weight:900;font-family:lucida Bright; text-transform:capitalize; text-decoration:none;"> &nbsp;  Admin &nbsp;</a> </td>
+		<td id="head_name_bg"  onMouseOver="head_pro_pic_over()" onMouseOut="head_pro_pic_out()"> <a href="../cg_home/Home.php" id="head_name_font" style="color:#DEDEEF; font-size:12; font-weight:900;font-family:lucida Bright; text-transform:capitalize; text-decoration:none;"> &nbsp;  Admin &nbsp;</a> </td>
 	</tr>
 	</table>
 </div>
@@ -193,26 +193,26 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
         <div style="position:fixed; left:85%; top:6%; z-index:3; background:#FFF; height:32%; width:14.8%; box-shadow:0px 2px 10px 1px rgb(0,0,0);"> </div>
         
          <div style="position:fixed; left:85.8%; top:7.8%; z-index:3;">
-        <a href="../fb_home/Home.php"> <img src="img/News_Feed.PNG"  onMouseOver="head_new_over()" onMouseOut="head_new_out()"></a>
+        <a href="../cg_home/Home.php"> <img src="img/News_Feed.PNG"  onMouseOver="head_new_over()" onMouseOut="head_new_out()"></a>
         </div>
         <div style="position:fixed; left:88%; top:5%; z-index:3;">
-                 <a href="../fb_home/Home.php" style="text-decoration:none; color:#000;" id="head_new" onMouseOver="head_new_over()" onMouseOut="head_new_out()" ><h4>News Feed</h4></a> 
+                 <a href="../cg_home/Home.php" style="text-decoration:none; color:#000;" id="head_new" onMouseOver="head_new_over()" onMouseOut="head_new_out()" ><h4>News Feed</h4></a> 
         </div>
         
-	<div style="position:fixed; left:86%; top:13%; z-index:3;"> <a href="../fb_home/Settings.php"> <img src="img/settings2.png" height="25" width="23" onMouseOver="head_settings_over()" onMouseOut="head_settings_out()"> </a> </div>
-<div style="position:fixed; left:88.2%; top:10%; z-index:3;"><a href="../fb_home/Settings.php" style="text-decoration:none; color:#000;" id="head_settings" onMouseOver="head_settings_over()" onMouseOut="head_settings_out()"><h4> Account Settings </h4></a></div>
+	<div style="position:fixed; left:86%; top:13%; z-index:3;"> <a href="../cg_home/Settings.php"> <img src="img/settings2.png" height="25" width="23" onMouseOver="head_settings_over()" onMouseOut="head_settings_out()"> </a> </div>
+<div style="position:fixed; left:88.2%; top:10%; z-index:3;"><a href="../cg_home/Settings.php" style="text-decoration:none; color:#000;" id="head_settings" onMouseOver="head_settings_over()" onMouseOut="head_settings_out()"><h4> Account Settings </h4></a></div>
 
-	<div style="position:fixed; left:86%; top:17.8%; z-index:3;"> <a href="../fb_home/Group_Message.php"> <img src="img/group.png" height="25" width="23" onMouseOver="head_g_chat_over()" onMouseOut="head_g_chat_out()"> </a> </div>
-<div style="position:fixed; left:88.2%; top:15%; z-index:3;"><a href="../fb_home/Group_Message.php" style="text-decoration:none; color:#000;" id="head_g_chat" onMouseOver="head_g_chat_over()" onMouseOut="head_g_chat_out()"><h4> Group Chat </h4></a></div>
+	<div style="position:fixed; left:86%; top:17.8%; z-index:3;"> <a href="../cg_home/Group_Message.php"> <img src="img/group.png" height="25" width="23" onMouseOver="head_g_chat_over()" onMouseOut="head_g_chat_out()"> </a> </div>
+<div style="position:fixed; left:88.2%; top:15%; z-index:3;"><a href="../cg_home/Group_Message.php" style="text-decoration:none; color:#000;" id="head_g_chat" onMouseOver="head_g_chat_over()" onMouseOut="head_g_chat_out()"><h4> Group Chat </h4></a></div>
 
-	<div style="position:fixed; left:86%; top:22.8%; z-index:3;"> <a href="../fb_home/Notice.php"> <img src="img/Notice.png" height="25" width="23" onMouseOver="head_notice_over()" onMouseOut="head_notice_out()"> </a> </div>
-<div style="position:fixed; left:88.2%; top:20%; z-index:3;"><a href="../fb_home/Notice.php" style="text-decoration:none; color:#000;" id="head_notice" onMouseOver="head_notice_over()" onMouseOut="head_notice_out()"><h4> Notice </h4></a></div>
+	<div style="position:fixed; left:86%; top:22.8%; z-index:3;"> <a href="../cg_home/Notice.php"> <img src="img/Notice.png" height="25" width="23" onMouseOver="head_notice_over()" onMouseOut="head_notice_out()"> </a> </div>
+<div style="position:fixed; left:88.2%; top:20%; z-index:3;"><a href="../cg_home/Notice.php" style="text-decoration:none; color:#000;" id="head_notice" onMouseOver="head_notice_over()" onMouseOut="head_notice_out()"><h4> Notice </h4></a></div>
 
-<div style="position:fixed; left:86.1%; top:27.5%; z-index:3;"> <a href="../fb_home/feedback.php"> <img src="background_file/background_icons/icon-feedback.png" height="20" width="20" onMouseOver="head_feedback_over()" onMouseOut="head_feedback_out()"> </a> </div>
-<div style="position:fixed; left:88.3%; top:24.5%; z-index:3;"><a href="../fb_home/feedback.php" style="text-decoration:none; color:#000;" id="head_feedback" onMouseOver="head_feedback_over()" onMouseOut="head_feedback_out()"><h4> Feedback </h4></a></div>
+<div style="position:fixed; left:86.1%; top:27.5%; z-index:3;"> <a href="../cg_home/feedback.php"> <img src="background_file/background_icons/icon-feedback.png" height="20" width="20" onMouseOver="head_feedback_over()" onMouseOut="head_feedback_out()"> </a> </div>
+<div style="position:fixed; left:88.3%; top:24.5%; z-index:3;"><a href="../cg_home/feedback.php" style="text-decoration:none; color:#000;" id="head_feedback" onMouseOver="head_feedback_over()" onMouseOut="head_feedback_out()"><h4> Feedback </h4></a></div>
 
-<div style="position:fixed; left:86%; top:32.5%; z-index:3;"> <a href="../fb_logout/logout.php"> <img src="background_file/background_icons/logout.png" height="20" width="20"  onMouseOver="head_logout_over()" onMouseOut="head_logout_out()"> </a> </div>
-<div style="position:fixed; left:88.3%; top:29.1%; z-index:3;"><a href="../fb_logout/logout.php" style="text-decoration:none; color:#000;" id="head_logout" onMouseOver="head_logout_over()" onMouseOut="head_logout_out()"><h4> Logout </h4></a></div>
+<div style="position:fixed; left:86%; top:32.5%; z-index:3;"> <a href="../cg_logout/logout.php"> <img src="background_file/background_icons/logout.png" height="20" width="20"  onMouseOver="head_logout_over()" onMouseOut="head_logout_out()"> </a> </div>
+<div style="position:fixed; left:88.3%; top:29.1%; z-index:3;"><a href="../cg_logout/logout.php" style="text-decoration:none; color:#000;" id="head_logout" onMouseOver="head_logout_over()" onMouseOut="head_logout_out()"><h4> Logout </h4></a></div>
 </div>
 		
 <!--left hr-->
@@ -224,7 +224,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 
 <!--cover img-->
 
-<div style="position:absolute; left:15.11%; top:6%;">  <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Cover/<?php echo $cover_img; ?>" height="279" width="943" onMouseOver="dis_cover_pic_edit();" onMouseOut="out_cover_pic_edit();" onClick="open_cover_photo()"> </div>
+<div style="position:absolute; left:15.11%; top:6%;">  <img src="../../cg_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Cover/<?php echo $cover_img; ?>" height="279" width="943" onMouseOver="dis_cover_pic_edit();" onMouseOut="out_cover_pic_edit();" onClick="open_cover_photo()"> </div>
 
 <div style="position:absolute; left:79%; top:46%; z-index:1;">
 <form method="post">
@@ -275,7 +275,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <div style="position:fixed; left:43%; top:8%; z-index:3; color:#971111; font-size:72px;">   warning  </div>
 
 <div style="position:fixed; left:25%; top:29%; z-index:3;">
-    <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Profile/<?php echo $profile_img; ?>" style="height:240; width:240; z-index:3;">
+    <img src="../../cg_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Profile/<?php echo $profile_img; ?>" style="height:240; width:240; z-index:3;">
 </div>
 <div style="position:fixed; left:45%; top:42%; z-index:3; text-transform:capitalize; font-size:48;"> <?php echo $v_name;  ?> </div>
 <form method="post">
@@ -303,7 +303,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3" onClick="close_cover_photo()"></div>
 <div style="position:fixed; background:#FFF; left:17%; top:5%; height:90%; width:65.5%; z-index:3"></div>
 <div style="position:fixed; left:20%; top:10%;z-index:4;">
-<img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Cover/<?php echo $cover_img; ?>" style="height:500; width:800; ">
+<img src="../../cg_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Cover/<?php echo $cover_img; ?>" style="height:500; width:800; ">
 </div>
 </div>
 
@@ -378,7 +378,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <div style="position:absolute; left:16.5%; top:33%; z-index:1;">
 	<table border="0">
 	<tr>
-		<td>  <img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Profile/<?php echo $profile_img; ?>" style="height:150; width:150;" onMouseOver="dis_pro_pic_edit();" onMouseOut="out_pro_pic_edit();" onClick="open_profile_photo()">  </td>
+		<td>  <img src="../../cg_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Profile/<?php echo $profile_img; ?>" style="height:150; width:150;" onMouseOver="dis_pro_pic_edit();" onMouseOut="out_pro_pic_edit();" onClick="open_profile_photo()">  </td>
 		<td>  &nbsp; &nbsp; <samp onMouseOver="left_name_over()" onMouseOut="left_name_out()" style="color:#FFFFFF; font-size:16; font-weight:900;font-family:lucida Bright; text-transform:capitalize; text-decoration:none; background-color:#000000;" id="left_name">   <?php echo $v_name; ?>  </samp> </td>
 	</tr>
 	</table>
@@ -401,7 +401,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3" onClick="close_profile_photo()"></div>
 <div style="position:fixed; background:#FFF; left:17%; top:5%; height:90%; width:65.5%; z-index:3"></div>
 <div style="position:fixed; left:20%; top:10%;z-index:4;">
-<img src="../../fb_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Profile/<?php echo $profile_img; ?>" style="height:500; width:800; ">
+<img src="../../cg_users/<?php echo $v_gender; ?>/<?php echo $v_email; ?>/Profile/<?php echo $profile_img; ?>" style="height:500; width:800; ">
 </div>
 </div>
 
@@ -410,7 +410,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3" onClick="close_profile_photo()"></div>
 <div style="position:fixed; background:#FFF; left:17%; top:5%; height:90%; width:65.5%; z-index:3"></div>
 <div style="position:fixed; left:20%; top:10%;z-index:4;">
-<img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:500; width:800; ">
+<img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:500; width:800; ">
 </div>
 </div>
 
@@ -528,7 +528,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 		$online_user_pic=$fetch_online_user_pic[2];
 ?>
 			 <tr>
-			   	   <td> <a href="view_profile.php?id=<?php echo $online_user_id; ?>"> <img src="../../fb_users/<?php echo $online_user_gender; ?>/<?php echo $online_user_Email; ?>/Profile/<?php echo $online_user_pic; ?>" height="30" width="30"> </a> </td>
+			   	   <td> <a href="view_profile.php?id=<?php echo $online_user_id; ?>"> <img src="../../cg_users/<?php echo $online_user_gender; ?>/<?php echo $online_user_Email; ?>/Profile/<?php echo $online_user_pic; ?>" height="30" width="30"> </a> </td>
 				   <td style="color:#ffffff;"> <a href="view_profile.php?id=<?php echo $online_user_id; ?>" style="text-transform:capitalize; text-decoration:none; color:#ffffff;"> <?php echo $online_user_name; ?> </a> &nbsp; </td>	
 				   <td><img src="background_file/background_icons/online_symbol.png"  /></td>   
 			 </tr>	

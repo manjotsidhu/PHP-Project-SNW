@@ -27,7 +27,7 @@
 		$ans1=$_POST['ans'];
 
 		mysql_query("insert into user_secret_quotes(user_id,Question1,Answer1) values('$userid','$que1','$ans1')");
-		header("location:../fb_step3/Secret_Question2.php");
+		header("location:../cg_step3/Secret_Question2.php");
 	}
 ?>
 <html>
@@ -76,17 +76,17 @@
 			{
 				if($gender=="Male")
 				{
-					header("location:../fb_step1/Step1_Male.php");
+					header("location:../cg_step1/Step1_Male.php");
 				}
 				else
 				{
-					header("location:../fb_step1/Step1_Female.php");
+					header("location:../cg_step1/Step1_Female.php");
 				}
 			}
 		}
 		else
 		{
-			header("location:../fb_step3/Secret_Question2.php");
+			header("location:../cg_step3/Secret_Question2.php");
 		}
 	}
 	else

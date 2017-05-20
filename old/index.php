@@ -1,17 +1,17 @@
 <?php
 	include("Login.php");
-	include("fb_files/fb_index_file/fb_SignUp_file/SignUp.php");
+	include("cg_files/cg_index_file/fb_SignUp_file/SignUp.php");
 ?>
 <html>
 <head>
 	<title> Facebook </title>
 <?php	
-include("fb_files/fb_index_file/fb_background_file/index_background.php");
+include("cg_files/cg_index_file/fb_background_file/index_background.php");
 ?>
-	<LINK REL="SHORTCUT ICON" HREF="fb_files/fb_title_icon/Faceback.ico" />
-	<link href="fb_files/fb_index_file/fb_css_file/index_css.css" rel="stylesheet" type="text/css">
-    <link href="fb_files/fb_font/font.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="fb_files/fb_index_file/fb_js_file/Registration_validation.js"> </script>
+	<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/Faceback.ico" />
+	<link href="cg_files/cg_index_file/fb_css_file/index_css.css" rel="stylesheet" type="text/css">
+    <link href="cg_files/fb_font/font.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="cg_files/cg_index_file/fb_js_file/Registration_validation.js"> </script>
 </head>
 <script>
 	function time_get()
@@ -38,7 +38,7 @@ include("fb_files/fb_index_file/fb_background_file/index_background.php");
 	
 		<!--Left part-->
 		<!--Mobile Image--> 	
-	<div style="position:absolute; left:5%; top:35%;"> <img src="fb_files/fb_index_file/fb_image_file/Faceback_map.PNG" width="700" height="275"> </div>
+	<div style="position:absolute; left:5%; top:35%;"> <img src="cg_files/cg_index_file/fb_image_file/Faceback_map.PNG" width="700" height="275"> </div>
     <div style="position:absolute; left:7%; top:24%; color:#3B5998; font-size:28px;"> <font face="myFbFont"> Facebook helps you connect and share with </font> </div>
     <div style="position:absolute; left:7%; top:30%; color:#3B5998; font-size:28px;"> <font face="myFbFont"> the people in your life. </font></div>
 	
@@ -130,7 +130,7 @@ include("fb_files/fb_index_file/fb_background_file/index_background.php");
  <!--my_details -->  
     <div style="display:none;" id="my_details">
     <div style="position:absolute;left:12%;top:73%; height:30%; width:30%; z-index:2; background:#000; opacity:0.5; box-shadow:10px 0px 10px 1px rgb(0,0,0);">   </div>
-    <div style="position:absolute;left:13%;top:75%; z-index:3;"> <img src="fb_files/fb_index_file/fb_background_file/Developer_details/my.jpg" height="165" width="150" style="box-shadow:0px 0px 10px 5px rgb(0,0,0);"> </div>
+    <div style="position:absolute;left:13%;top:75%; z-index:3;"> <img src="cg_files/cg_index_file/fb_background_file/Developer_details/my.jpg" height="165" width="150" style="box-shadow:0px 0px 10px 5px rgb(0,0,0);"> </div>
     <div style="position:absolute;left:26%;top:75%; z-index:3; color:#FFF;"> <h2> <?php echo base64_decode("QW1pdCBEb2RpeWEgKEFEKQ=="); ?> </h2> </div>
     <div style="position:absolute;left:26%;top:83%; z-index:3; color:#FFF;">  <h3><?php echo base64_decode("QW1pdC5hZDFpNEB5YWhvby5jb20="); ?> </h3> </div>
     <div style="position:absolute;left:26%;top:90%; z-index:3; color:#FFF;"> <h3> <?php echo base64_decode("NzYwMDg5ODIxMA=="); ?>  </h3> </div>
@@ -138,7 +138,7 @@ include("fb_files/fb_index_file/fb_background_file/index_background.php");
     
 		
 <?php
-	include("fb_files/fb_index_file/fb_erorr_file/fb_erorr.php");
+	include("cg_files/cg_index_file/fb_erorr_file/fb_erorr.php");
 ?>					
 </body>
 </html>

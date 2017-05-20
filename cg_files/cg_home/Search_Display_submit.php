@@ -1,10 +1,11 @@
 <?php
 	session_start();
 	error_reporting(1);
-	if(isset($_SESSION['fbadmin']))
+	if(isset($_SESSION['fbuser']))
 	{
 		include("background.php");
 		$id=$_GET['search1'];
+		$user=$_SESSION['fbuser'];
 ?>
 <html>
 <head>
@@ -24,6 +25,7 @@
 	<div style="position:absolute; left:25%;top:7%; z-index:-1;"> <h2> All results </h2> </div>
 	<hr style="position:absolute;left:22%;top:15%;height:0;width:55%; border-color:#CCCCCC;">
 	
+	
 	<div style="position:absolute;left:22%;top:20%; z-index:-1;">
 	<table cellspacing="0" border="0">
 <?php
@@ -38,25 +40,36 @@
 		$rec2=mysql_fetch_array($query2);
 		$img=$rec2[2];
 		
-
+		 if($user==$email)
+		 {
 ?>
-		
+		<tr>
 
+		<td bgcolor="#FFFFFF" style="padding-right:7;" id="Photo1<?php echo $uid ?>"> <a href="../cg_profile/Profile.php"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $email; ?>/Profile/<?php echo $img; ?>" style="height:70; width:70;"> </a>  </td>
+		
+		<td onMouseOver="serched_name_over1(<?php echo $uid;?>)" onMouseOut="serched_name_out1(<?php echo $uid;?>)" width="500" bgcolor="#FFFFFF" id="Name_bg1<?php echo $uid; ?>"> <a href="../cg_profile/Profile.php" style=" text-decoration:none; text-transform:capitalize; color:#3B5998;" id="Name_font1<?php echo $uid;?>">  <?php echo $name; ?> (Me)</a></td>
+		
+		</tr>
+		<tr>
+			<td colspan="2"> <hr style="border-color:#CCCCCC;"> </td>
+		</tr>
+<?php 
+		  }
+		  else
+		  {
+?>
 			<tr>
 
 		<td bgcolor="#FFFFFF" style="padding-right:7;" id="Photo1<?php echo $uid ?>"> <a href="../cg_view_profile/view_profile.php?id=<?php echo $uid; ?>"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $email; ?>/Profile/<?php echo $img; ?>" style="height:70; width:70;"> </a>  </td>
 		
 		<td onMouseOver="serched_name_over1(<?php echo $uid;?>)" onMouseOut="serched_name_out1(<?php echo $uid;?>)" width="500" bgcolor="#FFFFFF" id="Name_bg1<?php echo $uid; ?>"> <a href="../cg_view_profile/view_profile.php?id=<?php echo $uid; ?>" style=" text-decoration:none; text-transform:capitalize; color:#3B5998;" id="Name_font1<?php echo $uid;?>">  <?php echo $name; ?></a></td>
-       
-        
 		
 		</tr>
-        
 		<tr>
 			<td colspan="2"> <hr style="border-color:#CCCCCC;"> </td>
 		</tr>
 <?php
-		  
+		  }
 		}
 ?>
 	</table>

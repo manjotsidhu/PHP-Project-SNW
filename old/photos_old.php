@@ -73,12 +73,12 @@ function close_profile_photo()
 
 <div id="albums">
 <div style="position:absolute; left:18%; top:85%;">
-<img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="open_profile_photo_album()">
+<img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="open_profile_photo_album()">
 </div>
 <div style="position:absolute; left:23%; top:118%;"> <h3> Profile </h3> </div>
 
 <div style="position:absolute; left:41%; top:85%;">
-<img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" id="cover_photo" onClick="open_cover_photo_album()" >
+<img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" id="cover_photo" onClick="open_cover_photo_album()" >
 </div>
 <div style="position:absolute; left:46.4%; top:118%;"> <h3> Cover </h3> </div>
 
@@ -91,7 +91,7 @@ function close_profile_photo()
 ?>
 
 <div style="position:absolute; left:65%; top:85%;">
-<img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[0] ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" id="timeline_photos" onClick="open_timeline_photos_album()">
+<img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $img_array[0] ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" id="timeline_photos" onClick="open_timeline_photos_album()">
 </div>
 <div style="position:absolute; left:70%; top:118%;"> <h3> Timeline </h3> </div>
 </div>
@@ -99,7 +99,7 @@ function close_profile_photo()
 <!--profile_photo_album-->
 <div style="display:none;" id="profile_photo_album">
 <div style="position:absolute; left:21%; top:100%;">
-<img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="open_profile_photo()">
+<img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="open_profile_photo()">
 </div>
 <div style="position:absolute; left:18%; top:85%;"> <img src="img/Go back.png" height="50" width="50" onClick="back()"> </div>
 </div>
@@ -107,7 +107,7 @@ function close_profile_photo()
 <!--cover_photo_album-->
 <div style="display:none;" id="cover_photo_album">
 <div style="position:absolute; left:21%; top:100%;">
-<img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="open_cover_photo()">
+<img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="open_cover_photo()">
 </div>
 <div style="position:absolute; left:18%; top:85%;"> <img src="img/Go back.png" height="50" width="50" onClick="back()"> </div>
 </div>
@@ -151,7 +151,7 @@ function close_timeline_album_photo()
 	{
 		$tr=$tr+1;
 ?>
-		<td><img src="../../fb_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $post_img_data[3]; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="timeline_photos_open(<?php echo $post_img_data[0]; ?>)">
+		<td><img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Post/<?php echo $post_img_data[3]; ?>" style="height:200; width:200; box-shadow:0px 0px 5px 1px rgb(0,0,0);" onClick="timeline_photos_open(<?php echo $post_img_data[0]; ?>)">
         </td>
 <?php
 		if($tr>=3)
