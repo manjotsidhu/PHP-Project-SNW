@@ -58,13 +58,13 @@ $('#searchid').click(function(){
 	}
 	#searchid
 	{
-		width:240px;
-		padding:5px;
+		width:236px;
+		padding:7px;
 	}
 	#result
 	{
 		position:absolute;
-		width:240px;
+		width:236px;
 		padding:1px;
 		display:none;
 		margin-top:-1px;
@@ -105,10 +105,10 @@ $('#searchid').click(function(){
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
             <form class="form-inline my-2 my-lg-0">
 				<div class="contesnt">
-				<input type="text" class="search" id="searchid" placeholder="Search for people" /><br /> 
+				<input type="text" class="form-control search" id="searchid" placeholder="Search for people" /><br /> 
 				<div id="result">
 				</div>
-				</div>
+				</div>&nbsp;
 				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 			</form>
 			<!--<li class="nav-item active">
