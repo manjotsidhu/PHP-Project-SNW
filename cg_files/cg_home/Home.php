@@ -140,6 +140,79 @@
 	
 }
 	</style>
+	<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$(".search").keyup(function() 
+{ 
+var searchid = $(this).val();
+var dataString = 'search='+ searchid;
+if(searchid!='')
+{
+	$.ajax({
+	type: "POST",
+	url: "../../Search/search.php",
+	data: dataString,
+	cache: false,
+	success: function(html)
+	{
+	$("#result").html(html).show();
+	}
+	});
+}return false;    
+});
+
+jQuery("#result").live("click",function(e){ 
+	var $clicked = $(e.target);
+	var $name = $clicked.find('.name').html();
+	var decoded = $("<div/>").html($name).text();
+	$('#searchid').val(decoded);
+});
+jQuery(document).live("click", function(e) { 
+	var $clicked = $(e.target);
+	if (! $clicked.hasClass("search")){
+	jQuery("#result").fadeOut(); 
+	}
+});
+$('#searchid').click(function(){
+	jQuery("#result").fadeIn();
+});
+});
+</script>
+<style type="text/css">
+	.contesnt{
+		margin:0 auto;
+	}
+	#searchid
+	{
+		width:236px;
+		padding:7px;
+	}
+	#result
+	{
+		position:absolute;
+		width:236px;
+		padding:1px;
+		display:none;
+		margin-top:-1px;
+		border-top:0px;
+		overflow:hidden;
+		border:1px #CCC solid;
+		background-color: white;
+	}
+	.show
+	{
+		padding:1px; 
+		border-bottom:1px #999 dashed; 
+		height:50px;
+	}
+	.show:hover
+	{
+		background:#4c66a4;
+		color:#FFF;
+		cursor:pointer;
+	}
+</style>
 </head>
 <body id="body">
 
@@ -159,7 +232,11 @@
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mx-auto w-100 justify-content-center">
             <form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<div class="contesnt">
+				<input type="text" class="form-control search" id="searchid" placeholder="Search for people" /><br /> 
+				<div id="result">
+				</div>
+				</div>&nbsp;
 				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 			</form>
 			<!--<li class="nav-item active">
