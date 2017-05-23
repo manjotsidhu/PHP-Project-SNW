@@ -43,7 +43,7 @@
 	<title> Step1 </title>
 	<link href="step1_css/step1.css" rel="stylesheet" type="text/css">
     <link href="../../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/candygram.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/candygram.png?<?php echo time(); ?>" />
 	<script src="step1_js/Image_check.js" language="javascript">
 	</script>
 </head>

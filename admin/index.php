@@ -29,7 +29,7 @@ if(isset($_POST['Login']))
 <head>
 <title> Facebook Admin </title>
 <link href="fb_font/font.css" rel="stylesheet" type="text/css">
-<LINK REL="SHORTCUT ICON" HREF="img/candygram.ico" />
+<LINK REL="SHORTCUT ICON" HREF="img/candygram.png?<?php echo time(); ?>" />
 <style>
 #login_button
 {

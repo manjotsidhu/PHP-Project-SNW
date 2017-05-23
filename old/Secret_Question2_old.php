@@ -50,7 +50,7 @@
 ?>
 	<link href="step3_css/step3.css" rel="stylesheet" type="text/css">
     <link href="../../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/candygram.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/candygram.png?<?php echo time(); ?>" />
 	<script src="step3_js/que_check.js" language="javascript">
 	</script>
 </head>

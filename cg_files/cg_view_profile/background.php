@@ -61,7 +61,7 @@ error_reporting(1);
 <script src="background_file/background_js/profile_pic&cover_pic.js"></script>
 	<link href="background_file/background_css/profile.css" rel="stylesheet" type="text/css">
     <link href="../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/candygram.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/candygram.png?<?php echo time(); ?>" />
 </head>
 <body id="body">
 

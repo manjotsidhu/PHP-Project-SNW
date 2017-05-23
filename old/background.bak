@@ -97,7 +97,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <head>
 	<link href="background_file/background_css/profile.css" rel="stylesheet" type="text/css">
     <link href="../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/candygram.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/candygram.png?<?php echo time(); ?>" />
     <script src="background_file/background_js/event.js"></script>
 	<script src="background_file/background_js/searching.js"></script>
 	<script src="background_file/background_js/searched_reco_event.js"></script>

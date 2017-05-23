@@ -6,7 +6,7 @@
 	</script>
 	<script src="background_file/background_js/submited_searched_reco_event.js"></script>
     <link href="../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/candygram.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/candygram.png?<?php echo time(); ?>" />
 </head>
 <body>
 <script>

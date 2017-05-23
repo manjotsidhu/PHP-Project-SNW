@@ -8,7 +8,7 @@
 <?php	
 include("cg_files/cg_index_file/fb_background_file/index_background.php");
 ?>
-	<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/candygram.ico" />
+	<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/candygram.png?<?php echo time(); ?>" />
 	<link href="cg_files/cg_index_file/fb_css_file/index_css.css" rel="stylesheet" type="text/css">
     <link href="cg_files/fb_font/font.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="cg_files/cg_index_file/fb_js_file/Registration_validation.js"> </script>

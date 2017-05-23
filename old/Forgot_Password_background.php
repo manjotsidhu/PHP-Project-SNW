@@ -3,7 +3,7 @@
 ?>
 <html>
 <head>
-<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/candygram.ico" />
+<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/candygram.png?<?php echo time(); ?>" />
 	<style>
 		#singup_button
 		{
