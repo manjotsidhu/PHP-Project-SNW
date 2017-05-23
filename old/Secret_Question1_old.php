@@ -4,7 +4,7 @@
 	if(isset($_SESSION['tempfbuser']))
 	{
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
 		$que1=mysql_query("select * from users where Email='$user' ");
 		$rec=mysql_fetch_array($que1);

@@ -17,7 +17,7 @@ For WAMP - C://WAMP/www/
 Go To Phpmyadmin , create a new database named 
 
 ```
-faceback
+candygram
 ``` 
 
 Import the database from database folder present inside the folder(repo)

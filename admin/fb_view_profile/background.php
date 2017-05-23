@@ -1,7 +1,7 @@
 <?php
 error_reporting(1);
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 ?>
 <?php 
 	$que_v_user_info=mysql_query("select * from users where user_id=$v_user_id");
@@ -128,7 +128,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <head>
 	<title> <?php echo $v_name; ?> </title>
     <link href="../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../img/Faceback.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../img/candygram.ico" />
 	<script src="background_file/background_js/event.js"></script>
 	<script src="background_file/background_js/searching.js"></script>
 	<script src="background_file/background_js/searched_reco_event.js"></script>

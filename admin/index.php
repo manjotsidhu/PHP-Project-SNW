@@ -3,7 +3,7 @@ error_reporting(1);
 if(isset($_POST['Login']))
 {
 	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
+	mysql_select_db("candygram");
 	
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
@@ -29,7 +29,7 @@ if(isset($_POST['Login']))
 <head>
 <title> Facebook Admin </title>
 <link href="fb_font/font.css" rel="stylesheet" type="text/css">
-<LINK REL="SHORTCUT ICON" HREF="img/Faceback.ico" />
+<LINK REL="SHORTCUT ICON" HREF="img/candygram.ico" />
 <style>
 #login_button
 {
@@ -67,7 +67,7 @@ if(isset($_POST['Login']))
 
 <!--head background-->
 	<div style="position:absolute;left:0%;top:0%; height:13.2%; width:100%; z-index:-1; background:#3B5998">   </div>
-	<!--text: faceback -->
+	<!--text: candygram -->
 	<div style="position:absolute;left:36%; top:3.3%; font-size:45; font-weight:900; color:#FFFFFF; font-weight:bold; box-shadow:0px -10px 20px 1px rgb(0,0,0);"> <font face="myFbFont"> facebook Admin </font> </div>
 	<!--body background-->
 	<div style="position:absolute;left:0%;top:13.2%; height:90%; width:100%; z-index:-1; background:#EDF0F5">   </div>

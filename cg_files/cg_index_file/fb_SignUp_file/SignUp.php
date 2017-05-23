@@ -3,7 +3,7 @@ if(isset($_POST['signup']))
 {
 error_reporting(1);
 	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
+	mysql_select_db("candygram");
 	
 	$Email=$_POST['email'];
 

@@ -5,7 +5,7 @@
 	{
 		$v_user_id=$_GET['id'];
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		$query1=mysql_query("select * from users where user_id=$v_user_id");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];

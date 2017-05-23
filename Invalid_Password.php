@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/Faceback.ico" />
+<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/candygram.ico" />
 	<link href="cg_files/cg_index_file/fb_css_file/index_css.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
     <link href="cg_files/fb_font/font.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="cg_files/cg_index_file/fb_js_file/Registration_validation.js?<?php echo time(); ?>"> </script>

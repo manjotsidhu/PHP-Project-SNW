@@ -4,7 +4,7 @@
 	if(isset($_SESSION['fbadmin']))
 	{
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		$admin_user=$_SESSION['fbadmin'];
 		$que_admin_info=mysql_query("select * from admin_info where Username='$admin_user'");
 		$que_admin_data=mysql_fetch_array($que_admin_info);

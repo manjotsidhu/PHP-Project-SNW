@@ -5,7 +5,7 @@
 	{	
 		$v_user_id=$_GET['id'];
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		
 		include("background.php");
 ?>

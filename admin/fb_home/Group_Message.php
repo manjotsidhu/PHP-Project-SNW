@@ -4,7 +4,7 @@
 	if(isset($_SESSION['fbadmin']))
 	{
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		
 		if(isset($_POST['delete_chat']))
 		{

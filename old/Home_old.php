@@ -242,7 +242,7 @@
 		{ ?>
 		<tr>
 			<?php
-			if($post_txt=="Join Faceback")
+			if($post_txt=="Join candygram")
 			{?>
 				<td colspan="4"align="right" style="border-top:outset; border-top-width:thin;">&nbsp;  </td>
 			<td>  </td>

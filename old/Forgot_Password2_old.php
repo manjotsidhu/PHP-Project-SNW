@@ -3,7 +3,7 @@
 ?>
 <?php
 	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
+	mysql_select_db("candygram");
 
 	$Email=$_POST['Email'];
 	$que0=mysql_query("select * from users where Email='$Email'");

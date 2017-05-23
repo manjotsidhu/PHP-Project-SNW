@@ -3,7 +3,7 @@
 ?>
 <?php
 	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
+	mysql_select_db("candygram");
 	
 	$userid=$_POST['userid'];
 	$ans2=$_POST['ans2'];

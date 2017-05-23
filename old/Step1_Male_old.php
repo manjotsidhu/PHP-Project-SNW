@@ -4,7 +4,7 @@
 	if(isset($_SESSION['tempfbuser']))
 	{
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
 		$que1=mysql_query("select * from users where Email='$user' ");
 		$rec=mysql_fetch_array($que1);
@@ -42,7 +42,7 @@
 	<title> Step1 </title>
 	<link href="step1_css/step1.css" rel="stylesheet" type="text/css">
     <link href="../../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/Faceback.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/candygram.ico" />
 	<script src="step1_js/Image_check.js" language="javascript">
 	</script>
 </head>

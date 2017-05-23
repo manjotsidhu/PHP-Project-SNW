@@ -4,7 +4,7 @@
 	if(isset($_SESSION['tempfbuser']))
 	{
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
 		$que1=mysql_query("select * from users where Email='$user' ");
 		$rec=mysql_fetch_array($que1);
@@ -33,7 +33,7 @@
 		$user_data=mysql_fetch_array($que_user_data);
 		$userid=$user_data[0];
 		$user_join_time=$user_data[6];
-		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values($userid,'Join Faceback','$user_join_time','Public');");
+		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values($userid,'Join candygram','$user_join_time','Public');");
 		mysql_query("insert into user_status values($userid,'Online')");
 		mysql_query("insert into user_info(user_id) values($userid)");
 		
@@ -50,7 +50,7 @@
 ?>
 	<link href="step3_css/step3.css" rel="stylesheet" type="text/css">
     <link href="../../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/Faceback.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../../cg_title_icon/candygram.ico" />
 	<script src="step3_js/que_check.js" language="javascript">
 	</script>
 </head>

@@ -6,7 +6,7 @@
 	</script>
 	<script src="background_file/background_js/submited_searched_reco_event.js"></script>
     <link href="../fb_font/font.css" rel="stylesheet" type="text/css">
-    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/Faceback.ico" />
+    <LINK REL="SHORTCUT ICON" HREF="../cg_title_icon/candygram.ico" />
 </head>
 <body>
 <script>
@@ -26,7 +26,7 @@
 error_reporting(1);
 		$user=$_SESSION['fbuser'];
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		$query1=mysql_query("select * from users where Email='$user'");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];

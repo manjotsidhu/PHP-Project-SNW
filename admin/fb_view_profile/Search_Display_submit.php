@@ -7,7 +7,7 @@
 ?>
 <?php
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 ?>
 <html>
 <head>
@@ -61,7 +61,7 @@ function serched_name_out1(uid)
 <!--Head background-->
 <div style="position:fixed;left:0;top:0; height:6%; width:100%; z-index:1; background:#3B5998">   </div>
 <!--Head fb text-->
-<div style="position:fixed;left:4.5%;top:0.8%;font-size:25;font-weight:900; z-index:2;"> <a href="../cg_home/Home.php" style="color:#FFFFFF; text-decoration:none;" onMouseOver="on_head_fb_text()" onMouseOut="out_head_fb_text()"> faceback </a> </div>
+<div style="position:fixed;left:4.5%;top:0.8%;font-size:25;font-weight:900; z-index:2;"> <a href="../cg_home/Home.php" style="color:#FFFFFF; text-decoration:none;" onMouseOver="on_head_fb_text()" onMouseOut="out_head_fb_text()"> candygram </a> </div>
 <!--Head fb text background-->
 <div style="position:fixed;left:4%;top:1%; height:5%; width:8%; z-index:1; background:#4A63A5; display:none;" id="head_fb_text_backgraound">   </div>
 

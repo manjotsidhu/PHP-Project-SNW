@@ -7,7 +7,7 @@
 error_reporting(1);
 	$id=$_GET['search_text'];
 	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
+	mysql_select_db("candygram");
 	if($id!='')
 	{
 		$query1=mysql_query("select * from users where Name like('%$id%')");

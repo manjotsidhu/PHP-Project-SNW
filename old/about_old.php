@@ -5,7 +5,7 @@
 	{
 		$user=$_SESSION['fbuser'];
 		mysql_connect("localhost","root","");
-		mysql_select_db("faceback");
+		mysql_select_db("candygram");
 		$query1=mysql_query("select * from users where Email='$user'");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];

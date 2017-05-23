@@ -8,7 +8,7 @@
 <?php	
 include("cg_files/cg_index_file/fb_background_file/index_background.php");
 ?>
-	<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/Faceback.ico" />
+	<LINK REL="SHORTCUT ICON" HREF="cg_files/cg_title_icon/candygram.ico" />
 	<link href="cg_files/cg_index_file/fb_css_file/index_css.css" rel="stylesheet" type="text/css">
     <link href="cg_files/fb_font/font.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="cg_files/cg_index_file/fb_js_file/Registration_validation.js"> </script>
@@ -34,11 +34,11 @@ include("cg_files/cg_index_file/fb_background_file/index_background.php");
 		<div style="position:absolute;left:81.8%;top:5.2%; ">   <input type="submit" name="Login" value="Log In" id="login_button" />  </div>
 	</form>
 	
-	<!-- Faceback left part -->
+	<!-- candygram left part -->
 	
 		<!--Left part-->
 		<!--Mobile Image--> 	
-	<div style="position:absolute; left:5%; top:35%;"> <img src="cg_files/cg_index_file/fb_image_file/Faceback_map.PNG" width="700" height="275"> </div>
+	<div style="position:absolute; left:5%; top:35%;"> <img src="cg_files/cg_index_file/fb_image_file/candygram_map.PNG" width="700" height="275"> </div>
     <div style="position:absolute; left:7%; top:24%; color:#3B5998; font-size:28px;"> <font face="myFbFont"> Facebook helps you connect and share with </font> </div>
     <div style="position:absolute; left:7%; top:30%; color:#3B5998; font-size:28px;"> <font face="myFbFont"> the people in your life. </font></div>
 	

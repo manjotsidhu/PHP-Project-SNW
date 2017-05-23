@@ -9,7 +9,7 @@ error_reporting(1);
 	session_start();
 	$user=$_SESSION['fbuser'];
 	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
+	mysql_select_db("candygram");
 	
 	$que_user_info=mysql_query("select * from users where Email='$user'");
 	$user_data=mysql_fetch_array($que_user_info);

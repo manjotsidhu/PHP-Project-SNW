@@ -1,7 +1,7 @@
 <html>
 <head>
 	<link href="../fb_font/font.css" rel="stylesheet" type="text/css">
-	<LINK REL="SHORTCUT ICON" HREF="../img/Faceback.ico" />
+	<LINK REL="SHORTCUT ICON" HREF="../img/candygram.ico" />
 	<script src="background_file/background_js/event.js"></script>
 	<script src="background_file/background_js/searching.js"></script>
 	<script src="background_file/background_js/searched_reco_event.js">
@@ -159,7 +159,7 @@
 <?php
 error_reporting(1);
 	mysql_connect("localhost","root","");
-	mysql_select_db("faceback");
+	mysql_select_db("candygram");
 	
 	 $query_online=mysql_query("select * from user_status where status='Online'");
 	 $online_count=mysql_num_rows($query_online);
