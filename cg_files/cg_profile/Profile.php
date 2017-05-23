@@ -149,13 +149,13 @@ $('#searchid').click(function(){
 		border:1px #CCC solid;
 		background-color: white;
 	}
-	.show
+	.showss
 	{
 		padding:1px; 
 		border-bottom:1px #999 dashed; 
 		height:50px;
 	}
-	.show:hover
+	.showss:hover
 	{
 		background:#4c66a4;
 		color:#FFF;
