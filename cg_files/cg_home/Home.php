@@ -178,6 +178,41 @@ $('#searchid').click(function(){
 	jQuery("#result").fadeIn();
 });
 });
+$(document).ready( function() {
+    	$(document).on('change', '.btn-file :file', function() {
+		var input = $(this),
+			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+		input.trigger('fileselect', [label]);
+		});
+
+		$('.btn-file :file').on('fileselect', function(event, label) {
+		    
+		    var input = $(this).parents('.input-group').find(':text'),
+		        log = label;
+		    
+		    if( input.length ) {
+		        input.val(log);
+		    } else {
+		        if( log ) alert(log);
+		    }
+	    
+		});
+		function readURL(input) {
+		    if (input.files && input.files[0]) {
+		        var reader = new FileReader();
+		        
+		        reader.onload = function (e) {
+		            $('#img-upload').attr('src', e.target.result);
+		        }
+		        
+		        reader.readAsDataURL(input.files[0]);
+		    }
+		}
+
+		$("#imgInp").change(function(){
+		    readURL(this);
+		}); 	
+	});
 </script>
 <style type="text/css">
 	.contesnt{
@@ -212,6 +247,29 @@ $('#searchid').click(function(){
 		color:#FFF;
 		cursor:pointer;
 	}
+	.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+}
 </style>
 </head>
 <body id="body">
@@ -346,21 +404,33 @@ $('#searchid').click(function(){
 
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
-        <form  method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
+        <form  method="post" enctype="multipart/form-data" name="posting_pic" id="post_pic" onSubmit="return Img_check();">
 	<div class="form-group">
-		<textarea class="form-control" rows="3" placeholder="What's on your mind?" name="post_txt"></textarea>
-		<input type="hidden" name="txt_post_time">
-	</div>	
+		<textarea class="form-control" rows="3" name="post_txt" maxlength="511" placeholder="What's on your mind?"></textarea>
+		
+	</div>	<input class="form-control" type="hidden" name="pic_post_time">
 	<div class="form-group">
-		<select class="form-control" name="priority">
-		<option value="Public">Public</option>
-		<option value="Private">Only Me</option>
-		</select> 
+		<select class="form-control" name="priority"> 
+<option value="Public"> Public </option> 
+<option value="Private"> Only me </option> 
+</select>
   </div>
-  <input class="btn btn-success" type="submit" value="Post !!!" name="txt" onClick="time_get()">
-  <label class="custom-file">
-  <input type="file" value="post" name="file" id="post_button" onClick="time_get1()" class="custom-file-input">
-  <span class="custom-file-control"></span></label>
+  <div class="row">
+  <div class="col-lg-3"><button class="btn btn-success form-control" type="submit" value="post" name="file" id="post_button" onClick="time_get1()">Post !!!</button></div>
+	<div class="col-lg-7">	<div class="form-group">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-danger btn-file">
+                    Browse… <input class="form-control" type="file" name="file" id="img">
+					
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+        </div>
+    </div></div>
+	
+	</div>
+	<img id='img-upload'/>
 	</form>
 		</div>
     </div>
