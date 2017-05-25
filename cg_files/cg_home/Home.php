@@ -324,6 +324,9 @@ $('#searchid').click(function(){
   <div class="col-sm-8">
    <div class="container">
     <!-- MainPanel Starts Here -->
+	<script type="text/javascript">
+	$(function ac() { $('#collapse1').collapse('toggle');$('#collapse2').collapse('toggle')});
+	</script>
     		<div class="jumbotron-fluid container">
   <h3 class="display-4">Hello, Welcome To CandyGram</h3>
   <br>
@@ -331,9 +334,48 @@ $('#searchid').click(function(){
 <div class="row">
 <div class="col-sm-8">
 <div class="card">
-  <h5 class="card-header">Update Status &nbsp&nbsp<!--<button type="button" class="btn btn-secondary" onclick="toggler('ad_ph');"> Add Photos</button>--></h5>
-  <div class="card-block">
-    <form  method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
+ <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Update Status With Photos
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+        <form  method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
+	<div class="form-group">
+		<textarea class="form-control" rows="3" placeholder="What's on your mind?" name="post_txt"></textarea>
+		<input type="hidden" name="txt_post_time">
+	</div>	
+	<div class="form-group">
+		<select class="form-control" name="priority">
+		<option value="Public">Public</option>
+		<option value="Private">Only Me</option>
+		</select> 
+  </div>
+  <input class="btn btn-success" type="submit" value="Post !!!" name="txt" onClick="time_get()">
+  <label class="custom-file">
+  <input type="file" value="post" name="file" id="post_button" onClick="time_get1()" class="custom-file-input">
+  <span class="custom-file-control"></span></label>
+	</form>
+		</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed show" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          Update Status
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" >
+      <div class="card-block">
+        <form  method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
 	<div class="form-group">
 		<textarea class="form-control" rows="3" placeholder="What's on your mind?" name="post_txt"></textarea>
 		<input type="hidden" name="txt_post_time">
@@ -348,16 +390,13 @@ $('#searchid').click(function(){
   <div class="col-lg-2">
   <input class="btn btn-success" type="submit" value="Post !!!" name="txt" onClick="time_get()"></div>
   <div class="col-lg-10"><div class="form-group hidden" id="ad_ph">
-  <!--
-  <label class="custom-file">
-  <input type="submit" value="post" name="file" id="post_button" onClick="time_get1()" class="custom-file-input">
-  <span class="custom-file-control"></span>
-</label>
--->
+ </div></div></div>
+	</form> 
+		</div>
+    </div>
+  </div>
 </div>
-	</form>
-  </div></div></div>
-</div>
+ </div>
 </div>
 <div class="col-sm-4">
 <div class="card">
