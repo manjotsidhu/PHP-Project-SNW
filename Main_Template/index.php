@@ -125,7 +125,7 @@
 			   <div class="col-lg-3"></div>
 			   <div>
                 <p class="lead">Made By You & Manjot Sidhu</p>  
-				<p class="small">Thanks To Git , Github , Bootstrap 4 Team , W3schools , Bootsnipp , Stackoverflow for helping me at every stage</p>
+				<p class="small">Thanks To You , GOD ,Git , Github , Bootstrap 4 Team , W3schools , Bootsnipp , Stackoverflow for helping me at every stage</p>
 				<p class="small">Copyright &copy; GOD 2017. Always OpenSource</p>
                </div>
             </div>

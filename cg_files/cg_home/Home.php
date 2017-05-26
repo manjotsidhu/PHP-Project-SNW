@@ -472,7 +472,7 @@ $(document).ready( function() {
 <div class="card">
       <div class="card-block">
         <h4 class="card-title">Whats New <span class="badge badge-success">New</span></h4>
-        <p class="card-text">Now You Can Search from your friends <br>Now you can view profile of your friends<br>Added PHP to Profile Panel<br>Posts Feeds Themed a bit<br>Improvements in navigation</p>
+        <p class="card-text">Now You Can Post Photos Also<br>Now You Can Search from your friends <br>Now you can view profile of your friends<br>Added PHP to Profile Panel<br>Posts Feeds Themed a bit<br>Improvements in navigation</p>
         <a href="https://github.com/manjotsidhu/PHP-Project-SNW" class="btn btn-primary">More Info</a>
       </div>
     </div>
