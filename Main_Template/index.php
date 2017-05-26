@@ -113,9 +113,25 @@
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </p>
 </div>
+<br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   	<!-- MainPanel Ends Here -->
 	  </div>
   </div>
 	</div>
+	<footer class="footer">
+    <div class="container">
+        <div class="row">
+			   <div class="col-lg-3"></div>
+			   <div>
+                <p class="lead">Made By You & Manjot Sidhu</p>  
+				<p class="small">Thanks To Git , Github , Bootstrap 4 Team , W3schools , Bootsnipp , Stackoverflow for helping me at every stage</p>
+				<p class="small">Copyright &copy; GOD 2017. Always OpenSource</p>
+               </div>
+            </div>
+      
+        </div>
+    </div>
+</footer>
  </body>
 </html>
