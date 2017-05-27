@@ -269,6 +269,7 @@ $jq(document).ready( function() {
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
 					<div class="item active">
+					<div class="right"><button type="button" style="position:absolute;bottom:5;right:5" class="btn btn-outline-success btn-sm">Edit</button></div>
 						<?php 
 							$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
 							$rec3=mysql_fetch_array($query3);
@@ -292,7 +293,7 @@ $jq(document).ready( function() {
                 	<nav class="navbar navbar-default">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header inline-block">
-                          <a class="navbar-brands" href="#"><img class="img-responsive" src="
+                          <a class="navbar-brands" href="#"><button type="button" style="position:absolute;" class="btn btn-outline-success btn-sm">Edit</button><img class="img-responsive" src="
 						  ../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:100%; width:100%;"></a>
                           <span class="site-name"><b><?php echo $name; ?></b></span>                         
 						  <span class="site-description"><?php echo $Emial_id; ?></span>
