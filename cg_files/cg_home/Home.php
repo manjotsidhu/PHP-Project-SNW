@@ -90,8 +90,6 @@
 ?>
 <html lang="en"><head>
 <!--PHP Functioning -->
-<link href="Home_css/Home.css" rel="stylesheet" type="text/css">
-	<script src="Home_js/home.js" language="javascript"></script>
     <script>
 		function time_get()
 		{
@@ -142,52 +140,53 @@
 	</style>
 	<script type="text/javascript" src="../../Search/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
-$(function(){
-$(".search").keyup(function() 
+var $jq = jQuery.noConflict();
+$jq(function(){
+$jq(".search").keyup(function() 
 { 
-var searchid = $(this).val();
+var searchid = $jq(this).val();
 var dataString = 'search='+ searchid;
 if(searchid!='')
 {
-	$.ajax({
+	$jq.ajax({
 	type: "POST",
 	url: "../../Search/search.php",
 	data: dataString,
 	cache: false,
 	success: function(html)
 	{
-	$("#result").html(html).show();
+	$jq("#result").html(html).show();
 	}
 	});
 }return false;    
 });
 
 jQuery("#result").live("click",function(e){ 
-	var $clicked = $(e.target);
+	var $clicked = $jq(e.target);
 	var $name = $clicked.find('.name').html();
-	var decoded = $("<div/>").html($name).text();
+	var decoded = $jq("<div/>").html($name).text();
 	$('#searchid').val(decoded);
 });
 jQuery(document).live("click", function(e) { 
-	var $clicked = $(e.target);
+	var $clicked = $jq(e.target);
 	if (! $clicked.hasClass("search")){
 	jQuery("#result").fadeOut(); 
 	}
 });
-$('#searchid').click(function(){
+$jq('#searchid').click(function(){
 	jQuery("#result").fadeIn();
 });
 });
-$(document).ready( function() {
-    	$(document).on('change', '.btn-file :file', function() {
-		var input = $(this),
+$jq(document).ready( function() {
+    	$jq(document).on('change', '.btn-file :file', function() {
+		var input = $jq(this),
 			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
 		input.trigger('fileselect', [label]);
 		});
 
-		$('.btn-file :file').on('fileselect', function(event, label) {
+		$jq('.btn-file :file').on('fileselect', function(event, label) {
 		    
-		    var input = $(this).parents('.input-group').find(':text'),
+		    var input = $jq(this).parents('.input-group').find(':text'),
 		        log = label;
 		    
 		    if( input.length ) {
@@ -202,14 +201,14 @@ $(document).ready( function() {
 		        var reader = new FileReader();
 		        
 		        reader.onload = function (e) {
-		            $('#img-upload').attr('src', e.target.result);
+		            $jq('#img-upload').attr('src', e.target.result);
 		        }
 		        
 		        reader.readAsDataURL(input.files[0]);
 		    }
 		}
 
-		$("#imgInp").change(function(){
+		$jq("#imgInp").change(function(){
 		    readURL(this);
 		}); 	
 	});
@@ -281,8 +280,8 @@ $(document).ready( function() {
 	</button>
 		<script>
 		$(function () {
-		$('[data-toggle="tooltip"]').tooltip()
-			})
+  $('[data-toggle="tooltip"]').tooltip()
+})
 	</script>
 			<a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="By You & Manjot Sidhu">
 			<img src="../../Main_Template/img/brand.png" width="30" height="30" class="d-inline-block align-top" alt="" > CandyGram</a>
