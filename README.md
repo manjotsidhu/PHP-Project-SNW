@@ -1,5 +1,4 @@
 # CandyGram - A Social Networking Based PHP Website
-![logo](https://github.com/manjotsidhu/PHP-Project-SNW/blob/master/cg_files/cg_title_icon/candygram.png "Candygram Logo")
 
 Based On PHP 5.6.30 (Not Working On PHP 7)
 
