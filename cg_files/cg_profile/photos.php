@@ -142,6 +142,106 @@ $jq(document).ready( function() {
 		cursor:pointer;
 	}
 </style>
+<style type="text/css">
+.form-control, .thumbnail {
+    border-radius: 2px;
+}
+.btn-danger {
+    background-color: #B73333;
+}
+
+/* File Upload */
+.fake-shadow {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload #logo-id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 33px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.fileUpload #logos-id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 33px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.img-preview {
+    max-width: 100%;
+}
+	.contesnt{
+		margin:0 auto;
+	}
+	#searchid
+	{
+		width:236px;
+		padding:7px;
+	}
+	#result
+	{
+		position:absolute;
+		width:236px;
+		padding:1px;
+		display:none;
+		margin-top:-1px;
+		border-top:0px;
+		overflow:hidden;
+		border:1px #CCC solid;
+		background-color: white;
+	}
+	.showss
+	{
+		padding:1px; 
+		border-bottom:1px #999 dashed; 
+		height:50px;
+	}
+	.showss:hover
+	{
+		background:#4c66a4;
+		color:#FFF;
+		cursor:pointer;
+	}
+</style>
+<script>
+		$(document).ready(function() {
+		var brand = document.getElementById('logo-id');
+		brand.className = 'attachment_upload';
+		brand.onchange = function() {
+			document.getElementById('fakeUploadLogo').value = this.value.substring(12);
+		};
+
+		function readURL(input) {
+		if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                $('.img-preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+			}
+		}	
+		$("#logo-id").change(function() {
+			readURL(this);
+		});
+		});
+		$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+			})
+	</script>
 
 </head>
 <body id="body">
@@ -213,6 +313,7 @@ $jq(document).ready( function() {
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
 					<div class="item active">
+					<div class="right"><button type="button" style="position:absolute;bottom:5;right:5" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#cvr">Edit</button></div>
 						<?php 
 							$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
 							$rec3=mysql_fetch_array($query3);
@@ -236,7 +337,9 @@ $jq(document).ready( function() {
                 	<nav class="navbar navbar-default">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header inline-block">
-                          <a class="navbar-brands" href="#"><img class="img-responsive" src="
+                          <a class="navbar-brands" href="#">
+						  <button type="button" style="position:absolute;" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#ppc">Edit</button>
+						  <img class="img-responsive" src="
 						  ../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" style="height:100%; width:100%;"></a>
                           <span class="site-name"><b><?php echo $name; ?></b></span>                         
 						  <span class="site-description"><?php echo $Emial_id; ?></span>
@@ -344,8 +447,123 @@ $jq(document).ready( function() {
 			  </div>
 			</div>
 		  </div>
-								
-								</div>				
+</div>				
+<!-- Edit Cover And Profile -->
+<div class="modal fade" id="cvr" tabindex="-1" role="dialog" aria-labelledby="cvr" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Cover Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	<form method="post" enctype="multipart/form-data" name="posting_pic">
+	<div class="container col-md-11 col-md-offset-5">
+		    <div class="form-group">
+              <div class="main-img-preview">
+                <img class="thumbnail img-preview" src="<?php $filename="../../cg_users/".$gender."/".$user."/Cover/".$cover_img;
+							if (getimagesize($filename)) {
+								echo "$filename";
+							} else {
+								echo "img/cover.jpg";
+							}
+							?>" title="Preview Logo">
+              </div><br>
+              <div class="input-group">
+			  
+                <input id="fakeUploadLogo" class="form-control fake-shadow" placeholder="Choose File" disabled="disabled">
+                <div class="input-group-btn">
+                  <div class="fileUpload btn btn-danger fake-shadow">
+                    <span>Change Cover</span>
+					<?php  $filename="../../cg_users/".$gender."/".$user."/Cover/".$cover_img;
+							if (getimagesize($filename)) { ?>
+							<input name="file2" id="logo-id" type="file" name="file" class="attachment_upload" required> 
+							<?php } else { ?>
+							<input name="file1" id="logo-id" type="file" name="file" class="attachment_upload" required>
+							<?php } ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+		</div>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<?php  $filename="../../cg_users/".$gender."/".$user."/Cover/".$cover_img;
+							if (getimagesize($filename)) { ?>
+        <button type="submit" class="btn btn-primary" name="file2" value="Upload">Save changes</button>
+		<?php } else { ?>
+		<button type="submit" class="btn btn-primary" name="file1" value="Upload">Save changes</button>
+		<?php } ?>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+		$(document).ready(function() {
+		var brands = document.getElementById('logos-id');
+		brands.className = 'attachment_uploads';
+		brands.onchange = function() {
+			document.getElementById('fake').value = this.value.substring(12);
+		};
+
+		function readURL(input) {
+		if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                $('.img-preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+			}
+		}	
+		$("#logos-id").change(function() {
+			readURL(this);
+		});
+		});
+	</script>
+<div class="modal fade" id="ppc" tabindex="-1" role="dialog" aria-labelledby="ppc" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Profile Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	<form method="post" enctype="multipart/form-data" name="posting_pic">
+	<div class="container col-md-11 col-md-offset-5">
+		    <div class="form-group">
+              <div class="main-img-preview">
+                <img class="thumbnail img-preview" src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>" title="Preview Logo">
+              </div><br>
+              <div class="input-group">
+			  
+                <input id="fake" class="form-control fake-shadow" placeholder="Choose File" disabled="disabled">
+                <div class="input-group-btn">
+                  <div class="fileUpload btn btn-danger fake-shadow">
+                    <span>Change Profile Pic</span>
+							<input name="file" id="logos-id" type="file" class="attachment_uploads" required> 
+                  </div>
+                </div>
+              </div>
+            </div>
+		</div>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="file" value="Upload">Save changes</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
   	<!-- MainPanel Ends Here -->
 	</div>
 </body>

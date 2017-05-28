@@ -124,16 +124,23 @@
 <link href="../../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
 <?php 
 	$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
-	$rec3=mysql_fetch_array($query3);
-	$cover_img=$rec3[2];
+							$rec3=mysql_fetch_array($query3);
+							$cover_img=$rec3[2];
+							
+							$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+							$count_bg=mysql_num_rows($que_post_bg);
+							$count_bg=$count_bg+1;
 	
-	$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
-	$count_bg=mysql_num_rows($que_post_bg);
-	$count_bg=$count_bg+1;
 ?>
 <style type="text/css">
 	.card.hovercard .cardheader {
-    background-image:url(<?php $filename="../../cg_users/".$gender."/".$user."/Cover/".$cover_img;if (getimagesize($filename)) {echo "$filename";} else {echo "../cg_profile/img/cover.jpg";}?>);
+    background-image:url('<?php $filename="../../cg_users/".$gender."/".$user."/Cover/".$cover_img;
+							if (getimagesize($filename)) {
+								echo "$filename";
+							} else {
+								echo "img/cover.jpg";
+							}
+							?>');
 	background-size: 100%;
 	
 }
@@ -336,15 +343,6 @@ $jq(document).ready( function() {
    		<!-- Profile Sidebar Starts Here-->
     		<div class="card card_abs hovercard">
                 <div class="cardheader" >
-					<?php 
-					$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
-					$rec3=mysql_fetch_array($query3);
-					$cover_img=$rec3[2];
-	
-					$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
-					$count_bg=mysql_num_rows($que_post_bg);
-					$count_bg=$count_bg+1;
-				?>
                 </div>
                 <div class="avatar"><a href="../cg_profile/profile.php">
                     <img alt="" src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Profile/<?php echo $img; ?>"></a>
@@ -478,72 +476,6 @@ $jq(document).ready( function() {
 </div>
 </div>
 <br>
-<?php
-	$que_warning=mysql_query("select * from user_warning where user_id=$userid");
-	$warning_count=mysql_num_rows($que_warning);
-	if($warning_count>0)
-	{
-		$warning_data=mysql_fetch_array($que_warning);
-		$warning_txt=$warning_data[1];
-?>
-
-<div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3"></div>
-<div style="position:fixed; background:#FFF; left:17%; top:5%; height:90%; width:65.5%; z-index:3"></div>
-
-
-<div style="position:fixed; left:35%; top:8%; z-index:3;"> <img src="img/Warning_icon.png" height="100" width="100"></div>
-<div style="position:fixed; left:43%; top:8%; z-index:3; color:#971111; font-size:72px;">   warning  </div>
-
-<div style="position:fixed; left:20%; top:32%; color:#971111; font-size:20px; z-index:3;">  <?php echo $warning_txt; ?> 
-</div>
-
-<form method="post">
-    <input type="hidden" name="warning_id" value="<?php echo $userid; ?>" >
-<div style="position:fixed; left:62%; top:83%; z-index:3;">  
-    <input type="submit" name="delete_warning" value="I accept Warning" id="accept_button">
-</div> 
-</form>
- 
-	
-<?php	
-	}
-?>
-
-<?php
-	$que_notice=mysql_query("select * from users_notice where user_id=$userid");
-	$notice_count=mysql_num_rows($que_notice);
-	if($notice_count>0)
-	{
-		$notice_data=mysql_fetch_array($que_notice);
-		$notice_id=$notice_data[0];
-		$notice_txt=$notice_data[2];
-		$notice_time=$notice_data[3];
-?>
-
-<div style="position:fixed; background:#3A3E41; opacity: 0.8; left:0%; top:0%; height:100%; width:100%; z-index:3"></div>
-<div style="position:fixed; background:#FFF; left:17%; top:5%; height:90%; width:65.5%; z-index:3"></div>
-
-
-<div style="position:fixed; left:39%; top:8%; z-index:3;"> <img src="img/Notice.png" height="100" width="100"></div>
-<div style="position:fixed; left:47%; top:12%; z-index:3; color:#3B59A4; font-size:48px;">   Notice  </div>
-
-<div style="position:fixed; left:20%; top:32%; font-size:20px; z-index:3;">  <?php echo $notice_txt; ?> 
-</div>
-
-<div style="position:fixed; left:62%; top:75%; font-size:20px; color:#999999; z-index:3;"> Notice Time: <?php echo $notice_time; ?> 
-</div>
-
-<form method="post">
-    <input type="hidden" name="notice_id" value="<?php echo $notice_id; ?>" >
-<div style="position:fixed; left:62%; top:83%; z-index:3;">  
-    <input type="submit" name="delete_notice" value="I accept Notice" id="accept_button">
-</div> 
-</form>
- 
-	
-<?php	
-	}
-?>
 <!-- POSTS PANEL -->
 	<div class="card">
   <div class="card-block">
