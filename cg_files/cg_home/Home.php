@@ -145,6 +145,43 @@
 	
 }
 	</style>
+	<script type="text/javascript">
+	$(document).ready( function() {
+    	$(document).on('change', '.btn-file :file', function() {
+		var input = $(this),
+			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+		input.trigger('fileselect', [label]);
+		});
+
+		$('.btn-file :file').on('fileselect', function(event, label) {
+		    
+		    var input = $(this).parents('.input-group').find(':text'),
+		        log = label;
+		    
+		    if( input.length ) {
+		        input.val(log);
+		    } else {
+		        if( log ) alert(log);
+		    }
+	    
+		});
+		function readURL(input) {
+		    if (input.files && input.files[0]) {
+		        var reader = new FileReader();
+		        
+		        reader.onload = function (e) {
+		            $('#img-upload').attr('src', e.target.result);
+		        }
+		        
+		        reader.readAsDataURL(input.files[0]);
+		    }
+		}
+
+		$("#imgInp").change(function(){
+		    readURL(this);
+		}); 	
+	});
+	</script>
 	<script type="text/javascript" src="../../Search/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
 var $jq = jQuery.noConflict();
@@ -184,41 +221,6 @@ $jq('#searchid').click(function(){
 	jQuery("#result").fadeIn();
 });
 });
-$jq(document).ready( function() {
-    	$jq(document).on('change', '.btn-file :file', function() {
-		var input = $jq(this),
-			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-		input.trigger('fileselect', [label]);
-		});
-
-		$jq('.btn-file :file').on('fileselect', function(event, label) {
-		    
-		    var input = $jq(this).parents('.input-group').find(':text'),
-		        log = label;
-		    
-		    if( input.length ) {
-		        input.val(log);
-		    } else {
-		        if( log ) alert(log);
-		    }
-	    
-		});
-		function readURL(input) {
-		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
-		        
-		        reader.onload = function (e) {
-		            $jq('#img-upload').attr('src', e.target.result);
-		        }
-		        
-		        reader.readAsDataURL(input.files[0]);
-		    }
-		}
-
-		$jq("#imgInp").change(function(){
-		    readURL(this);
-		}); 	
-	});
 </script>
 <style type="text/css">
 	.contesnt{
@@ -414,11 +416,12 @@ $jq(document).ready( function() {
   </div>
   <div class="row">
   <div class="col-lg-3"><button class="btn btn-success form-control" type="submit" value="post" name="file" id="post_button" onClick="time_get1()">Post !!!</button></div>
-	<div class="col-lg-7">	<div class="form-group">
+	<div class="col-lg-7">	
+	<div class="form-group">
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-danger btn-file">
-                    Browse… <input class="form-control" type="file" name="file" id="img">
+                    Browse… <input class="form-control" type="file" name="file" id="imgInp">
 					
                 </span>
             </span>
