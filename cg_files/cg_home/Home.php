@@ -278,7 +278,45 @@ $jq('#searchid').click(function(){
 #img-upload{
     width: 100%;
 }
+#sticky {
+}
+#sticky.stick {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+#footer {
+  width:100%;
+  height:100px;
+  background:#ccc;
+  z-index:999999
+ }
 </style>
+<script>
+
+function sticky_relocate() {
+    var window_top = $(window).scrollTop();
+    var footer_top = $("#footer").offset().top;
+    var div_top = $('#sticky-anchor').offset().top;
+    var div_height = $("#sticky").height();
+    
+    var padding = 10;  // tweak here or get from margins etc
+    
+    if (window_top + div_height + 70 > footer_top - padding)
+        $('#sticky').css({top: (window_top + div_height - footer_top + padding) * -1})
+    else if (window_top > div_top) {
+        $('#sticky').addClass('stick');
+        $('#sticky').css({top:70})
+    } else {
+        $('#sticky').removeClass('stick');
+    }
+}
+
+$(function () {
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
+});
+</script>
 </head>
 <body id="body">
 
@@ -338,8 +376,9 @@ $jq('#searchid').click(function(){
 <!--NavBar Ends Here-->
 <!--Here Starts The Main Body -->
  <div class="modal-body row">
-<!--Jugad--> <div class="col-sm-3"></div>
-  <div class="fixed-top col-sm-3 " style="margin-top:7%">
+<div class="col-sm-3"></div>
+<div id="sticky-anchor"></div>
+ <div id="sticky" class="col-sm-3" style="position:fixed;">
    	<div class="container">
     <!-- SidePanel Starts Here -->
    		<!-- Profile Sidebar Starts Here-->
@@ -1056,9 +1095,12 @@ $jq('#searchid').click(function(){
 	<?php
 		include("Home_error/Home_error.php");
 	?>
-  	<!-- MainPanel Ends Here -->
+	<!-- MainPanel Ends Here -->
 	  </div>
   </div>
+<!--  <div id="footer">
+   Footer
+    </div>-->
 	</div>
 </body>
 </html>
