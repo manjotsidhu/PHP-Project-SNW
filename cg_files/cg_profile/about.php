@@ -886,6 +886,35 @@ $jq('#searchid').click(function(){
 </div>					
   	<!-- MainPanel Ends Here -->
 	</div>
+	<footer class="footer">
+        <div class="container">
+                <div class="col-lg-12">
+                    <ul class="list-inline" style="">
+                        <li class="list-inline-item">
+                            <a href="../cg_home/Home.php">Home</a>
+                        </li>
+                        <li class="footer-menu-divider list-inline-item">&sdot;</li>
+                        <li class="list-inline-item">
+                            <a href="../cg_logout/logout.php">LogOut</a>
+                        </li>
+                        <li class="footer-menu-divider list-inline-item">&sdot;</li>
+                        <li class="list-inline-item">
+                            <a href="../../index.php#services">Project Information</a>
+                        </li>
+                        <li class="footer-menu-divider list-inline-item">&sdot;</li>
+                        <li class="list-inline-item">
+                            <a href="../../index.php#open">OpenSource</a>
+                        </li>
+						<li class="footer-menu-divider list-inline-item">&sdot;</li>
+                        <li class="list-inline-item">
+                            <a href="../../index.php#about">About Us</a>
+                        </li>
+                    </ul>
+                    <p class="mb-0">Made With Love By You & Manjot Sidhu ...<br>Thanks God , Github , Git , Bootstrap , jquery , Bootsnipp , Stackoverflow , w3schools and much more</p>
+                </div>
+        
+        </div>
+    </footer>
 </body>
 </html>
 <?php
