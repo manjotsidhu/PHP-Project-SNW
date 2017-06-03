@@ -876,7 +876,7 @@ $jq('#searchid').click(function(){
                             <a href="../../index.php#about">About Us</a>
                         </li>
                     </ul>
-                    <p class="mb-0">Made With Love By You & Manjot Sidhu ...<br>Thanks God , Github , Git , Bootstrap , jquery , Bootsnipp , Stackoverflow , w3schools and much more</p>
+                    <h6>Made With Love By You & Manjot Sidhu ...<br>Thanks God , Github , Git , Bootstrap , jquery , Bootsnipp , Stackoverflow , w3schools and much more</h6>
                 </div>
         
         </div>
