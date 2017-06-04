@@ -6,8 +6,8 @@
 <?php
 error_reporting(1);
 	$id=$_GET['search_text'];
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	mysql_connect("sql209.rf.gd","rfgd_20139087","R8qN11KQ");
+	mysql_select_db("rfgd_20139087_cg");
 	if($id!='')
 	{
 		$query1=mysql_query("select * from users where Name like('%$id%')");

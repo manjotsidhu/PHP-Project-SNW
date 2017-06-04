@@ -1,7 +1,7 @@
 <?php
 error_reporting(1);
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		mysql_connect("sql209.rf.gd","rfgd_20139087","R8qN11KQ");
+		mysql_select_db("rfgd_20139087_cg");
 ?>
 <?php 
 	$que_v_user_info=mysql_query("select * from users where user_id=$v_user_id");
