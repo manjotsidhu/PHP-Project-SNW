@@ -442,8 +442,8 @@ $jq('#searchid').click(function(){
 			<form method="post">
 			<br><br>
 			<input type="hidden" value="<?php echo $userid; ?>" name="uid">
-			<input class="btn btn-danger" type="submit" value="Fck me & Delete My Account" name="detete_id" id="yes_button"> 
-			<input class="btn btn-success" type="button" value="Wait I want to Fck U" id="no_button" onclick="location.href='Settings.php';"> 
+			<input class="btn btn-danger" type="submit" value="Delete My Account" name="detete_id" id="yes_button"> 
+			<input class="btn btn-success" type="button" value="I Want To Stay" id="no_button" onclick="location.href='Settings.php';"> 
 			</form>
 			</div>
 			</div>
