@@ -24,9 +24,9 @@
 		$path = "../../../cg_users/Male/".$user."/Profile/";
 		$path2 = "../../../cg_users/Male/".$user."/Post/";
 		$path3 = "../../../cg_users/Male/".$user."/Cover/";
-		mkdir($path, 0, true);
-		mkdir($path2, 0, true);
-		mkdir($path3, 0, true);
+		mkdir($path,0777, true);
+		mkdir($path2,0777, true);
+		mkdir($path3,0777, true);
 		
 		$img_name=$_FILES['file']['name'];
     	$img_tmp_name=$_FILES['file']['tmp_name'];
