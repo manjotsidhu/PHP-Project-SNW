@@ -454,7 +454,7 @@ $(function () {
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-danger btn-file">
-                    Browse… <input class="form-control" type="file" name="file" id="imgInp">
+                    Browse <input class="form-control" type="file" name="file" id="imgInp">
 					
                 </span>
             </span>
