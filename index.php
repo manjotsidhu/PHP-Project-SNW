@@ -51,9 +51,12 @@
 		Reg.fb_join_time.value=time;
 	}
 </script>
-<style>
-</style>
-<body>
+<script>
+function sorry() {
+    alert("We are sorry that CandyGram is not yet optimized for Mobile Devices , You might occur huge bugs as this website is in beta...");
+}
+</script>
+<body onload="sorry()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
