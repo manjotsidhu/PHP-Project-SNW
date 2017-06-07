@@ -2,8 +2,8 @@
 	include("Login.php");
 ?>
 <?php
-	mysql_connect("sql209.rf.gd","rfgd_20139087","R8qN11KQ");
-	mysql_select_db("rfgd_20139087_cg");
+	mysql_connect("localhost","id1867950_cg_root","cgpass");
+	mysql_select_db("id1867950_cg_db");
 	
 	$userid=$_POST['userid'];
 	$ans2=$_POST['ans2'];

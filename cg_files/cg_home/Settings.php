@@ -3,8 +3,8 @@
 	error_reporting(1);
 	if(isset($_SESSION['fbuser']))
 	{
-		mysql_connect("sql209.rf.gd","rfgd_20139087","R8qN11KQ");
-		mysql_select_db("rfgd_20139087_cg");
+		mysql_connect("localhost","id1867950_cg_root","cgpass");
+		mysql_select_db("id1867950_cg_db");
 		$user_email=$_SESSION['fbuser'];
 		$que_user_info=mysql_query("select * from users where Email='$user_email'");
 		$user_data=mysql_fetch_array($que_user_info);

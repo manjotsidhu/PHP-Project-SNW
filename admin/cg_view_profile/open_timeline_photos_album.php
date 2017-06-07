@@ -8,8 +8,8 @@ error_reporting(1);
 	$id=$_GET['photo'];
 	$vid=$_GET['v_id'];
 
-	mysql_connect("sql209.rf.gd","rfgd_20139087","R8qN11KQ");
-	mysql_select_db("rfgd_20139087_cg");
+	mysql_connect("localhost","id1867950_cg_root","cgpass");
+	mysql_select_db("id1867950_cg_db");
 	
 	$que_user_info=mysql_query("select * from users where user_id=$vid");
 	$user_data=mysql_fetch_array($que_user_info);
