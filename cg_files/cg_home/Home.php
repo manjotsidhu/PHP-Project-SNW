@@ -312,6 +312,14 @@ $(function () {
     $(window).scroll(sticky_relocate);
     sticky_relocate();
 });
+function ps_img() {
+    var x = document.getElementById('ps_div');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
 </script>
 </head>
 <body id="body">
@@ -431,8 +439,9 @@ $(function () {
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Update Status With Photos
+          <h4>Update Status
         </a>
+		<button class="btn btn-info btn-sm" style="float:right" onClick="ps_img()">Add Photos</button></h4> 
       </h5>
     </div>
 
@@ -452,7 +461,7 @@ $(function () {
   <div class="row">
   <div class="col-lg-3"><button class="btn btn-success form-control" type="submit" value="post" name="file" id="post_button" onClick="time_get1()">Post !!!</button></div>
 	<div class="col-lg-7">	
-	<div class="form-group">
+	<div class="form-group" id="ps_div" style="display:none">
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-danger btn-file">
@@ -467,36 +476,6 @@ $(function () {
 	</div>
 	<img id='img-upload'/>
 	</form>
-		</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingTwo">
-      <h5 class="mb-0">
-        <a class="collapsed show" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          Update Status
-        </a>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" >
-      <div class="card-block">
-        <form  method="post" name="posting_txt" onSubmit="return blank_post_check();" id="post_txt">
-	<div class="form-group">
-		<textarea class="form-control" rows="3" placeholder="What's on your mind?" name="post_txt"></textarea>
-		<input type="hidden" name="txt_post_time">
-	</div>	
-	<div class="form-group">
-		<select class="form-control" name="priority">
-		<option value="Public">Public</option>
-		<option value="Private">Only Me</option>
-		</select> 
-  </div>
-  <div class="row">
-  <div class="col-lg-2">
-  <input class="btn btn-success" type="submit" value="Post !!!" name="txt" onClick="time_get()"></div>
-  <div class="col-lg-10"><div class="form-group hidden" id="ad_ph">
- </div></div></div>
-	</form> 
 		</div>
     </div>
   </div>
