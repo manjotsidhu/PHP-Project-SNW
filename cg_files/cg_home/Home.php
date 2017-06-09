@@ -142,6 +142,7 @@
 							}
 							?>');
 	background-size: 100%;
+	height:100px;
 	
 }
 	</style>
@@ -279,6 +280,7 @@ $jq('#searchid').click(function(){
     width: 100%;
 }
 #sticky {
+	top:100px;
 }
 #sticky.stick {
     position: fixed;
@@ -294,13 +296,13 @@ function sticky_relocate() {
     var div_top = $('#sticky-anchor').offset().top;
     var div_height = $("#sticky").height();
     
-    var padding = 10;  // tweak here or get from margins etc
+    var padding = 20;  // tweak here or get from margins etc
     
-    if (window_top + div_height + 70 > footer_top - padding)
+    if (window_top + div_height + 100 > footer_top - padding)
         $('#sticky').css({top: (window_top + div_height - footer_top + padding) * -1})
     else if (window_top > div_top) {
         $('#sticky').addClass('stick');
-        $('#sticky').css({top:70})
+        $('#sticky').css({top:100})
     } else {
         $('#sticky').removeClass('stick');
     }
