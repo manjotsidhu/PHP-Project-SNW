@@ -51,10 +51,35 @@
 		Reg.fb_join_time.value=time;
 	}
 </script>
-<style>
-</style>
-<body>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+      $('#myModal').modal('show');
+    });
+ </script>
 
+<body>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Welcome To CandyGram</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+		<div class="row">
+		<div class="col-lg-4"><label>Please Enter Your Name</label></div>
+		<div class="col-lg-8"><input class="form-control" type="text" required></div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Submit"></form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
