@@ -51,13 +51,41 @@
 		Reg.fb_join_time.value=time;
 	}
 </script>
-<script type="text/javascript">
+  <script type="text/javascript">
     $(window).on('load',function(){
         $('#alert').alert()
     });
 </script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+      $('#myModal').modal('show');
+    });
+ </script>
+
 <body>
-<div style="position:absolute;top:10%;left:10%;z-index:1"><div class="alert alert-warning alert-dismissible" role="alert" id="alert">
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Welcome To CandyGram</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+		<div class="row">
+		<div class="col-lg-4"><label>Please Enter Your Name</label></div>
+		<div class="col-lg-8"><input class="form-control" type="text" required></div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Submit"></form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+  <div style="position:absolute;top:10%;left:10%;z-index:1"><div class="alert alert-warning alert-dismissible" role="alert" id="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   We are sorry that CandyGram is not yet optimized for Mobile Devices , You might occur huge bugs as this website is in beta...
 </div></div>
