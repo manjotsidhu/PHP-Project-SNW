@@ -51,6 +51,11 @@
 		Reg.fb_join_time.value=time;
 	}
 </script>
+  <script type="text/javascript">
+    $(window).on('load',function(){
+        $('#alert').alert()
+    });
+</script>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
     $(window).load(function() {
@@ -80,6 +85,10 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+  <div style="position:absolute;top:10%;left:10%;z-index:1"><div class="alert alert-warning alert-dismissible" role="alert" id="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  We are sorry that CandyGram is not yet optimized for Mobile Devices , You might occur huge bugs as this website is in beta...
+</div></div>
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">

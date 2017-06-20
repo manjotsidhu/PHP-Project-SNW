@@ -8,8 +8,8 @@ error_reporting(1);
 	$id=$_GET['photo'];
 	session_start();
 	$user=$_SESSION['fbuser'];
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	mysql_connect("localhost","id1867950_cg_root","cgpass");
+	mysql_select_db("id1867950_cg_db");
 	
 	$que_user_info=mysql_query("select * from users where Email='$user'");
 	$user_data=mysql_fetch_array($que_user_info);

@@ -2,8 +2,8 @@
 if(isset($_POST['signup']))
 {
 error_reporting(1);
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	mysql_connect("localhost","id1867950_cg_root","cgpass");
+	mysql_select_db("id1867950_cg_db");
 	
 	$Email=$_POST['email'];
 

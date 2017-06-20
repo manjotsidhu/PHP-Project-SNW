@@ -95,8 +95,8 @@
     <form action="Forgot_Password4.php"  method="post">
 		<label for="text-input" class="col-8 col-form-label"><h5>
 					<?php
-			mysql_connect("localhost","root","");
-			mysql_select_db("candygram");
+			mysql_connect("localhost","id1867950_cg_root","cgpass");
+			mysql_select_db("id1867950_cg_db");
 	
 			$userid=$_POST['userid'];
 			$ans1=$_POST['ans1'];

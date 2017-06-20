@@ -7,8 +7,8 @@ error_reporting(1);
 	$id=$_GET['search_text'];
 	session_start();
 	$user=$_SESSION['fbuser'];
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	mysql_connect("localhost","id1867950_cg_root","cgpass");
+	mysql_select_db("id1867950_cg_db");
 	if($id!='')
 	{
 		$query1=mysql_query("select * from users where Name like('%$id%')");

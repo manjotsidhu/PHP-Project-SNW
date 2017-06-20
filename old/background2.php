@@ -47,8 +47,8 @@
 <?php
 error_reporting(1);
 		$user=$_SESSION['fbuser'];
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		mysql_connect("localhost","id1867950_cg_root","cgpass");
+		mysql_select_db("id1867950_cg_db");
 		$query1=mysql_query("select * from users where Email='$user'");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];

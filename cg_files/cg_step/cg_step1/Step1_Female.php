@@ -3,8 +3,8 @@
 	error_reporting(1);
 	if(isset($_SESSION['tempfbuser']))
 	{
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		mysql_connect("localhost","id1867950_cg_root","cgpass");
+		mysql_select_db("id1867950_cg_db");
 		$user=$_SESSION['tempfbuser'];
 		$que1=mysql_query("select * from users where Email='$user' ");
 		$rec=mysql_fetch_array($que1);
@@ -25,9 +25,9 @@
 		$path = "../../../cg_users/Female/".$user."/Profile/";
 		$path2 = "../../../cg_users/Female/".$user."/Post/";
 		$path3 = "../../../cg_users/Female/".$user."/Cover/";
-		mkdir($path, 0, true);
-		mkdir($path2, 0, true);
-		mkdir($path3, 0, true);
+		mkdir($path, 0777, true);
+		mkdir($path2, 0777, true);
+		mkdir($path3, 0777, true);
 		
 		$img_name=$_FILES['file']['name'];
     	$img_tmp_name=$_FILES['file']['tmp_name'];

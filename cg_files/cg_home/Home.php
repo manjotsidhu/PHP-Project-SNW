@@ -366,7 +366,7 @@ function ps_img() {
   </button>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="Home.php">NewsFeed</a>
-    <a class="dropdown-item" href="../cg_profile/profile.php">Profile Info</a>
+    <a class="dropdown-item" href="../cg_profile/Profile.php">Profile Info</a>
     
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="Settings.php">Account Settings</a>
@@ -465,7 +465,7 @@ function ps_img() {
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-danger btn-file">
-                    Browse… <input class="form-control" type="file" name="file" id="imgInp">
+                    Browse <input class="form-control" type="file" name="file" id="imgInp">
 					
                 </span>
             </span>

@@ -6,8 +6,8 @@
 		$id=$_GET['search1'];
 ?>
 <?php
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		mysql_connect("localhost","id1867950_cg_root","cgpass");
+		mysql_select_db("id1867950_cg_db");
 ?>
 <html>
 <head>
