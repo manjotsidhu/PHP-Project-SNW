@@ -24,7 +24,6 @@
 
     <!-- Custom CSS -->
     <link href="landing/css/landing.css?<?php echo time(); ?>" rel="stylesheet">
-	<link href="Main_Template/css/main.css?<?php echo time(); ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="landing/font-awesome/css/font-awesome.min.css?<?php echo time(); ?>" rel="stylesheet" type="text/css">
@@ -93,27 +92,26 @@
         </div>
         <!-- /.container -->
     </nav>
-
-
     <!-- Header -->
     <a name="sign"></a>
-    <div class="intro-header">
+    <div class="intro-header"><form  method="post">
+<div class="alert alert-warning alert-dismissible fixed-top-cus " role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <h4>Please Re-enter Password</h4><p>The password you entered is incorrect. Please try again (make sure your caps lock is off).</p>
+		  <p><a href="Forgot_Password.php">Forget Password? </a></p>
+		</div>
+</form>
         <div class="container">
-
+		
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h3>Connect With Your Friends With One Click</h3>
                         <div class="login-wrap">
-						<form  method="post">
-		<div class="alert alert-warning alert-dismissible fixed-top-cus" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <h4>Please Re-enter Password</h4><p>The password you entered is incorrect. Please try again (make sure your caps lock is off).</p>
-  <p><a href="Forgot_Password.php">Forget Password? </a></p>
-</div>
-	</form>
+			
 	<!-- Login/Signup Form -->
 	<form method="post">
+		
 	<div class="login-html" height="100%">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
@@ -238,7 +236,6 @@
 </div></form>
 						
                         <p>Made With <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> By You and Manjot Sidhu</p>
-
                     </div>
                 </div>
             </div>
