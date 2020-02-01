@@ -1,4 +1,4 @@
 <?php
-$connection = mysql_connect('localhost','root','') or die(mysql_error());
-$database = mysql_select_db('candygram') or die(mysql_error());
+$conn = mysqli_connect('localhost','root','');
+$database = mysqli_select_db($conn, 'candygram');
 ?>
