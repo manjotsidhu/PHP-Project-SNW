@@ -27,7 +27,7 @@
 	<div style="position:absolute;left:22%;top:20%; z-index:-1;">
 	<table cellspacing="0" border="0">
 <?php
-	while($rec1=mysql_fetch_array($query1))
+	while($rec1=mysqli_fetch_array($query1))
 	{
 		$uid=$rec1[0];
 		$name=$rec1[1];
@@ -35,7 +35,7 @@
 		$userid=$rec1[0];
 		$email=$rec1[2];
 		$query2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
-		$rec2=mysql_fetch_array($query2);
+		$rec2=mysqli_fetch_array($query2);
 		$img=$rec2[2];
 		
 

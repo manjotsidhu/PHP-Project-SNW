@@ -12,7 +12,7 @@
 			$notice_time=$_POST['notice_time'];
 			
 			$que_users=mysqli_query($conn ,"select * from users");
-			while($users_data=mysql_fetch_array($que_users))
+			while($users_data=mysqli_fetch_array($que_users))
 			{
 				$user_id=$users_data[0];
 				mysqli_query($conn ,"insert into users_notice(user_id,notice_txt,notice_time) values($user_id,'$notice_txt','$notice_time')");

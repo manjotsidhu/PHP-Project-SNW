@@ -31,7 +31,7 @@
 <?php
 	$que_post=mysqli_query($conn ,"select * from user_post where priority='Public' order by post_id desc");
 	
-	while($post_data=mysql_fetch_array($que_post))
+	while($post_data=mysqli_fetch_array($que_post))
 	{
 		$postid=$post_data[0];
 		$post_user_id=$post_data[1];
@@ -39,8 +39,8 @@
 		$post_img=$post_data[3];
 		$que_user_info=mysqli_query($conn ,"select * from users where user_id=$post_user_id");
 		$que_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$post_user_id");
-		$fetch_user_info=mysql_fetch_array($que_user_info);
-		$fetch_user_pic=mysql_fetch_array($que_user_pic);
+		$fetch_user_info=mysqli_fetch_array($que_user_info);
+		$fetch_user_pic=mysqli_fetch_array($que_user_pic);
 		$user_name=$fetch_user_info[1];
 		$user_Email=$fetch_user_info[2];
 		$user_gender=$fetch_user_info[4];
@@ -308,14 +308,14 @@
 	</tr>
     
     <?php
-	while($comment_data=mysql_fetch_array($que_comment))
+	while($comment_data=mysqli_fetch_array($que_comment))
 	{
 		$comment_id=$comment_data[0];
 		$comment_user_id=$comment_data[2];
 		$que_user_info1=mysqli_query($conn ,"select * from users where user_id=$comment_user_id");
 		$que_user_pic1=mysqli_query($conn ,"select * from user_profile_pic where user_id=$comment_user_id");
-		$fetch_user_info1=mysql_fetch_array($que_user_info1);
-		$fetch_user_pic1=mysql_fetch_array($que_user_pic1);
+		$fetch_user_info1=mysqli_fetch_array($que_user_info1);
+		$fetch_user_pic1=mysqli_fetch_array($que_user_pic1);
 		$user_name1=$fetch_user_info1[1];
 		$user_Email1=$fetch_user_info1[2];
 		$user_gender1=$fetch_user_info1[4];

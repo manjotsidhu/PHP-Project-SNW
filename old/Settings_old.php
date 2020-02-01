@@ -7,7 +7,7 @@
 		mysql_select_db("candygram");
 		$user_email=$_SESSION['fbuser'];
 		$que_user_info=mysqli_query($conn ,"select * from users where Email='$user_email'");
-		$user_data=mysql_fetch_array($que_user_info);
+		$user_data=mysqli_fetch_array($que_user_info);
 		$userid=$user_data[0];
 		$user_name=$user_data[1];
 		$user_pass=$user_data[3];

@@ -7,7 +7,7 @@
 		mysql_select_db("candygram");
 		$admin_user=$_SESSION['fbadmin'];
 		$que_admin_info=mysqli_query($conn ,"select * from admin_info where Username='$admin_user'");
-		$que_admin_data=mysql_fetch_array($que_admin_info);
+		$que_admin_data=mysqli_fetch_array($que_admin_info);
 		$admin_password=$que_admin_data[1];	
 ?>
 <?php

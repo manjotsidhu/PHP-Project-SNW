@@ -60,7 +60,7 @@
         <th> Delete </th>
     </tr>
 <?php
-	while($male_info=mysql_fetch_array($all_male_que))
+	while($male_info=mysqli_fetch_array($all_male_que))
 	{
 ?>
     	<tr>
@@ -98,7 +98,7 @@
         <th> Delete </th>
     </tr>
 <?php
-	while($female_info=mysql_fetch_array($all_female_que))
+	while($female_info=mysqli_fetch_array($all_female_que))
 	{
 ?>
     	<tr>

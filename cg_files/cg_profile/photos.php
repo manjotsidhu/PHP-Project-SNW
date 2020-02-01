@@ -12,7 +12,7 @@
 ?>
 <?php
 		$user_data_query=mysqli_query($conn ,"select * from users where Email='$user'");
-		$user_data=mysql_fetch_array($user_data_query);
+		$user_data=mysqli_fetch_array($user_data_query);
 		$bday=$user_data[5];
 		$gender=$user_data[4];
 		$Emial_id=$user_data[2];
@@ -281,7 +281,7 @@ $jq('#searchid').click(function(){
 					<div class="right"><button type="button" style="position:absolute;bottom:5;right:5" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#cvr">Edit</button></div>
 						<?php 
 							$query3=mysqli_query($conn ,"select * from user_cover_pic where user_id=$userid");
-							$rec3=mysql_fetch_array($query3);
+							$rec3=mysqli_fetch_array($query3);
 							$cover_img=$rec3[2];
 							
 							$que_post_bg=mysqli_query($conn ,"select * from user_post where user_id=$userid");
@@ -345,7 +345,7 @@ $jq('#searchid').click(function(){
 				
 			<?php
 				$img_array = array();
-				while($post_img_data=mysql_fetch_array($que_post_img))
+				while($post_img_data=mysqli_fetch_array($que_post_img))
 				{
 					array_push($img_array,$post_img_data[3]);
 				}

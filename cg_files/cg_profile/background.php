@@ -4,10 +4,10 @@ error_reporting(1);
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$query1=mysqli_query($conn ,"select * from users where Email='$user'");
-		$rec1=mysql_fetch_array($query1);
+		$rec1=mysqli_fetch_array($query1);
 		$userid=$rec1[0];
 		$query2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
-		$rec2=mysql_fetch_array($query2);
+		$rec2=mysqli_fetch_array($query2);
 		
 		$name=$rec1[1];
 		$gender=$rec1[4];
@@ -107,7 +107,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <!--cover img-->
 <?php 
 	$query3=mysqli_query($conn ,"select * from user_cover_pic where user_id=$userid");
-	$rec3=mysql_fetch_array($query3);
+	$rec3=mysqli_fetch_array($query3);
 	$cover_img=$rec3[2];
 	
 	$que_post_bg=mysqli_query($conn ,"select * from user_post where user_id=$userid");

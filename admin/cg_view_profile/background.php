@@ -5,19 +5,19 @@ error_reporting(1);
 ?>
 <?php 
 	$que_v_user_info=mysqli_query($conn ,"select * from users where user_id=$v_user_id");
-	$v_user_data=mysql_fetch_array($que_v_user_info);
+	$v_user_data=mysqli_fetch_array($que_v_user_info);
 	$v_name=$v_user_data[1];
 	$v_gender=$v_user_data[4];
 	$v_email=$v_user_data[2];
 	$v_bday=$v_user_data[5];
 	
 	$que_view_user_profile_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$v_user_id");
-	$user_profile_pic_data=mysql_fetch_array($que_view_user_profile_pic);
+	$user_profile_pic_data=mysqli_fetch_array($que_view_user_profile_pic);
 	$profile_img=$user_profile_pic_data[2];
 
 
 	$que_user_cover_pic=mysqli_query($conn ,"select * from user_cover_pic where user_id=$v_user_id");
-	$user_cover_pic_data=mysql_fetch_array($que_user_cover_pic);
+	$user_cover_pic_data=mysqli_fetch_array($que_user_cover_pic);
 	$cover_img=$user_cover_pic_data[2];
 	$count1=mysql_num_rows($que_user_cover_pic);
 	
@@ -515,13 +515,13 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 	<div style="position:fixed; left:84.5%; top:6%; z-index:2;">
 	<table>
 <?php
-	 while($online_data=mysql_fetch_array($query_online))
+	 while($online_data=mysqli_fetch_array($query_online))
 	 {
 	  	$online_user_id=$online_data[0];
 		$query_online_user_data=mysqli_query($conn ,"select * from users where user_id=$online_user_id");
 		$query_online_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$online_user_id");
-		$fetch_online_user_info=mysql_fetch_array($query_online_user_data);
-		$fetch_online_user_pic=mysql_fetch_array($query_online_user_pic);
+		$fetch_online_user_info=mysqli_fetch_array($query_online_user_data);
+		$fetch_online_user_pic=mysqli_fetch_array($query_online_user_pic);
 		$online_user_name=$fetch_online_user_info[1];
 		$online_user_Email=$fetch_online_user_info[2];
 		$online_user_gender=$fetch_online_user_info[4];

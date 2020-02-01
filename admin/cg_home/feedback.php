@@ -45,7 +45,7 @@
     <div style="position:absolute; left:20%; top:35%;">
     <table border="0">
 <?php
-	while($feedback_data=mysql_fetch_array($que_feedback))
+	while($feedback_data=mysqli_fetch_array($que_feedback))
 	{
 		$feedback_id=$feedback_data[0];
 		$fb_user_id=$feedback_data[1];
@@ -53,12 +53,12 @@
 		$fb_star=$feedback_data[3];
 		$fb_time=$feedback_data[4];
 		$que_fb_user_info=mysqli_query($conn ,"select * from users where user_id=$fb_user_id");
-		$fb_user_data=mysql_fetch_array($que_fb_user_info);
+		$fb_user_data=mysqli_fetch_array($que_fb_user_info);
 		$user_name=$fb_user_data[1];
 		$user_email=$fb_user_data[2];
 		$user_gender=$fb_user_data[4];
 		$que_fb_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$fb_user_id");
-		$fetch_user_pic=mysql_fetch_array($que_fb_user_pic);
+		$fetch_user_pic=mysqli_fetch_array($que_fb_user_pic);
 		$user_pic=$fetch_user_pic[2];
 ?>
 	<tr>

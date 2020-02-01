@@ -7,10 +7,10 @@
 		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
 		$que1=mysqli_query($conn ,"select * from users where Email='$user' ");
-		$rec=mysql_fetch_array($que1);
+		$rec=mysqli_fetch_array($que1);
 		$userid=$rec[0];
 		$que2=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
-		$rec2=mysql_fetch_array($que2);
+		$rec2=mysqli_fetch_array($que2);
 		$q2=$rec2[3];
 		$a2=$rec2[4];
 		if($q2=="" && $a2=="")
@@ -30,7 +30,7 @@
 		mysqli_query($conn ,"update user_secret_quotes set Question2='$que2',Answer2='$ans2' where user_id=$userid");
 		
 		$que_user_data=mysqli_query($conn ,"select * from users where Email='$user';");
-		$user_data=mysql_fetch_array($que_user_data);
+		$user_data=mysqli_fetch_array($que_user_data);
 		$userid=$user_data[0];
 		$user_join_time=$user_data[6];
 		mysqli_query($conn ,"insert into user_post(user_id,post_txt,post_time,priority) values($userid,'Joined Candygram','$user_join_time','Public');");

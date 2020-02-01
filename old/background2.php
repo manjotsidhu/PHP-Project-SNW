@@ -50,10 +50,10 @@ error_reporting(1);
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$query1=mysqli_query($conn ,"select * from users where Email='$user'");
-		$rec1=mysql_fetch_array($query1);
+		$rec1=mysqli_fetch_array($query1);
 		$userid=$rec1[0];
 		$query2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
-		$rec2=mysql_fetch_array($query2);
+		$rec2=mysqli_fetch_array($query2);
 		
 		$name=$rec1[1];
 		$gender=$rec1[4];
@@ -196,13 +196,13 @@ error_reporting(1);
 <?php			
 	 
 	 
-	 while($online_data=mysql_fetch_array($query_online))
+	 while($online_data=mysqli_fetch_array($query_online))
 	 {
 	  	$online_user_id=$online_data[0];
 		$query_online_user_data=mysqli_query($conn ,"select * from users where user_id=$online_user_id");
 		$query_online_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$online_user_id");
-		$fetch_online_user_info=mysql_fetch_array($query_online_user_data);
-		$fetch_online_user_pic=mysql_fetch_array($query_online_user_pic);
+		$fetch_online_user_info=mysqli_fetch_array($query_online_user_data);
+		$fetch_online_user_pic=mysqli_fetch_array($query_online_user_pic);
 		$online_user_name=$fetch_online_user_info[1];
 		$online_user_Email=$fetch_online_user_info[2];
 		$online_user_gender=$fetch_online_user_info[4];

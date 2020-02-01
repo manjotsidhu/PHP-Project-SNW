@@ -7,7 +7,7 @@
 		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
 		$que1=mysqli_query($conn ,"select * from users where Email='$user' ");
-		$rec=mysql_fetch_array($que1);
+		$rec=mysqli_fetch_array($que1);
 		$userid=$rec[0];
 		$gender=$rec[4];
 		$que2=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");

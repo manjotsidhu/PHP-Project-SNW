@@ -217,7 +217,7 @@ $jq('#searchid').click(function(){
 		  </div>			
 <?php
 	$img_array = array();
-	while($post_img_data=mysql_fetch_array($que_post_img))
+	while($post_img_data=mysqli_fetch_array($que_post_img))
 	{
 		array_push($img_array,$post_img_data[3]);
 	}

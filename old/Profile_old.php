@@ -168,7 +168,7 @@
 <table cellspacing="0">
 <?php
 	$que_post=mysqli_query($conn ,"select * from user_post where user_id=$userid order by post_id desc");
-	while($post_data=mysql_fetch_array($que_post))
+	while($post_data=mysqli_fetch_array($que_post))
 	{
 		$postid=$post_data[0];
 		$post_user_id=$post_data[1];
@@ -176,8 +176,8 @@
 		$post_img=$post_data[3];
 		$que_user_info=mysqli_query($conn ,"select * from users where user_id=$post_user_id");
 		$que_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$post_user_id");
-		$fetch_user_info=mysql_fetch_array($que_user_info);
-		$fetch_user_pic=mysql_fetch_array($que_user_pic);
+		$fetch_user_info=mysqli_fetch_array($que_user_info);
+		$fetch_user_pic=mysqli_fetch_array($que_user_pic);
 		$user_name=$fetch_user_info[1];
 		$user_Email=$fetch_user_info[2];
 		$user_gender=$fetch_user_info[4];
@@ -427,7 +427,7 @@
 		 	$que_status=mysqli_query($conn ,"select * from user_post_status where post_id=$postid and user_id=$userid;");
 			$que_like=mysqli_query($conn ,"select * from user_post_status where post_id=$postid");
 			$count_like=mysql_num_rows($que_like);
-			$status_data=mysql_fetch_array($que_status);
+			$status_data=mysqli_fetch_array($que_status);
 			if($status_data[3]=="Like")
 			{?>
 			
@@ -470,14 +470,14 @@
 		<td> </td>
 	</tr>
 <?php
-	while($comment_data=mysql_fetch_array($que_comment))
+	while($comment_data=mysqli_fetch_array($que_comment))
 	{
 		$comment_id=$comment_data[0];
 		$comment_user_id=$comment_data[2];
 		$que_user_info1=mysqli_query($conn ,"select * from users where user_id=$comment_user_id");
 		$que_user_pic1=mysqli_query($conn ,"select * from user_profile_pic where user_id=$comment_user_id");
-		$fetch_user_info1=mysql_fetch_array($que_user_info1);
-		$fetch_user_pic1=mysql_fetch_array($que_user_pic1);
+		$fetch_user_info1=mysqli_fetch_array($que_user_info1);
+		$fetch_user_pic1=mysqli_fetch_array($que_user_pic1);
 		$user_name1=$fetch_user_info1[1];
 		$user_Email1=$fetch_user_info1[2];
 		$user_gender1=$fetch_user_info1[4];
@@ -756,7 +756,7 @@
 	<div style="position:absolute;left:17%; top:91%; font-size:15px; color:#89919C;">Hometown</div>
 <?php
 	$user_info_query=mysqli_query($conn ,"select * from user_info where user_id=$userid");
-	$user_info_data=mysql_fetch_array($user_info_query);
+	$user_info_data=mysqli_fetch_array($user_info_query);
 	$city=$user_info_data[3];
 	$hometown=$user_info_data[4];
 	if($city!="")
@@ -804,7 +804,7 @@
 <?php	
 	$img_array = array();
 	array_push($img_array,$img);
-	while($post_img_data=mysql_fetch_array($que_post_img))
+	while($post_img_data=mysqli_fetch_array($que_post_img))
 	{
 		array_push($img_array,$post_img_data[3]);
 	}

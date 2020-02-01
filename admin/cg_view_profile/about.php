@@ -7,7 +7,7 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$query1=mysqli_query($conn ,"select * from users where user_id=$v_user_id");
-		$rec1=mysql_fetch_array($query1);
+		$rec1=mysqli_fetch_array($query1);
 		$userid=$rec1[0];
 ?>
 <?php
@@ -65,7 +65,7 @@
 		include("background.php");
 		
 		$user_info_query=mysqli_query($conn ,"select * from user_info where user_id=$userid");
-		$user_info_data=mysql_fetch_array($user_info_query);
+		$user_info_data=mysqli_fetch_array($user_info_query);
 ?>
 <html>
 <head>
@@ -206,7 +206,7 @@
  <!--Basic Information--> 
 <?php
 	$user_data_query=mysqli_query($conn ,"select * from users where user_id=$v_user_id");
-	$user_data=mysql_fetch_array($user_data_query);
+	$user_data=mysqli_fetch_array($user_data_query);
 	$bday=$user_data[5];
 	$gender=$user_data[4];
 	$Emial_id=$user_data[2];

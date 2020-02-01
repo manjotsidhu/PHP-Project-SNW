@@ -84,7 +84,7 @@ function close_profile_photo()
 
 <?php
 	$img_array = array();
-	while($post_img_data=mysql_fetch_array($que_post_img))
+	while($post_img_data=mysqli_fetch_array($que_post_img))
 	{
 		array_push($img_array,$post_img_data[3]);
 	}
@@ -147,7 +147,7 @@ function close_timeline_album_photo()
 	$tr=0;
 	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
 	
-	while($post_img_data=mysql_fetch_array($que_post_img))
+	while($post_img_data=mysqli_fetch_array($que_post_img))
 	{
 		$tr=$tr+1;
 ?>
