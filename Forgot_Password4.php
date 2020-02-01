@@ -8,12 +8,12 @@
 	$userid=$_POST['userid'];
 	$ans2=$_POST['ans2'];
 	
-	$que1=mysql_query("select * from user_secret_quotes where user_id=$userid and Answer2='$ans2'");
+	$que1=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid and Answer2='$ans2'");
 	$count1=mysql_num_rows($que1);
 	
 	if($count1>0)
 	{
-		$que2=mysql_query("select * from users where user_id=$userid");
+		$que2=mysqli_query($conn ,"select * from users where user_id=$userid");
 		$rec1=mysql_fetch_row($que2);
 		$password=$rec1[3];
 ?>

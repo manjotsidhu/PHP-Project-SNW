@@ -3,10 +3,10 @@ error_reporting(1);
 		$user=$_SESSION['fbuser'];
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
-		$query1=mysql_query("select * from users where Email='$user'");
+		$query1=mysqli_query($conn ,"select * from users where Email='$user'");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];
-		$query2=mysql_query("select * from user_profile_pic where user_id=$userid");
+		$query2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
 		$rec2=mysql_fetch_array($query2);
 		
 		$name=$rec1[1];
@@ -37,7 +37,7 @@ if(isset($_POST['file']) && ($_POST['file']=='Upload'))
 		{
 			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$user."/Profile/".$prod_img_path);
 		}
-    	mysql_query("update user_profile_pic set image='$img_name' where user_id=$userid;");
+    	mysqli_query($conn ,"update user_profile_pic set image='$img_name' where user_id=$userid;");
 		header("location:Profile.php");
 }
 
@@ -63,7 +63,7 @@ if(isset($_POST['file1']) && ($_POST['file1']=='Upload'))
 		{
 			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$user."/Cover/".$prod_img_path);
 		}
-    	mysql_query("insert into user_cover_pic(user_id,image) values('$userid','$img_name');");
+    	mysqli_query($conn ,"insert into user_cover_pic(user_id,image) values('$userid','$img_name');");
 		header("location:Profile.php");
 }
 
@@ -89,7 +89,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 		{
 			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$user."/Cover/".$prod_img_path);
 		}
-		mysql_query("update user_cover_pic set image='$img_name' where user_id=$userid;");
+		mysqli_query($conn ,"update user_cover_pic set image='$img_name' where user_id=$userid;");
 		header("location:Profile.php");
 }
 ?>
@@ -106,11 +106,11 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <body id="body">
 <!--cover img-->
 <?php 
-	$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+	$query3=mysqli_query($conn ,"select * from user_cover_pic where user_id=$userid");
 	$rec3=mysql_fetch_array($query3);
 	$cover_img=$rec3[2];
 	
-	$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+	$que_post_bg=mysqli_query($conn ,"select * from user_post where user_id=$userid");
 	$count_bg=mysql_num_rows($que_post_bg);
 	$count_bg=$count_bg+1;
 ?>

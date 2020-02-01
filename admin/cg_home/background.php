@@ -161,7 +161,7 @@ error_reporting(1);
 	mysql_connect("localhost","root","");
 	mysql_select_db("candygram");
 	
-	 $query_online=mysql_query("select * from user_status where status='Online'");
+	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
 	 $online_count=mysql_num_rows($query_online);
 	 
 	 if($online_count==0)
@@ -179,8 +179,8 @@ error_reporting(1);
 	 while($online_data=mysql_fetch_array($query_online))
 	 {
 	  	$online_user_id=$online_data[0];
-		$query_online_user_data=mysql_query("select * from users where user_id=$online_user_id");
-		$query_online_user_pic=mysql_query("select * from user_profile_pic where user_id=$online_user_id");
+		$query_online_user_data=mysqli_query($conn ,"select * from users where user_id=$online_user_id");
+		$query_online_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$online_user_id");
 		$fetch_online_user_info=mysql_fetch_array($query_online_user_data);
 		$fetch_online_user_pic=mysql_fetch_array($query_online_user_pic);
 		$online_user_name=$fetch_online_user_info[1];

@@ -6,13 +6,13 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
-		$que1=mysql_query("select * from users where Email='$user' ");
+		$que1=mysqli_query($conn ,"select * from users where Email='$user' ");
 		$rec=mysql_fetch_array($que1);
 		$userid=$rec[0];
 		$gender=$rec[4];
 		if($gender=="Male")
 		{
-			$que2=mysql_query("select * from user_profile_pic where user_id=$userid");
+			$que2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
 			$count1=mysql_num_rows($que2);
 			if($count1==0)
 			{
@@ -33,7 +33,7 @@
     	$prod_img_path=$img_name;
     	move_uploaded_file($img_tmp_name,"../../../cg_users/Male/".$user."/Profile/".$prod_img_path);
 		
-		mysql_query("insert into user_profile_pic(user_id,image) values('$userid','$img_name')");
+		mysqli_query($conn ,"insert into user_profile_pic(user_id,image) values('$userid','$img_name')");
 		header("location:../cg_step2/Secret_Question1.php");
 	} 
 ?>

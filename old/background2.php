@@ -49,10 +49,10 @@ error_reporting(1);
 		$user=$_SESSION['fbuser'];
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
-		$query1=mysql_query("select * from users where Email='$user'");
+		$query1=mysqli_query($conn ,"select * from users where Email='$user'");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];
-		$query2=mysql_query("select * from user_profile_pic where user_id=$userid");
+		$query2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
 		$rec2=mysql_fetch_array($query2);
 		
 		$name=$rec1[1];
@@ -180,7 +180,7 @@ error_reporting(1);
 <div style="position:fixed; left:84%; top:6%; background-color:#000000; opacity:0.5; height:89.2%; width:16%;"></div>
 
 <?php
-	 $query_online=mysql_query("select * from user_status where status='Online'");
+	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
 	 $online_count=mysql_num_rows($query_online);
 	 $online_count=$online_count-1;
 	 
@@ -199,8 +199,8 @@ error_reporting(1);
 	 while($online_data=mysql_fetch_array($query_online))
 	 {
 	  	$online_user_id=$online_data[0];
-		$query_online_user_data=mysql_query("select * from users where user_id=$online_user_id");
-		$query_online_user_pic=mysql_query("select * from user_profile_pic where user_id=$online_user_id");
+		$query_online_user_data=mysqli_query($conn ,"select * from users where user_id=$online_user_id");
+		$query_online_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$online_user_id");
 		$fetch_online_user_info=mysql_fetch_array($query_online_user_data);
 		$fetch_online_user_pic=mysql_fetch_array($query_online_user_pic);
 		$online_user_name=$fetch_online_user_info[1];

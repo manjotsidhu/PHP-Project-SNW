@@ -10,12 +10,12 @@
 	if(isset($_POST['mdelete']))
 	{
 		$dm_id=intval($_POST['user_male_id']);
-		mysql_query("delete from users where user_id=$dm_id");
+		mysqli_query($conn ,"delete from users where user_id=$dm_id");
 	}
 	if(isset($_POST['fdelete']))
 	{
 		$df_id=intval($_POST['user_female_id']);
-		mysql_query("delete from users where user_id=$df_id");
+		mysqli_query($conn ,"delete from users where user_id=$df_id");
 	}
 ?>
 <?php
@@ -37,7 +37,7 @@
 </head>
 <body>
 <?php
-	$all_users_que=mysql_query("select * from users");
+	$all_users_que=mysqli_query($conn ,"select * from users");
 	$all_count=mysql_num_rows($all_users_que);
 ?>
 
@@ -46,7 +46,7 @@
     <hr style="position:absolute;left:25%;top:25%;height:0.5%;width:50%; border-color:#CCCCCC; box-shadow:0px 5px 5px 0px rgb(0,0,0); ">
     
 <?php
-	$all_male_que=mysql_query("select * from users where Gender='Male' order by user_id desc");
+	$all_male_que=mysqli_query($conn ,"select * from users where Gender='Male' order by user_id desc");
 	$all_male_count=mysql_num_rows($all_male_que);
 ?>
     <div style="position:absolute; left:26%; top:42%;"> <img src="img/male.png" height="60" width="60">  </div>
@@ -84,7 +84,7 @@
     
     
 <?php
-	$all_female_que=mysql_query("select * from users where Gender='Female' order by user_id desc");
+	$all_female_que=mysqli_query($conn ,"select * from users where Gender='Female' order by user_id desc");
 	$all_female_count=mysql_num_rows($all_female_que);
 ?>
     <div style="position:absolute; left:58%; top:42%;"> <img src="img/female.png" height="60" width="60">  </div>

@@ -6,16 +6,16 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
-		$que1=mysql_query("select * from users where Email='$user' ");
+		$que1=mysqli_query($conn ,"select * from users where Email='$user' ");
 		$rec=mysql_fetch_array($que1);
 		$userid=$rec[0];
 		$gender=$rec[4];
-		$que2=mysql_query("select * from user_secret_quotes where user_id=$userid");
+		$que2=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
 		$count1=mysql_num_rows($que2);
 		if($count1==0)
 		{
 		
-			$que3=mysql_query("select * from user_profile_pic where user_id=$userid");
+			$que3=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
 			$count3=mysql_num_rows($que3);
 			if($count3>0)
 			{
@@ -26,7 +26,7 @@
 		$que1=$_POST['que'];
 		$ans1=$_POST['ans'];
 
-		mysql_query("insert into user_secret_quotes(user_id,Question1,Answer1) values('$userid','$que1','$ans1')");
+		mysqli_query($conn ,"insert into user_secret_quotes(user_id,Question1,Answer1) values('$userid','$que1','$ans1')");
 		header("location:../cg_step3/Secret_Question2.php");
 	}
 ?>

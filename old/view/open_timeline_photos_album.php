@@ -11,12 +11,12 @@ error_reporting(1);
 	mysql_connect("localhost","root","");
 	mysql_select_db("candygram");
 	
-	$que_user_info=mysql_query("select * from users where user_id=$vid");
+	$que_user_info=mysqli_query($conn ,"select * from users where user_id=$vid");
 	$user_data=mysql_fetch_array($que_user_info);
 	$gender=$user_data[4];
 	$email=$user_data[2];
 	
-	$que_post_img=mysql_query("select * from user_post where post_id=$id");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where post_id=$id");
 	while($post_img_data=mysql_fetch_array($que_post_img))
 	{
 ?>

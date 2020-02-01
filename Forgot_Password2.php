@@ -99,13 +99,13 @@
 			mysql_select_db("candygram");
 
 			$Email=$_POST['Email'];
-			$que0=mysql_query("select * from users where Email='$Email'");
+			$que0=mysqli_query($conn ,"select * from users where Email='$Email'");
 			$rec0=mysql_fetch_row($que0);
 			$userid=$rec0[0];
 			$count1=mysql_num_rows($que0);
 			if($count1>0)
 			{
-				$que1=mysql_query("select * from user_secret_quotes where user_id=$userid");
+				$que1=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
 				$count2=mysql_num_rows($que1);
 				if($count2>0)
 			{

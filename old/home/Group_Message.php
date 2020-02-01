@@ -6,7 +6,7 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$user_email=$_SESSION['fbuser'];
-		$que_user_info=mysql_query("select * from users where Email='$user_email'");
+		$que_user_info=mysqli_query($conn ,"select * from users where Email='$user_email'");
 		$user_data=mysql_fetch_array($que_user_info);
 		$userid=$user_data[0];
 		
@@ -14,13 +14,13 @@
 		{
 			$chat_txt=$_POST['chat_txt'];
 			$chat_time=$_POST['chat_time'];
-			mysql_query("insert into group_chat(user_id,chat_txt,time) values($userid,'$chat_txt','$chat_time')");
+			mysqli_query($conn ,"insert into group_chat(user_id,chat_txt,time) values($userid,'$chat_txt','$chat_time')");
 		}
 		
 		if(isset($_POST['delete_chat']))
 		{
 			$chat_id=intval($_POST['chat_id']);
-			mysql_query("delete from group_chat where chat_id=$chat_id");
+			mysqli_query($conn ,"delete from group_chat where chat_id=$chat_id");
 		}
 		
 		
@@ -90,7 +90,7 @@
     </form>
     
 <?php
-		$que_chat=mysql_query("select * from group_chat order by chat_id desc");
+		$que_chat=mysqli_query($conn ,"select * from group_chat order by chat_id desc");
 ?>
     <div style="position:absolute; left:20%; top:63%;">
     <table border="0">
@@ -101,12 +101,12 @@
 		$fb_user_id=$chat_data[1];
 		$chat_txt=$chat_data[2];
 		$chat_time=$chat_data[3];
-		$que_fb_user_info=mysql_query("select * from users where user_id=$fb_user_id");
+		$que_fb_user_info=mysqli_query($conn ,"select * from users where user_id=$fb_user_id");
 		$fb_user_data=mysql_fetch_array($que_fb_user_info);
 		$user_name=$fb_user_data[1];
 		$user_email=$fb_user_data[2];
 		$user_gender=$fb_user_data[4];
-		$que_fb_user_pic=mysql_query("select * from user_profile_pic where user_id=$fb_user_id");
+		$que_fb_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$fb_user_id");
 		$fetch_user_pic=mysql_fetch_array($que_fb_user_pic);
 		$user_pic=$fetch_user_pic[2];
 ?>

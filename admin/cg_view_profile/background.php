@@ -4,24 +4,24 @@ error_reporting(1);
 		mysql_select_db("candygram");
 ?>
 <?php 
-	$que_v_user_info=mysql_query("select * from users where user_id=$v_user_id");
+	$que_v_user_info=mysqli_query($conn ,"select * from users where user_id=$v_user_id");
 	$v_user_data=mysql_fetch_array($que_v_user_info);
 	$v_name=$v_user_data[1];
 	$v_gender=$v_user_data[4];
 	$v_email=$v_user_data[2];
 	$v_bday=$v_user_data[5];
 	
-	$que_view_user_profile_pic=mysql_query("select * from user_profile_pic where user_id=$v_user_id");
+	$que_view_user_profile_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$v_user_id");
 	$user_profile_pic_data=mysql_fetch_array($que_view_user_profile_pic);
 	$profile_img=$user_profile_pic_data[2];
 
 
-	$que_user_cover_pic=mysql_query("select * from user_cover_pic where user_id=$v_user_id");
+	$que_user_cover_pic=mysqli_query($conn ,"select * from user_cover_pic where user_id=$v_user_id");
 	$user_cover_pic_data=mysql_fetch_array($que_user_cover_pic);
 	$cover_img=$user_cover_pic_data[2];
 	$count1=mysql_num_rows($que_user_cover_pic);
 	
-	$que_post_img=mysql_query("select * from user_post where user_id=$v_user_id and post_pic!='' order by post_id desc");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$v_user_id and post_pic!='' order by post_id desc");
 	$photos_count=mysql_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 
@@ -30,12 +30,12 @@ error_reporting(1);
 <?php
 if(isset($_POST['offline_set']))
 {
-	mysql_query("update user_status set status='Offline' where user_id=$v_user_id");
+	mysqli_query($conn ,"update user_status set status='Offline' where user_id=$v_user_id");
 }
 if(isset($_POST['delete_user']))
 {
 		$delete_id=intval($_POST['delete_id']);
-		mysql_query("delete from users where user_id=$delete_id;");
+		mysqli_query($conn ,"delete from users where user_id=$delete_id;");
 		header("location:../cg_home/Home.php");
 }
 
@@ -43,7 +43,7 @@ if(isset($_POST['warning_user']))
 {
 		$warning_id=intval($_POST['warning_id']);
 		$warning_txt=$_POST['warning_txt'];
-		mysql_query("insert into user_warning values($warning_id,'$warning_txt')");
+		mysqli_query($conn ,"insert into user_warning values($warning_id,'$warning_txt')");
 }
 
 if(isset($_POST['file']) && ($_POST['file']=='Upload'))
@@ -68,7 +68,7 @@ if(isset($_POST['file']) && ($_POST['file']=='Upload'))
 		{
 			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$v_email."/Profile/".$prod_img_path);
 		}
-    	mysql_query("update user_profile_pic set image='$img_name' where user_id=$v_user_id;");
+    	mysqli_query($conn ,"update user_profile_pic set image='$img_name' where user_id=$v_user_id;");
 		header("location:view_profile.php?id=".$v_user_id."");
 }
 
@@ -94,7 +94,7 @@ if(isset($_POST['file1']) && ($_POST['file1']=='Upload'))
 		{
 			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$v_email."/Cover/".$prod_img_path);
 		}
-    	mysql_query("insert into user_cover_pic(user_id,image) values('$v_user_id','$img_name');");
+    	mysqli_query($conn ,"insert into user_cover_pic(user_id,image) values('$v_user_id','$img_name');");
 		header("location:view_profile.php?id=".$v_user_id."");
 }
 
@@ -120,7 +120,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 		{
 			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$v_email."/Cover/".$prod_img_path);
 		}
-		mysql_query("update user_cover_pic set image='$img_name' where user_id=$v_user_id;");
+		mysqli_query($conn ,"update user_cover_pic set image='$img_name' where user_id=$v_user_id;");
 		header("location:view_profile.php?id=".$v_user_id."");
 }
 ?>
@@ -502,7 +502,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 <div style="position:fixed; left:84%; top:6%; background-color:#7F7F7F;  height:89.2%; width:16%; z-index:2;"></div>
 
 <?php
-	 $query_online=mysql_query("select * from user_status where status='Online'");
+	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
 	 $online_count=mysql_num_rows($query_online);
 	  if($online_count==0)
 	 {
@@ -518,8 +518,8 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 	 while($online_data=mysql_fetch_array($query_online))
 	 {
 	  	$online_user_id=$online_data[0];
-		$query_online_user_data=mysql_query("select * from users where user_id=$online_user_id");
-		$query_online_user_pic=mysql_query("select * from user_profile_pic where user_id=$online_user_id");
+		$query_online_user_data=mysqli_query($conn ,"select * from users where user_id=$online_user_id");
+		$query_online_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$online_user_id");
 		$fetch_online_user_info=mysql_fetch_array($query_online_user_data);
 		$fetch_online_user_pic=mysql_fetch_array($query_online_user_pic);
 		$online_user_name=$fetch_online_user_info[1];

@@ -6,7 +6,7 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$user_email=$_SESSION['fbuser'];
-		$que_user_info=mysql_query("select * from users where Email='$user_email'");
+		$que_user_info=mysqli_query($conn ,"select * from users where Email='$user_email'");
 		$user_data=mysql_fetch_array($que_user_info);
 		$userid=$user_data[0];
 		$user_name=$user_data[1];
@@ -22,7 +22,7 @@
 	if(isset($_POST['change_name']))
 	{
 		$Name=$_POST['fnm'].' '.$_POST['lnm'];
-		mysql_query("update users set Name='$Name' where user_id=$userid;");
+		mysqli_query($conn ,"update users set Name='$Name' where user_id=$userid;");
 		header("location:Settings.php");
 	}
 	if(isset($_POST['change_password']))
@@ -31,7 +31,7 @@
 		$new_password=$_POST['new_password'];
 		if($user_pass==$old_password)
 		{
-			mysql_query("update users set Password='$new_password' where user_id=$userid;");
+			mysqli_query($conn ,"update users set Password='$new_password' where user_id=$userid;");
 		}
 		else
 		{
@@ -41,18 +41,18 @@
 	if(isset($_POST['detete_id']))
 	{
 		$uid=$_POST['uid'];
-		mysql_query("delete from users where user_id=$uid;");
+		mysqli_query($conn ,"delete from users where user_id=$uid;");
 		header("location:../../index.php");
 	}
 	
 ?>
 <?php
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
 	$photos_count=mysql_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 ?>
 <?php
-		$user_data_query=mysql_query("select * from users where Email='$user'");
+		$user_data_query=mysqli_query($conn ,"select * from users where Email='$user'");
 		$user_data=mysql_fetch_array($user_data_query);
 		$bday=$user_data[5];
 		$gender=$user_data[4];
@@ -323,11 +323,11 @@ $jq('#searchid').click(function(){
 					<div class="item active">
 				<div class="right"><button type="button" style="position:absolute;bottom:5;right:5" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#cvr">Edit</button></div>
 						<?php 
-							$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+							$query3=mysqli_query($conn ,"select * from user_cover_pic where user_id=$userid");
 							$rec3=mysql_fetch_array($query3);
 							$cover_img=$rec3[2];
 							
-							$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+							$que_post_bg=mysqli_query($conn ,"select * from user_post where user_id=$userid");
 							$count_bg=mysql_num_rows($que_post_bg);
 							$count_bg=$count_bg+1;
 						?>

@@ -6,7 +6,7 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$user_email=$_SESSION['fbuser'];
-		$que_user_info=mysql_query("select * from users where Email='$user_email'");
+		$que_user_info=mysqli_query($conn ,"select * from users where Email='$user_email'");
 		$user_data=mysql_fetch_array($que_user_info);
 		$userid=$user_data[0];
 		$user_name=$user_data[1];
@@ -22,7 +22,7 @@
 	if(isset($_POST['change_name']))
 	{
 		$Name=$_POST['fnm'].' '.$_POST['lnm'];
-		mysql_query("update users set Name='$Name' where user_id=$userid;");
+		mysqli_query($conn ,"update users set Name='$Name' where user_id=$userid;");
 		header("location:Settings.php");
 	}
 	if(isset($_POST['change_password']))
@@ -31,7 +31,7 @@
 		$new_password=$_POST['new_password'];
 		if($user_pass==$old_password)
 		{
-			mysql_query("update users set Password='$new_password' where user_id=$userid;");
+			mysqli_query($conn ,"update users set Password='$new_password' where user_id=$userid;");
 		}
 		else
 		{
@@ -41,7 +41,7 @@
 	if(isset($_POST['detete_id']))
 	{
 		$uid=$_POST['uid'];
-		mysql_query("delete from users where user_id=$uid;");
+		mysqli_query($conn ,"delete from users where user_id=$uid;");
 		header("location:../../index.php");
 	}
 	

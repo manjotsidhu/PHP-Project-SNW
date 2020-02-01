@@ -9,7 +9,7 @@ if(isset($_POST['Login']))
 	$pass=$_POST['password'];
 	
 	
-	$que_admin_check=mysql_query("select * from admin_info where Username='$user' and Password='$pass'");
+	$que_admin_check=mysqli_query($conn ,"select * from admin_info where Username='$user' and Password='$pass'");
 	
 	$count1=mysql_num_rows($que_admin_check);
 	

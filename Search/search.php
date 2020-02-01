@@ -3,7 +3,7 @@ include('db.php');
 if($_POST)
 {
 $q=$_POST['search'];
-$mysql = mysql_query("SELECT users.user_id , users.Name , users.Email , users.Gender , user_profile_pic.image FROM users INNER JOIN user_profile_pic ON users.user_id=user_profile_pic.user_id where users.Name like '%$q%' or users.Email like '%$q%' order by users.Name LIMIT 5");
+$mysql = mysqli_query($conn ,"SELECT users.user_id , users.Name , users.Email , users.Gender , user_profile_pic.image FROM users INNER JOIN user_profile_pic ON users.user_id=user_profile_pic.user_id where users.Name like '%$q%' or users.Email like '%$q%' order by users.Name LIMIT 5");
 while($row=mysql_fetch_array($mysql))
 {
 $s_username=$row['Name'];

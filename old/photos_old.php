@@ -12,7 +12,7 @@
 <body bgcolor="#E9EAED">
 
 <?php
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
 	$photos_count=mysql_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 ?>
@@ -145,7 +145,7 @@ function close_timeline_album_photo()
 <tr>
 <?php
 	$tr=0;
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
 	
 	while($post_img_data=mysql_fetch_array($que_post_img))
 	{

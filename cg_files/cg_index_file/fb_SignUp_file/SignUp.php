@@ -7,7 +7,7 @@ error_reporting(1);
 	
 	$Email=$_POST['email'];
 
-	$que1=mysql_query("select * from users where Email='$Email'");
+	$que1=mysqli_query($conn ,"select * from users where Email='$Email'");
 	$count1=mysql_num_rows($que1);
 
 	if($count1>0)
@@ -29,7 +29,7 @@ error_reporting(1);
 		$year=intval($_POST['year']);
 		if(checkdate($month,$day,$year))
 		{
-			$que2=mysql_query("insert into users(Name,Email,Password,Gender,Birthday_Date,FB_Join_Date) values('$Name','$Email','$Password','$Gender','$Birthday_Date','$FB_Join_Date')");
+			$que2=mysqli_query($conn ,"insert into users(Name,Email,Password,Gender,Birthday_Date,FB_Join_Date) values('$Name','$Email','$Password','$Gender','$Birthday_Date','$FB_Join_Date')");
 
 			session_start();
 			$_SESSION['tempfbuser']=$Email;

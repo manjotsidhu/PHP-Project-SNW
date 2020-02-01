@@ -6,16 +6,16 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$user=$_SESSION['tempfbuser'];
-		$que1=mysql_query("select * from users where Email='$user' ");
+		$que1=mysqli_query($conn ,"select * from users where Email='$user' ");
 		$rec=mysql_fetch_array($que1);
 		$userid=$rec[0];
-		$que2=mysql_query("select * from user_secret_quotes where user_id=$userid");
+		$que2=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
 		$rec2=mysql_fetch_array($que2);
 		$q2=$rec2[3];
 		$a2=$rec2[4];
 		if($q2=="" && $a2=="")
 		{
-			$que3=mysql_query("select * from user_secret_quotes where user_id=$userid");
+			$que3=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
 			$count3=mysql_num_rows($que3);
 			if($count3>0)
 			{
@@ -27,15 +27,15 @@
 		$que2=$_POST['que'];
 		$ans2=$_POST['ans'];
 		
-		mysql_query("update user_secret_quotes set Question2='$que2',Answer2='$ans2' where user_id=$userid");
+		mysqli_query($conn ,"update user_secret_quotes set Question2='$que2',Answer2='$ans2' where user_id=$userid");
 		
-		$que_user_data=mysql_query("select * from users where Email='$user';");
+		$que_user_data=mysqli_query($conn ,"select * from users where Email='$user';");
 		$user_data=mysql_fetch_array($que_user_data);
 		$userid=$user_data[0];
 		$user_join_time=$user_data[6];
-		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values($userid,'Joined Candygram','$user_join_time','Public');");
-		mysql_query("insert into user_status values($userid,'Online')");
-		mysql_query("insert into user_info(user_id) values($userid)");
+		mysqli_query($conn ,"insert into user_post(user_id,post_txt,post_time,priority) values($userid,'Joined Candygram','$user_join_time','Public');");
+		mysqli_query($conn ,"insert into user_status values($userid,'Online')");
+		mysqli_query($conn ,"insert into user_info(user_id) values($userid)");
 		
 		session_start();
 		$_SESSION['fbuser']=$user;

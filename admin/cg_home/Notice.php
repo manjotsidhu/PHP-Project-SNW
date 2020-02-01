@@ -11,11 +11,11 @@
 			$notice_txt=$_POST['notice_txt'];
 			$notice_time=$_POST['notice_time'];
 			
-			$que_users=mysql_query("select * from users");
+			$que_users=mysqli_query($conn ,"select * from users");
 			while($users_data=mysql_fetch_array($que_users))
 			{
 				$user_id=$users_data[0];
-				mysql_query("insert into users_notice(user_id,notice_txt,notice_time) values($user_id,'$notice_txt','$notice_time')");
+				mysqli_query($conn ,"insert into users_notice(user_id,notice_txt,notice_time) values($user_id,'$notice_txt','$notice_time')");
 			}
 		}
 		

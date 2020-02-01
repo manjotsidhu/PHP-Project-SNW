@@ -10,7 +10,7 @@ error_reporting(1);
 	mysql_select_db("candygram");
 	if($id!='')
 	{
-		$query1=mysql_query("select * from users where Name like('%$id%')");
+		$query1=mysqli_query($conn ,"select * from users where Name like('%$id%')");
 		$count1=mysql_num_rows($query1);
 ?>
 	<div style="position:fixed;left:19%;top:5.4%; height:3%; width:42%; z-index:3; background:#F2F2F2">   </div>
@@ -25,7 +25,7 @@ error_reporting(1);
 			$gender=$rec1[4];
 			$userid=$rec1[0];
 			$email=$rec1[2];
-			$query2=mysql_query("select * from user_profile_pic where user_id=$userid");
+			$query2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
 			 $rec2=mysql_fetch_array($query2);
 			 $img=$rec2[2];
 			 

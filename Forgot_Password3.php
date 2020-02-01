@@ -101,12 +101,12 @@
 			$userid=$_POST['userid'];
 			$ans1=$_POST['ans1'];
 	
-			$que1=mysql_query("select * from user_secret_quotes where user_id=$userid and Answer1='$ans1'");
+			$que1=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid and Answer1='$ans1'");
 			$count1=mysql_num_rows($que1);
 	
 			if($count1>0)
 			{
-			$que2=mysql_query("select * from user_secret_quotes where user_id=$userid");
+			$que2=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
 		
 			$rec1=mysql_fetch_row($que2);
 			echo "<h5> Secret Question 2: </h5>";

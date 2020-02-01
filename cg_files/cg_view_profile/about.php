@@ -7,14 +7,14 @@
 		$user=$_SESSION['fbuser'];
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
-		$query1=mysql_query("select * from users where Email='$user'");
+		$query1=mysqli_query($conn ,"select * from users where Email='$user'");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];
 ?>
 <?php
 		include("background.php");
 		
-		$user_info_query=mysql_query("select * from user_info where user_id=$v_user_id");
+		$user_info_query=mysqli_query($conn ,"select * from user_info where user_id=$v_user_id");
 		$user_info_data=mysql_fetch_array($user_info_query);
 ?>
 <!DOCTYPE html>
@@ -296,7 +296,7 @@ $jq('#searchid').click(function(){
     </div>
   </div>
    <?php
-	$user_data_query=mysql_query("select * from users where user_id=$v_user_id");
+	$user_data_query=mysqli_query($conn ,"select * from users where user_id=$v_user_id");
 	$user_data=mysql_fetch_array($user_data_query);
 	$bday=$user_data[5];
 	$gender=$user_data[4];

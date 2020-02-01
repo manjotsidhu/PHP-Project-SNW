@@ -9,19 +9,19 @@
 	if(isset($_POST['delete_warning']))
 	{
 		$user_warning_id=intval($_POST['warning_id']);
-		mysql_query("delete from user_warning where user_id=$user_warning_id;");
+		mysqli_query($conn, "delete from user_warning where user_id=$user_warning_id;");
 	}
 	if(isset($_POST['delete_notice']))
 	{
 		$n_id=intval($_POST['notice_id']);
-		mysql_query("delete from users_notice where notice_id=$n_id;");
+		mysqli_query($conn, "delete from users_notice where notice_id=$n_id;");
 	}
 	if(isset($_POST['txt']))
 	{
 		$txt=$_POST['post_txt'];
 		$priority=$_POST['priority'];
 		$post_time=$_POST['txt_post_time'];
-		mysql_query("insert into user_post(user_id,post_txt,post_time,priority) values('$userid','$txt','$post_time','$priority');");
+		mysqli_query($conn, "insert into user_post(user_id,post_txt,post_time,priority) values('$userid','$txt','$post_time','$priority');");
 	}
 	
 	if(isset($_POST['file']) && ($_POST['file']=='post'))
@@ -53,24 +53,24 @@
 		{
 			move_uploaded_file($img_tmp_name,"../../cg_users/Female/".$user."/Post/".$prod_img_path);
 		}
-    	mysql_query("insert into user_post(user_id,post_txt,post_pic,post_time,priority) values('$userid','$txt','$img_name','$post_time','$priority');");
+    	mysqli_query($conn, "insert into user_post(user_id,post_txt,post_pic,post_time,priority) values('$userid','$txt','$img_name','$post_time','$priority');");
 	}
 	if(isset($_POST['delete_post']))
 	{
 		$post_id=intval($_POST['post_id']);
-		mysql_query("delete from user_post where post_id=$post_id;");
+		mysqli_query($conn, "delete from user_post where post_id=$post_id;");
 	}
 	if(isset($_POST['Like']))
 	{
 		$post_id=intval($_POST['postid']);
 		$user_id=intval($_POST['userid']);
-		mysql_query("insert into user_post_status(post_id,user_id,status) values($post_id,$user_id,'Like');");
+		mysqli_query($conn, "insert into user_post_status(post_id,user_id,status) values($post_id,$user_id,'Like');");
 	}
 	if(isset($_POST['Unlike']))
 	{
 		$post_id=intval($_POST['postid']);
 		$user_id=intval($_POST['userid']);
-		mysql_query("delete from user_post_status where post_id=$post_id and  	user_id=$user_id;");
+		mysqli_query($conn, "delete from user_post_status where post_id=$post_id and  	user_id=$user_id;");
 	}
 	if(isset($_POST['comment']))
 	{
@@ -79,13 +79,13 @@
 		$txt=$_POST['comment_txt'];
 		if($txt!="")
 		{
-		mysql_query("insert into user_post_comment(post_id,user_id,comment) values($post_id,$user_id,'$txt');");
+		mysqli_query($conn, "insert into user_post_comment(post_id,user_id,comment) values($post_id,$user_id,'$txt');");
 		}
 	}
 	if(isset($_POST['delete_comment']))
 	{
 		$comm_id=intval($_POST['comm_id']);
-		mysql_query("delete from user_post_comment where comment_id=$comm_id;");
+		mysqli_query($conn, "delete from user_post_comment where comment_id=$comm_id;");
 	}
 ?>
 <html lang="en"><head>
@@ -123,13 +123,13 @@
 <link href="../../Main_Template/js/tether.min.js?<?php echo time(); ?>" rel="stylesheet">
 <link href="../../Bootstrap_4/css/bootstrap.min.css?<?php echo time(); ?>" rel="stylesheet">
 <?php 
-	$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
-							$rec3=mysql_fetch_array($query3);
-							$cover_img=$rec3[2];
-							
-							$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
-							$count_bg=mysql_num_rows($que_post_bg);
-							$count_bg=$count_bg+1;
+	$query3=mysqli_query($conn, "select * from user_cover_pic where user_id=$userid");
+	$rec3=mysqli_fetch_array($conn, $query3);
+	$cover_img=$rec3[2];
+	
+	$que_post_bg=mysqli_query($conn, "select * from user_post where user_id=$userid");
+	$count_bg=mysqli_num_rows($que_post_bg);
+	$count_bg=$count_bg+1;
 	
 ?>
 <style type="text/css">
@@ -387,8 +387,8 @@ $(function () {
                         <a href="../cg_profile/profile.php"><?php echo $name; ?></a>
                     </div>
                     <?php
-					$user_data_query=mysql_query("select * from users where Email='$user'");
-					$user_data=mysql_fetch_array($user_data_query);
+					$user_data_query=mysqli_query($conn, "select * from users where Email='$user'");
+					$user_data=mysqli_fetch_array($conn, $user_data_query);
 					$bday=$user_data[5];
 					$gender=$user_data[4];
 					$Emial_id=$user_data[2];
@@ -518,15 +518,15 @@ $(function () {
 	<div style="">
 	<table cellspacing="0" class="" style="border-bottom: none;">
 <?php
-	$que_post=mysql_query("select * from user_post where priority='Public' order by post_id desc");
+	$que_post=mysqli_query($conn ,"select * from user_post where priority='Public' order by post_id desc");
 	while($post_data=mysql_fetch_array($que_post))
 	{
 		$postid=$post_data[0];
 		$post_user_id=$post_data[1];
 		$post_txt=$post_data[2];
 		$post_img=$post_data[3];
-		$que_user_info=mysql_query("select * from users where user_id=$post_user_id");
-		$que_user_pic=mysql_query("select * from user_profile_pic where user_id=$post_user_id");
+		$que_user_info=mysqli_query($conn ,"select * from users where user_id=$post_user_id");
+		$que_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$post_user_id");
 		$fetch_user_info=mysql_fetch_array($que_user_info);
 		$fetch_user_pic=mysql_fetch_array($que_user_pic);
 		$user_name=$fetch_user_info[1];
@@ -782,8 +782,8 @@ $(function () {
 	<tr class="tr_l tr_r" style="color:#6D84C4;vertical-align:bottom"><!-- color of comment,like -->
 		<td >   </td>
 		<?php
-		 	$que_status=mysql_query("select * from user_post_status where post_id=$postid and user_id=$userid;");
-			$que_like=mysql_query("select * from user_post_status where post_id=$postid");
+		 	$que_status=mysqli_query($conn ,"select * from user_post_status where post_id=$postid and user_id=$userid;");
+			$que_like=mysqli_query($conn ,"select * from user_post_status where post_id=$postid");
 			$count_like=mysql_num_rows($que_like);
 			$status_data=mysql_fetch_array($que_status);
 			if($status_data[3]=="Like")
@@ -808,7 +808,7 @@ $(function () {
 		 ?>
 		 <?php
 		 
-		 	$que_comment=mysql_query("select * from user_post_comment where post_id =$postid order by comment_id");
+		 	$que_comment=mysqli_query($conn ,"select * from user_post_comment where post_id =$postid order by comment_id");
 	$count_comment=mysql_num_rows($que_comment);
 		 ?>
 		
@@ -826,8 +826,8 @@ $(function () {
 	{
 		$comment_id=$comment_data[0];
 		$comment_user_id=$comment_data[2];
-		$que_user_info1=mysql_query("select * from users where user_id=$comment_user_id");
-		$que_user_pic1=mysql_query("select * from user_profile_pic where user_id=$comment_user_id");
+		$que_user_info1=mysqli_query($conn ,"select * from users where user_id=$comment_user_id");
+		$que_user_pic1=mysqli_query($conn ,"select * from user_profile_pic where user_id=$comment_user_id");
 		$fetch_user_info1=mysql_fetch_array($que_user_info1);
 		$fetch_user_pic1=mysql_fetch_array($que_user_pic1);
 		$user_name1=$fetch_user_info1[1];

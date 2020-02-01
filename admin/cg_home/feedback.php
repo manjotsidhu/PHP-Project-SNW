@@ -9,7 +9,7 @@
 		if(isset($_POST['delete_feedback']))
 		{
 			$fb_id=intval($_POST['feedback_id']);
-			mysql_query("delete from feedback where feedback_id=$fb_id");
+			mysqli_query($conn ,"delete from feedback where feedback_id=$fb_id");
 		}
 		
 		
@@ -40,7 +40,7 @@
     
     
 <?php
-		$que_feedback=mysql_query("select * from feedback order by feedback_id desc");
+		$que_feedback=mysqli_query($conn ,"select * from feedback order by feedback_id desc");
 ?>
     <div style="position:absolute; left:20%; top:35%;">
     <table border="0">
@@ -52,12 +52,12 @@
 		$fb_txt=$feedback_data[2];
 		$fb_star=$feedback_data[3];
 		$fb_time=$feedback_data[4];
-		$que_fb_user_info=mysql_query("select * from users where user_id=$fb_user_id");
+		$que_fb_user_info=mysqli_query($conn ,"select * from users where user_id=$fb_user_id");
 		$fb_user_data=mysql_fetch_array($que_fb_user_info);
 		$user_name=$fb_user_data[1];
 		$user_email=$fb_user_data[2];
 		$user_gender=$fb_user_data[4];
-		$que_fb_user_pic=mysql_query("select * from user_profile_pic where user_id=$fb_user_id");
+		$que_fb_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$fb_user_id");
 		$fetch_user_pic=mysql_fetch_array($que_fb_user_pic);
 		$user_pic=$fetch_user_pic[2];
 ?>

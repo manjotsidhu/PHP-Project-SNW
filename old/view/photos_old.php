@@ -139,7 +139,7 @@ function close_timeline_album_photo()
 <tr>
 <?php
 	$tr=0;
-	$que_post_img=mysql_query("select * from user_post where user_id=$v_user_id and post_pic!=''and priority='Public' order by post_id desc");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$v_user_id and post_pic!=''and priority='Public' order by post_id desc");
 	
 	while($post_img_data=mysql_fetch_array($que_post_img))
 	{

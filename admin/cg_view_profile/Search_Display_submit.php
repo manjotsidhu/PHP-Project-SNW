@@ -55,7 +55,7 @@ function serched_name_out1(uid)
 <?php
 	if($id!='')
 	{
-		$query1=mysql_query("select * from users where Name like('%$id%')");
+		$query1=mysqli_query($conn ,"select * from users where Name like('%$id%')");
 		$count1=mysql_num_rows($query1);
 ?>
 <!--Head background-->
@@ -138,7 +138,7 @@ function serched_name_out1(uid)
 		$gender=$rec1[4];
 		$userid=$rec1[0];
 		$email=$rec1[2];
-		$query2=mysql_query("select * from user_profile_pic where user_id=$userid");
+		$query2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
 		$rec2=mysql_fetch_array($query2);
 		$img=$rec2[2];
 ?>
@@ -223,7 +223,7 @@ function serched_name_out1(uid)
 <div style="position:fixed; left:84%; top:6%; background-color:#000000; opacity:0.5; height:89.2%; width:16%;"></div>
 
 <?php
-	 $query_online=mysql_query("select * from user_status where status='Online'");
+	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
 	 $online_count=mysql_num_rows($query_online);
 	 if($online_count==0)
 	 {
@@ -238,8 +238,8 @@ function serched_name_out1(uid)
 	 while($online_data=mysql_fetch_array($query_online))
 	 {
 	  	$online_user_id=$online_data[0];
-		$query_online_user_data=mysql_query("select * from users where user_id=$online_user_id");
-		$query_online_user_pic=mysql_query("select * from user_profile_pic where user_id=$online_user_id");
+		$query_online_user_data=mysqli_query($conn ,"select * from users where user_id=$online_user_id");
+		$query_online_user_pic=mysqli_query($conn ,"select * from user_profile_pic where user_id=$online_user_id");
 		$fetch_online_user_info=mysql_fetch_array($query_online_user_data);
 		$fetch_online_user_pic=mysql_fetch_array($query_online_user_pic);
 		$online_user_name=$fetch_online_user_info[1];

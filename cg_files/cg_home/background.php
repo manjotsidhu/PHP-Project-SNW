@@ -25,13 +25,12 @@
 <?php
 error_reporting(1);
 		$user=$_SESSION['fbuser'];
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
-		$query1=mysql_query("select * from users where Email='$user'");
-		$rec1=mysql_fetch_array($query1);
+		$conn = mysqli_connect("localhost","root","", "candygram");
+		$query1=mysqli_query($conn, "select * from users where Email='$user'");
+		$rec1=mysqli_fetch_array($conn, $query1);
 		$userid=$rec1[0];
-		$query2=mysql_query("select * from user_profile_pic where user_id=$userid");
-		$rec2=mysql_fetch_array($query2);
+		$query2=mysqli_query($conn, "select * from user_profile_pic where user_id=$userid");
+		$rec2=mysqli_fetch_array($conn, $query2);
 		
 		$name=$rec1[1];
 		$gender=$rec1[4];

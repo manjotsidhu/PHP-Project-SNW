@@ -6,12 +6,12 @@
 		include("background.php");
 ?>
 <?php
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
 	$photos_count=mysql_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 ?>
 <?php
-		$user_data_query=mysql_query("select * from users where Email='$user'");
+		$user_data_query=mysqli_query($conn ,"select * from users where Email='$user'");
 		$user_data=mysql_fetch_array($user_data_query);
 		$bday=$user_data[5];
 		$gender=$user_data[4];
@@ -280,11 +280,11 @@ $jq('#searchid').click(function(){
 					<div class="item active">
 					<div class="right"><button type="button" style="position:absolute;bottom:5;right:5" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#cvr">Edit</button></div>
 						<?php 
-							$query3=mysql_query("select * from user_cover_pic where user_id=$userid");
+							$query3=mysqli_query($conn ,"select * from user_cover_pic where user_id=$userid");
 							$rec3=mysql_fetch_array($query3);
 							$cover_img=$rec3[2];
 							
-							$que_post_bg=mysql_query("select * from user_post where user_id=$userid");
+							$que_post_bg=mysqli_query($conn ,"select * from user_post where user_id=$userid");
 							$count_bg=mysql_num_rows($que_post_bg);
 							$count_bg=$count_bg+1;
 						?>

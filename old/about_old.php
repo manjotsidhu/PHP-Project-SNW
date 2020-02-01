@@ -6,7 +6,7 @@
 		$user=$_SESSION['fbuser'];
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
-		$query1=mysql_query("select * from users where Email='$user'");
+		$query1=mysqli_query($conn ,"select * from users where Email='$user'");
 		$rec1=mysql_fetch_array($query1);
 		$userid=$rec1[0];
 ?>
@@ -15,14 +15,14 @@
 	{
 		$u_job=$_POST['job'];
 		$u_edu=$_POST['edu'];
-		mysql_query("update user_info set job='$u_job',school_or_collage='$u_edu' where user_id=$userid;");
+		mysqli_query($conn ,"update user_info set job='$u_job',school_or_collage='$u_edu' where user_id=$userid;");
 	}
 	
 	if(isset($_POST['leving_sub']))
 	{
 		$u_city=$_POST['city'];
 		$u_hometown=$_POST['hometown'];
-		mysql_query("update user_info set  	current_city='$u_city',hometown='$u_hometown' where user_id=$userid;");
+		mysqli_query($conn ,"update user_info set  	current_city='$u_city',hometown='$u_hometown' where user_id=$userid;");
 	}
 	
 	if(isset($_POST['basic_sub']))
@@ -30,7 +30,7 @@
 		if($_POST['day']=='Day:' && $_POST['month']=='Month:' && $_POST['year']=='Year:')
 		{
 			$u_relationship=$_POST['relationship'];
-			mysql_query("update user_info set relationship_status='$u_relationship' where user_id=$userid;");
+			mysqli_query($conn ,"update user_info set relationship_status='$u_relationship' where user_id=$userid;");
 		}
 		else
 		{
@@ -41,8 +41,8 @@
 			{
 				$u_relationship=$_POST['relationship'];
 				$u_birthday_date=$_POST['day'].'-'.$_POST['month'].'-'.$_POST['year'];
-				mysql_query("update user_info set relationship_status='$u_relationship' where user_id=$userid;");
-				mysql_query("update users set Birthday_Date='$u_birthday_date' where user_id=$userid;");
+				mysqli_query($conn ,"update user_info set relationship_status='$u_relationship' where user_id=$userid;");
+				mysqli_query($conn ,"update users set Birthday_Date='$u_birthday_date' where user_id=$userid;");
 			}
 			else
 			{
@@ -58,12 +58,12 @@
 		$u_priority=$_POST['priority'];
 		$u_web=$_POST['web'];
 		$u_fb_id=$_POST['fbid'];
-		mysql_query("update user_info set mobile_no='$u_m_no',mobile_no_priority='$u_priority',website='$u_web',Facebook_ID='$u_fb_id' where user_id=$userid;");
+		mysqli_query($conn ,"update user_info set mobile_no='$u_m_no',mobile_no_priority='$u_priority',website='$u_web',Facebook_ID='$u_fb_id' where user_id=$userid;");
 	}
 	
 		include("background.php");
 		
-		$user_info_query=mysql_query("select * from user_info where user_id=$userid");
+		$user_info_query=mysqli_query($conn ,"select * from user_info where user_id=$userid");
 		$user_info_data=mysql_fetch_array($user_info_query);
 ?>
 <html>
@@ -75,7 +75,7 @@
 <body bgcolor="#E9EAED">
 
 <?php
-	$que_post_img=mysql_query("select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
+	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
 	$photos_count=mysql_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 ?>
@@ -211,7 +211,7 @@
 
  <!--Basic Information--> 
  <?php
-	$user_data_query=mysql_query("select * from users where Email='$user'");
+	$user_data_query=mysqli_query($conn ,"select * from users where Email='$user'");
 	$user_data=mysql_fetch_array($user_data_query);
 	$bday=$user_data[5];
 	$gender=$user_data[4];

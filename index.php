@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    ini_set("log_errors", 1);
+    ini_set("error_log", "tmp/php-error.log");
+    error_reporting(E_ALL);
 	include("Login.php");
 	include("cg_files/cg_index_file/fb_SignUp_file/SignUp.php");
 ?>
@@ -204,7 +209,7 @@
 	</select>
 	</div>	
 
-	<div style="">
+	<div>
 	<select name="year" class="form-control" style="width:20%">
 	<option value="Year:"> Year : </option>
 	
@@ -220,11 +225,11 @@
 	</select>
 	</div>	</div></div>
 				</div>
-				<div class="group" style="">
+				<div class="group">
 					<input type="submit" class="button" name="signup" value="Sign Up" onClick="time_get()">
 				</div>
 				
-				<div class="foot-lnk" style="">
+				<div class="foot-lnk">
 					<label for="tab-1"><a>Already A Member?</a>
 				</div>
 			</div>

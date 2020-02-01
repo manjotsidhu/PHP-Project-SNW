@@ -6,7 +6,7 @@
 		mysql_connect("localhost","root","");
 		mysql_select_db("candygram");
 		$admin_user=$_SESSION['fbadmin'];
-		$que_admin_info=mysql_query("select * from admin_info where Username='$admin_user'");
+		$que_admin_info=mysqli_query($conn ,"select * from admin_info where Username='$admin_user'");
 		$que_admin_data=mysql_fetch_array($que_admin_info);
 		$admin_password=$que_admin_data[1];	
 ?>
@@ -17,7 +17,7 @@
 		$new_password=md5($_POST['new_password']);
 		if($admin_password==$old_password)
 		{
-			mysql_query("update admin_info set Password='$new_password' where Username='$admin_user'");
+			mysqli_query($conn ,"update admin_info set Password='$new_password' where Username='$admin_user'");
 		}
 		else
 		{
