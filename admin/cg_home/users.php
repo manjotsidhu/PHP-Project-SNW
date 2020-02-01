@@ -38,7 +38,7 @@
 <body>
 <?php
 	$all_users_que=mysqli_query($conn ,"select * from users");
-	$all_count=mysql_num_rows($all_users_que);
+	$all_count=mysqli_num_rows($all_users_que);
 ?>
 
 	<div style="position:absolute; left:27%; top:10%;"> <img src="img/all_users.png" height="100" width="100"> </div>
@@ -47,7 +47,7 @@
     
 <?php
 	$all_male_que=mysqli_query($conn ,"select * from users where Gender='Male' order by user_id desc");
-	$all_male_count=mysql_num_rows($all_male_que);
+	$all_male_count=mysqli_num_rows($all_male_que);
 ?>
     <div style="position:absolute; left:26%; top:42%;"> <img src="img/male.png" height="60" width="60">  </div>
     <div style="position:absolute; left:30.5%; top:42%;"> <h2> Male(<span style="color:#999;"><?php echo $all_male_count; ?></span>) </h2> </div>
@@ -85,7 +85,7 @@
     
 <?php
 	$all_female_que=mysqli_query($conn ,"select * from users where Gender='Female' order by user_id desc");
-	$all_female_count=mysql_num_rows($all_female_que);
+	$all_female_count=mysqli_num_rows($all_female_que);
 ?>
     <div style="position:absolute; left:58%; top:42%;"> <img src="img/female.png" height="60" width="60">  </div>
     <div style="position:absolute; left:63%; top:42%;"> <h2> Female(<span style="color:#999;"><?php echo $all_female_count; ?></span>) </h2> </div>

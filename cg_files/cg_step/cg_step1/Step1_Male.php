@@ -13,7 +13,7 @@
 		if($gender=="Male")
 		{
 			$que2=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
-			$count1=mysql_num_rows($que2);
+			$count1=mysqli_num_rows($que2);
 			if($count1==0)
 			{
 ?>

@@ -11,12 +11,12 @@
 		$userid=$rec[0];
 		$gender=$rec[4];
 		$que2=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
-		$count1=mysql_num_rows($que2);
+		$count1=mysqli_num_rows($que2);
 		if($count1==0)
 		{
 		
 			$que3=mysqli_query($conn ,"select * from user_profile_pic where user_id=$userid");
-			$count3=mysql_num_rows($que3);
+			$count3=mysqli_num_rows($que3);
 			if($count3>0)
 			{
 ?>

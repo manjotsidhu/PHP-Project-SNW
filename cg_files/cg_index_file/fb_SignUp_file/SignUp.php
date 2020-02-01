@@ -8,7 +8,7 @@ error_reporting(1);
 	$Email=$_POST['email'];
 
 	$que1=mysqli_query($conn ,"select * from users where Email='$Email'");
-	$count1=mysql_num_rows($que1);
+	$count1=mysqli_num_rows($que1);
 
 	if($count1>0)
 	{

@@ -113,7 +113,7 @@
 <body id="body">
 <?php
 	$que_warning=mysqli_query($conn ,"select * from user_warning where user_id=$userid");
-	$warning_count=mysql_num_rows($que_warning);
+	$warning_count=mysqli_num_rows($que_warning);
 	if($warning_count>0)
 	{
 		$warning_data=mysqli_fetch_array($que_warning);
@@ -144,7 +144,7 @@
 
 <?php
 	$que_notice=mysqli_query($conn ,"select * from users_notice where user_id=$userid");
-	$notice_count=mysql_num_rows($que_notice);
+	$notice_count=mysqli_num_rows($que_notice);
 	if($notice_count>0)
 	{
 		$notice_data=mysqli_fetch_array($que_notice);
@@ -495,7 +495,7 @@
 		<?php
 		 	$que_status=mysqli_query($conn ,"select * from user_post_status where post_id=$postid and user_id=$userid;");
 			$que_like=mysqli_query($conn ,"select * from user_post_status where post_id=$postid");
-			$count_like=mysql_num_rows($que_like);
+			$count_like=mysqli_num_rows($que_like);
 			$status_data=mysqli_fetch_array($que_status);
 			if($status_data[3]=="Like")
 			{?>
@@ -520,7 +520,7 @@
 		 <?php
 		 
 		 	$que_comment=mysqli_query($conn ,"select * from user_post_comment where post_id =$postid order by comment_id");
-	$count_comment=mysql_num_rows($que_comment);
+	$count_comment=mysqli_num_rows($que_comment);
 		 ?>
 		
 		<td colspan="3"> &nbsp; <input type="button" value="Comment(<?php echo $count_comment; ?>)" style="background:#FFFFFF; border:#FFFFFF;font-size:15px; color:#6D84C4;" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="color:#999999;">   <?php echo $post_data[4]; ?> </span> </td>

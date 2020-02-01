@@ -16,7 +16,7 @@
 		if($q2=="" && $a2=="")
 		{
 			$que3=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid");
-			$count3=mysql_num_rows($que3);
+			$count3=mysqli_num_rows($que3);
 			if($count3>0)
 			{
 		

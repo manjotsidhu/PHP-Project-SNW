@@ -32,7 +32,7 @@ error_reporting(1);
 	
 
 	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$v_user_id and post_pic!='' and priority='Public' order by post_id desc");
-	$photos_count=mysql_num_rows($que_post_img);
+	$photos_count=mysqli_num_rows($que_post_img);
 	$photos_count=$photos_count+2;
 
 ?>

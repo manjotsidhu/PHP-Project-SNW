@@ -181,7 +181,7 @@ error_reporting(1);
 
 <?php
 	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
-	 $online_count=mysql_num_rows($query_online);
+	 $online_count=mysqli_num_rows($query_online);
 	 $online_count=$online_count-1;
 	 
 	 if($online_count==0)

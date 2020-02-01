@@ -56,7 +56,7 @@ function serched_name_out1(uid)
 	if($id!='')
 	{
 		$query1=mysqli_query($conn ,"select * from users where Name like('%$id%')");
-		$count1=mysql_num_rows($query1);
+		$count1=mysqli_num_rows($query1);
 ?>
 <!--Head background-->
 <div style="position:fixed;left:0;top:0; height:6%; width:100%; z-index:1; background:#3B5998">   </div>
@@ -224,7 +224,7 @@ function serched_name_out1(uid)
 
 <?php
 	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
-	 $online_count=mysql_num_rows($query_online);
+	 $online_count=mysqli_num_rows($query_online);
 	 if($online_count==0)
 	 {
 ?>

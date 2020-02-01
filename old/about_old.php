@@ -76,7 +76,7 @@
 
 <?php
 	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$userid and post_pic!='' order by post_id desc");
-	$photos_count=mysql_num_rows($que_post_img);
+	$photos_count=mysqli_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 ?>
 

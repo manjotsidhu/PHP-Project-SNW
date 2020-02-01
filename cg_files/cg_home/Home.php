@@ -784,7 +784,7 @@ $(function () {
 		<?php
 		 	$que_status=mysqli_query($conn ,"select * from user_post_status where post_id=$postid and user_id=$userid;");
 			$que_like=mysqli_query($conn ,"select * from user_post_status where post_id=$postid");
-			$count_like=mysql_num_rows($que_like);
+			$count_like=mysqli_num_rows($que_like);
 			$status_data=mysqli_fetch_array($que_status);
 			if($status_data[3]=="Like")
 			{?>
@@ -809,7 +809,7 @@ $(function () {
 		 <?php
 		 
 		 	$que_comment=mysqli_query($conn ,"select * from user_post_comment where post_id =$postid order by comment_id");
-	$count_comment=mysql_num_rows($que_comment);
+	$count_comment=mysqli_num_rows($que_comment);
 		 ?>
 		
 		<td colspan="3"> &nbsp; <input class="form-control btn btn-info col-lg-3" type="button" value="Comment(<?php echo $count_comment; ?>)" onClick="Comment_focus(<?php echo $postid; ?>);" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> </td>

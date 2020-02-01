@@ -283,7 +283,7 @@
         <?php
 		 
 		 	$que_comment=mysqli_query($conn ,"select * from user_post_comment where post_id =$postid order by comment_id");
-	$count_comment=mysql_num_rows($que_comment);
+	$count_comment=mysqli_num_rows($que_comment);
 		 ?>
         
         <td colspan="1" style="padding-top:14.5;"> &nbsp; <input type="button" value="Comment(<?php echo $count_comment; ?>)" style="background:#FFFFFF; border:#FFFFFF;font-size:15px; color:#6D84C4;" onMouseOver="Comment_underLine(<?php echo $postid; ?>)" onMouseOut="Comment_NounderLine(<?php echo $postid; ?>)" id="comment<?php echo $postid; ?>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="color:#999999;">   <?php echo $post_data[4]; ?> </span> </td>
@@ -292,7 +292,7 @@
 	<tr>
     <?php
 		$que_like=mysqli_query($conn ,"select * from user_post_status where post_id=$postid");
-		$count_like=mysql_num_rows($que_like);
+		$count_like=mysqli_num_rows($que_like);
 	?>
     <tr>
 		<td>   </td>

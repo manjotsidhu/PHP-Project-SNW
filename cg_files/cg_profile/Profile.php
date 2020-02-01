@@ -307,7 +307,7 @@ $jq('#searchid').click(function(){
 							$cover_img=$rec3[2];
 							
 							$que_post_bg=mysqli_query($conn ,"select * from user_post where user_id=$userid");
-							$count_bg=mysql_num_rows($que_post_bg);
+							$count_bg=mysqli_num_rows($que_post_bg);
 							$count_bg=$count_bg+1;
 						?>
 					  <img src="<?php $filename="../../cg_users/".$gender."/".$user."/Cover/".$cover_img;

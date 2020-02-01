@@ -11,7 +11,7 @@ error_reporting(1);
 	if($id!='')
 	{
 		$query1=mysqli_query($conn ,"select * from users where Name like('%$id%')");
-		$count1=mysql_num_rows($query1);
+		$count1=mysqli_num_rows($query1);
 ?>
 	<div style="position:fixed;left:19%;top:5.4%; height:3%; width:42%; z-index:3; background:#F2F2F2">   </div>
 	<div style="position:fixed;left:19.5%;top:5.3%; z-index:3;"> People </div>

@@ -203,7 +203,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 	$cover_img=$rec3[2];
 	
 	$que_post_bg=mysqli_query($conn ,"select * from user_post where user_id=$userid");
-	$count_bg=mysql_num_rows($que_post_bg);
+	$count_bg=mysqli_num_rows($que_post_bg);
 	$count_bg=$count_bg+1;
 ?>
 <div style="position:absolute; left:15.11%; top:6%;"> <img src="../../cg_users/<?php echo $gender; ?>/<?php echo $user; ?>/Cover/<?php echo $cover_img; ?>" height="279" width="943" onMouseOver="dis_cover_pic_edit();" onMouseOut="out_cover_pic_edit();" onClick="open_cover_photo()"> </div>
@@ -218,7 +218,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 </div>
 
 <?php
-	$count1=mysql_num_rows($query3);
+	$count1=mysqli_num_rows($query3);
 	if($count1>0)
 	{
 ?>
@@ -413,7 +413,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 
 <?php
 	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
-	 $online_count=mysql_num_rows($query_online);
+	 $online_count=mysqli_num_rows($query_online);
 	  $online_count=$online_count-1;
 	  if($online_count==0)
 	 {

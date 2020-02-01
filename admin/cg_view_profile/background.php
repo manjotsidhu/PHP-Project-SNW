@@ -19,10 +19,10 @@ error_reporting(1);
 	$que_user_cover_pic=mysqli_query($conn ,"select * from user_cover_pic where user_id=$v_user_id");
 	$user_cover_pic_data=mysqli_fetch_array($que_user_cover_pic);
 	$cover_img=$user_cover_pic_data[2];
-	$count1=mysql_num_rows($que_user_cover_pic);
+	$count1=mysqli_num_rows($que_user_cover_pic);
 	
 	$que_post_img=mysqli_query($conn ,"select * from user_post where user_id=$v_user_id and post_pic!='' order by post_id desc");
-	$photos_count=mysql_num_rows($que_post_img);
+	$photos_count=mysqli_num_rows($que_post_img);
 	$photos_count=$photos_count+$count1+1;
 
 ?>
@@ -503,7 +503,7 @@ if(isset($_POST['file2']) && ($_POST['file2']=='Upload'))
 
 <?php
 	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
-	 $online_count=mysql_num_rows($query_online);
+	 $online_count=mysqli_num_rows($query_online);
 	  if($online_count==0)
 	 {
 ?>

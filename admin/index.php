@@ -11,7 +11,7 @@ if(isset($_POST['Login']))
 	
 	$que_admin_check=mysqli_query($conn ,"select * from admin_info where Username='$user' and Password='$pass'");
 	
-	$count1=mysql_num_rows($que_admin_check);
+	$count1=mysqli_num_rows($que_admin_check);
 	
 	if($count1>0)
 	{

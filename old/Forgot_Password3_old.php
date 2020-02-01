@@ -9,7 +9,7 @@
 	$ans1=$_POST['ans1'];
 	
 	$que1=mysqli_query($conn ,"select * from user_secret_quotes where user_id=$userid and Answer1='$ans1'");
-	$count1=mysql_num_rows($que1);
+	$count1=mysqli_num_rows($que1);
 	
 	if($count1>0)
 	{
