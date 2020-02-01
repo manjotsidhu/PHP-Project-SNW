@@ -2,8 +2,7 @@
 if(isset($_POST['signup']))
 {
 error_reporting(1);
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	$conn = mysqli_connect("localhost","root","", "connection");
 	
 	$Email=$_POST['email'];
 

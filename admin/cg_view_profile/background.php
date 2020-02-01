@@ -1,7 +1,6 @@
 <?php
 error_reporting(1);
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		$conn = mysqli_connect("localhost","root","", "connection");
 ?>
 <?php 
 	$que_v_user_info=mysqli_query($conn ,"select * from users where user_id=$v_user_id");

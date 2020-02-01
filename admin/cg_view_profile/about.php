@@ -4,8 +4,7 @@
 	if(isset($_SESSION['fbadmin']))
 	{
 		$v_user_id=$_GET['id'];
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		$conn = mysqli_connect("localhost","root","", "connection");
 		$query1=mysqli_query($conn ,"select * from users where user_id=$v_user_id");
 		$rec1=mysqli_fetch_array($query1);
 		$userid=$rec1[0];

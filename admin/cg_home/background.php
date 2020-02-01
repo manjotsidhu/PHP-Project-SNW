@@ -158,8 +158,7 @@
 
 <?php
 error_reporting(1);
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	$conn = mysqli_connect("localhost","root","", "candygram");
 	
 	 $query_online=mysqli_query($conn ,"select * from user_status where status='Online'");
 	 $online_count=mysqli_num_rows($query_online);

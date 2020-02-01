@@ -2,8 +2,7 @@
 	include("Login.php");
 ?>
 <?php
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	$conn = mysqli_connect("localhost","root","", "connection");
 	
 	$userid=$_POST['userid'];
 	$ans2=$_POST['ans2'];

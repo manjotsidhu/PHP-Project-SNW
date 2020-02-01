@@ -6,8 +6,7 @@
 		$id=$_GET['search1'];
 ?>
 <?php
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		$conn = mysqli_connect("localhost","root","", "connection");
 ?>
 <html>
 <head>

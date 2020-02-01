@@ -8,8 +8,7 @@ error_reporting(1);
 	$id=$_GET['photo'];
 	$vid=$_GET['v_id'];
 
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	$conn = mysqli_connect("localhost","root","", "connection");
 	
 	$que_user_info=mysqli_query($conn ,"select * from users where user_id=$vid");
 	$user_data=mysqli_fetch_array($que_user_info);

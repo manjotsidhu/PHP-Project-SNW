@@ -3,8 +3,7 @@
 	error_reporting(1);
 	if(isset($_SESSION['fbadmin']))
 	{
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		$conn = mysql_connect("localhost","root","", "candygram");
 		
 		if(isset($_POST['delete_feedback']))
 		{

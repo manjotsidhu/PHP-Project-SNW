@@ -95,8 +95,7 @@
     <form action="Forgot_Password3.php"  method="post">
 		<label for="text-input" class="col-8 col-form-label"><h5>
 					<?php
-			mysql_connect("localhost","root","");
-			mysql_select_db("candygram");
+			$conn = mysqli_connect("localhost","root","", "connection");
 
 			$Email=$_POST['Email'];
 			$que0=mysqli_query($conn ,"select * from users where Email='$Email'");

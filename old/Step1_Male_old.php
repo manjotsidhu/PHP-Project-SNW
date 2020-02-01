@@ -3,8 +3,7 @@
 	error_reporting(1);
 	if(isset($_SESSION['tempfbuser']))
 	{
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		$conn = mysqli_connect("localhost","root","", "connection");
 		$user=$_SESSION['tempfbuser'];
 		$que1=mysqli_query($conn ,"select * from users where Email='$user' ");
 		$rec=mysqli_fetch_array($que1);

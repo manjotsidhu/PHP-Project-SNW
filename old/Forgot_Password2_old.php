@@ -2,8 +2,7 @@
 	include("Login.php");
 ?>
 <?php
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	$conn = mysqli_connect("localhost","root","", "connection");
 
 	$Email=$_POST['Email'];
 	$que0=mysqli_query($conn ,"select * from users where Email='$Email'");

@@ -4,8 +4,7 @@
 	if(isset($_SESSION['fbadmin']))
 	{	
 		$v_user_id=$_GET['id'];
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		$conn = mysqli_connect("localhost","root","", "connection");
 		
 		include("background.php");
 ?>

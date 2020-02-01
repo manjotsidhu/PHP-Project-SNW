@@ -2,8 +2,7 @@
 error_reporting(1);
 if(isset($_POST['Login']))
 {
-	mysql_connect("localhost","root","");
-	mysql_select_db("candygram");
+	$conn = mysqli_connect("localhost","root","", "connection");
 	
 	$user=$_POST['username'];
 	$pass=$_POST['password'];

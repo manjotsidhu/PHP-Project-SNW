@@ -5,8 +5,7 @@
 	{	
 		$v_user_id=$_GET['id'];
 		$user=$_SESSION['fbuser'];
-		mysql_connect("localhost","root","");
-		mysql_select_db("candygram");
+		$conn = mysqli_connect("localhost","root","", "connection");
 		$query1=mysqli_query($conn ,"select * from users where Email='$user'");
 		$rec1=mysqli_fetch_array($query1);
 		$userid=$rec1[0];
