@@ -27,10 +27,10 @@ error_reporting(1);
 		$user=$_SESSION['fbuser'];
 		$conn = mysqli_connect("localhost","root","", "candygram");
 		$query1=mysqli_query($conn, "select * from users where Email='$user'");
-		$rec1=mysqli_fetch_array($conn, $query1);
+		$rec1=mysqli_fetch_array($query1);
 		$userid=$rec1[0];
 		$query2=mysqli_query($conn, "select * from user_profile_pic where user_id=$userid");
-		$rec2=mysqli_fetch_array($conn, $query2);
+		$rec2=mysqli_fetch_array($query2);
 		
 		$name=$rec1[1];
 		$gender=$rec1[4];

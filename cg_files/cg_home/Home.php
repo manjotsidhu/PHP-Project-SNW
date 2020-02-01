@@ -388,7 +388,7 @@ $(function () {
                     </div>
                     <?php
 					$user_data_query=mysqli_query($conn, "select * from users where Email='$user'");
-					$user_data=mysqli_fetch_array($conn, $user_data_query);
+					$user_data=mysqli_fetch_array($user_data_query);
 					$bday=$user_data[5];
 					$gender=$user_data[4];
 					$Emial_id=$user_data[2];
